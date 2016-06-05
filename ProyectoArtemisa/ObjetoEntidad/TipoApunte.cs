@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ObjetoEntidad
 {
-    class Editorial_
+    public class TipoApunte
     {
+        public int idTipoApunte { get; set; }
+        public string nombre { get; set; }
     }
 }
