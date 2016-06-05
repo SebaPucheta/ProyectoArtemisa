@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjetoEntidad
 {
-    public class Class1
+    class Editorial_
     {
     }
 }
