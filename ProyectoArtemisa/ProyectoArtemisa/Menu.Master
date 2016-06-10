@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Menu.master.cs" Inherits="ProyectoArtemisa.Menu" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="Estilo/NavBar.css"/>
+    <link rel="stylesheet" href="Estilo/Sidebar.css"/>
+    <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'/>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+        <header>
+          <nav id="nav_navbar" class="navbar navbar-default navbar-fixed-top navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+                            <span class="sr-only">Menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a id="btn_mostrarNav" class="navbar-brand"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbar-1">
+                        <div class="col-lg-offset-10">
+                            <asp:Button runat="server" ID="btn_usuario" CssClass=" btn-usuario" Text="Sebastián Pucheta" />
+                        </div>
+                    </div>
+                </div>
+             </nav>
+    </header>
+        
+
+       
+        <nav id="sidenav">
+            <ul class="menu">
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarApunte" Text="Registrar Apunte" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarLibro" Text="Registrar Libro" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarStockApunte" Text="Consultar Stock Apunte" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarStockLibro" Text="Consultar Stock Libro" /></li>
+            </ul>
+        </nav>
+
+      
+
+        <!-- Paginas hijas -->
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+   
+    <script src = "Bootstrap/js/jquery.js"></script>
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+   
+    <!-- Codigo js para que ande el boton btn-mostrarNav -->
+    <script type="text/javascript">$('#btn_mostrarNav').on('click', function () {
+    $('#sidenav').toggleClass('mostrar');
+    })</script>
+     
+</body>
+</html>

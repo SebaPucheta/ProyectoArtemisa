@@ -1,0 +1,59 @@
+body{
+  background: rgb(255, 255, 255);
+
+}
+
+.menu{
+  list-style: none;
+  line-height: 42px;
+  margin: 2em auto;
+  /*outline: 1px solid red;*/
+  padding-left: 0;
+  width: 15em;
+}
+
+.btn-sidebar{
+  color: #ddd;
+  display: block;;
+  text-decoration:none;
+  text-transform: : uppercase;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  text-align:  left;
+}
+
+.menu li{
+  box-shadow:  3px 0 rgba(255,255,255, .2) inset;
+  margin-bottom: 5px;
+  padding-left: 1.5em;
+  /*outline: 1px solid green;*/
+  --webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+}
+.menu li:hover{
+  box-shadow: 15em 0 rgba(255,255,255,.2) inset;
+}
+
+#sidenav  {
+    position: absolute;
+    left: -18em;
+    padding-top: 24px;
+    background: #252528;
+    transition: all .7s;
+    z-index: 20;
+    height: 100%;
+
+}
+#sidenav.mostrar {
+
+
+    left: 0;
+
+}
+
+#btn_mostrarNav {
+  cursor: pointer;
+}

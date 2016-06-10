@@ -1,0 +1,14 @@
+.navbar{
+  align-content: rgb(0, 0, 0);
+}
+
+.btn-usuario{
+  padding-top: 15px;
+  border: none;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+}
+
+.btn-usuario:hover{
+  color: rgb(4, 222, 46);
+}
