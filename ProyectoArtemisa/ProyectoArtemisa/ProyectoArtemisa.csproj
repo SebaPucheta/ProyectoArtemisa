@@ -80,7 +80,12 @@
     <Content Include="obj\Debug\ProyectoArtemisa.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\ProyectoArtemisa.dll" />
     <Content Include="obj\Debug\ProyectoArtemisa.pdb" />
+<<<<<<< HEAD
     <Content Include="RegistrarCategoria_18.aspx" />
+=======
+    <Content Include="RegistarLibro_2.aspx" />
+    <Content Include="RegistrarMateria_6.aspx" />
+>>>>>>> origin/master
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -112,12 +117,28 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="RegistrarCategoria_18.aspx.cs">
       <DependentUpon>RegistrarCategoria_18.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RegistrarCategoria_18.aspx.designer.cs">
       <DependentUpon>RegistrarCategoria_18.aspx</DependentUpon>
+=======
+    <Compile Include="RegistarLibro_2.aspx.cs">
+      <DependentUpon>RegistarLibro_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistarLibro_2.aspx.designer.cs">
+      <DependentUpon>RegistarLibro_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarMateria_6.aspx.cs">
+      <DependentUpon>RegistrarMateria_6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarMateria_6.aspx.designer.cs">
+      <DependentUpon>RegistrarMateria_6.aspx</DependentUpon>
+>>>>>>> origin/master
     </Compile>
   </ItemGroup>
   <ItemGroup>
