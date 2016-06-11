@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjetoEntidad
+namespace Entidades
 {
-    class Materia
+    class MateriaEntidad
     {
         public int idMateria { get; set; }
         public string nombreMateria { get; set; }

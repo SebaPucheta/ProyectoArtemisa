@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjetoEntidad
+namespace Entidades
+
 {
-    public class Apunte
+    public class ApunteEntidad
     {
         public string codigoBarraApunte { get; set; }
         public int stock { get; set; }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjetoEntidad
+
+namespace Entidades
 {
-    class Universidad
+    class UniversidadEntidad
     {
         public int idUniversidad { get; set; }
         public string nombreUniversidad { get; set; }

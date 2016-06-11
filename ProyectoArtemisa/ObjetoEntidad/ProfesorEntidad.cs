@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjetoEntidad
+namespace Entidades
 {
-    public class TipoApunte
+    class ProfesorEntidad
     {
-        public int idTipoApunte { get; set; }
         public string nombre { get; set; }
+        public string apellido { get; set; }
+        public int idProfesor { get; set; }
     }
 }
