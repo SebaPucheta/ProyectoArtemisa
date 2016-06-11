@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="Estilo/NavBar.css"/>
     <link rel="stylesheet" href="Estilo/Sidebar.css"/>
+    <link rel="stylesheet" href="Estilo/Forms.css"/>
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'/>
 
@@ -35,7 +36,10 @@
                     <div class="collapse navbar-collapse" id="navbar-1">
                         <div class="col-lg-offset-10">
                             <asp:Button runat="server" ID="btn_usuario" CssClass=" btn-usuario" Text="Sebastián Pucheta" />
+                            
                         </div>
+
+                        
                     </div>
                 </div>
              </nav>
@@ -61,9 +65,9 @@
     </div>
     </form>
    
-    <script src = "Bootstrap/js/jquery.js"></script>
-    <script src="Bootstrap/js/bootstrap.min.js"></script>
    
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+    <script src ="Bootstrap/js/jquery.js"></script>
     <!-- Codigo js para que ande el boton btn-mostrarNav -->
     <script type="text/javascript">$('#btn_mostrarNav').on('click', function () {
     $('#sidenav').toggleClass('mostrar');

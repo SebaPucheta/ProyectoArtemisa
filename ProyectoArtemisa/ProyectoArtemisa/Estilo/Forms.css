@@ -1,0 +1,26 @@
+body{
+  margin: 0 auto;
+  background-image: url(Background/824183-green-wallpaper.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+#div_form {
+  background-color: rgb(255, 255, 255);
+  padding-left: 30px;
+  padding-top: 30px;
+  box-shadow: 2px 2px 20px 2px #000000;
+}
+
+.btn_flat{
+  border: none;
+  border-radius: 0;
+}
+
+#div_grilla {
+  box-shadow: 2px 2px 20px 2px #000000;
+  background-color: rgb(255, 255, 255);
+}

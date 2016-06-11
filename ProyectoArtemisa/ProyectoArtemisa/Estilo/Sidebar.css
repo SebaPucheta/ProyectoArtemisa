@@ -37,21 +37,24 @@ body{
   box-shadow: 15em 0 rgba(255,255,255,.2) inset;
 }
 
-#sidenav  {
+#sidenav {
     position: absolute;
+    position: fixed;
     left: -18em;
     padding-top: 24px;
     background: #252528;
     transition: all .7s;
     z-index: 20;
     height: 100%;
-
 }
+
 #sidenav.mostrar {
-
-
     left: 0;
+    box-shadow: 2px 2px 20px 2px #000000;
+}
 
+#sidenav.mostrar #div_form{
+  padding-right: 100px;
 }
 
 #btn_mostrarNav {
