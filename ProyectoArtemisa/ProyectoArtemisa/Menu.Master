@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <!-- Aca va el titulo-->
+    <title><asp:ContentPlaceHolder ID="ContentPlaceHolder_encabezado" runat="server"></asp:ContentPlaceHolder></title>
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="Estilo/NavBar.css"/>
@@ -14,8 +15,7 @@
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'/>
 
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -60,7 +60,8 @@
 
         <!-- Paginas hijas -->
     <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <!-- Aca van el cuerpo-->
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder_cuerpo" runat="server">
         </asp:ContentPlaceHolder>
     </div>
     </form>
@@ -72,6 +73,9 @@
     <script type="text/javascript">$('#btn_mostrarNav').on('click', function () {
     $('#sidenav').toggleClass('mostrar');
     })</script>
-     
+
+    <!-- Aca van los script-->
+     <asp:ContentPlaceHolder ID="ContentPlaceHolder_pie" runat="server">
+        </asp:ContentPlaceHolder>
 </body>
 </html>

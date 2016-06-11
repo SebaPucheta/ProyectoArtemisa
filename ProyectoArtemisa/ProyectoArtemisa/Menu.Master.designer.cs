@@ -13,13 +13,13 @@ namespace ProyectoArtemisa {
     public partial class Menu {
         
         /// <summary>
-        /// Control head.
+        /// Control ContentPlaceHolder_encabezado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_encabezado;
         
         /// <summary>
         /// Control form1.
@@ -76,12 +76,21 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultarStockLibro;
         
         /// <summary>
-        /// Control ContentPlaceHolder1.
+        /// Control ContentPlaceHolder_cuerpo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_cuerpo;
+        
+        /// <summary>
+        /// Control ContentPlaceHolder_pie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_pie;
     }
 }
