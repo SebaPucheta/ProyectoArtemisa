@@ -9,6 +9,10 @@ namespace Entidades
     public class PrecioXHojaEntidad
     {
         public int idPrecioHoja { get; set; }
-        public double precio { get; set; }
+        public float precio { get; set; }
+        public DateTime fecha { get; set; }
+
+        public PrecioXHojaEntidad () { }
+
     }
 }

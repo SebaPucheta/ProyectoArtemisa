@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class UniversidadEntidad
+    public class UniversidadEntidad
     {
         public int idUniversidad { get; set; }
         public string nombreUniversidad { get; set; }
+        public UniversidadEntidad () { }
+
     }
+
+
+    
 }
