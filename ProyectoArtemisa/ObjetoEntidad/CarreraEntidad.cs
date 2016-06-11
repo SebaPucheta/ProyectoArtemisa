@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class CarreraEntidad
+    public class CarreraEntidad
     {
         public int idCarrera { get; set; }
-        public string nombreCarrera { get; set; }
+        public string nombre { get; set; }
     }
 }

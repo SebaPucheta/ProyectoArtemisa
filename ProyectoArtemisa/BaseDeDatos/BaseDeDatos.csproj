@@ -50,7 +50,12 @@
     <Compile Include="ProfesorDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoApunteDao.cs" />
-    <Compile Include="UniversidadDao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ObjetoEntidad\Entidades.csproj">
+      <Project>{1e8a915d-077e-400c-b40c-10a6fa13da5a}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
