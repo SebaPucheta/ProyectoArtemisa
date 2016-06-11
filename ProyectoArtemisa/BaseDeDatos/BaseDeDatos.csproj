@@ -47,6 +47,7 @@
     <Compile Include="FacultadDao.cs" />
     <Compile Include="LibroDao.cs" />
     <Compile Include="MateriaDao.cs" />
+    <Compile Include="PrecioXHojaDao.cs" />
     <Compile Include="ProfesorDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoApunteDao.cs" />
