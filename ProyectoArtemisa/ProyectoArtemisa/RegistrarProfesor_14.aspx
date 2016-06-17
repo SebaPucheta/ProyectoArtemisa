@@ -62,7 +62,7 @@
 
             <div class="row col-lg-offset-8">
                 <asp:Button runat="server" ID="btn_registrar" Text="Registrar" CssClass="btn btn-primary btn_flat" ValidationGroup="val_profesor" Enabled="true" OnClick="btn_registrar_Click" />
-                <asp:Button runat="server" ID="btn_salir" Text="Salir" CssClass="btn btn-danger btn_flat" OnClick="btn_cancelar_Click" />
+                <asp:Button runat="server" ID="btn_salir" Text="Salir" CssClass="btn btn-danger btn_flat"/>
             </div>
 
             <br />

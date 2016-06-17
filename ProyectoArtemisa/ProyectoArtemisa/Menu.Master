@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Menu.master.cs" Inherits="ProyectoArtemisa.Menu" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="Estilo/Forms.css"/>
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'/>
-
+    
     
 </head>
 <body>
@@ -49,7 +49,7 @@
        
         <nav id="sidenav">
             <ul class="menu">
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarApunte" Text="Registrar Apunte" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarApunte" Text="Registrar Apunte"  OnClick="btn_registrarApunte_OnClick"/></li>
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarLibro" Text="Registrar Libro" /></li>
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarStockApunte" Text="Consultar Stock Apunte" /></li>
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarStockLibro" Text="Consultar Stock Libro" /></li>
@@ -61,8 +61,14 @@
         <!-- Paginas hijas -->
     <div>
         <!-- Aca van el cuerpo-->
+        <br />
+        <br />
+        <br />
+        <br />
         <asp:ContentPlaceHolder ID="ContentPlaceHolder_cuerpo" runat="server">
         </asp:ContentPlaceHolder>
+          <br />
+        <br />
     </div>
     </form>
    

@@ -13,5 +13,10 @@ namespace ProyectoArtemisa
 		{
 
 		}
+
+        protected void btn_registrarApunte_OnClick(Object sender, EventArgs e)
+        {
+            Response.Redirect("RegistrarApunte_26.aspx");
+        }
 	}
 }

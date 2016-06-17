@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=16.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.16.1.0.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -70,23 +74,40 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery.js" />
     <Content Include="Bootstrap\js\npm.js" />
-    <Content Include="RegistrarCarrera_10.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Estilo\menu.png" />
     <Content Include="Estilo\NavBar.css" />
     <Content Include="Estilo\Sidebar.css" />
     <Content Include="Estilo\Sidebar.html" />
     <Content Include="Estilo\Sidebar.js" />
     <Content Include="Global.asax" />
+    <Content Include="jquery-3.0.0.min.js" />
+    <Content Include="jquery-ui-1.11.4.custom\external\jquery\jquery.js" />
+    <Content Include="jquery-ui-1.11.4.custom\images\ui-icons_444444_256x240.png" />
+    <Content Include="jquery-ui-1.11.4.custom\images\ui-icons_555555_256x240.png" />
+    <Content Include="jquery-ui-1.11.4.custom\images\ui-icons_777620_256x240.png" />
+    <Content Include="jquery-ui-1.11.4.custom\images\ui-icons_777777_256x240.png" />
+    <Content Include="jquery-ui-1.11.4.custom\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="jquery-ui-1.11.4.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="jquery-ui-1.11.4.custom\index.html" />
+    <Content Include="jquery-ui-1.11.4.custom\jquery-ui.css" />
+    <Content Include="jquery-ui-1.11.4.custom\jquery-ui.js" />
+    <Content Include="jquery-ui-1.11.4.custom\jquery-ui.min.css" />
+    <Content Include="jquery-ui-1.11.4.custom\jquery-ui.min.js" />
+    <Content Include="jquery-ui-1.11.4.custom\jquery-ui.structure.css" />
+    <Content Include="jquery-ui-1.11.4.custom\jquery-ui.structure.min.css" />
+    <Content Include="jquery-ui-1.11.4.custom\jquery-ui.theme.css" />
+    <Content Include="jquery-ui-1.11.4.custom\jquery-ui.theme.min.css" />
     <Content Include="obj\Debug\ProyectoArtemisa.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\ProyectoArtemisa.dll" />
     <Content Include="obj\Debug\ProyectoArtemisa.pdb" />
+    <Content Include="RegistrarApunte_26.aspx" />
+    <Content Include="RegistrarCarrera_10.aspx" />
     <Content Include="RegistrarCategoria_18.aspx" />
-    <Content Include="RegistarLibro_2.aspx" />
     <Content Include="RegistrarMateria_6.aspx" />
     <Content Include="RegistrarPrecioXHoja_74.aspx" />
     <Content Include="RegistrarProfesor_14.aspx" />
     <Content Include="RegistrarUniversidad_69.aspx" />
-    
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -97,12 +118,12 @@
     <Compile Include="Blanco.aspx.designer.cs">
       <DependentUpon>Blanco.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarCarrera_10.aspx.cs">
-      <DependentUpon>RegistrarCarrera_10.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegistrarCarrera_10.aspx.designer.cs">
-      <DependentUpon>RegistrarCarrera_10.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -118,14 +139,34 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarApunte_26.aspx.cs">
+      <DependentUpon>RegistrarApunte_26.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarApunte_26.aspx.designer.cs">
+      <DependentUpon>RegistrarApunte_26.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarCarrera_10.aspx.cs">
+      <DependentUpon>RegistrarCarrera_10.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarCarrera_10.aspx.designer.cs">
+      <DependentUpon>RegistrarCarrera_10.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarCategoria_18.aspx.cs">
       <DependentUpon>RegistrarCategoria_18.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RegistrarCategoria_18.aspx.designer.cs">
       <DependentUpon>RegistrarCategoria_18.aspx</DependentUpon>
-    <Compile Include="RegistarLibro_2.aspx.cs">
-      <DependentUpon>RegistarLibro_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarMateria_6.aspx.cs">
+      <DependentUpon>RegistrarMateria_6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarMateria_6.aspx.designer.cs">
+      <DependentUpon>RegistrarMateria_6.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarPrecioXHoja_74.aspx.cs">
       <DependentUpon>RegistrarPrecioXHoja_74.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,8 +178,6 @@
       <DependentUpon>RegistrarProfesor_14.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegistrarMateria_6.aspx.designer.cs">
-      <DependentUpon>RegistrarMateria_6.aspx</DependentUpon>
     <Compile Include="RegistrarProfesor_14.aspx.designer.cs">
       <DependentUpon>RegistrarProfesor_14.aspx</DependentUpon>
     </Compile>
@@ -163,6 +202,7 @@
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\ProyectoArtemisa.csprojResolveAssemblyReference.cache" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

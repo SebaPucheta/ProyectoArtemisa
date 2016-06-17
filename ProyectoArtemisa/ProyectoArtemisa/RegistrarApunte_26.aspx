@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="RegistrarApunte_26.aspx.cs" Inherits="ProyectoArtemisa.RegistrarApunte_26" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">Registar Apunte
 </asp:Content>
 
@@ -6,14 +8,18 @@
     
         <div class="row">
         <div class="container col-lg-offset-2 col-lg-7" id="div_form">
-
-
+            <div class="row">
+            <label for="nombre" class="estilo_titulo">Registrar Apunte</label>
+            </div>
+            <br />
+            
             <!-- Nombre del apunte -->
             <div class="row">
                 <div class="form-group">
                     <label for="nombre" class="control-label col-md-3">Nombre :</label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreApunte" value="" ViewStateMode="Enabled" />
+                        
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreApunte" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -23,7 +29,7 @@
                                  </button>
                               </div>
                         </asp:RequiredFieldValidator>
-                    </div>
+                        </div>
                 </div>
             </div>
             <br />
@@ -33,9 +39,10 @@
                 <div class="form-group">
                     <label for="option" class="control-label col-md-3">Universidad:</label>
                     <div class="col-md-5">
-                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_universidadApunte" OnSelectedIndexChanged="ddl_universidadApunte_OnSelectedIndexChanged" />
+                        <asp:TextBox CssClass="form-control" runat="server" ID="txt_universidadApunte"/>
                     </div>
-                    <asp:LinkButton ID="btn_registrarUniversidad" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                
                 </div>
             </div>
             <br />
@@ -59,7 +66,7 @@
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_materiaApunte" />
                     </div>
-                    <asp:LinkButton ID="btn_registrarMateria" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarMateria" runat="server" OnClick="btn_registrarMateria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -75,7 +82,7 @@
                             <asp:BoundField DataField="df_carreraApunte" HeaderText="Carreras" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" ControlStyle-Width="70px"></asp:BoundField>
                         </Columns>
                     </asp:GridView>
-                <asp:LinkButton ID="btn_registrarCarrera" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                <asp:LinkButton ID="btn_registrarCarrera" runat="server" OnClick="btn_registrarCarrera_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
             </div>
             <br />
 
@@ -179,7 +186,7 @@
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_profesorApunte" />
                     </div>
-                    <asp:LinkButton ID="btn_registrarProfesor" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarProfesor" runat="server" OnClick="btn_registrarProfesor_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -191,7 +198,7 @@
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_categoriaApunte" />
                     </div>
-                    <asp:LinkButton ID="btn_registrarCategoria" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarCategoria" runat="server" OnClick="btn_registrarCategoria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -217,11 +224,12 @@
             <br />
             <br />
             <br />
+            
 
             <!-- Botones -->
             <div class="row col-lg-offset-8">
-               <asp:Button runat="server" ID="btn_confirmar" Text="Confirmar" CssClass="btn btn-primary btn_flat" ValidationGroup="AllValidator" Enabled="true" />
-               <asp:Button runat="server" ID="btn_cancelar" Text="Cancelar" CssClass="btn btn-danger btn_flat"  />
+               <asp:Button runat="server" ID="btn_confirmar" Text="Confirmar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" />
+               <asp:Button runat="server" ID="btn_cancelar" Text="Cancelar" CssClass="btn btn-lg btn_rojo btn_flat"  />
             </div>
             <br />
          </div>
@@ -230,5 +238,4 @@
 </asp:Content>
 
 
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">
-</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server"></asp:Content>

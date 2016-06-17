@@ -13,7 +13,7 @@ namespace ProyectoArtemisa
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            ValidationSettings.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+            
         }
 
         protected void Session_Start(object sender, EventArgs e)

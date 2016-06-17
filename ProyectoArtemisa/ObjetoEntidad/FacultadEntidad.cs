@@ -10,5 +10,7 @@ namespace Entidades
     {
         public int idFacultad { get; set; }
         public string nombreFacultad { get; set; }
+
+        public int idUniversidad { get; set; }
     }
 }

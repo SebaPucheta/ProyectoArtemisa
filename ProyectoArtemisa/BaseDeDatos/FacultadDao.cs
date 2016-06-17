@@ -12,7 +12,7 @@ namespace BaseDeDatos
     public class FacultadDao: Conexion
     {
 
-        public static List<FacultadEntidad> consultarUniversidad()
+        public static List<FacultadEntidad> consultarFacultad()
         {
             List<FacultadEntidad> listaFac = new List<FacultadEntidad>();
             string query = "Select * FROM Facultad";

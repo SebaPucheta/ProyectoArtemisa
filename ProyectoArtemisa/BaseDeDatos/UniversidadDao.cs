@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entidades;
-<<<<<<< HEAD
+
 using System.Data.Sql;
 using System.Data.SqlClient;
 
@@ -12,20 +12,7 @@ using System.Data.SqlClient;
 
 namespace BaseDeDatos
 {
-    public class UniversidadDao: Conexion
-    {
-        public static List<UniversidadEntidad> consultarUniversidad()
-        {
-            List<UniversidadEntidad> listaUni = new List<UniversidadEntidad>();
-            string query = "Select * FROM Universidad";
-            SqlCommand cmd = new SqlCommand(query, obtenerBD());
-            SqlDataReader dr = cmd.ExecuteReader();
 
-=======
-using System.Data.SqlClient;
-
-namespace BaseDeDatos
-{
     public class UniversidadDao : Conexion
     {
 
@@ -52,13 +39,14 @@ namespace BaseDeDatos
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
 
             SqlDataReader dr = cmd.ExecuteReader();
->>>>>>> origin/master
+
+            List<UniversidadEntidad> listaUni = new List<UniversidadEntidad>();
             while (dr.Read())
             {
                 UniversidadEntidad uni = new UniversidadEntidad();
                 uni.idUniversidad = int.Parse(dr["idUniversidad"].ToString());
                 uni.nombreUniversidad = dr["nombre"].ToString();
-<<<<<<< HEAD
+
                 listaUni.Add(uni);
             }
 
@@ -67,14 +55,34 @@ namespace BaseDeDatos
             return listaUni;
 
         }
-=======
-                lista.Add(uni);
+        
+        /// <summary>
+        /// Consulta todas las universidades registradas en la base de datos y las compara con el parametro ingresado
+        /// </summary>
+        /// <returns>Lista de objetos universidad que comiencen con el parametro ingresado</returns>
+        public static List<UniversidadEntidad> ConsultarUniversidadXParametro(string parametro)
+        {
+            List<UniversidadEntidad> lista = new List<UniversidadEntidad>();
+            string consulta = @"SELECT idUniversidad, nombre FROM Universidad WHERE nombre like @parametro";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"parametro", parametro + "%" );
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            List<UniversidadEntidad> listaUni = new List<UniversidadEntidad>();
+            while (dr.Read())
+            {
+                UniversidadEntidad uni = new UniversidadEntidad();
+                uni.idUniversidad = int.Parse(dr["idUniversidad"].ToString());
+                uni.nombreUniversidad = dr["nombre"].ToString();
+
+                listaUni.Add(uni);
             }
+
             dr.Close();
             cmd.Connection.Close();
-            return lista;
-        }
+            return listaUni;
 
+        }
         /// <summary>
         /// Modifica una universidad recibiendo un objeto universidad
         /// </summary>
@@ -86,8 +94,5 @@ namespace BaseDeDatos
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
-
-
->>>>>>> origin/master
     }
 }

@@ -84,7 +84,7 @@
         <br />
         <div>
             <!--Boton guardar la carrera-->
-            <asp:Button Text="GUARDAR" runat="server" OnClick="btn_guardar_Click" CssClass="btn btn-default" ID="btn_guardar" />
+            <asp:Button Text="GUARDAR" runat="server"  CssClass="btn btn-default" ID="btn_guardar" />
         </div>
 
 

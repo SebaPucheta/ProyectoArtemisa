@@ -9,19 +9,19 @@ using BaseDeDatos;
 
 namespace ProyectoArtemisa
 {
-    public partial class Default : System.Web.UI.Page
+    public  class RegistrarCarrera_10  : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void btn_guardar_Click(object sender, EventArgs e)
-        {
-            CarreraEntidad carrera = new CarreraEntidad();
-            carrera.nombre = txt_nombreCarrera.Text;
+        //protected void btn_guardar_Click(object sender, EventArgs e)
+        //{
+        //    CarreraEntidad carrera = new CarreraEntidad();
+        //    carrera.nombre = txt_nombreCarrera.Text;
 
-            CarreraDao.registrarCarrera(carrera);
-        }
+        //    CarreraDao.registrarCarrera(carrera);
+        //}
     }
 }

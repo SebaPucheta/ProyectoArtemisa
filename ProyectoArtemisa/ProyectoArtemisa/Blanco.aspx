@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="Blanco.aspx.cs" Inherits="ProyectoArtemisa.Blanco" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
     <br />
     <br />
     <br />
@@ -46,7 +46,7 @@
                                  </button>
                               </div>
                             </asp:RangeValidator>
-                            
+                           
                             <!-- Verifica que el campo no sea nulo-->
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nroDocumento" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
