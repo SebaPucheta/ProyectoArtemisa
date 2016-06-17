@@ -9,7 +9,7 @@ using BaseDeDatos;
 
 namespace ProyectoArtemisa
 {
-    public class RegistrarCategoria_18 : System.Web.UI.Page
+    public partial class RegistrarCategoria_18 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

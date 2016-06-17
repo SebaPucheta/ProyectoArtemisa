@@ -11,7 +11,7 @@ namespace Entidades
     {
         public string codigoBarraApunte { get; set; }
         public int stock { get; set; }
-        public double precio { get; set; }
+        public float precio { get; set; }
         public int cantHoja { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
@@ -22,5 +22,6 @@ namespace Entidades
         public int idEditorial { get; set; }
         public int idEstado { get; set; }
         public int idProfesor { get; set; }
+        public int idMateria { get; set; }
     }
 }

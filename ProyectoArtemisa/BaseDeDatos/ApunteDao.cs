@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseDeDatos
 {
-    class ApunteDao
+    public class ApunteDao
     {
     }
 }

@@ -13,6 +13,15 @@ namespace ProyectoArtemisa {
     public partial class RegistrarApunte_26 {
         
         /// <summary>
+        /// Control txt_codigoBarra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_codigoBarra;
+        
+        /// <summary>
         /// Control txt_nombreApunte.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,33 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_nombreApunte;
+        
+        /// <summary>
+        /// Control chk_digital.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chk_digital;
+        
+        /// <summary>
+        /// Control chk_impreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chk_impreso;
+        
+        /// <summary>
+        /// Control txt_ano.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_ano;
         
         /// <summary>
         /// Control txt_universidadApunte.
@@ -76,13 +112,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarMateria;
         
         /// <summary>
-        /// Control GridView1.
+        /// Control dgv_carrera.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView dgv_carrera;
         
         /// <summary>
         /// Control btn_registrarCarrera.
