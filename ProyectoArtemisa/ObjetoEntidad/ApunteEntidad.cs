@@ -22,5 +22,6 @@ namespace Entidades
         public int idEditorial { get; set; }
         public int idEstado { get; set; }
         public int idProfesor { get; set; }
+        public int idApunte { get; set; }
     }
 }

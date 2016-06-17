@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApunteEntidad.cs" />
+    <Compile Include="ApunteEntidadQuery.cs" />
     <Compile Include="CarreraEntidad.cs" />
     <Compile Include="CategoriaEntidad.cs" />
     <Compile Include="EditorialEntidad.cs" />

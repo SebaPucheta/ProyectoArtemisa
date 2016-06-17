@@ -9,6 +9,7 @@ namespace Entidades
     public class CarreraEntidad
     {
         public int idCarrera { get; set; }
-        public string nombre { get; set; }
+        public string nombreCarrera { get; set; }
+        public int idFacultad { get; set; }
     }
 }
