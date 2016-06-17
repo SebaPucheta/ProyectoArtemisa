@@ -10,23 +10,23 @@ using Entidades;
 
 namespace BaseDeDatos
 {
-    public class CarreraDao: Conexion
+    public class CarreraDao : Conexion
     {
 
-        public static void registrarCarrera(CarreraEntidad carrera)
+        public static void RegistrarCarrera(CarreraEntidad carrera)
         {
-            //Se inserta el nombre de una 
-            string query = "INSERT INTO Carrera(nombre) VALUES (@carrera)";
+            string query = "INSERT INTO Carrera(nombreCarrera, idFacultad) VALUES (@nombreCarrera, @idFacultad)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
-            cmd.Parameters.AddWithValue(@"carrera", carrera.nombre);
+            cmd.Parameters.AddWithValue(@"nombreCarrera", carrera.nombreCarrera);
+            cmd.Parameters.AddWithValue(@"idFacultad", carrera.idFacultad);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
 
-        public static List<CarreraEntidad> consultarCarrera()
+        public static List<CarreraEntidad> ConsultarCarrera()
         {
             List<CarreraEntidad> listaCarrera = new List<CarreraEntidad>();
-            string query = "Select * FROM Carrera";
+            string query = "Select idCarrera, nombreCarrera, idFacultad FROM Carrera";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -34,7 +34,8 @@ namespace BaseDeDatos
             {
                 CarreraEntidad carrera = new CarreraEntidad();
                 carrera.idCarrera = int.Parse(dr["idCarrera"].ToString());
-                carrera.nombre = dr["nombre"].ToString();
+                carrera.nombreCarrera = dr["nombreCarrera"].ToString();
+                carrera.idFacultad = int.Parse(dr["idFacultad"].ToString());
                 listaCarrera.Add(carrera);
             }
 
@@ -43,7 +44,34 @@ namespace BaseDeDatos
             return listaCarrera;
         }
 
+        public static List<CarreraEntidad> ConsultarCarreraXMateria(int idMateria)
+        {
+            List<CarreraEntidad> lista = new List<CarreraEntidad>();
+            string query = @"SELECT c.idCarrera as 'idCar', c.nombreCarrera
+                             FROM Carrera c JOIN CarreraXMateria cm ON c.idCarrera = cm.idCarrera
+                             WHERE cm.idMateria = @idMateria";
+
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+
+            cmd.Parameters.AddWithValue(@"idMateria", idMateria);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                CarreraEntidad car = new CarreraEntidad();
+                car.idCarrera = int.Parse(dr["idCar"].ToString());
+                car.nombreCarrera = dr["nombreCarrera"].ToString();
+
+                lista.Add(car);
+            }
+
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
+
     }
 
-    
+
 }

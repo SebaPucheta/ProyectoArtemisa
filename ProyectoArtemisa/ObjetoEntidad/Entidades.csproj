@@ -7,8 +7,8 @@
     <ProjectGuid>{1E8A915D-077E-400C-B40C-10A6FA13DA5A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ObjetoEntidad</RootNamespace>
-    <AssemblyName>ObjetoEntidad</AssemblyName>
+    <RootNamespace>Entidades</RootNamespace>
+    <AssemblyName>Entidades</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApunteEntidad.cs" />
+    <Compile Include="ApunteEntidadQuery.cs" />
     <Compile Include="CarreraEntidad.cs" />
     <Compile Include="CategoriaEntidad.cs" />
     <Compile Include="EditorialEntidad.cs" />

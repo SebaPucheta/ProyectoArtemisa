@@ -18,17 +18,37 @@ namespace BaseDeDatos
         /// <param name="materia"></param>
         public static void registrarMateria(MateriaEntidad materia)
         {
-            string query = "INSERT INTO Materia (nombre, ano, descripcion) VALUES (@nombre, @ano, @descripcion)";
+            string query = "INSERT INTO Materia (nombre, nivelCursado, descripcion) VALUES (@nombre, @nivelCursado, @descripcion)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
             cmd.Parameters.AddWithValue(@"nombre", materia.nombreMateria);
-            cmd.Parameters.AddWithValue(@"ano",materia.nivelCursado);
-            cmd.Parameters.AddWithValue(@"descripcion",materia.descripcion);
+            cmd.Parameters.AddWithValue(@"nivelCursado", materia.nivelCursado);
+            cmd.Parameters.AddWithValue(@"descripcion", materia.descripcion);
 
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
 
+        public MateriaEntidad ConsultarMateriaXNombre(string nombreMateria)
+        {
+            string query = @"SELECT idMateria FROM Materia WHERE nombreMateria = @nom";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+
+            cmd.Parameters.AddWithValue(@"nom", nombreMateria);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            MateriaEntidad mat = new MateriaEntidad();
+            while (dr.Read())
+            {
+                mat.idMateria = int.Parse(dr["idMateria"].ToString());
+                mat.nombreMateria = dr["nombreMateria"].ToString();
+                mat.nivelCursado = int.Parse(dr["nivelCursado"].ToString());
+                mat.descripcion = dr["descripcion"].ToString();
+            }
+
+            return mat;
+        }
 
     }
 }
