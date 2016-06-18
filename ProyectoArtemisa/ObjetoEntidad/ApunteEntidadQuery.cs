@@ -16,11 +16,12 @@ using System.Threading.Tasks;
         //idProfesor
 
         public float precioHoja { get; set; }
-        public string categoria { get; set; }
-        public string tipoApunte { get; set; }
-        public string editorial { get; set; }
-        public string estado { get; set; }
-        public string profesor { get; set; }
+        public string nombreCategoria { get; set; }
+        public string nombreTipoApunte { get; set; }
+        public string nombreEditorial { get; set; }
+        public string nombreEstado { get; set; }
+        public string nombreProfesor { get; set; }
+        public string nombreMateria { get; set; }
         
     }
 }

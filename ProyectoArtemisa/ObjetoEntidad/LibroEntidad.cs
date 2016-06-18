@@ -8,12 +8,13 @@ namespace Entidades
 {
     public class LibroEntidad
     {
+        public int idLibro { get; set; }
         public string codigoBarraLibro { get; set; }
         public string nombreLibro { get; set; }
         public string autorLibro { get; set; }
-        public string descripcion { get; set; }
+        public string descripcionLibro { get; set; }
         public int stock { get; set; }
-        public int cantidadHojas { get; set; }
+        public int cantidadHojasLibro { get; set; }
         public float precioLibro { get; set; }
         public int idEditorial { get; set; }
         public int idEstado { get; set; }

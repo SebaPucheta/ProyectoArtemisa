@@ -11,6 +11,6 @@ namespace Entidades
         public int idMateria { get; set; }
         public string nombreMateria { get; set; }
         public int nivelCursado { get; set; }
-        public string descripcion { get; set; }
+        public string descripcionMateria { get; set; }
     }
 }

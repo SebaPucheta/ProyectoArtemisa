@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class TipoApunteEntidad
+    public class ProvinciaEntidad
     {
-        public int idTipoApunte { get; set; }
-        public string nombreTipoApunte { get; set; }
+        public int idProvincia { get; set; }
+        public string nombreProvincia { get; set; }
     }
 }

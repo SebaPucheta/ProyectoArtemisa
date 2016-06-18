@@ -9,13 +9,14 @@ namespace Entidades
 {
     public class ApunteEntidad
     {
+        public int idApunte { get; set; }
         public string codigoBarraApunte { get; set; }
         public int stock { get; set; }
-        public float precio { get; set; }
+        public float precioApunte { get; set; }
         public int cantHoja { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public int ano { get; set; }
+        public string nombreApunte { get; set; }
+        public string descripcionApunte { get; set; }
+        public int anoApunte { get; set; }
         public int idPrecioHoja { get; set; }
         public int idCategoria { get; set; }
         public int idTipoApunte { get; set; }
@@ -23,5 +24,6 @@ namespace Entidades
         public int idEstado { get; set; }
         public int idProfesor { get; set; }
         public int idMateria { get; set; }
+        
     }
 }

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class FacultadEntidad
+    public  class ciudadEntidad
     {
-        public int idFacultad { get; set; }
-        public string nombreFacultad { get; set; }
-        public int idUniversidad { get; set; }
         public int idCiudad { get; set; }
+        public string nombreCiudad { get; set; }
+        public int idProvincia { get; set; }
     }
 }

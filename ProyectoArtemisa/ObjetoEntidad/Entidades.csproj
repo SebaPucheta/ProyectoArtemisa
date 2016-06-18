@@ -48,13 +48,16 @@
     <Compile Include="ApunteEntidadQuery.cs" />
     <Compile Include="CarreraEntidad.cs" />
     <Compile Include="CategoriaEntidad.cs" />
+    <Compile Include="ciudadEntidad.cs" />
     <Compile Include="EditorialEntidad.cs" />
+    <Compile Include="EstadoEntidad.cs" />
     <Compile Include="FacultadEntidad.cs" />
     <Compile Include="LibroEntidad.cs" />
     <Compile Include="MateriaEntidad.cs" />
     <Compile Include="PrecioXHojaEntidad.cs" />
     <Compile Include="ProfesorEntidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinciaEntidad.cs" />
     <Compile Include="TipoApunteEntidad.cs" />
     <Compile Include="UniversidadEntidad.cs" />
   </ItemGroup>
