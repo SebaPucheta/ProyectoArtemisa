@@ -13,15 +13,6 @@ namespace ProyectoArtemisa {
     public partial class RegistarLibro_2 {
         
         /// <summary>
-        /// Control lbl_nombreLibro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_nombreLibro;
-        
-        /// <summary>
         /// Control txt_nombreDelLibro.
         /// </summary>
         /// <remarks>
@@ -31,13 +22,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_nombreDelLibro;
         
         /// <summary>
-        /// Control lbl_universidad.
+        /// Control txt_codgoBarra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_universidad;
+        protected global::System.Web.UI.WebControls.TextBox txt_codgoBarra;
         
         /// <summary>
         /// Control ddl_universidadesLibro.
@@ -49,22 +40,22 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_universidadesLibro;
         
         /// <summary>
-        /// Control btn_registrarUniversidadLibro.
+        /// Control btn_registrarUniversidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrarUniversidadLibro;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
         
         /// <summary>
-        /// Control lbl_facultades.
+        /// Control cv_pension.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_facultades;
+        protected global::System.Web.UI.WebControls.CustomValidator cv_pension;
         
         /// <summary>
         /// Control ddl_facultadesLibro.
@@ -76,22 +67,22 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_facultadesLibro;
         
         /// <summary>
-        /// Control btn_registrarFacultadesLibro.
+        /// Control btn_registrarFacultad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrarFacultadesLibro;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarFacultad;
         
         /// <summary>
-        /// Control lbl_materias.
+        /// Control CustomValidator1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_materias;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
         /// Control ddl_materiasLibro.
@@ -103,22 +94,22 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_materiasLibro;
         
         /// <summary>
-        /// Control btn_registrarMateriasLibro.
+        /// Control btn_registrarMateria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrarMateriasLibro;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarMateria;
         
         /// <summary>
-        /// Control lbl_carreras.
+        /// Control CustomValidator2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_carreras;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
         
         /// <summary>
         /// Control dgv_carrerasLibro.
@@ -130,15 +121,6 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.GridView dgv_carrerasLibro;
         
         /// <summary>
-        /// Control lbl_nombreAutor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_nombreAutor;
-        
-        /// <summary>
         /// Control txt_nombreAutorLibro.
         /// </summary>
         /// <remarks>
@@ -146,15 +128,6 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_nombreAutorLibro;
-        
-        /// <summary>
-        /// Control lbl_editorial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_editorial;
         
         /// <summary>
         /// Control ddl_editorialLibro.
@@ -166,40 +139,31 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_editorialLibro;
         
         /// <summary>
-        /// Control btn_registrarEditorialLibro.
+        /// Control btn_registrarEditorial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrarEditorialLibro;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarEditorial;
         
         /// <summary>
-        /// Control lbl_cantidadHojas.
+        /// Control CustomValidator3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_cantidadHojas;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator3;
         
         /// <summary>
-        /// Control lbl_cantidadHojasLibro.
+        /// Control txt_cantidadHojasLibro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lbl_cantidadHojasLibro;
-        
-        /// <summary>
-        /// Control lbl_descripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_descripcion;
+        protected global::System.Web.UI.WebControls.TextBox txt_cantidadHojasLibro;
         
         /// <summary>
         /// Control txt_descripcionLibro.
@@ -209,15 +173,6 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_descripcionLibro;
-        
-        /// <summary>
-        /// Control lbl_precioLibro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_precioLibro;
         
         /// <summary>
         /// Control txt_precioLibro.

@@ -24,7 +24,7 @@ namespace ProyectoArtemisa
             mat.nivelCursado = int.Parse(txt_nivelCursadoMateria.Text);
             mat.descripcion = txt_descripcionMateriaLibro.Text;
 
-            MateriaDao.registrarMateria(mat);
+            MateriaDao.RegistrarMateria(mat);
         }
 
         public void cargarComboUniversidad()

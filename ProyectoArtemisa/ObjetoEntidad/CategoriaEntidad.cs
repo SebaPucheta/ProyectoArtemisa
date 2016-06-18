@@ -9,6 +9,6 @@ namespace Entidades
     public class CategoriaEntidad
     {
         public int idCategoria { get; set; }
-        public string nombre { get; set; }
+        public string nombreCategoria { get; set; }
     }
 }

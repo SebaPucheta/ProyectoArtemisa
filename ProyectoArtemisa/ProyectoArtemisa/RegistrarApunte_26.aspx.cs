@@ -18,24 +18,47 @@ namespace ProyectoArtemisa
         {
             if(!IsPostBack)
             {
-               
+                CargarComboUniversidad();        
             }
             
         }
-
-        [System.Web.Script.Services.ScriptMethod()]
-        [System.Web.Services.WebMethod]
-        protected List<string> DevolverUniversidadXParametro(string parametro, int count)
+        
+        protected void CargarComboUniversidad()
         {
-            List<string> nombreUniversidades = new List<string>();
-            foreach ( UniversidadEntidad universidades in UniversidadDao.ConsultarUniversidadXParametro(parametro))
-            {
-                nombreUniversidades.Add(universidades.nombreUniversidad);
-            }
-
-            return nombreUniversidades;
+            ddl_universidadApunte.DataSource = UniversidadDao.ConsultarUniversidad();
+            ddl_universidadApunte.DataTextField = "nombreUniversidad";
+            ddl_universidadApunte.DataValueField = "idUniversidad";
         }
-
+        protected void CargarComboFacultad(int idUniversidad)
+        {
+            ddl_facultadApunte.DataSource = FacultadDao.ConsultarFacultadXUniversidad(idUniversidad);
+            ddl_facultadApunte.DataTextField = "nombreFacultad";
+            ddl_facultadApunte.DataValueField = "idFacultad";
+        }
+        protected void CargarComboMateria(int idFacultad)
+        {
+            ddl_materiaApunte.DataSource = MateriaDao.DevolverMateriaXFacultad(idFacultad);
+            ddl_materiaApunte.DataTextField = "nombreMateria";
+            ddl_materiaApunte.DataValueField = "idMateria";
+        }
+        protected void CargarComboEditorial()
+        {
+            ddl_editorialApunte.DataSource = EditorialDao.ConsultarEditorial();
+            ddl_editorialApunte.DataTextField = "nombreEditorial";
+            ddl_editorialApunte.DataValueField = "idEditorial";
+        }
+        protected void CargarComboProfesor(int idMateria)
+        {
+            ddl_profesorApunte.DataSource = ProfesorDao.DevolverProfesorXMateria(idMateria);
+            ddl_profesorApunte.DataTextField = "nombreProfesor";
+            ddl_profesorApunte.DataValueField = "idProfesor";
+        }
+        protected void CargarComboCategoria()
+        {
+            ddl_categoriaApunte.DataSource = CategoriaDao.ConsultarCategoria();
+            ddl_categoriaApunte.DataTextField = "nombreCategoria";
+            ddl_categoriaApunte.DataValueField = "idCategoria";
+        }
 
         protected void btn_registrarUniversidad_onClick(object sender, EventArgs e)
         {
@@ -61,9 +84,9 @@ namespace ProyectoArtemisa
             Response.Redirect("RegistrarMateria_6.aspx");
         }
 
-        protected void CargarGrilla(string  nombreMateria)
+        protected void CargarGrilla(int  idMateria)
         {
-            dgv_carrera.DataSource = CarreraDao.ConsultarCarreraXMateria(MateriaDao.ConsultarMateriaXNombre(nombreMateria));
+            dgv_carrera.DataSource = CarreraDao.ConsultarCarreraXMateria(idMateria);
             dgv_carrera.DataKeyNames = new string[] { "idMateria" };
             dgv_carrera.DataBind();
         }
@@ -75,7 +98,6 @@ namespace ProyectoArtemisa
             nuevoApunte.nombre = txt_nombreApunte.Text;
             nuevoApunte.ano = Convert.ToInt32(txt_ano.Text);
             nuevoApunte.cantHoja = Convert.ToInt32(txt_cantHojasApunte.Text);
-            nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
             nuevoApunte.descripcion = txt_descripcion.Text;
             nuevoApunte.idCategoria = Convert.ToInt32( ddl_categoriaApunte.SelectedValue);
             nuevoApunte.idEditorial = Convert.ToInt32( ddl_editorialApunte.SelectedValue);
@@ -87,34 +109,40 @@ namespace ProyectoArtemisa
           
         
         protected void btn_confirmar_Click(object sender, EventArgs e)
-        {
-            if(ApunteDao.VerificarCodigoBarra(txt_codigoBarra.Text))
+        {   
+            if ((chk_digital.Checked) || (chk_impreso.Checked))
             {
-                if ((chk_digital.Checked) || (chk_impreso.Checked))
-                {
-                    ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
+                 if (chk_digital.Checked)
+                 { RegistrarApunteDigital(); }
 
-                    if(chk_digital.Checked)
-                    {
-                        nuevoApunte.idPrecioHoja =Convert.ToInt32(txt_precioApunteDigital.Text);
-                        ApunteDao.RegistrarApunte(nuevoApunte);
+                 if(chk_impreso.Checked)
+                 { RegistrarApunteImpreso(); }
+            }
+            else
+            {
+                Response.Write("<script>window.alert('Deve seleccionar un tipo apunte');</script>");
+            }
+        }
 
-                        if(chk_impreso.Checked)
-                        {
-                            nuevoApunte.precio = Convert.ToInt32(txt_precioXHoja.Text);
-                            ApunteDao.RegistrarApunte(nuevoApunte);
-                        }
-                    }
-                    else
-                    {
-                        nuevoApunte.precio = Convert.ToInt32(txt_precioXHoja.Text);
-                        ApunteDao.RegistrarApunte(nuevoApunte);
-                    }
-                }
-                else 
-                {
-                    Response.Write("<script>window.alert('Deve seleccionar un tipo apunte');</script>");
-                }
+        
+        protected void RegistrarApunteDigital()
+        {
+            ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
+            nuevoApunte.idPrecioHoja = Convert.ToInt32(txt_precioApunteDigital.Text);
+            nuevoApunte.idTipoApunte = 2; //Hace referencia a un apunte de tipo Digital
+            ApunteDao.RegistrarApunte(nuevoApunte);
+        }
+
+        protected void RegistrarApunteImpreso()
+        {
+            
+            if (ApunteDao.VerificarCodigoBarra(txt_codigoBarra.Text))
+            {
+                ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
+                nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
+                nuevoApunte.precio = Convert.ToInt32(txt_precioXHoja.Text);
+                nuevoApunte.idTipoApunte = 1;
+                ApunteDao.RegistrarApunte(nuevoApunte);
             }
             else
             {
@@ -124,7 +152,8 @@ namespace ProyectoArtemisa
 
         protected void ddl_materiaApunte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarGrilla(ddl_materiaApunte.Items[Convert.ToInt32(ddl_materiaApunte.SelectedItem) - 1].Text);
+            CargarGrilla(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
+            btn_registrarCarrera.Visible = true;
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
@@ -134,7 +163,9 @@ namespace ProyectoArtemisa
 
         protected void txt_cantHojasApunte_TextChanged(object sender, EventArgs e)
         {
-            txt_precioXHoja.Text = Convert.ToInt32(txt_cantHojasApunte.Text) * ConsultarPrecioXHoja();
+            List<PrecioXHojaEntidad> listaPrecio = PrecioXHojaDao.ConsultarPrecioXHoja(); 
+            float precioXHoja = listaPrecio[(listaPrecio.Count) - 1].precio;
+            txt_precioXHoja.Text = Convert.ToString(Convert.ToInt32(txt_cantHojasApunte.Text) * precioXHoja);
         }
 
         protected void chk_digital_CheckedChanged(object sender, EventArgs e)
@@ -155,12 +186,24 @@ namespace ProyectoArtemisa
             {
                 txt_precioXHoja.Enabled = true;
                 txt_cantHojasApunte.Enabled = true;
+                txt_codigoBarra.Enabled = true;
             }
             else
             {
                 txt_precioXHoja.Enabled = false;
                 txt_cantHojasApunte.Enabled = false;
+                txt_codigoBarra.Enabled = false;
             }
+        }
+
+        protected void ddl_universidadApunte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarComboFacultad(Convert.ToInt32(ddl_universidadApunte.SelectedValue));
+        }
+
+        protected void ddl_facultadApunte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarComboMateria(Convert.ToInt32(ddl_facultadApunte.SelectedValue));
         }
         
        

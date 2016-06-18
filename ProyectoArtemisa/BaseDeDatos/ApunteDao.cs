@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace BaseDeDatos
 {
@@ -79,24 +82,23 @@ namespace BaseDeDatos
             return lista;
 
         }
-        public static List<ApunteEntidadQuery> ConsultarTodosLosApuntes()
-        {
-
-        }
+        
 
         public static bool VerificarCodigoBarra(string codigoBarra)
         {
-            string query = @"SELECT Count(codigoBarra) FROM Apunte WHERE codigoBarra = @codBarra";
+            string query = @"SELECT Count(codigoBarra) FROM Apunte WHERE codigoBarra = @codBarra and idTipoApunte= 1";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
             cmd.Parameters.AddWithValue(@"codBarra", codigoBarra);
 
             if (int.Parse(cmd.ExecuteScalar().ToString()) == 0)
             {
+                cmd.Connection.Close();
                 return true;
             }
             else
             {
+                cmd.Connection.Close();
                 return false;
             }
         }

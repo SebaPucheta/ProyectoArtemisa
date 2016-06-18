@@ -19,9 +19,9 @@ namespace ProyectoArtemisa
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
             CategoriaEntidad categoria = new CategoriaEntidad();
-            categoria.nombre = txt_nombreCategoria.Text;
+            categoria.nombreCategoria = txt_nombreCategoria.Text;
 
-            CategoriaDao.registrarCategoria(categoria);
+            CategoriaDao.RegistrarCategoria(categoria);
         }
     }
 }

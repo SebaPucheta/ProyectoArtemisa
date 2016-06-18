@@ -13,24 +13,6 @@ namespace ProyectoArtemisa {
     public partial class RegistrarApunte_26 {
         
         /// <summary>
-        /// Control txt_codigoBarra.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_codigoBarra;
-        
-        /// <summary>
-        /// Control txt_nombreApunte.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nombreApunte;
-        
-        /// <summary>
         /// Control chk_digital.
         /// </summary>
         /// <remarks>
@@ -49,6 +31,24 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.CheckBox chk_impreso;
         
         /// <summary>
+        /// Control txt_codigoBarra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_codigoBarra;
+        
+        /// <summary>
+        /// Control txt_nombreApunte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_nombreApunte;
+        
+        /// <summary>
         /// Control txt_ano.
         /// </summary>
         /// <remarks>
@@ -58,13 +58,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_ano;
         
         /// <summary>
-        /// Control txt_universidadApunte.
+        /// Control ddl_universidadApunte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_universidadApunte;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_universidadApunte;
         
         /// <summary>
         /// Control btn_registrarUniversidad.

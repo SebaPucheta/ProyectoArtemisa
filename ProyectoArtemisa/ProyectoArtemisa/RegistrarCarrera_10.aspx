@@ -1,15 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="RegistrarCarrera_10.aspx.cs" Inherits="ProyectoArtemisa.Default" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="RegistrarCarrera_10.aspx.cs" Inherits="ProyectoArtemisa.RegistrarCarrera_101" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
-    <!--Este es un formulario para ver si se ejecuta siempre, aparte se va usar como pagina por defecto para cargar.-->
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
-    <br />
-    <br />
-    <br />
-    <br />
-    <div id="div_form">
+     <div id="div_form">
         <div>
             <!--Titulo que le coloco al form-->
             <h1>Registrar Carrera</h1>
@@ -19,7 +12,7 @@
                 <div class="form-group">
                     <label for="option" class="control-label col-md-3">Universidad</label>
                     <div class="col-md-5">
-                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_universidad" />
+                        <asp:DropDownList CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_universidad" OnSelectedIndexChanged="ddl_universidad_SelectedIndexChanged"/>
                         <!--Valido que se ingrese una facultad-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="ddl_universidad" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -41,7 +34,7 @@
                 <div class="form-group">
                     <label for="option" class="control-label col-md-3">Facultad</label>
                     <div class="col-md-5">
-                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_facultad" />
+                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_facultad" AutoPostBack="true"/>
                         <!--Valido que se ingrese una facultad-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="ddl_facultad" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -65,7 +58,7 @@
                 <div class="form-group">
                     <label for="cuil" class="control-label col-md-3">Nombre de la carrera</label>
                     <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreCarrera" value="" ViewStateMode="Enabled" />
+                        <asp:TextBox runat="server" CssClass="form-control" ID="txt_nombreCarrera" ViewStateMode="Enabled" />
                         <br />
                         <!--Valido que se haya insertado una carrera-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreCarrera" Display="Dynamic" ValidationGroup="AllValidator">
@@ -82,12 +75,10 @@
 
         </div>
         <br />
-        <div>
-            <!--Boton guardar la carrera-->
-            <asp:Button Text="GUARDAR" runat="server"  CssClass="btn btn-default" ID="btn_guardar" />
+        <div class="row col-lg-offset-8">
+            <asp:Button Text="GUARDAR" OnClick="btn_guardar_Click" ID="btn_guardar" CssClass="btn btn-primary btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
         </div>
-
-
+        <br />
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">

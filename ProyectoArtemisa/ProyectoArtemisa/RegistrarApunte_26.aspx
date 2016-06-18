@@ -13,12 +13,26 @@
             </div>
             <br />
 
+              <!-- Tipo de apunte -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="nombre" class="control-label col-md-3">Tipo Apunte :</label>
+                    <div class="col-md-3">
+                        <asp:checkBox runat="server" type="text" Text="Digital" ID="chk_digital" AutoPostBack="true" value="" ViewStateMode="Enabled" OnCheckedChanged="chk_digital_CheckedChanged" />
+                    </div>
+                    <div class="col-md-3">
+                        <asp:checkBox runat="server" type="text" Text="Impreso" ID="chk_impreso" AutoPostBack="true" value="" ViewStateMode="Enabled" OnCheckedChanged="chk_impreso_CheckedChanged" />   
+                    </div>
+                </div>
+            </div>
+            <br />
+
             <!-- Codigo de barra -->
             <div class="row">
                 <div class="form-group">
                     <label for="nombre" class="control-label col-md-3">Código de Barra :</label>
                     <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_codigoBarra" value="" ViewStateMode="Enabled" />
+                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_codigoBarra" value="" ViewStateMode="Enabled" Enabled="true" />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_codigoBarra" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -32,8 +46,6 @@
                 </div>
             </div>
             <br />
-
-
             
             <!-- Nombre del apunte -->
             <div class="row">
@@ -55,19 +67,6 @@
                 </div>
             </div>
             <br />
-
-            <!-- Tipo de apunte -->
-            <div class="row">
-                <div class="form-group">
-                    <label for="nombre" class="control-label col-md-3">Tipo Apunte :</label>
-                    <div class="col-md-7">
-                        <asp:checkBox runat="server" class="form-control" type="text" Text="Digital" ID="chk_digital" value="" ViewStateMode="Enabled" OnCheckedChanged="chk_digital_CheckedChanged" />
-                        <asp:checkBox runat="server" class="form-control" type="text" Text="Impreso" ID="chk_impreso" value="" ViewStateMode="Enabled" OnCheckedChanged="chk_impreso_CheckedChanged" />   
-                     </div>
-                </div>
-            </div>
-            <br />
-
 
             <!-- Año del apunte -->
             <div class="row">
@@ -95,7 +94,7 @@
                 <div class="form-group">
                     <label for="option" class="control-label col-md-3">Universidad:</label>
                     <div class="col-md-5">
-                        <asp:TextBox CssClass="form-control" runat="server" ID="txt_universidadApunte"/>
+                        <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_universidadApunte" OnSelectedIndexChanged="ddl_universidadApunte_SelectedIndexChanged"/>
                     </div>
                     <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                 
@@ -108,7 +107,7 @@
                 <div class="form-group">
                     <label for="option" class="control-label col-md-3">Facultad:</label>
                     <div class="col-md-5">
-                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_facultadApunte" />
+                        <asp:DropDownList CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_facultadApunte" OnSelectedIndexChanged="ddl_facultadApunte_SelectedIndexChanged" />
                     </div>
                     <asp:LinkButton ID="btn_registrarFacultad" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                 </div>
@@ -140,7 +139,7 @@
                             </asp:BoundField>
                         </Columns>
                     </asp:GridView>
-                <asp:LinkButton ID="btn_registrarCarrera" runat="server" OnClick="btn_registrarCarrera_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                <asp:LinkButton ID="btn_registrarCarrera" runat="server" OnClick="btn_registrarCarrera_onClick" Visible="false"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></asp:LinkButton>
             </div>
             <br />
 

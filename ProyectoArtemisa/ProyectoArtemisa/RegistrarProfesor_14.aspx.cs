@@ -32,7 +32,7 @@ namespace ProyectoArtemisa
             {
                 ProfesorEntidad prof = new ProfesorEntidad();
                 prof.apellido = txt_apellido.Text;
-                prof.nombre = txt_nombre.Text;
+                prof.nombreProfesor = txt_nombre.Text;
                 ProfesorDao.RegistrarProfesor(prof);
                 limpiarForm();
                 //Agregar boton emergente

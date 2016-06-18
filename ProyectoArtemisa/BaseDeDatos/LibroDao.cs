@@ -13,13 +13,13 @@ namespace BaseDeDatos
     public class LibroDao : Conexion
     {
         //Caso de uso 2 Registrar Libro
-        public static void registrarLibro(LibroEntidad libro)
+        public static void RegistrarLibro(LibroEntidad libro)
         {
             string query = "INSERT INTO Libro (nombre, autor, descripcion, stock, cantidadHojas, precioLibro, idEditorial, idEstado) VALUES (@nombre, @autor, @descripcion, @stock, @cantidadHojas, @precioLibro, @idEditorial, @idEstado)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
-            cmd.Parameters.AddWithValue(@"nombre",libro.nombre);
-            cmd.Parameters.AddWithValue(@"autor",libro.autor);
+            cmd.Parameters.AddWithValue(@"nombre",libro.nombreLibro);
+            cmd.Parameters.AddWithValue(@"autor", libro.autorLibro);
             cmd.Parameters.AddWithValue(@"descripcion",libro.descripcion);
             cmd.Parameters.AddWithValue(@"stock",libro.stock);
             cmd.Parameters.AddWithValue(@"cantidadHojas",libro.cantidadHojas);

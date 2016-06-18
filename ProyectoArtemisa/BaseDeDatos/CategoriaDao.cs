@@ -12,20 +12,20 @@ namespace BaseDeDatos
 {
     public class CategoriaDao: Conexion
     {
-        public static void registrarCategoria(CategoriaEntidad categoria)
+        public static void RegistrarCategoria(CategoriaEntidad categoria)
         {            
             //Se inserta una carrera
             string query = "INSERT INTO Categoria(nombre) VALUES (@categoria)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
-            cmd.Parameters.AddWithValue(@"categoria", categoria.nombre);
+            cmd.Parameters.AddWithValue(@"categoria", categoria.nombreCategoria);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
 
-        public static List<CategoriaEntidad> consultarCategoria()
+        public static List<CategoriaEntidad> ConsultarCategoria()
         {
             List<CategoriaEntidad> listaCategoria = new List<CategoriaEntidad>();
-            string query = "SELECT * FROM Categoria";
+            string query = "SELECT idCategoria, nombreCategoria FROM Categoria Where baja=0";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -33,7 +33,7 @@ namespace BaseDeDatos
             {
                 CategoriaEntidad categoria = new CategoriaEntidad();
                 categoria.idCategoria = int.Parse(dr["idCategoria"].ToString());
-                categoria.nombre = dr["nombre"].ToString();
+                categoria.nombreCategoria = dr["nombreCategoria"].ToString();
                 listaCategoria.Add(categoria);
             }
             dr.Close();

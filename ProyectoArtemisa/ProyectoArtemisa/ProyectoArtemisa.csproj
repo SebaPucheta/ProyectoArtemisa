@@ -74,6 +74,7 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery.js" />
     <Content Include="Bootstrap\js\npm.js" />
+    <Content Include="ConsultarLibroApunte.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Estilo\menu.png" />
     <Content Include="Estilo\NavBar.css" />
@@ -101,9 +102,11 @@
     <Content Include="obj\Debug\ProyectoArtemisa.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\ProyectoArtemisa.dll" />
     <Content Include="obj\Debug\ProyectoArtemisa.pdb" />
+    <Content Include="RegistarLibro_2.aspx" />
     <Content Include="RegistrarApunte_26.aspx" />
     <Content Include="RegistrarCarrera_10.aspx" />
     <Content Include="RegistrarCategoria_18.aspx" />
+    <Content Include="RegistrarEditorial_22.aspx" />
     <Content Include="RegistrarMateria_6.aspx" />
     <Content Include="RegistrarPrecioXHoja_74.aspx" />
     <Content Include="RegistrarProfesor_14.aspx" />
@@ -117,6 +120,13 @@
     </Compile>
     <Compile Include="Blanco.aspx.designer.cs">
       <DependentUpon>Blanco.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarLibroApunte.aspx.cs">
+      <DependentUpon>ConsultarLibroApunte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarLibroApunte.aspx.designer.cs">
+      <DependentUpon>ConsultarLibroApunte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -139,6 +149,13 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistarLibro_2.aspx.cs">
+      <DependentUpon>RegistarLibro_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistarLibro_2.aspx.designer.cs">
+      <DependentUpon>RegistarLibro_2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarApunte_26.aspx.cs">
       <DependentUpon>RegistrarApunte_26.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,6 +176,13 @@
     </Compile>
     <Compile Include="RegistrarCategoria_18.aspx.designer.cs">
       <DependentUpon>RegistrarCategoria_18.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarEditorial_22.aspx.cs">
+      <DependentUpon>RegistrarEditorial_22.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarEditorial_22.aspx.designer.cs">
+      <DependentUpon>RegistrarEditorial_22.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarMateria_6.aspx.cs">
       <DependentUpon>RegistrarMateria_6.aspx</DependentUpon>

@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class ProfesorEntidad
     {
-        public string nombre { get; set; }
+        public string nombreProfesor { get; set; }
         public string apellido { get; set; }
         public int idProfesor { get; set; }
 

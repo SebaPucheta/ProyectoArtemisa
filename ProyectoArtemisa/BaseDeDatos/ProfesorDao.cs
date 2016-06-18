@@ -8,16 +8,16 @@ using System.Data.SqlClient;
 
 namespace BaseDeDatos
 {
-    public class ProfesorDao : Conexion
+    public  class ProfesorDao : Conexion
     {
         /// <summary>
         /// Registra un profesor recibiendo un objeto profesor
         /// </summary>
         public static void RegistrarProfesor(ProfesorEntidad prof)
         {
-            string consulta = @"INSERT INTO Profesor (nombre, apellido) VALUES (@nom, @ape)";
+            string consulta = @"INSERT INTO Profesor (nombreProfesor, apellido) VALUES (@nom, @ape)";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"nom", prof.nombre);
+            cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
             cmd.Parameters.AddWithValue(@"ape", prof.apellido);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -30,7 +30,7 @@ namespace BaseDeDatos
         public static List<ProfesorEntidad> ConsultarProfesor()
         {
             List<ProfesorEntidad> lista = new List<ProfesorEntidad>();
-            string consulta = @"SELECT idProfesor, nombre, apellido FROM Profesor";
+            string consulta = @"SELECT idProfesor, nombreProfesor, apellido FROM Profesor";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
 
             SqlDataReader dr = cmd.ExecuteReader();
@@ -38,7 +38,7 @@ namespace BaseDeDatos
             {
                 ProfesorEntidad prof = new ProfesorEntidad();
                 prof.idProfesor = int.Parse(dr["idProfesor"].ToString());
-                prof.nombre = dr["nombre"].ToString();
+                prof.nombreProfesor = dr["nombreProfesor"].ToString();
                 prof.apellido = dr["apellido"].ToString();
                 lista.Add(prof);
             }
@@ -54,11 +54,16 @@ namespace BaseDeDatos
         {
             string consulta = @"UPDATE Profesor nombre = @nom, apellido = @ape)";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"nom", prof.nombre);
+            cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
             cmd.Parameters.AddWithValue(@"ape", prof.apellido);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
 
+       public static List<ProfesorEntidad> DevolverProfesorXMateria(int idMateria)
+        {
+            List<ProfesorEntidad> listaProfesor = null;
+            return listaProfesor;
+        }
     }
 }
