@@ -78,7 +78,7 @@ namespace ProyectoArtemisa
             libro.nombreLibro = txt_nombreDelLibro.Text;
             libro.autorLibro = txt_nombreAutorLibro.Text;
             //Descripcion no esta
-            libro.cantidadHojas = int.Parse(txt_cantidadHojasLibro.Text);
+            libro.cantidadHojasLibro = int.Parse(txt_cantidadHojasLibro.Text);
             libro.codigoBarraLibro = txt_codgoBarra.Text;
             libro.idEditorial = int.Parse(ddl_editorialLibro.SelectedValue.ToString());
             //Estado no esta

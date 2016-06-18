@@ -18,7 +18,7 @@ namespace BaseDeDatos
             string consulta = @"INSERT INTO Profesor (nombreProfesor, apellido) VALUES (@nom, @ape)";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
-            cmd.Parameters.AddWithValue(@"ape", prof.apellido);
+            cmd.Parameters.AddWithValue(@"ape", prof.apellidoProfesor);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
@@ -39,7 +39,7 @@ namespace BaseDeDatos
                 ProfesorEntidad prof = new ProfesorEntidad();
                 prof.idProfesor = int.Parse(dr["idProfesor"].ToString());
                 prof.nombreProfesor = dr["nombreProfesor"].ToString();
-                prof.apellido = dr["apellido"].ToString();
+                prof.apellidoProfesor = dr["apellido"].ToString();
                 lista.Add(prof);
             }
             dr.Close();
@@ -55,15 +55,31 @@ namespace BaseDeDatos
             string consulta = @"UPDATE Profesor nombre = @nom, apellido = @ape)";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
-            cmd.Parameters.AddWithValue(@"ape", prof.apellido);
+            cmd.Parameters.AddWithValue(@"ape", prof.apellidoProfesor);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
 
-       public static List<ProfesorEntidad> DevolverProfesorXMateria(int idMateria)
+        public static List<ProfesorEntidad> DevolverProfesorXMateria(int idMateria)
         {
-            List<ProfesorEntidad> listaProfesor = null;
+            List<ProfesorEntidad> listaProfesor = new List<ProfesorEntidad>();
+            string consulta = @"SELECT p.nombreProfesor, p.apellidoProfesor, p.idProfesor FROM Profesor p 
+                                INNER JOIN MateriaXProfesor mxp ON p.idProfesor = mxp.idProfesor 
+                                WHERE mxp.idMateria = @id AND p.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", idMateria);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ProfesorEntidad prof = new ProfesorEntidad();
+                prof.idProfesor = int.Parse(dr["idProfesor"].ToString());
+                prof.nombreProfesor = dr["nombreProfesor"].ToString();
+                prof.apellidoProfesor = dr["apellidoProfesor"].ToString();
+                listaProfesor.Add(prof);
+            }
+            dr.Close();
+            cmd.Connection.Close();
             return listaProfesor;
-        }
+        } 
     }
 }

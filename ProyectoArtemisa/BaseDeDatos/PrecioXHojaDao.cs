@@ -18,7 +18,7 @@ namespace BaseDeDatos
         {
             string consulta = @"INSERT INTO PrecioHoja (precio, fecha) VALUES (@pre, @fec)";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"pre", pxh.precio);
+            cmd.Parameters.AddWithValue(@"pre", pxh.precioHoja);
             cmd.Parameters.AddWithValue(@"fec", pxh.fecha);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -39,7 +39,7 @@ namespace BaseDeDatos
             {
                 PrecioXHojaEntidad pxh = new PrecioXHojaEntidad();
                 pxh.idPrecioHoja = int.Parse(dr["idPreciohoja"].ToString());
-                pxh.precio = float.Parse(dr["precio"].ToString());
+                pxh.precioHoja = float.Parse(dr["precio"].ToString());
                 pxh.fecha = (DateTime)dr["fecha"];
                 lista.Add(pxh);
             }

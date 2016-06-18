@@ -20,9 +20,9 @@ namespace BaseDeDatos
 
             cmd.Parameters.AddWithValue(@"nombre",libro.nombreLibro);
             cmd.Parameters.AddWithValue(@"autor", libro.autorLibro);
-            cmd.Parameters.AddWithValue(@"descripcion",libro.descripcion);
+            cmd.Parameters.AddWithValue(@"descripcion",libro.descripcionLibro);
             cmd.Parameters.AddWithValue(@"stock",libro.stock);
-            cmd.Parameters.AddWithValue(@"cantidadHojas",libro.cantidadHojas);
+            cmd.Parameters.AddWithValue(@"cantidadHojas",libro.cantidadHojasLibro);
             cmd.Parameters.AddWithValue(@"precioLibro",libro.precioLibro);
             cmd.Parameters.AddWithValue(@"idEditorial",libro.idEditorial);
             cmd.Parameters.AddWithValue(@"idEstado",libro.idEstado);

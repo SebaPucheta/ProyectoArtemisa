@@ -9,7 +9,7 @@ namespace Entidades
     public class ProfesorEntidad
     {
         public string nombreProfesor { get; set; }
-        public string apellido { get; set; }
+        public string apellidoProfesor { get; set; }
         public int idProfesor { get; set; }
 
         public ProfesorEntidad(){}

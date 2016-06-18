@@ -95,10 +95,10 @@ namespace ProyectoArtemisa
         {
             ApunteEntidad nuevoApunte = new ApunteEntidad();
 
-            nuevoApunte.nombre = txt_nombreApunte.Text;
-            nuevoApunte.ano = Convert.ToInt32(txt_ano.Text);
+            nuevoApunte.nombreApunte = txt_nombreApunte.Text;
+            nuevoApunte.anoApunte = Convert.ToInt32(txt_ano.Text);
             nuevoApunte.cantHoja = Convert.ToInt32(txt_cantHojasApunte.Text);
-            nuevoApunte.descripcion = txt_descripcion.Text;
+            nuevoApunte.descripcionApunte = txt_descripcion.Text;
             nuevoApunte.idCategoria = Convert.ToInt32( ddl_categoriaApunte.SelectedValue);
             nuevoApunte.idEditorial = Convert.ToInt32( ddl_editorialApunte.SelectedValue);
             nuevoApunte.idMateria = Convert.ToInt32( ddl_materiaApunte.SelectedValue);
@@ -140,7 +140,7 @@ namespace ProyectoArtemisa
             {
                 ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
                 nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
-                nuevoApunte.precio = Convert.ToInt32(txt_precioXHoja.Text);
+                nuevoApunte.precioApunte = Convert.ToInt32(txt_precioXHoja.Text);
                 nuevoApunte.idTipoApunte = 1;
                 ApunteDao.RegistrarApunte(nuevoApunte);
             }
@@ -164,7 +164,7 @@ namespace ProyectoArtemisa
         protected void txt_cantHojasApunte_TextChanged(object sender, EventArgs e)
         {
             List<PrecioXHojaEntidad> listaPrecio = PrecioXHojaDao.ConsultarPrecioXHoja(); 
-            float precioXHoja = listaPrecio[(listaPrecio.Count) - 1].precio;
+            float precioXHoja = listaPrecio[(listaPrecio.Count) - 1].precioHoja;
             txt_precioXHoja.Text = Convert.ToString(Convert.ToInt32(txt_cantHojasApunte.Text) * precioXHoja);
         }
 

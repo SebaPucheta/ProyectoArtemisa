@@ -22,7 +22,7 @@ namespace ProyectoArtemisa
             MateriaEntidad mat = new MateriaEntidad();
             mat.nombreMateria = txt_nombreMateriaLibro.Text;
             mat.nivelCursado = int.Parse(txt_nivelCursadoMateria.Text);
-            mat.descripcion = txt_descripcionMateriaLibro.Text;
+            mat.descripcionMateria = txt_descripcionMateriaLibro.Text;
 
             MateriaDao.RegistrarMateria(mat);
         }

@@ -34,7 +34,7 @@ namespace ProyectoArtemisa
             try
             {
                 PrecioXHojaEntidad pxh = new PrecioXHojaEntidad();
-                pxh.precio = float.Parse(txt_precio.Text);
+                pxh.precioHoja = float.Parse(txt_precio.Text);
                 pxh.fecha = DateTime.Parse(txt_fecha.Text);
                 PrecioXHojaDao.RegistrarPrecioXHoja(pxh);
                 limpiarForm();

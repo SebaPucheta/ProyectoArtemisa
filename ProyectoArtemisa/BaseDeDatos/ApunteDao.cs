@@ -38,11 +38,11 @@ namespace BaseDeDatos
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
             cmd.Parameters.AddWithValue(@"stock", nuevoApunte.stock);
-            cmd.Parameters.AddWithValue(@"precio", nuevoApunte.precio);
+            cmd.Parameters.AddWithValue(@"precio", nuevoApunte.precioApunte);
             cmd.Parameters.AddWithValue(@"cantHoja", nuevoApunte.cantHoja);
-            cmd.Parameters.AddWithValue(@"nombre", nuevoApunte.nombre);
-            cmd.Parameters.AddWithValue(@"descripcion", nuevoApunte.descripcion);
-            cmd.Parameters.AddWithValue(@"ano", nuevoApunte.ano);
+            cmd.Parameters.AddWithValue(@"nombre", nuevoApunte.nombreApunte);
+            cmd.Parameters.AddWithValue(@"descripcion", nuevoApunte.descripcionApunte);
+            cmd.Parameters.AddWithValue(@"ano", nuevoApunte.anoApunte);
             cmd.Parameters.AddWithValue(@"codigoBarraApunte", nuevoApunte.codigoBarraApunte);
             cmd.Parameters.AddWithValue(@"idPrecioHoja", nuevoApunte.idPrecioHoja);
             cmd.Parameters.AddWithValue(@"idCategoria", nuevoApunte.idCategoria);

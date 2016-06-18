@@ -23,7 +23,7 @@ namespace BaseDeDatos
 
             cmd.Parameters.AddWithValue(@"nombre", materia.nombreMateria);
             cmd.Parameters.AddWithValue(@"nivelCursado", materia.nivelCursado);
-            cmd.Parameters.AddWithValue(@"descripcion", materia.descripcion);
+            cmd.Parameters.AddWithValue(@"descripcion", materia.descripcionMateria);
 
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -44,7 +44,7 @@ namespace BaseDeDatos
                 mat.idMateria = int.Parse(dr["idMateria"].ToString());
                 mat.nombreMateria = dr["nombreMateria"].ToString();
                 mat.nivelCursado = int.Parse(dr["nivelCursado"].ToString());
-                mat.descripcion = dr["descripcion"].ToString();
+                mat.descripcionMateria = dr["descripcion"].ToString();
             }
             cmd.Connection.Close();
             return mat;
@@ -64,7 +64,7 @@ namespace BaseDeDatos
                 mat.idMateria = int.Parse(dr["idMateria"].ToString());
                 mat.nombreMateria = dr["nombreMateria"].ToString();
                 mat.nivelCursado = int.Parse(dr["nivelCursado"].ToString());
-                mat.descripcion = dr["descripcion"].ToString();
+                mat.descripcionMateria = dr["descripcion"].ToString();
                 listaMateria.Add(mat);
             }
             cmd.Connection.Close();
@@ -90,7 +90,7 @@ namespace BaseDeDatos
                 mat.idMateria = int.Parse(dr["idMateria"].ToString());
                 mat.nombreMateria = dr["nombreMateria"].ToString();
                 mat.nivelCursado = int.Parse(dr["nivelCursado"].ToString());
-                mat.descripcion = dr["descripcion"].ToString();
+                mat.descripcionMateria = dr["descripcion"].ToString();
                 listaMateria.Add(mat);
             }
             cmd.Connection.Close();

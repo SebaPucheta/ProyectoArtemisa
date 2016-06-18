@@ -31,7 +31,7 @@ namespace ProyectoArtemisa
             try
             {
                 ProfesorEntidad prof = new ProfesorEntidad();
-                prof.apellido = txt_apellido.Text;
+                prof.apellidoProfesor = txt_apellido.Text;
                 prof.nombreProfesor = txt_nombre.Text;
                 ProfesorDao.RegistrarProfesor(prof);
                 limpiarForm();
