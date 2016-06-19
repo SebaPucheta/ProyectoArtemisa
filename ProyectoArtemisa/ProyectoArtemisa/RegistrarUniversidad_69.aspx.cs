@@ -28,6 +28,7 @@ namespace ProyectoArtemisa
             {
                 UniversidadEntidad uni = new UniversidadEntidad();
                 uni.nombreUniversidad = txt_nombre.Text;
+                
                // UniversidadDao.RegistrarUniversidad(uni);
                 limpiarForm();
                 //Confiracion

@@ -121,6 +121,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.GridView dgv_carrerasLibro;
         
         /// <summary>
+        /// Control btn_registrarCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarCarrera;
+        
+        /// <summary>
         /// Control txt_nombreAutorLibro.
         /// </summary>
         /// <remarks>
@@ -191,5 +200,14 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_confirmar;
+        
+        /// <summary>
+        /// Control btn_cancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_cancelar;
     }
 }

@@ -10,7 +10,25 @@
 namespace ProyectoArtemisa {
     
     
-    public partial class RegistrarProfesor_14 {
+    public partial class RegistrarFacultad_65 {
+        
+        /// <summary>
+        /// Control ddl_universidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_universidad;
+        
+        /// <summary>
+        /// Control LinkButton2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
         
         /// <summary>
         /// Control txt_nombre.
@@ -22,31 +40,40 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_nombre;
         
         /// <summary>
-        /// Control txt_apellido.
+        /// Control ddl_provincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_apellido;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_provincia;
         
         /// <summary>
-        /// Control lbl_materiaProfesor.
+        /// Control btn_registrarUniversidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_materiaProfesor;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
         
         /// <summary>
-        /// Control btn_registrarMateria.
+        /// Control ddl_ciudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_registrarMateria;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_ciudad;
+        
+        /// <summary>
+        /// Control LinkButton1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
         /// Control btn_registrar.

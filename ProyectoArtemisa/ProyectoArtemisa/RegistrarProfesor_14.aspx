@@ -60,6 +60,18 @@
             </div>
             <br />
 
+            <!-- Materia -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="option" class="control-label col-md-3">Materia:</label>
+                    <div class="col-md-5">
+                        <asp:label CssClass="form-control" runat="server" ID="lbl_materiaProfesor" />
+                    </div>
+                    <asp:LinkButton ID="btn_registrarMateria" runat="server" OnClick="btn_registrarMateria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                </div>
+            </div>
+            <br />
+
             <div class="row col-lg-offset-8">
                 <asp:Button runat="server" ID="btn_registrar" Text="Registrar" CssClass="btn btn-primary btn_flat" ValidationGroup="val_profesor" Enabled="true" OnClick="btn_registrar_Click" />
                 <asp:Button runat="server" ID="btn_salir" Text="Salir" CssClass="btn btn-danger btn_flat"/>

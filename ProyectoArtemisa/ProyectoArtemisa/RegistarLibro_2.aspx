@@ -13,7 +13,7 @@
     <div class="row">
         <div class="container col-lg-offset-2 col-lg-7" id="div_form">
 
-            <h1 class="center-block">Registrar libro</h1>
+            <label for="nombre" class="estilo_titulo">Registrar Libro</label>
             <br />
             <br />
 
@@ -39,7 +39,7 @@
             <br />
 
 
-             <!--Nombre del libro -->
+             <!--Codigo de barra del libro -->
             <div class="row">
                 <div class="form-group">
                     <label for="option" id="lbl_codigoBarra" class="control-label col-md-3">Código de barra: </label>
@@ -67,8 +67,8 @@
                     <div class="col-md-5">
                         <asp:DropDownList AutoPostBack="true" CssClass="form-control" runat="server" ID="ddl_universidadesLibro" OnSelectedIndexChanged="ddl_universidadesLibro_SelectedIndexChanged" />
                     </div>
-                    <asp:LinkButton ID="btn_registrarUniversidad" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:CustomValidator ID="cv_pension" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_registrarUniversidad" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una universidad"></asp:CustomValidator>
+                    <asp:LinkButton ID="btn_registrarUniversidad" OnClick="btn_registrarUniversidad_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:CustomValidator ID="cv_pension" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_universidadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una universidad"></asp:CustomValidator>
                 </div>
             </div>
             <br />
@@ -81,8 +81,8 @@
                     <div class="col-md-5">
                         <asp:DropDownList AutoPostBack="true" CssClass="form-control" runat="server" ID="ddl_facultadesLibro" OnSelectedIndexChanged="ddl_facultadesLibro_SelectedIndexChanged" />
                     </div>
-                    <asp:LinkButton ID="btn_registrarFacultad" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:CustomValidator ID="CustomValidator1" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_registrarFacultad" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una facultad"></asp:CustomValidator>
+                    <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:CustomValidator ID="CustomValidator1" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_facultadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una facultad"></asp:CustomValidator>
                 </div>
             </div>
             <br />
@@ -95,7 +95,7 @@
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_materiasLibro" />
                     </div>
-                    <asp:LinkButton ID="btn_registrarMateria" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarMateria" OnClick="btn_registrarMateria_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator2" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_materiasLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una materia"></asp:CustomValidator>
                 </div>
             </div>
@@ -113,6 +113,7 @@
                             <asp:BoundField DataField="nombreCarrera" HeaderText="Nombre" />
                         </Columns>
                     </asp:GridView>
+                    <asp:LinkButton ID="btn_registrarCarrera" runat="server" OnClick="btn_registrarCarrera_onClick" Visible="false"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -146,7 +147,7 @@
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_editorialLibro" />
                     </div>
-                    <asp:LinkButton ID="btn_registrarEditorial" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarEditorial" OnClick="btn_registrarEditorial_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator3" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_editorialLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una editorial"></asp:CustomValidator>
                 </div>
             </div>
@@ -219,7 +220,8 @@
 
             <!--Boton confirmar -->
             <div class="row col-lg-offset-8">
-                <asp:Button runat="server" ID="btn_confirmar" Text="Confirmar" CssClass="btn btn-primary btn_flat" ValidationGroup="AllValidator" Enabled="true" OnClick="btn_confirmar_Click" />
+                <asp:Button runat="server" ID="btn_confirmar" Text="Confirmar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" OnClick="btn_confirmar_Click" />
+                <asp:Button runat="server" ID="btn_cancelar" Text="Cancelar" CssClass="btn btn-lg btn_rojo btn_flat" OnClick="btn_cancelar_Click"  />
             </div>
             <br />
             <br />

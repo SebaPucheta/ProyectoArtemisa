@@ -18,7 +18,15 @@ namespace ProyectoArtemisa
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            Session["Apunte"] = null;
+            Session["Libro"] = null;
+            Session["Universidad"] = null;
+            Session["Facultad"] = null;
+            Session["Carrera"] = null;
+            Session["Materia"] = null;
+            Session["Profesor"] = null;
+            Session["Categoria"] = null;
+            Session["Editorial"] = null;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

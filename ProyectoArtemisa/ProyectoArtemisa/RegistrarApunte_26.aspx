@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label for="nombre" class="control-label col-md-3">Código de Barra :</label>
                     <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_codigoBarra" value="" ViewStateMode="Enabled" Enabled="true" />
+                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_codigoBarra" value="" ViewStateMode="Enabled" Enabled="false" />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_codigoBarra" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="form-group">
                     <label for="nombre" class="control-label col-md-3">Año :</label>
-                    <div class="col-md-7">
+                    <div class="col-md-3">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_ano" value="" ViewStateMode="Enabled" />
                         
                         <!-- Verifica que se el textBox no este vacio-->
@@ -109,7 +109,7 @@
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_facultadApunte" OnSelectedIndexChanged="ddl_facultadApunte_SelectedIndexChanged" />
                     </div>
-                    <asp:LinkButton ID="btn_registrarFacultad" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -170,7 +170,7 @@
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_editorialApunte" />
                     </div>
-                    <asp:LinkButton ID="btn_regitrarEditorial" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_regitrarEditorial" OnClick="btn_registrarEditorial_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -179,7 +179,7 @@
             <div class="row">
                 <div class="form-group">
                     <label for="nombre" class="control-label col-md-3">Cantidad de Hojas :</label>
-                    <div class="col-md-7">
+                    <div class="col-md-3">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_cantHojasApunte" value="" ViewStateMode="Enabled" OnTextChanged="txt_cantHojasApunte_TextChanged" AutoPostBack="true"  />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_cantHojasApunte" Display="Dynamic" ValidationGroup="AllValidator">
@@ -265,7 +265,7 @@
                 <div class="form-group">
                     <label for="nombre" class="control-label col-md-3">Descripcion:</label>
                     <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_descripcion" value="" ViewStateMode="Enabled" Rows="3" />
+                        <asp:TextBox runat="server" TextMode="MultiLine" class="form-control" type="text" ID="txt_descripcion" value="" ViewStateMode="Enabled"  />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_descripcion" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
