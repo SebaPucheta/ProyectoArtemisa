@@ -21,6 +21,7 @@ using System.Threading.Tasks;
         public string nombreEditorial { get; set; }
         public string nombreEstado { get; set; }
         public string nombreProfesor { get; set; }
+        public string apellidoProfesor { get; set; }
         public string nombreMateria { get; set; }
         
     }

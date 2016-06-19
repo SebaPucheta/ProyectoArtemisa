@@ -47,6 +47,7 @@
     <Compile Include="ApunteDao.cs" />
     <Compile Include="CarreraDao.cs" />
     <Compile Include="CategoriaDao.cs" />
+    <Compile Include="CiudadDao.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="EditorialDao.cs" />
     <Compile Include="FacultadDao.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="PrecioXHojaDao.cs" />
     <Compile Include="ProfesorDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinciaDao.cs" />
     <Compile Include="TipoApunteDao.cs" />
     <Compile Include="UniversidadDao.cs" />
   </ItemGroup>

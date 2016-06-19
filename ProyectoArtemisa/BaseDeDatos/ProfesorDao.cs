@@ -11,11 +11,11 @@ namespace BaseDeDatos
     public  class ProfesorDao : Conexion
     {
         /// <summary>
-        /// Registra un profesor recibiendo un objeto profesor
+        /// Registrar: un profesor recibiendo un objeto profesor
         /// </summary>
         public static void RegistrarProfesor(ProfesorEntidad prof)
         {
-            string consulta = @"INSERT INTO Profesor (nombreProfesor, apellido) VALUES (@nom, @ape)";
+            string consulta = @"INSERT INTO Profesor (nombreProfesor, apellidoProfesor, baja) VALUES (@nom, @ape, 0)";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
             cmd.Parameters.AddWithValue(@"ape", prof.apellidoProfesor);
@@ -23,23 +23,52 @@ namespace BaseDeDatos
             cmd.Connection.Close();
         }
 
+
         /// <summary>
-        /// Consulta todos los profesores registrado en la base de datos
+        /// Eliminar: un profesor con un id determinado
+        /// </summary>
+        /// <param name="id"></param>
+        public static void EliminarProfesor(int id)
+        {
+            string consulta = @"UPDATE Profesor SET baja = 1 WHERE idMateria = @id";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", id);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
+
+        /// <summary>
+        /// Modifica un profesor recibiendo un objeto profesor
+        /// </summary>
+        public static void ModificarProfesor(ProfesorEntidad prof)
+        {
+            string consulta = @"UPDATE Profesor SET nombreProfesor = @nom, apellidoProfesor = @ape WHERE idProfesor = @id";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
+            cmd.Parameters.AddWithValue(@"ape", prof.apellidoProfesor);
+            cmd.Parameters.AddWithValue(@"id", prof.idProfesor);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
+
+        /// <summary>
+        /// Consultar: todos los profesores registrado en la base de datos
         /// </summary>
         /// <returns>Lista de objetos profesor</returns>
         public static List<ProfesorEntidad> ConsultarProfesor()
         {
             List<ProfesorEntidad> lista = new List<ProfesorEntidad>();
-            string consulta = @"SELECT idProfesor, nombreProfesor, apellido FROM Profesor";
+            string consulta = @"SELECT idProfesor, nombreProfesor, apellidoProfesor FROM Profesor WHERE baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 ProfesorEntidad prof = new ProfesorEntidad();
                 prof.idProfesor = int.Parse(dr["idProfesor"].ToString());
                 prof.nombreProfesor = dr["nombreProfesor"].ToString();
-                prof.apellidoProfesor = dr["apellido"].ToString();
+                prof.apellidoProfesor = dr["apellidoProfesor"].ToString();
                 lista.Add(prof);
             }
             dr.Close();
@@ -47,19 +76,13 @@ namespace BaseDeDatos
             return lista;
         }
 
-        /// <summary>
-        /// Modifica un profesor recibiendo un objeto profesor
-        /// </summary>
-        public static void ModificarProfesor(ProfesorEntidad prof)
-        {
-            string consulta = @"UPDATE Profesor nombre = @nom, apellido = @ape)";
-            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
-            cmd.Parameters.AddWithValue(@"ape", prof.apellidoProfesor);
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
-        }
 
+       
+        /// <summary>
+        /// Consultar: todos los profesores de una materia
+        /// </summary>
+        /// <param name="idMateria"></param>
+        /// <returns></returns>
         public static List<ProfesorEntidad> DevolverProfesorXMateria(int idMateria)
         {
             List<ProfesorEntidad> listaProfesor = new List<ProfesorEntidad>();
@@ -80,6 +103,31 @@ namespace BaseDeDatos
             dr.Close();
             cmd.Connection.Close();
             return listaProfesor;
-        } 
+        }
+
+
+        /// <summary>
+        /// Consultar: un solo profesor con un ID determinado
+        /// </summary>
+        /// <returns></returns>
+        public static ProfesorEntidad ConsultarUnProfesor(int id)
+        {
+            ProfesorEntidad prof = new ProfesorEntidad();
+            string consulta = @"SELECT idProfesor, nombreProfesor, apellidoProfesor FROM Profesor WHERE idProfesor = @id AND baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", id);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                prof.idProfesor = int.Parse(dr["idProfesor"].ToString());
+                prof.nombreProfesor = dr["nombreProfesor"].ToString();
+                prof.apellidoProfesor = dr["apellidoProfesor"].ToString();
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return prof;
+        }
+
+
     }
 }

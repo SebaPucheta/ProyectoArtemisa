@@ -15,5 +15,6 @@ namespace Entidades
         public string email { get; set; }
         public string nombreContacto { get; set; }
         public int idCiudadEditorial { get; set; }
+
     }
 }

@@ -22,7 +22,7 @@ namespace Entidades
         public int idTipoApunte { get; set; }
         public int idEditorial { get; set; }
         public int idEstado { get; set; }
-        public int idProfesor { get; set; }
+        public int? idProfesor { get; set; }
         public int idMateria { get; set; }
         
     }

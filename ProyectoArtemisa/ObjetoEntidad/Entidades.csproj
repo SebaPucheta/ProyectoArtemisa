@@ -47,12 +47,15 @@
     <Compile Include="ApunteEntidad.cs" />
     <Compile Include="ApunteEntidadQuery.cs" />
     <Compile Include="CarreraEntidad.cs" />
+    <Compile Include="CarreraEntidadQuery.cs" />
     <Compile Include="CategoriaEntidad.cs" />
-    <Compile Include="ciudadEntidad.cs" />
+    <Compile Include="CiudadEntidad.cs" />
     <Compile Include="EditorialEntidad.cs" />
+    <Compile Include="EditorialEntidadQuery.cs" />
     <Compile Include="EstadoEntidad.cs" />
     <Compile Include="FacultadEntidad.cs" />
     <Compile Include="LibroEntidad.cs" />
+    <Compile Include="LibroEntidadQuery.cs" />
     <Compile Include="MateriaEntidad.cs" />
     <Compile Include="PrecioXHojaEntidad.cs" />
     <Compile Include="ProfesorEntidad.cs" />
