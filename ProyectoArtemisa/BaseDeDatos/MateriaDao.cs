@@ -140,7 +140,7 @@ namespace BaseDeDatos
         /// </summary>
         /// <param name="idFacultad"></param>
         /// <returns></returns>
-        public static List<MateriaEntidad> DevolverMateriaXCarrera(int idFacultad)
+        public static List<MateriaEntidad> DevolverMateriaXFacultad(int idFacultad)
         {
             List<MateriaEntidad> listaMateria = new List<MateriaEntidad>();
             string query = @"SELECT M.idMateria, M.nivelCursado, M.nombreMateria, M.descripcionMateria  
