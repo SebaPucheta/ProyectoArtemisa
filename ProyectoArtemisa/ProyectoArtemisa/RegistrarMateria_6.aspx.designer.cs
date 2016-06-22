@@ -22,13 +22,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_universidadMateria;
         
         /// <summary>
-        /// Control btn_registrar.
+        /// Control btn_registrarUniversidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrar;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
         
         /// <summary>
         /// Control ddl_facultadMateria.
@@ -40,13 +40,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_facultadMateria;
         
         /// <summary>
-        /// Control Button1.
+        /// Control btn_registrarFacultad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarFacultad;
         
         /// <summary>
         /// Control ggv_grillaCarrerasMateria.
@@ -56,6 +56,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView ggv_grillaCarrerasMateria;
+        
+        /// <summary>
+        /// Control btn_registrarCarrera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarCarrera;
         
         /// <summary>
         /// Control txt_nivelCursadoMateria.

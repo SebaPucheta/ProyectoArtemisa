@@ -18,15 +18,31 @@ namespace ProyectoArtemisa
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["Apunte"] = null;
-            Session["Libro"] = null;
-            Session["Universidad"] = null;
-            Session["Facultad"] = null;
-            Session["Carrera"] = null;
-            Session["Materia"] = null;
-            Session["Profesor"] = null;
-            Session["Categoria"] = null;
-            Session["Editorial"] = null;
+            Session["PilaForm"] = new Stack<string>();
+            Session["idApunte"] = null;
+            Session["idLibro"] = null;
+            Session["idCiudad"] = null;
+            Session["idProvincia"] = null;
+
+            //Form Apunte
+            Session["chk_Impreso"] = false;
+            Session["chk_Digital"] = false;
+            Session["codigoBarra"] = "";
+            Session["nombreApunte"] = "";
+            Session["ano"] = "";
+            Session["idUniversidad"] = null;
+            Session["idFacultad"] = null;
+            Session["idMateria"] = null;
+            Session["nombreAutor"] = "";
+            Session["idEditorial"] = null;
+            Session["cantidadHojas"] = "";
+            Session["precionImpreso"] = "";
+            Session["precioDigital"] = "";
+            Session["idProfesor"] = null;
+            Session["idCategoria"] = null;
+            Session["descripcion"] = "";
+            
+            
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

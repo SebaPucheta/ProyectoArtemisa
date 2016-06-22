@@ -18,25 +18,30 @@ namespace BaseDeDatos
         /// <param name="nuevoApunte"></param>
         public static void RegistrarApunte(ApunteEntidad nuevoApunte)
         {
-            string query = @"INSERT INTO Apunte (stock, precioApunte, cantHoja, nombreApunte, descripcionApunte, anoApunte,
-                                                codigoBarraApunte, idPrecioHoja, idCategoria, idTipoApunte, idEditorial, idEstado, 
-                                                idProfesor, idMateria, baja) 
-                            VALUES (@stock, @precio, @cantHoja, @nombre, @descripcion, @ano, @codigoBarraApunte
-                                    @idPrecioHoja, @idCategoria, @idTipoApunte, @idEditorial, @idEstado, @idProfesor, @idMateria, 0)";
+            string query = @"INSERT INTO Apunte (precioApunte, cantHoja, nombreApunte, descripcionApunte, anoApunte, codigoBarraApunte, idPrecioHoja, idCategoria, idTipoApunte, idEditorial, idProfesor, idMateria, baja) 
+                            VALUES (@precioApunte, @cantHoja, @nombreApunte, @descripcionApunte, @anoApunte, @codigoBarraApunte, @idPrecioHoja, @idCategoria, @idTipoApunte, @idEditorial, @idProfesor, @idMateria, 0)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
-            cmd.Parameters.AddWithValue(@"stock", nuevoApunte.stock);
+            //cmd.Parameters.AddWithValue(@"stock", nuevoApunte.stock);
             cmd.Parameters.AddWithValue(@"precioApunte", nuevoApunte.precioApunte);
             cmd.Parameters.AddWithValue(@"cantHoja", nuevoApunte.cantHoja);
             cmd.Parameters.AddWithValue(@"nombreApunte", nuevoApunte.nombreApunte);
             cmd.Parameters.AddWithValue(@"descripcionApunte", nuevoApunte.descripcionApunte);
             cmd.Parameters.AddWithValue(@"anoApunte", nuevoApunte.anoApunte);
             cmd.Parameters.AddWithValue(@"codigoBarraApunte", nuevoApunte.codigoBarraApunte);
-            cmd.Parameters.AddWithValue(@"idPrecioHoja", nuevoApunte.idPrecioHoja);
-            cmd.Parameters.AddWithValue(@"idCategoria", nuevoApunte.idCategoria);
             cmd.Parameters.AddWithValue(@"idTipoApunte", nuevoApunte.idTipoApunte);
+            cmd.Parameters.AddWithValue(@"idCategoria", nuevoApunte.idCategoria);
+            if (nuevoApunte.idPrecioHoja.HasValue)
+            {
+                cmd.Parameters.AddWithValue(@"idPrecioHoja", nuevoApunte.idPrecioHoja);
+                
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue(@"idPrecioHoja", DBNull.Value);
+            }
             cmd.Parameters.AddWithValue(@"idEditorial", nuevoApunte.idEditorial);
-            cmd.Parameters.AddWithValue(@"idEstado", nuevoApunte.idEstado);
+           // cmd.Parameters.AddWithValue(@"idEstado", nuevoApunte.idEstado);
             cmd.Parameters.AddWithValue(@"idProfesor", nuevoApunte.idProfesor);
             cmd.Parameters.AddWithValue(@"idMateria", nuevoApunte.idMateria);
             cmd.ExecuteNonQuery();

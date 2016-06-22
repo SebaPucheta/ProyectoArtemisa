@@ -33,7 +33,7 @@
                     <label for="nombre" class="control-label col-md-3">Código de Barra :</label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_codigoBarra" value="" ViewStateMode="Enabled" Enabled="false" />
-                        <!-- Verifica que se el textBox no este vacio-->
+                        <%--<!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_codigoBarra" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
                                   <strong>Se debe ingresar un nombre</strong> 
@@ -41,7 +41,7 @@
                                       <span>&times;</span>
                                  </button>
                               </div>
-                        </asp:RequiredFieldValidator>
+                        </asp:RequiredFieldValidator>--%>
                         </div>
                 </div>
             </div>
@@ -128,17 +128,20 @@
 
            <!-- Carrera -->
             <div class="row">
-                    <br />
+                 <label for="option" class="control-label col-md-3">Carrera:</label>
+               
+                <div class="col-lg-6 ">
                     <asp:GridView ID="dgv_carrera" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered bs-table table-responsive ">
                         <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                         <EditRowStyle BackColor="#ffffcc" />
                         <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                         <Columns>
-                            <asp:BoundField DataField="nombreMateria" HeaderText="Carreras" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" ControlStyle-Width="70px">
+                            <asp:BoundField DataField="nombreCarrera" HeaderText="Carreras" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" ControlStyle-Width="70px">
 <ControlStyle Width="70px"></ControlStyle>
                             </asp:BoundField>
                         </Columns>
                     </asp:GridView>
+                    </div>
                 <asp:LinkButton ID="btn_registrarCarrera" runat="server" OnClick="btn_registrarCarrera_onClick" Visible="false"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></asp:LinkButton>
             </div>
             <br />
@@ -202,15 +205,6 @@
                     <label for="nombre" class="control-label col-md-3">Precio apunte impreso :</label>
                     <div class="col-md-1 col-lg-1">
                     <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioXHoja" value="" ViewStateMode="Enabled"  Enabled="false"/>
-                    <!-- Verifica que se el textBox no este vacio-->
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_precioXHoja" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un nombre</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                              </div>
-                    </asp:RequiredFieldValidator>
                 </div>
                </div>
             </div>
@@ -222,15 +216,7 @@
                     <label for="nombre" class="control-label col-md-3">Precio del apunte digital :</label>
                     <div class="col-md-1 col-lg-1">
                     <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioApunteDigital" value="" ViewStateMode="Enabled" Enabled="false"/>
-                    <!-- Verifica que se el textBox no este vacio-->
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_precioApunteDigital" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un nombre</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                              </div>
-                    </asp:RequiredFieldValidator>
+                   
                         </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using BaseDeDatos;
+using Negocio;
 
 namespace ProyectoArtemisa
 {
@@ -28,9 +29,17 @@ namespace ProyectoArtemisa
             {
                 UniversidadEntidad uni = new UniversidadEntidad();
                 uni.nombreUniversidad = txt_nombre.Text;
-                
+                UniversidadDao.RegistrarUniversidad(uni);
+                if (PilaForms.pila.Peek().Equals("Default.aspx"))
+                {
+                    limpiarForm();
+                }
+                else
+                {
+                    Response.Redirect(PilaForms.DevolverForm());
+                }
                // UniversidadDao.RegistrarUniversidad(uni);
-                limpiarForm();
+                
                 //Confiracion
             }
             catch
@@ -42,6 +51,7 @@ namespace ProyectoArtemisa
 
         protected void btn_salir_Click(object sender, EventArgs e)
         {
+            Response.Redirect(PilaForms.DevolverForm());
             //Volver al form anterior
         }
     }

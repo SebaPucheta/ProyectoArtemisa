@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BaseDeDatos;
 using Entidades;
+using Negocio;
 
 
 namespace ProyectoArtemisa

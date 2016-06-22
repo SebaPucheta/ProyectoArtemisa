@@ -40,6 +40,42 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_telefono;
         
         /// <summary>
+        /// Control ddl_provincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_provincia;
+        
+        /// <summary>
+        /// Control btn_registrarProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarProvincia;
+        
+        /// <summary>
+        /// Control ddl_ciudad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_ciudad;
+        
+        /// <summary>
+        /// Control btn_registrarCiudad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarCiudad;
+        
+        /// <summary>
         /// Control txt_direccion.
         /// </summary>
         /// <remarks>
@@ -74,5 +110,14 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_guardar;
+        
+        /// <summary>
+        /// Control btn_cancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_cancelar;
     }
 }

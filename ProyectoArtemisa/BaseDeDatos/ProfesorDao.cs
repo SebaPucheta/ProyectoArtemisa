@@ -15,12 +15,29 @@ namespace BaseDeDatos
         /// </summary>
         public static void RegistrarProfesor(ProfesorEntidad prof)
         {
-            string consulta = @"INSERT INTO Profesor (nombreProfesor, apellidoProfesor, baja) VALUES (@nom, @ape, 0)";
-            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
-            cmd.Parameters.AddWithValue(@"ape", prof.apellidoProfesor);
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+            SqlConnection cn = obtenerBD();
+            SqlTransaction trans = cn.BeginTransaction();
+            try 
+            { 
+                string consulta = @"INSERT INTO Profesor (nombreProfesor, apellidoProfesor, baja) VALUES (@nom, @ape, 0); SELECT SCOPE_IDENTITY();";
+                SqlCommand cmd = new SqlCommand(consulta, cn, trans);
+                cmd.Parameters.AddWithValue(@"nom", prof.nombreProfesor);
+                cmd.Parameters.AddWithValue(@"ape", prof.apellidoProfesor);
+                prof.idProfesor= Convert.ToInt32(cmd.ExecuteScalar());
+
+                consulta = @"INSERT INTO MateriaXProfesor (idMateria, idProfesor) VALUES (@idMateria, @idProfesor)";
+                cmd = new SqlCommand(consulta, cn, trans);
+                cmd.Parameters.AddWithValue("@idMateria", prof.idMateria);
+                cmd.Parameters.AddWithValue("@idProfesor", prof.idProfesor);
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                trans.Rollback();
+                cn.Close();
+            }
+            trans.Commit();
+            cn.Close();
         }
 
 

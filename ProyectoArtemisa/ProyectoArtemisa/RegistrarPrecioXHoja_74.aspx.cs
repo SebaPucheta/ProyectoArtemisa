@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using BaseDeDatos;
+using Negocio;
 
 namespace ProyectoArtemisa
 {
@@ -37,7 +38,14 @@ namespace ProyectoArtemisa
                 pxh.precioHoja = float.Parse(txt_precio.Text);
                 pxh.fecha = DateTime.Parse(txt_fecha.Text);
                 PrecioXHojaDao.RegistrarPrecioXHoja(pxh);
-                limpiarForm();
+                if (PilaForms.pila.Peek().Equals("Default.aspx"))
+                {
+                    limpiarForm();
+                }
+                else
+                {
+                    Response.Redirect(PilaForms.DevolverForm());
+                }
                 //Cosito de confirmar
             }
             catch
@@ -50,6 +58,7 @@ namespace ProyectoArtemisa
 
         protected void btn_salir_Click(object sender, EventArgs e)
         {
+            Response.Redirect(PilaForms.DevolverForm());
             //Volver al menu anterior
         }
     }

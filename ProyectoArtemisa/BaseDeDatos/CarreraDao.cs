@@ -129,7 +129,32 @@ namespace BaseDeDatos
             cmd.Connection.Close();
             return car;
         }
-    
+
+        /// <summary>
+        /// Consultar: una carreras de un idFacultad determinado
+        /// </summary>
+        /// <param name="idFacultad"></param>
+        /// <returns>List<CarreraEntidad></returns>
+        public static List<CarreraEntidad> ConsultarCarreraXFacultad(int idFacultad)
+        {
+            string consulta = @"SELECT idCarrera, nombreCarrera, idFacultad 
+                                FROM Carrera WHERE idFacultad = @idFacultad";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue("@idFacultad", idFacultad);
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<CarreraEntidad> listaCarrera = new List<CarreraEntidad>();
+            while (dr.Read())
+            {
+                CarreraEntidad car = new CarreraEntidad();
+                car.idCarrera = int.Parse(dr["idCarrera"].ToString());
+                car.nombreCarrera = dr["nombreCarrera"].ToString();
+                car.idFacultad = int.Parse(dr["idFacultad"].ToString());
+                listaCarrera.Add(car);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return listaCarrera;
+        }
 
         /// <summary>
         /// Consultar: las carreras que dictan una materia específica

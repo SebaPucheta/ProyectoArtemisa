@@ -12,6 +12,7 @@ namespace Entidades
         public string apellidoProfesor { get; set; }
         public int idProfesor { get; set; }
 
+        public int idMateria { get; set; }
         public ProfesorEntidad(){}
     }
 }

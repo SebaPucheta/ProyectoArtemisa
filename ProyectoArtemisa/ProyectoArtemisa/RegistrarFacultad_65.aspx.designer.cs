@@ -13,13 +13,13 @@ namespace ProyectoArtemisa {
     public partial class RegistrarFacultad_65 {
         
         /// <summary>
-        /// Control ddl_universidad.
+        /// Control ddl_universidadFacultad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_universidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_universidadFacultad;
         
         /// <summary>
         /// Control LinkButton2.

@@ -82,22 +82,25 @@ namespace BaseDeDatos
         /// Consultar: una ciudad registrada en la base de datos
         /// </summary>
         /// <returns>Lista de objetos ciudad</returns>
-        public static CiudadEntidad ConsultarCiudad(int id)
+        public static List<CiudadEntidad> ConsultarCiudad(int id)
         {
-            CiudadEntidad ciudad = new CiudadEntidad();
-            string consulta = @"SELECT idCiudad, idProvincia, nombreCiudad FROM Ciudad WHERE idCiudad = @id AND baja = 0";
+            
+            string consulta = @"SELECT idCiudad, idProvincia, nombreCiudad FROM Ciudad WHERE idProvincia = @id AND baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"id", id);
             SqlDataReader dr = cmd.ExecuteReader();
+            List<CiudadEntidad> listaCiudad = new List<CiudadEntidad>();
             while (dr.Read())
             {
+                CiudadEntidad ciudad = new CiudadEntidad();
                 ciudad.idCiudad = int.Parse(dr["idCiudad"].ToString());
                 ciudad.nombreCiudad = dr["nombreCiudad"].ToString();
                 ciudad.idProvincia = int.Parse(dr["idProvincia"].ToString());
+                listaCiudad.Add(ciudad);
             }
             dr.Close();
             cmd.Connection.Close();
-            return ciudad;
+            return listaCiudad;
         }
 
     }

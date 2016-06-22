@@ -8,14 +8,18 @@
         <br />
         <br />
         <br />
+        <div class="row">
+            <label for="nombre" class="estilo_titulo">Registrar Materia</label>
+            </div>
+            <br />
         <!-- Universidad -->
         <div class="row">
             <div class="form-group">
                 <label for="option" class="control-label col-md-3">Universidad:</label>
                 <div class="col-md-5">
-                    <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_universidadMateria" />
+                    <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_universidadMateria" OnSelectedIndexChanged="ddl_universidadMateria_SelectedIndexChanged"  AutoPostBack="true"/>
                 </div>
-                <asp:Button runat="server" ID="btn_registrar" Text="Registrar" CssClass="btn btn-primary btn_flat" ValidationGroup="AllValidator" Enabled="true" />
+                <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
             </div>
         </div>
         <br />
@@ -24,25 +28,35 @@
             <div class="form-group">
                 <label for="option" class="control-label col-md-3">Facultad:</label>
                 <div class="col-md-5">
-                    <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_facultadMateria" />
+                    <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_facultadMateria" OnSelectedIndexChanged="ddl_facultadMateria_SelectedIndexChanged" AutoPostBack="true" />
                 </div>
-                <asp:Button runat="server" ID="Button1" Text="Registrar" CssClass="btn btn-primary btn_flat" ValidationGroup="AllValidator" Enabled="true" />
+                <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
             </div>
         </div>
         <br />
         <!-- Carreras -->
 
         <div class="row">
+            
                 <label for="option" class="control-label col-md-3">Carrera:</label>
                 <br />
+            <div class="col-lg-6 ">
                 <asp:GridView ID="ggv_grillaCarrerasMateria" runat="server" AutoGenerateColumns="False" CssClass="table">
                     <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                     <EditRowStyle BackColor="#ffffcc" />
                     <Columns>
-                        <asp:BoundField DataField="idCarrera" HeaderText="Carreras" />
-                        <asp:CheckBoxField HeaderText="Seleccionar" />
+                        <asp:BoundField DataField="df_idCarrera" HeaderText="ID Carrera" />
+                        <asp:BoundField DataField="df_nombreCarrera" HeaderText="Carreras" />
+                         <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px">
+                        <ItemTemplate>
+                        <asp:CheckBox ID="chk_seleccionado" runat="server" DataField="df_chk_seleccionado" EnableViewState="true" />
+                        </ItemTemplate>
+                        </asp:TemplateField>
+                       
                     </Columns>
                 </asp:GridView>
+                </div>
+            <asp:LinkButton ID="btn_registrarCarrera" runat="server" OnClick="btn_registrarCarrera_onClick" Visible="false"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></asp:LinkButton>
         </div>
         <br />
                 <!-- Nivel de la materia -->
@@ -126,8 +140,8 @@
 
         <!--Botones -->
         <div class="row col-lg-offset-8">
-            <asp:Button runat="server" ID="btn_registrarMateria" Text="Registrar" CssClass="btn btn-primary btn_flat" ValidationGroup="AllValidator" Enabled="true" OnClick="btn_registrarMateria_Click" />
-            <asp:Button runat="server" ID="btn_cancelarMateria" Text="Cancelar" CssClass="btn btn-danger btn_flat" />
+            <asp:Button runat="server" ID="btn_registrarMateria" Text="Confirmar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" OnClick="btn_registrarMateria_Click" />
+            <asp:Button runat="server" ID="btn_cancelarMateria" Text="Cancelar" CssClass="btn btn-lg btn_rojo btn_flat" OnClick="btn_cancelarMateria_Click" />
         </div>
         <br />
         <br />

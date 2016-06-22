@@ -76,6 +76,12 @@
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="ConsultarLibroApunte.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Estilo\Background\abstract_polygonal_colorful_background-wallpaper-1920x1080.jpg" />
+    <Content Include="Estilo\Background\maxresdefault.jpg" />
+    <Content Include="Estilo\Background\polygon-2560x1600-orange-red-blue-background-pattern-225.jpg" />
+    <Content Include="Estilo\Background\Tablet1.jpg" />
+    <Content Include="Estilo\Background\verde.jpg" />
+    <Content Include="Estilo\Forms.css" />
     <Content Include="Estilo\menu.png" />
     <Content Include="Estilo\NavBar.css" />
     <Content Include="Estilo\Sidebar.css" />
@@ -106,11 +112,13 @@
     <Content Include="RegistrarApunte_26.aspx" />
     <Content Include="RegistrarCarrera_10.aspx" />
     <Content Include="RegistrarCategoria_18.aspx" />
+    <Content Include="RegistrarCiudad_101.aspx" />
     <Content Include="RegistrarEditorial_22.aspx" />
     <Content Include="RegistrarFacultad_65.aspx" />
     <Content Include="RegistrarMateria_6.aspx" />
     <Content Include="RegistrarPrecioXHoja_74.aspx" />
     <Content Include="RegistrarProfesor_14.aspx" />
+    <Content Include="RegistrarProvincia_105.aspx" />
     <Content Include="RegistrarUniversidad_69.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -178,6 +186,13 @@
     <Compile Include="RegistrarCategoria_18.aspx.designer.cs">
       <DependentUpon>RegistrarCategoria_18.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarCiudad_101.aspx.cs">
+      <DependentUpon>RegistrarCiudad_101.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarCiudad_101.aspx.designer.cs">
+      <DependentUpon>RegistrarCiudad_101.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarEditorial_22.aspx.cs">
       <DependentUpon>RegistrarEditorial_22.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,6 +227,13 @@
     </Compile>
     <Compile Include="RegistrarProfesor_14.aspx.designer.cs">
       <DependentUpon>RegistrarProfesor_14.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProvincia_105.aspx.cs">
+      <DependentUpon>RegistrarProvincia_105.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarProvincia_105.aspx.designer.cs">
+      <DependentUpon>RegistrarProvincia_105.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarUniversidad_69.aspx.cs">
       <DependentUpon>RegistrarUniversidad_69.aspx</DependentUpon>
@@ -249,6 +271,10 @@
     <ProjectReference Include="..\BaseDeDatos\BaseDeDatos.csproj">
       <Project>{15d7b4cb-2187-44e6-ab09-a8bb6ec6c43c}</Project>
       <Name>BaseDeDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{5063617c-82ee-495f-9fb6-2c8653e68504}</Project>
+      <Name>Negocio</Name>
     </ProjectReference>
     <ProjectReference Include="..\ObjetoEntidad\Entidades.csproj">
       <Project>{1e8a915d-077e-400c-b40c-10a6fa13da5a}</Project>

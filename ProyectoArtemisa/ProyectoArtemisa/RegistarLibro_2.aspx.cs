@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using BaseDeDatos;
+using Negocio;
 namespace ProyectoArtemisa
 {
     public partial class RegistarLibro_2 : System.Web.UI.Page
@@ -14,8 +15,9 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                //cargarComboUniversidad();
-                //cargarComboEditorial();
+                cargarComboUniversidad();
+                cargarComboEditorial();
+                
             }
         }
 
@@ -101,9 +103,20 @@ namespace ProyectoArtemisa
         //Boton Confirmar
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
+
             if (Page.IsValid)
             {
-                LibroDao.RegistrarLibro(CrearObjetoLibro());
+                if(PilaForms.pila.Equals("Default.aspx"))
+                {
+                    LibroDao.RegistrarLibro(CrearObjetoLibro());
+                    LimpiarForm();
+                }
+                else
+                {
+                    LibroDao.ModificarLibro(CrearObjetoLibro());
+                    Response.Redirect(PilaForms.DevolverForm());
+                }
+                
             }
 
         }
@@ -111,29 +124,34 @@ namespace ProyectoArtemisa
         //Registrar nueva Universidad
         protected void btn_registrarUniversidad_Click(object sender, EventArgs e)
         {
+            PilaForms.AgregarForm("RegistarLibro_2.aspx");
             Response.Redirect("RegistrarUniversidad_69.aspx");
         }
 
         //Registrar nueva Facultad
         protected void btn_registrarFacultad_Click(object sender, EventArgs e)
         {
-
             UniversidadEntidad universidad = new UniversidadEntidad();
             universidad.idUniversidad = Convert.ToInt32(ddl_universidadesLibro.SelectedValue);
             Session["Universidad"] = universidad;
+
+            PilaForms.AgregarForm("RegistarLibro_2.aspx");
             Response.Redirect("RegistrarFacultad_65.aspx");
         }
 
         //Registrar nueva Materia
         protected void btn_registrarMateria_Click(object sender, EventArgs e)
         {
-
+            
             UniversidadEntidad universidad = new UniversidadEntidad();
             universidad.idUniversidad = Convert.ToInt32(ddl_materiasLibro.SelectedValue);
             Session["Universidad"] = universidad;
+            
             FacultadEntidad facultad = new FacultadEntidad();
             facultad.idFacultad = Convert.ToInt32(ddl_facultadesLibro.SelectedValue);
             Session["Facultad"] = facultad;
+
+            PilaForms.AgregarForm("RegistarLibro_2.aspx");
             Response.Redirect("RegistrarMateria_6.aspx");
         }
 
@@ -143,19 +161,22 @@ namespace ProyectoArtemisa
             ApunteEntidad nuevoApunte = new ApunteEntidad();
             nuevoApunte.idMateria = Convert.ToInt32(ddl_materiasLibro.SelectedValue);
             Session["Apunte"] = nuevoApunte;
+
+            PilaForms.AgregarForm("RegistarLibro_2.aspx");
             Response.Redirect("RegistrarCarrera_10.aspx");
         }
 
         //Registrar nueva Editorial
         protected void btn_registrarEditorial_onClick(object sender, EventArgs e)
         {
+            PilaForms.AgregarForm("RegistarLibro_2.aspx");
             Response.Redirect("RegistrarEditorial_22.aspx");
         }
 
         //Boton cancelar
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect(PilaForms.DevolverForm());
         }
       
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,6 +199,23 @@ namespace ProyectoArtemisa
             //Stock no esta
 
             return libro;
+        }
+
+        /// <summary>
+        /// Inicializa el form
+        /// </summary>
+        protected void LimpiarForm()
+        {
+            txt_cantidadHojasLibro.Text = "";
+            txt_codgoBarra.Text = "";
+            txt_descripcionLibro.Text = "";
+            txt_nombreAutorLibro.Text = "";
+            txt_nombreDelLibro.Text = "";
+            txt_precioLibro.Text = "";
+            cargarComboUniversidad();
+            cargarComboEditorial();
+            ddl_facultadesLibro.SelectedIndex = 0;
+            ddl_materiasLibro.SelectedIndex = 0;
         }
 
 

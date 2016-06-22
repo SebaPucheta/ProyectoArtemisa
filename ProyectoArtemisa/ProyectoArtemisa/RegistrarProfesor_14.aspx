@@ -15,10 +15,9 @@
 
             <!-- Titulo -->
             <div class="row">
-                <div class="form-group">
-                    <label for="titulo" class="h2">Registrar profesor</label>
-                </div>
+            <label for="nombre" class="estilo_titulo">Registrar Profesor</label>
             </div>
+            <br />
 
             <!-- Nombre -->
             <div class="row">
@@ -65,7 +64,7 @@
                 <div class="form-group">
                     <label for="option" class="control-label col-md-3">Materia:</label>
                     <div class="col-md-5">
-                        <asp:label CssClass="form-control" runat="server" ID="lbl_materiaProfesor" />
+                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_materiaProfesor"  AutoPostBack="true" />
                     </div>
                     <asp:LinkButton ID="btn_registrarMateria" runat="server" OnClick="btn_registrarMateria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                 </div>
@@ -73,8 +72,8 @@
             <br />
 
             <div class="row col-lg-offset-8">
-                <asp:Button runat="server" ID="btn_registrar" Text="Registrar" CssClass="btn btn-primary btn_flat" ValidationGroup="val_profesor" Enabled="true" OnClick="btn_registrar_Click" />
-                <asp:Button runat="server" ID="btn_salir" Text="Salir" CssClass="btn btn-danger btn_flat"/>
+                <asp:Button runat="server" ID="btn_registrar" Text="Confirmar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="val_profesor" Enabled="true" OnClick="btn_registrar_Click" />
+                <asp:Button runat="server" ID="btn_salir" Text="Cancelar" CssClass="btn btn-lg btn_rojo btn_flat"  OnClick="btn_salir_Click"/>
             </div>
 
             <br />

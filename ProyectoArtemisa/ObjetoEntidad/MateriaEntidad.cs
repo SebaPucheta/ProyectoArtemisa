@@ -12,5 +12,6 @@ namespace Entidades
         public string nombreMateria { get; set; }
         public int nivelCursado { get; set; }
         public string descripcionMateria { get; set; }
+        public List<CarreraEntidad> listaCarreras { get; set; }
     }
 }

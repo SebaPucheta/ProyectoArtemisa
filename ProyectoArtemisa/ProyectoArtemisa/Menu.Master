@@ -50,7 +50,8 @@
         <nav id="sidenav">
             <ul class="menu">
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarApunte" Text="Registrar Apunte"  OnClick="btn_registrarApunte_OnClick"/></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarLibro" Text="Registrar Libro" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarLibro" Text="Registrar Libro" OnClick="btn_registrarLibro_OnClick" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_modificarPrecioHoja" Text="Registrar Precio Hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarStockApunte" Text="Consultar Stock Apunte" /></li>
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarStockLibro" Text="Consultar Stock Libro" /></li>
             </ul>

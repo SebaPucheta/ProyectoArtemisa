@@ -2,12 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
-    <div id="div_form">
+    <div class="container col-lg-offset-2 col-lg-7" id="div_form">
 
-        <div>
-            <!--Titulo que le coloco al form-->
-            <h1>Registrar Editorial</h1>
-        </div>
+       <div class="row">
+            <label for="nombre" class="estilo_titulo">Registrar Editorial</label>
+            </div>
+            <br />
 
         <div>
             <!--Ingreso el nombre de-->
@@ -78,6 +78,32 @@
         </div>
 
         <div>
+             <!-- Provincia -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="option" class="control-label col-md-3">Provincia:</label>
+                    <div class="col-md-5">
+                        <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_provincia" OnSelectedIndexChanged="ddl_provinciaApunte_SelectedIndexChanged"/>
+                    </div>
+                   <asp:LinkButton ID="btn_registrarProvincia" runat="server" OnClick="btn_registrarProvincia_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                
+                </div>
+            </div>
+            <br />
+
+            <!--Ciudad -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="option" class="control-label col-md-3">Ciudad:</label>
+                    <div class="col-md-5">
+                        <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_ciudad" />
+                    </div>
+                    <asp:LinkButton ID="btn_registrarCiudad" runat="server" OnClick="btn_registrarCiudad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                
+                </div>
+            </div>
+            <br />
+
             <!--Ingreso el nombre de-->
             <div class="row">
                 <div class="form-group">
@@ -131,7 +157,8 @@
         <br />
 
         <div class="row col-lg-offset-8">
-            <asp:Button runat="server" ID="btn_guardar" Text="GUARDAR" OnClick="btn_guardar_Click" CssClass="btn btn-primary btn_flat" ValidationGroup="AllValidator" Enabled="true" />
+            <asp:Button runat="server" ID="btn_guardar" Text="Confirmar" OnClick="btn_guardar_Click" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" />
+            <asp:Button runat="server" ID="btn_cancelar" Text="Cancelar" CssClass="btn btn-lg btn_rojo btn_flat" OnClick="btn_cancelar_Click"  />
         </div>
         <br />
     </div>

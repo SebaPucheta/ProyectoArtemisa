@@ -18,13 +18,36 @@ namespace BaseDeDatos
         /// <param name="materia"></param>
         public static void RegistrarMateria(MateriaEntidad materia)
         {
-            string query = "INSERT INTO Materia (nombreMateria, nivelCursado, descripcionMateria, baja) VALUES (@nombre, @nivelCursado, @descripcion, 0)";
-            SqlCommand cmd = new SqlCommand(query, obtenerBD());
-            cmd.Parameters.AddWithValue(@"nombre", materia.nombreMateria);
-            cmd.Parameters.AddWithValue(@"nivelCursado", materia.nivelCursado);
-            cmd.Parameters.AddWithValue(@"descripcion", materia.descripcionMateria);
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+
+
+
+            string query = "INSERT INTO Materia (nombreMateria, nivelCursado, descripcionMateria, baja) VALUES (@nombre, @nivelCursado, @descripcion, 0); SELECT SCOPE_IDENTITY();";
+            SqlConnection cnn = obtenerBD();
+            SqlTransaction trans = cnn.BeginTransaction();
+            SqlCommand cmd = new SqlCommand(query, cnn, trans);
+            try { 
+                    cmd.Parameters.AddWithValue(@"nombre", materia.nombreMateria);
+                    cmd.Parameters.AddWithValue(@"nivelCursado", materia.nivelCursado);
+                    cmd.Parameters.AddWithValue(@"descripcion", materia.descripcionMateria);
+                    materia.idMateria = Convert.ToInt32(cmd.ExecuteScalar());
+                    
+
+                    foreach (CarreraEntidad carrera in materia.listaCarreras)
+                    {
+                        string query2 = "INSERT INTO CarreraXMateria (idCarrera, idMateria) VALUES (@idCarrera, @idMateria)";
+                        SqlCommand cmd2 = new SqlCommand(query2, cnn, trans);
+                        cmd2.Parameters.AddWithValue("@idCarrera", carrera.idCarrera);
+                        cmd2.Parameters.AddWithValue("@idMateria", materia.idMateria);
+                        cmd2.ExecuteNonQuery();
+                        
+                    }
+                }
+            catch (Exception e)
+            {
+                trans.Rollback();
+            }
+            trans.Commit();
+            cnn.Close();
         }
 
 

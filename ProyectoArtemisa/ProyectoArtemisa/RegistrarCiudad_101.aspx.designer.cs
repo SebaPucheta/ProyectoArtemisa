@@ -10,16 +10,16 @@
 namespace ProyectoArtemisa {
     
     
-    public partial class RegistrarCarrera_101 {
+    public partial class RegistrarCiudad_101 {
         
         /// <summary>
-        /// Control ddl_universidad.
+        /// Control ddl_provincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_universidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_provincia;
         
         /// <summary>
         /// Control btn_registrarUniversidad.
@@ -31,48 +31,30 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
         
         /// <summary>
-        /// Control ddl_facultad.
+        /// Control txt_nombreCiudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_facultad;
+        protected global::System.Web.UI.WebControls.TextBox txt_nombreCiudad;
         
         /// <summary>
-        /// Control btn_registrarFacultad.
+        /// Control btn_registrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_registrarFacultad;
+        protected global::System.Web.UI.WebControls.Button btn_registrar;
         
         /// <summary>
-        /// Control txt_nombreCarrera.
+        /// Control btn_salir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nombreCarrera;
-        
-        /// <summary>
-        /// Control btn_guardar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_guardar;
-        
-        /// <summary>
-        /// Control btn_cancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_cancelar;
+        protected global::System.Web.UI.WebControls.Button btn_salir;
     }
 }

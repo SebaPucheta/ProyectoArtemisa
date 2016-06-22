@@ -6,11 +6,15 @@
     <br />
     <br />
     <br />
-    <div id="div_form">
+    <div class="container col-lg-offset-2 col-lg-7" id="div_form">
 
         <div>
             <!--Titulo que le coloco al form-->
-            <h1>Registrar Categoria</h1>
+            <div class="row">
+            <label for="nombre" class="estilo_titulo">Registrar Categoria</label>
+            </div>
+            <br />
+           
         </div>
 
         <div>
@@ -38,7 +42,8 @@
         <br />
 
         <div class="row col-lg-offset-8">
-            <asp:Button runat="server" ID="btn_guardar" Text="GUARDAR" OnClick="btn_guardar_Click" CssClass="btn btn-primary btn_flat" ValidationGroup="AllValidator" Enabled="true" />
+            <asp:Button runat="server" ID="btn_guardar" Text="Confirmar" OnClick="btn_guardar_Click" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" />
+            <asp:Button runat="server" ID="btn_cancelar" Text="Cancelar" OnClick="btn_cancelar_Click" CssClass="btn btn-lg btn_rojo btn_flat"  Enabled="true" />
         </div>
         <br />
 

@@ -16,7 +16,7 @@ namespace BaseDeDatos
         /// </summary>
         public static void RegistrarPrecioXHoja(PrecioXHojaEntidad pxh)
         {
-            string consulta = @"INSERT INTO PrecioXHoja (precioHoja, fecha, baja) VALUES (@pre, @fec, 0)";
+            string consulta = @"INSERT INTO PrecioXHoja (precioHoja, fecha) VALUES (@pre, @fec)";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"pre", pxh.precioHoja);
             cmd.Parameters.AddWithValue(@"fec", pxh.fecha);
@@ -39,7 +39,7 @@ namespace BaseDeDatos
         public static List<PrecioXHojaEntidad> ConsultarPrecioXHoja()
         {
             List<PrecioXHojaEntidad> lista = new List<PrecioXHojaEntidad>();
-            string consulta = @"SELECT idPrecioHoja, precioHoja, fecha FROM PrecioXHoja WHERE baja = 0";
+            string consulta = @"SELECT idPrecioHoja, precioHoja, fecha FROM PrecioXHoja";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -61,16 +61,15 @@ namespace BaseDeDatos
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static PrecioXHojaEntidad ConsultarUnPrecioXHoja(int id)
+        public static PrecioXHojaEntidad ConsultarUltimoPrecioXHoja()
         {
             PrecioXHojaEntidad pxh = new PrecioXHojaEntidad();
-            string consulta = @"SELECT idPrecioHoja, precioHoja, fecha FROM PrecioXHoja WHERE idPrecioHoja = @id AND baja = 0";
+            string consulta = @"SELECT TOP 1  idPrecioHoja, precioHoja, fecha FROM PrecioXHoja ORDER BY  idPrecioHoja desc";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"id", id);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {      
-                pxh.idPrecioHoja = int.Parse(dr["idPreciohoja"].ToString());
+                pxh.idPrecioHoja = int.Parse(dr["idPrecioHoja"].ToString());
                 pxh.precioHoja = float.Parse(dr["precioHoja"].ToString());
                 pxh.fecha = (DateTime)dr["fecha"];
             }

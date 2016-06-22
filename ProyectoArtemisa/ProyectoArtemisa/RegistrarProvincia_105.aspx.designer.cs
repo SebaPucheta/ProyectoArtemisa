@@ -10,43 +10,16 @@
 namespace ProyectoArtemisa {
     
     
-    public partial class RegistrarProfesor_14 {
+    public partial class RegistrarProvincia_105 {
         
         /// <summary>
-        /// Control txt_nombre.
+        /// Control txt_nombreProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nombre;
-        
-        /// <summary>
-        /// Control txt_apellido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_apellido;
-        
-        /// <summary>
-        /// Control ddl_materiaProfesor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_materiaProfesor;
-        
-        /// <summary>
-        /// Control btn_registrarMateria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_registrarMateria;
+        protected global::System.Web.UI.WebControls.TextBox txt_nombreProvincia;
         
         /// <summary>
         /// Control btn_registrar.

@@ -21,7 +21,7 @@ namespace BaseDeDatos
             string query = "INSERT INTO Facultad(nombreFacultad, idUniversidad, idCiudad, baja) VALUES (@nombreFacultad, @idUniversidad, @idCiudad, 0)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"nombreFacultad", facultad.nombreFacultad);
-            cmd.Parameters.AddWithValue(@"idUniversidad", facultad.idFacultad);
+            cmd.Parameters.AddWithValue(@"idUniversidad", facultad.idUniversidad);
             cmd.Parameters.AddWithValue(@"idCiudad", facultad.idCiudad);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();

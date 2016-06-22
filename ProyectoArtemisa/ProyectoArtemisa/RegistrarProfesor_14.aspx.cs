@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using BaseDeDatos;
+using Negocio;
 
 namespace ProyectoArtemisa
 {
@@ -15,8 +16,18 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                limpiarForm();
+                CargarComboMateria();
             }
+        }
+
+        protected void CargarComboMateria()
+        {
+            ddl_materiaProfesor.DataSource = MateriaDao.ConsultarMateria();
+            ddl_materiaProfesor.DataTextField = "nombreMateria";
+            ddl_materiaProfesor.DataValueField = "idMateria";
+            ddl_materiaProfesor.DataBind();
+            ddl_materiaProfesor.Items.Insert(0, new ListItem("(Materia)", "0"));
+            ddl_materiaProfesor.SelectedIndex = 0;
         }
 
         protected void limpiarForm()
@@ -33,8 +44,16 @@ namespace ProyectoArtemisa
                 ProfesorEntidad prof = new ProfesorEntidad();
                 prof.apellidoProfesor = txt_apellido.Text;
                 prof.nombreProfesor = txt_nombre.Text;
+                prof.idMateria =Convert.ToInt32(ddl_materiaProfesor.SelectedValue);
                 ProfesorDao.RegistrarProfesor(prof);
-                limpiarForm();
+                if (PilaForms.pila.Peek().Equals("Default.aspx"))
+                {
+                    limpiarForm();
+                }
+                else
+                {
+                    Response.Redirect(PilaForms.DevolverForm());
+                }
                 //Agregar boton emergente
             }
             catch
@@ -45,6 +64,14 @@ namespace ProyectoArtemisa
 
         protected void btn_salir_Click(object sender, EventArgs e)
         {
+            Response.Redirect(PilaForms.DevolverForm());
+            //Response redirect al form anterior
+        }
+
+        protected void btn_registrarMateria_onClick(object sender, EventArgs e)
+        {
+            PilaForms.AgregarForm("RegistrarProfesor_14.aspx");
+            Response.Redirect("RegistrarMateria_6.aspx");
             //Response redirect al form anterior
         }
     }
