@@ -63,12 +63,12 @@ namespace ProyectoArtemisa
         }
         protected void btn_registrarProvincia_onClick(object sender, EventArgs e)
         {
-            PilaForms.AgregarForm("RegistrarFacultad_65.aspx");
+            PilaForms.AgregarForm("RegistrarEditorial_22.aspx");
             Response.Redirect("RegistrarProvincia_105.aspx");
         }
         protected void btn_registrarCiudad_onClick(object sender, EventArgs e)
         {
-            PilaForms.AgregarForm("RegistrarFacultad_65.aspx");
+            PilaForms.AgregarForm("RegistrarEditorial_22.aspx");
             Response.Redirect("RegistrarCiudad_101.aspx");
         }
 

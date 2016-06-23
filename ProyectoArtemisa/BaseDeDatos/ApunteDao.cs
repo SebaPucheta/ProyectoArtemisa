@@ -18,11 +18,10 @@ namespace BaseDeDatos
         /// <param name="nuevoApunte"></param>
         public static void RegistrarApunte(ApunteEntidad nuevoApunte)
         {
-            string query = @"INSERT INTO Apunte (precioApunte, cantHoja, nombreApunte, descripcionApunte, anoApunte, codigoBarraApunte, idPrecioHoja, idCategoria, idTipoApunte, idEditorial, idProfesor, idMateria, baja) 
-                            VALUES (@precioApunte, @cantHoja, @nombreApunte, @descripcionApunte, @anoApunte, @codigoBarraApunte, @idPrecioHoja, @idCategoria, @idTipoApunte, @idEditorial, @idProfesor, @idMateria, 0)";
+            string query = @"INSERT INTO Apunte (precioApunte, cantHoja, nombreApunte, stock, descripcionApunte, anoApunte, codigoBarraApunte, idPrecioHoja, idCategoria, idTipoApunte, idEditorial, idProfesor, idMateria, baja) 
+                            VALUES (@precioApunte, @cantHoja, @nombreApunte, 0, @descripcionApunte, @anoApunte, @codigoBarraApunte, @idPrecioHoja, @idCategoria, @idTipoApunte, @idEditorial, @idProfesor, @idMateria, 0)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
-            //cmd.Parameters.AddWithValue(@"stock", nuevoApunte.stock);
             cmd.Parameters.AddWithValue(@"precioApunte", nuevoApunte.precioApunte);
             cmd.Parameters.AddWithValue(@"cantHoja", nuevoApunte.cantHoja);
             cmd.Parameters.AddWithValue(@"nombreApunte", nuevoApunte.nombreApunte);

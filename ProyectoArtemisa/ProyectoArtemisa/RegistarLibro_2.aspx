@@ -93,7 +93,7 @@
                 <div class="form-group">
                     <label for="option" id="lbl_materias" class="control-label col-md-3">Materia: </label>
                     <div class="col-md-5">
-                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_materiasLibro" />
+                        <asp:DropDownList CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_materiasLibro_SelectedIndexChanged" runat="server" ID="ddl_materiasLibro" />
                     </div>
                     <asp:LinkButton ID="btn_registrarMateria" OnClick="btn_registrarMateria_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator2" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_materiasLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una materia"></asp:CustomValidator>
@@ -107,12 +107,18 @@
                 <div class="form-group">
                     <label for="option" id="lbl_carreras" class="control-label col-md-3">Carreras: </label>
                     <br />
+                    <div class="col-lg-6 ">
                     <asp:GridView CssClass="table table-bordered bs-table table-responsive" ID="dgv_carrerasLibro" runat="server" AutoGenerateColumns="False">
+                        <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                        <EditRowStyle BackColor="#ffffcc" />
+                        <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                         <Columns>
-                            <asp:BoundField DataField="idCarrera" HeaderText="Carreras" />
-                            <asp:BoundField DataField="nombreCarrera" HeaderText="Nombre" />
+                             <asp:BoundField DataField="nombreCarrera" HeaderText="Carreras" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" ControlStyle-Width="70px">
+                            <ControlStyle Width="70px"></ControlStyle>
+                            </asp:BoundField>
                         </Columns>
                     </asp:GridView>
+                        </div>
                     <asp:LinkButton ID="btn_registrarCarrera" runat="server" OnClick="btn_registrarCarrera_onClick" Visible="false"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></asp:LinkButton>
                 </div>
             </div>
@@ -157,7 +163,7 @@
             <!--Cantidad hojas -->
             <div class="row">
                 <div class="form-group">
-                    <label for="option" id="lbl_cantidadHojas" class="control-label col-md-3">Nombre del autor: </label>
+                    <label for="option" id="lbl_cantidadHojas" class="control-label col-md-3">Cantidad de Hojas: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_cantidadHojasLibro" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
@@ -175,25 +181,7 @@
             <br />
 
 
-            <!--Descripcion -->
-            <div class="row">
-                <div class="form-group">
-                    <label for="option" id="lbl_descripcion" class="control-label col-md-3">Descripción:  </label>
-                    <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_descripcionLibro" value="" ViewStateMode="Enabled" />
-                        <!-- Verifica que se el textBox no este vacio-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_descripcionLibro" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un nombre</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                              </div>
-                        </asp:RequiredFieldValidator>
-                    </div>
-                </div>
-            </div>
-            <br />
+        
 
 
             <!--Precio Libro -->
@@ -216,14 +204,31 @@
             </div>
             <br />
 
-
+                <!--Descripcion -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="option" id="lbl_descripcion" class="control-label col-md-3">Descripción:  </label>
+                    <div class="col-md-7">
+                        <asp:TextBox runat="server" class="form-control" type="text" TextMode="MultiLine" ID="txt_descripcionLibro" value="" ViewStateMode="Enabled" />
+                        <!-- Verifica que se el textBox no este vacio-->
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_descripcionLibro" Display="Dynamic" ValidationGroup="AllValidator">
+                            <div class="alert alert-danger">
+                                  <strong>Se debe ingresar un nombre</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                        </asp:RequiredFieldValidator>
+                    </div>
+                </div>
+            </div>
+            <br />
 
             <!--Boton confirmar -->
             <div class="row col-lg-offset-8">
                 <asp:Button runat="server" ID="btn_confirmar" Text="Confirmar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" OnClick="btn_confirmar_Click" />
                 <asp:Button runat="server" ID="btn_cancelar" Text="Cancelar" CssClass="btn btn-lg btn_rojo btn_flat" OnClick="btn_cancelar_Click"  />
             </div>
-            <br />
             <br />
         </div>
     </div>

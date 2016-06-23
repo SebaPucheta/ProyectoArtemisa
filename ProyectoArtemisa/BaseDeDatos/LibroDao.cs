@@ -21,7 +21,7 @@ namespace BaseDeDatos
         {
             string query = @"INSERT INTO Libro (nombreLibro, autorLibro, descripcionLibro, stock, cantidadHojasLibro,
                                                 precioLibro, idEditorial, idEstado, codigoBarraLibro, baja) VALUES
-                                                (@nombre, @autor, @descripcion, @stock, @cantidadHojas,
+                                                (@nombre, @autor, @descripcion, 0, @cantidadHojas,
                                                  @precioLibro, @idEditorial, @idEstado, @codigoBarra, 0)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"nombre", libro.nombreLibro);
@@ -31,7 +31,14 @@ namespace BaseDeDatos
             cmd.Parameters.AddWithValue(@"cantidadHojas", libro.cantidadHojasLibro);
             cmd.Parameters.AddWithValue(@"precioLibro", libro.precioLibro);
             cmd.Parameters.AddWithValue(@"idEditorial", libro.idEditorial);
-            cmd.Parameters.AddWithValue(@"idEstado", libro.idEstado);
+            if(libro.idEstado == null)
+            {
+                cmd.Parameters.AddWithValue(@"idEstado", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue(@"idEstado", libro.idEstado);
+            }
             cmd.Parameters.AddWithValue(@"codigobarra", libro.codigoBarraLibro);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -176,5 +183,27 @@ namespace BaseDeDatos
             return libro;
         }
 
+        /// <summary>
+        /// Verifica que el codigo de barra recibido por parametro no este en
+        /// la base de datos
+        /// </summary>
+        /// <param name="codigoBarra"></param>
+        /// <returns>bool</returns>
+        public static bool VerificarCodigoBarra(string codigoBarra)
+        {
+            string query = @"SELECT Count(codigoBarraLibro) FROM Libro WHERE codigoBarraLibro = @codBarra";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"codBarra", codigoBarra);
+            if (int.Parse(cmd.ExecuteScalar().ToString()) == 0)
+            {
+                cmd.Connection.Close();
+                return true;
+            }
+            else
+            {
+                cmd.Connection.Close();
+                return false;
+            }
+        }
     }
 }

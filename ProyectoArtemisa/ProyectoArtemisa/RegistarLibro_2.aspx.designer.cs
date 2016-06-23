@@ -175,15 +175,6 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_cantidadHojasLibro;
         
         /// <summary>
-        /// Control txt_descripcionLibro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_descripcionLibro;
-        
-        /// <summary>
         /// Control txt_precioLibro.
         /// </summary>
         /// <remarks>
@@ -191,6 +182,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_precioLibro;
+        
+        /// <summary>
+        /// Control txt_descripcionLibro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_descripcionLibro;
         
         /// <summary>
         /// Control btn_confirmar.

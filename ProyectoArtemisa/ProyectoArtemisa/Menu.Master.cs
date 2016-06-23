@@ -25,7 +25,7 @@ namespace ProyectoArtemisa
         {
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
-            Response.Redirect("RegistrarLibro_2.aspx");
+            Response.Redirect("RegistarLibro_2.aspx");
         }
 
         protected void btn_modificarPrecioHoja_OnClick(Object sender, EventArgs e)

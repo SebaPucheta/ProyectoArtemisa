@@ -137,7 +137,7 @@
                         <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                         <Columns>
                             <asp:BoundField DataField="nombreCarrera" HeaderText="Carreras" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" ControlStyle-Width="70px">
-<ControlStyle Width="70px"></ControlStyle>
+                            <ControlStyle Width="70px"></ControlStyle>
                             </asp:BoundField>
                         </Columns>
                     </asp:GridView>
