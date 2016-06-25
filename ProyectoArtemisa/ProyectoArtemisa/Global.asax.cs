@@ -33,7 +33,6 @@ namespace ProyectoArtemisa
             Session["idUniversidad"] = null;
             Session["idFacultad"] = null;
             Session["idMateria"] = null;
-            Session["nombreAutor"] = "";
             Session["idEditorial"] = null;
             Session["cantidadHojas"] = "";
             Session["precionImpreso"] = "";

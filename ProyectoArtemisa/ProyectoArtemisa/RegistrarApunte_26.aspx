@@ -7,11 +7,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
     
         <div class="row">
-        <div class="container col-lg-offset-2 col-lg-7" id="div_form">
+        <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+             <!-- Titulo -->
             <div class="row">
-            <label for="nombre" class="estilo_titulo">Registrar Apunte</label>
+                <h1 class="text-primary text-center"><b>Registrar Apunte</b></h1>
             </div>
             <br />
+
+
 
               <!-- Tipo de apunte -->
             <div class="row">
@@ -26,6 +29,8 @@
                 </div>
             </div>
             <br />
+
+           
 
             <!-- Codigo de barra -->
             <div class="row">
@@ -96,8 +101,8 @@
                     <div class="col-md-5">
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_universidadApunte" OnSelectedIndexChanged="ddl_universidadApunte_SelectedIndexChanged"/>
                     </div>
-                    <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                
+                    <asp:LinkButton ID="btn_registrarUniversidad"  runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus " aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarUniversidad"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -110,6 +115,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_facultadApunte" OnSelectedIndexChanged="ddl_facultadApunte_SelectedIndexChanged" />
                     </div>
                     <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarFacultad"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -122,6 +128,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_materiaApunte" OnSelectedIndexChanged="ddl_materiaApunte_SelectedIndexChanged" AutoPostBack="true" />
                     </div>
                     <asp:LinkButton ID="btn_registrarMateria" runat="server" OnClick="btn_registrarMateria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarMateria"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -139,30 +146,26 @@
                             <asp:BoundField DataField="nombreCarrera" HeaderText="Carreras" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" ControlStyle-Width="70px">
                             <ControlStyle Width="70px"></ControlStyle>
                             </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btn_modificarCarrera" CommandName="select" runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                                    
+                                </ItemTemplate>   
+                                <ControlStyle Width="3px" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btn_eliminarMateria" CommandName="select"  runat="server" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                                </ItemTemplate>   
+                                <ControlStyle Width="3px" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:TemplateField>
+                            
                         </Columns>
                     </asp:GridView>
                     </div>
                 <asp:LinkButton ID="btn_registrarCarrera" runat="server" OnClick="btn_registrarCarrera_onClick" Visible="false"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></asp:LinkButton>
-            </div>
-            <br />
-
-            <!-- Nombre el autor del apunte -->
-            <div class="row">
-                <div class="form-group">
-                    <label for="nombre" class="control-label col-md-3">Nombre de Autor:</label>
-                    <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreAutorApunte" value="" ViewStateMode="Enabled" />
-                        <!-- Verifica que se el textBox no este vacio-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreAutorApunte" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un nombre</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                              </div>
-                        </asp:RequiredFieldValidator>
-                    </div>
-                </div>
             </div>
             <br />
 
@@ -174,6 +177,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_editorialApunte" />
                     </div>
                     <asp:LinkButton ID="btn_regitrarEditorial" OnClick="btn_registrarEditorial_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarEditorial"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -203,21 +207,27 @@
                 <div class="form-group form-inline">
                     <!-- Precio apunte impreso-->
                     <label for="nombre" class="control-label col-md-3">Precio apunte impreso :</label>
-                    <div class="col-md-1 col-lg-1">
-                    <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioXHoja" value="" ViewStateMode="Enabled"  Enabled="false"/>
+                    <div class="col-md-2 col-lg-2">
+                        <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
+                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioXHoja" value="" ViewStateMode="Enabled"  Enabled="false"/>
+                        </div>
+                        </div>
                 </div>
                </div>
-            </div>
-            <br />
             
+            <br />
+
             <!--Precio apunte digital-->
             <div class="row">
                 <div class="form-group form-inline">
                     <label for="nombre" class="control-label col-md-3">Precio del apunte digital :</label>
-                    <div class="col-md-1 col-lg-1">
-                    <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioApunteDigital" value="" ViewStateMode="Enabled" Enabled="false"/>
-                   
+                    <div class="col-md-2 col-lg-2">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
+                            <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioApunteDigital" value="" ViewStateMode="Enabled" Enabled="false" />
                         </div>
+                    </div>
                 </div>
             </div>
             <br />
@@ -230,6 +240,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_profesorApunte" />
                     </div>
                     <asp:LinkButton ID="btn_registrarProfesor" runat="server" OnClick="btn_registrarProfesor_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarProfesor"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -242,6 +253,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_categoriaApunte" />
                     </div>
                     <asp:LinkButton ID="btn_registrarCategoria" runat="server" OnClick="btn_registrarCategoria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarCategoria"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />

@@ -4,8 +4,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
      <div class="row">
         <div class="container col-lg-offset-2 col-lg-7" id="div_form">
+             <!-- Titulo -->
             <div class="row">
-            <label for="nombre" class="estilo_titulo">Registrar Ciudad</label>
+                <h1 class="text-primary text-center"><b>Registrar Ciudad</b></h1>
             </div>
             <br />
             <!-- Provincia -->

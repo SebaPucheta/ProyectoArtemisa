@@ -49,6 +49,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
         
         /// <summary>
+        /// Control btn_modificarUniversidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarUniversidad;
+        
+        /// <summary>
         /// Control cv_pension.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarFacultad;
         
         /// <summary>
+        /// Control btn_modificarFacultad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarFacultad;
+        
+        /// <summary>
         /// Control CustomValidator1.
         /// </summary>
         /// <remarks>
@@ -101,6 +119,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarMateria;
+        
+        /// <summary>
+        /// Control btn_modificarMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarMateria;
         
         /// <summary>
         /// Control CustomValidator2.
@@ -155,6 +182,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarEditorial;
+        
+        /// <summary>
+        /// Control btn_modificarEditorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarEditorial;
         
         /// <summary>
         /// Control CustomValidator3.

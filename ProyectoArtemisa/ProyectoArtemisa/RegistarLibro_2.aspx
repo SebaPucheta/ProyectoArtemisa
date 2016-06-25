@@ -11,11 +11,14 @@
 
 
     <div class="row">
-        <div class="container col-lg-offset-2 col-lg-7" id="div_form">
+        <div class="container col-lg-offset-3 col-lg-7" id="div_form">
 
-            <label for="nombre" class="estilo_titulo">Registrar Libro</label>
+            <!-- Titulo -->
+            <div class="row">
+                <h1 class="text-primary text-center"><b>Registrar Libro</b></h1>
+            </div>
             <br />
-            <br />
+            
 
 
             <!--Nombre del libro -->
@@ -68,6 +71,7 @@
                         <asp:DropDownList AutoPostBack="true" CssClass="form-control" runat="server" ID="ddl_universidadesLibro" OnSelectedIndexChanged="ddl_universidadesLibro_SelectedIndexChanged" />
                     </div>
                     <asp:LinkButton ID="btn_registrarUniversidad" OnClick="btn_registrarUniversidad_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarUniversidad"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="cv_pension" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_universidadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una universidad"></asp:CustomValidator>
                 </div>
             </div>
@@ -82,6 +86,7 @@
                         <asp:DropDownList AutoPostBack="true" CssClass="form-control" runat="server" ID="ddl_facultadesLibro" OnSelectedIndexChanged="ddl_facultadesLibro_SelectedIndexChanged" />
                     </div>
                     <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarFacultad"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator1" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_facultadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una facultad"></asp:CustomValidator>
                 </div>
             </div>
@@ -96,6 +101,7 @@
                         <asp:DropDownList CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_materiasLibro_SelectedIndexChanged" runat="server" ID="ddl_materiasLibro" />
                     </div>
                     <asp:LinkButton ID="btn_registrarMateria" OnClick="btn_registrarMateria_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarMateria"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator2" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_materiasLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una materia"></asp:CustomValidator>
                 </div>
             </div>
@@ -116,6 +122,12 @@
                              <asp:BoundField DataField="nombreCarrera" HeaderText="Carreras" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" ControlStyle-Width="70px">
                             <ControlStyle Width="70px"></ControlStyle>
                             </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btn_modificarCarrera" CommandName="select" runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btn_eliminarMateria" CommandName="select"  runat="server" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                                </ItemTemplate>   
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                         </div>
@@ -154,6 +166,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_editorialLibro" />
                     </div>
                     <asp:LinkButton ID="btn_registrarEditorial" OnClick="btn_registrarEditorial_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarEditorial"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator3" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_editorialLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una editorial"></asp:CustomValidator>
                 </div>
             </div>
@@ -188,8 +201,11 @@
             <div class="row">
                 <div class="form-group">
                     <label for="option" id="lbl_precioLibro" class="control-label col-md-3">Precio libro:  </label>
-                    <div class="col-md-7">
+                    <div class="col-md-2">
+                        <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioLibro" value="" ViewStateMode="Enabled" />
+                        </div>
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_precioLibro" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">

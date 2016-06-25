@@ -21,6 +21,18 @@ namespace ProyectoArtemisa
             Response.Redirect("RegistrarApunte_26.aspx");
         }
 
+        protected void btn_consultarItem_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarLibroApunte.aspx");
+        }
+        protected void btn_consultarEditorial_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarEditorial_25.aspx");
+        }
         protected void btn_registrarLibro_OnClick(Object sender, EventArgs e)
         {
             LimpiarVariablesGlobales();
@@ -35,6 +47,13 @@ namespace ProyectoArtemisa
             Response.Redirect("RegistrarPrecioXHoja_74.aspx");
         }
 
+        protected void btn_consultarPrecioXHoja_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarPrecioPorHoja_77.aspx");
+        }
+        
         protected void LimpiarVariablesGlobales()
         {
             Session["chk_Impreso"] = false;

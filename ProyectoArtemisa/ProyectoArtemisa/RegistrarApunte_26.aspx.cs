@@ -379,7 +379,6 @@ namespace ProyectoArtemisa
             txt_codigoBarra.Enabled = false;
             txt_descripcion.Text = "";
             txt_nombreApunte.Text = "";
-            txt_nombreAutorApunte.Text = "";
             txt_precioApunteDigital.Text = "";
             txt_precioApunteDigital.Enabled = false;
             txt_precioXHoja.Text = "";
@@ -405,7 +404,6 @@ namespace ProyectoArtemisa
             Session["idUniversidad"] = ddl_universidadApunte.SelectedIndex;
             Session["idFacultad"] = ddl_facultadApunte.SelectedIndex;
             Session["idMateria"] = ddl_materiaApunte.SelectedIndex;
-            Session["nombreAutor"] = txt_nombreAutorApunte.Text;
             Session["idEditorial"] = ddl_editorialApunte.SelectedIndex;
             Session["cantidadHojas"] = txt_cantHojasApunte.Text;
             Session["precionImpreso"] = txt_precioXHoja.Text;
@@ -458,7 +456,6 @@ namespace ProyectoArtemisa
                 }
                     
             }
-            txt_nombreAutorApunte.Text = Session["nombreAutor"].ToString();
             CargarComboEditorial();
             if (Session["idEditorial"]!=null)
             { ddl_editorialApunte.SelectedIndex = int.Parse(Session["idEditorial"].ToString()); }

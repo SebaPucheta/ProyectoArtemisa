@@ -3,13 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
-    <div class="container col-lg-offset-2 col-lg-7" id="div_form">
+    <div class="container col-lg-offset-3 col-lg-7" id="div_form">
         <br />
         <br />
         <br />
         <br />
-        <div class="row">
-            <label for="nombre" class="estilo_titulo">Registrar Materia</label>
+         <!-- Titulo -->
+            <div class="row">
+                <h1 class="text-primary text-center"><b>Registrar Materia</b></h1>
             </div>
             <br />
         <!-- Universidad -->

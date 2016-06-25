@@ -74,7 +74,9 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery.js" />
     <Content Include="Bootstrap\js\npm.js" />
+    <Content Include="ConsultarEditorial_25.aspx" />
     <Content Include="ConsultarLibroApunte.aspx" />
+    <Content Include="ConsultarPrecioPorHoja_77.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Estilo\Background\abstract_polygonal_colorful_background-wallpaper-1920x1080.jpg" />
     <Content Include="Estilo\Background\maxresdefault.jpg" />
@@ -130,12 +132,26 @@
     <Compile Include="Blanco.aspx.designer.cs">
       <DependentUpon>Blanco.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarEditorial_25.aspx.cs">
+      <DependentUpon>ConsultarEditorial_25.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarEditorial_25.aspx.designer.cs">
+      <DependentUpon>ConsultarEditorial_25.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarLibroApunte.aspx.cs">
       <DependentUpon>ConsultarLibroApunte.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ConsultarLibroApunte.aspx.designer.cs">
       <DependentUpon>ConsultarLibroApunte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarPrecioPorHoja_77.aspx.cs">
+      <DependentUpon>ConsultarPrecioPorHoja_77.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarPrecioPorHoja_77.aspx.designer.cs">
+      <DependentUpon>ConsultarPrecioPorHoja_77.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

@@ -9,6 +9,7 @@ namespace Entidades
     public class EditorialEntidadQuery: EditorialEntidad
     {
         public string nombreCiudadEditorial { get; set; }
+        
 
     }
 }

@@ -11,11 +11,12 @@
 
 
     <div class="row">
-        <div class="container col-lg-offset-2 col-lg-7" id="div_form">
+        <div class="container col-lg-offset-3 col-lg-7" id="div_form">
 
             <!-- Titulo -->
+            <!-- Titulo -->
             <div class="row">
-            <label for="nombre" class="estilo_titulo">Registrar Precio Por Hoja</label>
+                <h1 class="text-primary text-center"><b>Precio de Hoja</b></h1>
             </div>
             <br />
 
@@ -72,7 +73,7 @@
 
             <div class="row col-lg-offset-8">
                 <asp:Button runat="server" ID="btn_registrar" Text="Registrar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="val_precioHoja" Enabled="true" OnClick="btn_registrar_Click" />
-                <asp:Button runat="server" ID="btn_salir" Text="Salir" CssClass="btn btn-lg btn_rojo btn_flat" OnClick="btn_salir_Click" />
+                <asp:Button runat="server" ID="btn_salir" Text="Cancelar" CssClass="btn btn-lg btn_rojo btn_flat" OnClick="btn_salir_Click" />
             </div>
 
             <br />

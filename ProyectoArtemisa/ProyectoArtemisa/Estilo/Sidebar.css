@@ -25,7 +25,7 @@ body{
 }
 
 .menu li{
-  box-shadow:  3px 0 rgba(255,255,255, .2) inset;
+  box-shadow:  5px 0 rgba(	26, 188, 156,.6) inset;
   margin-bottom: 5px;
   padding-left: 1.5em;
   /*outline: 1px solid green;*/
@@ -34,18 +34,23 @@ body{
   transition: all .5s;
 }
 .menu li:hover{
-  box-shadow: 15em 0 rgba(255,255,255,.2) inset;
+  box-shadow: 15em 0 rgba(	26, 188, 156,.6) inset;
+}
+
+.menu li:active{
+  background-color: rgba(	26, 188, 156,.6);
 }
 
 #sidenav {
     position: absolute;
     position: fixed;
     left: -18em;
-    padding-top: 24px;
-    background: #252528;
+    background: #2c3e50;//2c3e50
     transition: all .7s;
-    z-index: 20;
+    z-index: 10;
     height: 100%;
+    padding-top: 28px;
+    opacity: .95;
 }
 
 #sidenav.mostrar {

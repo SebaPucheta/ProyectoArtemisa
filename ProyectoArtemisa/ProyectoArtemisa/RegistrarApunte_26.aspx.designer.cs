@@ -76,6 +76,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
         
         /// <summary>
+        /// Control btn_modificarUniversidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarUniversidad;
+        
+        /// <summary>
         /// Control ddl_facultadApunte.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarFacultad;
+        
+        /// <summary>
+        /// Control btn_modificarFacultad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarFacultad;
         
         /// <summary>
         /// Control ddl_materiaApunte.
@@ -112,6 +130,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarMateria;
         
         /// <summary>
+        /// Control btn_modificarMateria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarMateria;
+        
+        /// <summary>
         /// Control dgv_carrera.
         /// </summary>
         /// <remarks>
@@ -130,15 +157,6 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarCarrera;
         
         /// <summary>
-        /// Control txt_nombreAutorApunte.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nombreAutorApunte;
-        
-        /// <summary>
         /// Control ddl_editorialApunte.
         /// </summary>
         /// <remarks>
@@ -155,6 +173,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_regitrarEditorial;
+        
+        /// <summary>
+        /// Control btn_modificarEditorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarEditorial;
         
         /// <summary>
         /// Control txt_cantHojasApunte.
@@ -202,6 +229,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarProfesor;
         
         /// <summary>
+        /// Control btn_modificarProfesor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarProfesor;
+        
+        /// <summary>
         /// Control ddl_categoriaApunte.
         /// </summary>
         /// <remarks>
@@ -218,6 +254,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_registrarCategoria;
+        
+        /// <summary>
+        /// Control btn_modificarCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarCategoria;
         
         /// <summary>
         /// Control txt_descripcion.

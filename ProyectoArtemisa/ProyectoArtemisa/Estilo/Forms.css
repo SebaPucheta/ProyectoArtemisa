@@ -5,7 +5,7 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-
+  overflow-x: hidden;
 }
 
 #div_form {
@@ -13,6 +13,7 @@ body{
   padding-left: 30px;
   padding-top: 30px;
   box-shadow: 2px 2px 20px 2px #000000;
+
 
 }
 
@@ -30,7 +31,7 @@ body{
 .btn_flat{
   border: none;
   border-radius: 0;
-  box-shadow: 2px 2px 15px 1px #000000;
+  //box-shadow: 2px 2px 15px 1px #000000;
 }
 
 .btn_azul{
@@ -51,4 +52,14 @@ body{
 .btn_rojo:hover{
   color: rgb(255, 255, 255);
   background-color: #D91E18;
+}
+
+.btn_verde{
+  background-color: #00b16a;
+  color: rgb(255, 255, 255);
+}
+
+.btn_verde:hover{
+  color: rgb(255, 255, 255);
+  background-color: #2ecc71;
 }

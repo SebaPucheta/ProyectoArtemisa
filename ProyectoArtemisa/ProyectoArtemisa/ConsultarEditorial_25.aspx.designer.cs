@@ -10,70 +10,43 @@
 namespace ProyectoArtemisa {
     
     
-    public partial class ConsultarLibroApunte {
+    public partial class ConsultarEditorial_25 {
         
         /// <summary>
-        /// Control ddl_tipoItem.
+        /// Control txt_nombreEditorial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_tipoItem;
+        protected global::System.Web.UI.WebControls.TextBox txt_nombreEditorial;
         
         /// <summary>
-        /// Control chk_apunteDigital.
+        /// Control txt_nombreContacto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chk_apunteDigital;
+        protected global::System.Web.UI.WebControls.TextBox txt_nombreContacto;
         
         /// <summary>
-        /// Control chk_apunteImpreso.
+        /// Control ddl_provincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chk_apunteImpreso;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_provincia;
         
         /// <summary>
-        /// Control ddl_universidad.
+        /// Control ddl_ciudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_universidad;
-        
-        /// <summary>
-        /// Control ddl_facultad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_facultad;
-        
-        /// <summary>
-        /// Control ddl_materia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_materia;
-        
-        /// <summary>
-        /// Control ddl_carrera.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_carrera;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_ciudad;
         
         /// <summary>
         /// Control btn_consultar.
@@ -85,12 +58,12 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultar;
         
         /// <summary>
-        /// Control dgv_grillaItem.
+        /// Control dgv_grillaEditorial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgv_grillaItem;
+        protected global::System.Web.UI.WebControls.GridView dgv_grillaEditorial;
     }
 }

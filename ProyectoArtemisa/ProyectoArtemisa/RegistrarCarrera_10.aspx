@@ -4,9 +4,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
      <div class="container col-lg-offset-2 col-lg-7" id="div_form">
         <div>
-            <!--Titulo que le coloco al form-->
+             <!-- Titulo -->
             <div class="row">
-            <label for="nombre" class="estilo_titulo">Registrar Carrera</label>
+                <h1 class="text-primary text-center"><b>Registrar Carrera</b></h1>
             </div>
             <br />
         </div>

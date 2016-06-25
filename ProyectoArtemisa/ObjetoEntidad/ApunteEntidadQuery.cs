@@ -24,6 +24,7 @@ using System.Threading.Tasks;
         public string apellidoProfesor { get; set; }
         public string nombreMateria { get; set; }
         
+        
     }
 }
     

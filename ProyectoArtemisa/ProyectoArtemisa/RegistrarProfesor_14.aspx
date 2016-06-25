@@ -11,11 +11,12 @@
 
 
     <div class="row">
-        <div class="container col-lg-offset-2 col-lg-7" id="div_form">
+        <div class="container col-lg-offset-3 col-lg-7" id="div_form">
 
             <!-- Titulo -->
+             <!-- Titulo -->
             <div class="row">
-            <label for="nombre" class="estilo_titulo">Registrar Profesor</label>
+                <h1 class="text-primary text-center"><b>Registrar Profesor</b></h1>
             </div>
             <br />
 

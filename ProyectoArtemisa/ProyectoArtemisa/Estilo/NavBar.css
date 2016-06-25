@@ -10,5 +10,24 @@
 }
 
 .btn-usuario:hover{
-  color: rgb(4, 222, 46);
+  color: rgba(	26, 188, 156,.9);
+}
+
+#nav_navbar {
+  background-color: #2c3e50;
+  opacity: .95;;
+  position: absolute;
+  position: fixed;
+  width: 100%;
+  z-index: 11;
+  box-shadow: 1px 1px 1px;
+}
+
+#nav_titulo{
+  box-shadow: 1px 1px 1px;
+  background-color:#222f3d ;
+  padding-left: px;
+  width: 211px;
+  opacity: 1;
+
 }
