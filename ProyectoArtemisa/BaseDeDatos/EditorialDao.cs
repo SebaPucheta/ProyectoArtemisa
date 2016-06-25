@@ -95,7 +95,7 @@ namespace BaseDeDatos
                 editorial.email = dr["email"].ToString();
                 editorial.direccion = dr["direccion"].ToString();
                 editorial.nombreContacto = dr["nombreContacto"].ToString();
-                editorial.idCiudadEditorial =(int)dr["idCiudadEditorial"];
+                editorial.idCiudadEditorial = (int)dr["idCiudadEditorial"];
                 listaEditorial.Add(editorial);
             }
             dr.Close();
@@ -160,6 +160,47 @@ namespace BaseDeDatos
             cmd.Connection.Close();
             return editorial;
         }
+
+
+
+        /// <summary>
+        /// Consultar: datos de la editorial segun provincia, ciudad, nobmre de contacto y nombre de la editorial
+        /// </summary>
+        /// <param name="idCiudad"></param>
+        /// <param name="idProvincia"></param>
+        /// <param name="nombreContacto"></param>
+        /// <param name="nombreEditorial"></param>
+        /// <returns></returns>
+        public static List<EditorialEntidadQuery> ConsultarEditorialXFiltro(string idCiudad, string idProvincia, string nombreContacto, string nombreEditorial)
+        {
+            List<EditorialEntidadQuery> lista = new List<EditorialEntidadQuery>();
+            string consulta = @"SELECT e.idEditorial, e.nombreEditorial, e.nombreContacto, e.telefono, c.nombreCiudad, p.nombreProvincia, e.email 
+                                FROM Editorial e INNER JOIN Ciudad c ON e.idCiudadEditorial = c.idCiudad
+                                                 INNER JOIN Provincia p ON p.idProvincia = c.idProvincia
+                                WHERE e.nombreEditorial LIKE @nomEdi AND e.nombreContacto LIKE @nomCon AND p.idProvincia LIKE @idProv  AND c.idCiudad LIKE @idCiu AND baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"nomEdi", "%" + nombreEditorial + "%");
+            cmd.Parameters.AddWithValue(@"nomCon", "%" + nombreContacto + "%");
+            cmd.Parameters.AddWithValue(@"idProv", idProvincia + "%");
+            cmd.Parameters.AddWithValue(@"idCiu", idCiudad + "%");
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                EditorialEntidadQuery edi = new EditorialEntidadQuery();
+                edi.idEditorial = int.Parse(dr["idEditorial"].ToString());
+                edi.nombreEditorial = dr["nombreEditorial"].ToString();
+                edi.nombreContacto = dr["nombreContacto"].ToString();
+                edi.telefono = dr["telefono"].ToString();
+                edi.nombreCiudadEditorial = dr["nombreCiudad"].ToString();
+                edi.nombreProvinciaEditorial = dr["nombreProvincia"].ToString();
+                edi.email = dr["email"].ToString();
+                lista.Add(edi);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
+
 
     }
 }

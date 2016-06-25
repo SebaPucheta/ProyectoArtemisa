@@ -31,7 +31,7 @@ namespace BaseDeDatos
                 cmd.Parameters.AddWithValue("@idProfesor", prof.idProfesor);
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception e)
+            catch
             {
                 trans.Rollback();
                 cn.Close();

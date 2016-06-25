@@ -196,6 +196,221 @@ namespace BaseDeDatos
             return apu;
         }
 
-        
+
+        /// <summary>
+        /// Consultar: todos los apuntes query por filtro (solo se puede o por carrera o por materia)
+        /// </summary>
+        /// <param name="idTipoApunte"></param>
+        /// <param name="nombreApunte"></param>
+        /// <param name="idUniversidad"></param>
+        /// <param name="idFacultad"></param>
+        /// <param name="idCarrera"></param>
+        /// <param name="idMateria"></param>
+        /// <returns></returns>
+        public static List<ApunteEntidadQuery> ConsultarApunteXFiltro(string idTipoApunte, string nombreApunte, string idUniversidad,
+                                                                      string idFacultad, string idCarrera, string idMateria)
+        {
+            List<ApunteEntidadQuery> lista = new List<ApunteEntidadQuery>();
+            string consulta = @"SELECT a.idApunte, a.stock, a.precioApunte, a.cantHoja, a.nombreApunte, a.descripcionApunte, a.anoApunte, 
+                                       a.codigoBarraApunte, pxh.precioHoja, cat.nombreCategoria, ta.nombreTipoApunte,  e.nombreEditorial, 
+                                       est.nombreEstado, pr.nombreProfesor, pr.apellidoProfesor, m.nombreMateria, u.nombreUniversidad, f.nombreFacultad
+                                FROM Apunte a INNER JOIN Materia m ON a.idMateria = m.idMateria
+			                                  INNER JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  INNER JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                  INNER JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                  INNER JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+											  INNER JOIN Editorial e ON e.idEditorial = a.idEditorial
+											  INNER JOIN Profesor pr ON pr.idProfesor = a.idProfesor
+											  INNER JOIN TipoApunte ta ON ta.idTipoApunte = a.idTipoApunte
+											  INNER JOIN Categoria cat ON a.idCategoria = cat.idCategoria
+											  INNER JOIN Estado est ON est.idEstado = a.idEstado
+											  INNER JOIN PrecioXHoja pxh ON pxh.idPrecioHoja = a.idPrecioHoja
+                                WHERE a.idTipoApunte LIKE @idTipoApu AND a.nombreApunte LIKE @nomApu AND u.idUniversidad LIKE @idUni 
+									 AND f.idFacultad LIKE @idFacu AND c.idCarrera LIKE @idCar AND m.idMateria LIKE @idMat AND a.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idTipoApu", idTipoApunte + "%");
+            cmd.Parameters.AddWithValue(@"nomApu", "%" + nombreApunte + "%");
+            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + "%");
+            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + "%");
+            cmd.Parameters.AddWithValue(@"idCar", idCarrera + "%");
+            cmd.Parameters.AddWithValue(@"idMat", idMateria + "%");
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ApunteEntidadQuery apu = new ApunteEntidadQuery();
+                apu.idApunte = int.Parse(dr["idApunte"].ToString());
+                apu.stock = int.Parse(dr["stock"].ToString());
+                apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
+                apu.cantHoja = int.Parse(dr["cantHoja"].ToString());
+                apu.nombreApunte = dr["nombreApunte"].ToString();
+                apu.descripcionApunte = dr["descripcionApunte"].ToString();
+                apu.anoApunte = int.Parse(dr["anoApunte"].ToString());
+                apu.codigoBarraApunte = dr["codigoBarraApunte"].ToString();
+                apu.precioHoja = float.Parse(dr["precioHoja"].ToString());
+                apu.nombreCategoria = dr["nombreCategoria"].ToString();
+                apu.nombreTipoApunte = dr["nombreTipoApunte"].ToString();
+                apu.nombreEditorial = dr["nombreEditorial"].ToString();
+                apu.nombreEstado = dr["nombreEstado"].ToString();
+                apu.nombreProfesor = dr["nombreProfesor"].ToString();
+                apu.apellidoProfesor = dr["apellidoProfesor"].ToString();
+                apu.nombreFacultad = dr["nombreFacultad"].ToString();
+                apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
+                apu.listaMaterias = ConsultarMateriasXApunte(apu.idApunte);
+                lista.Add(apu);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
+
+        //Filtro de apunte con CARRERA
+        public static List<ApunteEntidadQuery> ConsultarApunteXFiltroCarrera(string idTipoApunte, string nombreApunte, string idUniversidad,
+                                                                      string idFacultad, string idCarrera)
+        {
+            List<ApunteEntidadQuery> lista = new List<ApunteEntidadQuery>();
+            string consulta = @"SELECT a.idApunte, a.cantHoja, a.nombreApunte, a.descripcionApunte, a.codigoBarraApunte,
+                                       u.nombreUniversidad, f.nombreFacultad, e.nombreEditorial, pr.nombreProfesor, pr.apellidoProfesor,
+		                               a.stock, a.precioApunte, a.anoApunte, m.nombreMateria, ta.nombreTipoApunte
+                                FROM Apunte a INNER JOIN Materia m ON a.idMateria = m.idMateria
+			                                  INNER JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  INNER JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                  INNER JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                  INNER JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+											  INNER JOIN Editorial e ON e.idEditorial = a.idEditorial
+											  INNER JOIN Profesor pr ON pr.idProfesor = a.idProfesor
+											  INNER JOIN TipoApunte ta ON ta.idTipoApunte = a.idTipoApunte
+                                WHERE a.idTipoApunte LIKE @idTipoApu AND a.nombreApunte LIKE @nomApu AND u.idUniversidad LIKE @idUni 
+									 AND f.idFacultad LIKE @idFacu AND c.idCarrera LIKE @idCar";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idTipoApu", idTipoApunte + "%");
+            cmd.Parameters.AddWithValue(@"nomApu", "%" + nombreApunte + "%");
+            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + "%");
+            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + "%");
+            cmd.Parameters.AddWithValue(@"idCar", idCarrera + "%");
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ApunteEntidadQuery apu = new ApunteEntidadQuery();
+                apu.idApunte = int.Parse(dr["idApunte"].ToString());
+                apu.anoApunte = int.Parse(dr["anoApunte"].ToString());
+                apu.cantHoja = int.Parse(dr["cantHoja"].ToString());
+                apu.codigoBarraApunte = dr["codigoBarraApunte"].ToString();
+                apu.descripcionApunte = dr["descripcionApunte"].ToString();
+                apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                apu.nombreFacultad = dr["nombreFacultad"].ToString();
+                apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
+                apu.listaMaterias = ConsultarMateriasXApunte(apu.idApunte);
+                apu.nombreApunte = dr["nombreApunte"].ToString();
+                apu.stock = int.Parse(dr["stock"].ToString());
+                apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
+                apu.nombreEditorial = dr["nombreEditorial"].ToString();
+                apu.nombreProfesor = dr["nombreProfesor"].ToString();
+                apu.apellidoProfesor = dr["apellidoProfesor"].ToString();
+                apu.nombreTipoApunte = dr["nombreTipoApunte"].ToString();
+                lista.Add(apu);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
+
+        public static List<CarreraEntidad> ConsultarCarrerasXApunte(int idApunte)
+        {
+            List<CarreraEntidad> lista = new List<CarreraEntidad>();
+            string consulta = @"SELECT cxm.idCarrera, c.nombreCarrera 
+                                FROM Apunte a JOIN CarreraXMateria cxm ON a.idMateria = cxm.idMateria
+									          JOIN Carrera c ON cxm.idCarrera = c.idCarrera WHERE a.idApunte = @id AND a.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", idApunte);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                CarreraEntidad car = new CarreraEntidad();
+                car.idCarrera = int.Parse(dr["idCarrera"].ToString());
+                car.nombreCarrera = dr["nombreCarrera"].ToString();
+                lista.Add(car);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
+
+        public static List<MateriaEntidad> ConsultarMateriasXApunte(int idApunte)
+        {
+            List<MateriaEntidad> lista = new List<MateriaEntidad>();
+            string consulta = @"SELECT cxm.idMateria, m.nombreMateria 
+                                FROM Apunte a JOIN CarreraXMateria cxm ON a.idMateria = cxm.idMateria
+									          JOIN Materia m ON cxm.idMateria = m.idMateria WHERE a.idApunte = @id AND a.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", idApunte);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                MateriaEntidad car = new MateriaEntidad();
+                car.idMateria = int.Parse(dr["idMateria"].ToString());
+                car.nombreMateria = dr["nombreMateria"].ToString();
+                lista.Add(car);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
+
+        //Filtro de apunte con MATERIA
+        public static List<ApunteEntidadQuery> ConsultarApunteXFiltroMateria(string idTipoApunte, string nombreApunte, 
+                                                                            string idUniversidad, string idFacultad, string idMateria)
+        {
+            List<ApunteEntidadQuery> lista = new List<ApunteEntidadQuery>();
+            string consulta = @"SELECT a.idApunte, a.nombreApunte, a.precioApunte, a.stock, e.nombreEditorial, p.nombreProfesor,
+                                       p.apellidoProfesor, ta.nombreTipoApunte, a.codigoBarraApunte,
+									   a.anoApunte, a.cantHoja, u.nombreUniversidad, f.nombreFacultad, a.descripcionApunte
+                                FROM Apunte a JOIN Editorial e ON a.idEditorial = e.idEditorial
+                                			  JOIN Profesor p ON p.idProfesor = a.idProfesor
+                                			  JOIN TipoApunte ta ON ta.idTipoApunte = a.idTipoApunte
+                                			  JOIN Materia m ON a.idMateria = m.idMateria
+                                			  JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                   JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                   JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+                                WHERE ta.idTipoApunte = @idTipoApu AND a.nombreApunte = @nomApu AND u.idUniversidad = @idUni
+                                      AND f.idFacultad = @idFacu AND m.idMateria = @idMat AND a.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idTipoApu", idTipoApunte + "%");
+            cmd.Parameters.AddWithValue(@"nomApu", "%" + nombreApunte + "%");
+            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + "%");
+            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + "%");
+            cmd.Parameters.AddWithValue(@"idMat", idMateria + "%");
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ApunteEntidadQuery apu = new ApunteEntidadQuery();
+                apu.idApunte = int.Parse(dr["idApunte"].ToString());
+                apu.nombreApunte = dr["nombreApunte"].ToString();
+                apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
+                apu.stock = int.Parse(dr["stock"].ToString());
+                apu.nombreEditorial = dr["nombreEditorial"].ToString();
+                apu.nombreProfesor = dr["nombreProfesor"].ToString();
+                apu.apellidoProfesor = dr["apellidoProfesor"].ToString();
+                apu.nombreTipoApunte = dr["nombreTipoApunte"].ToString();
+                apu.anoApunte = int.Parse(dr["anoApunte"].ToString());
+                apu.cantHoja = int.Parse(dr["cantHoja"].ToString());
+                apu.codigoBarraApunte = dr["codigoBarraApunte"].ToString();
+                apu.descripcionApunte = dr["descripcionApunte"].ToString();
+                apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                apu.nombreFacultad = dr["nombreFacultad"].ToString();
+                apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
+                apu.listaMaterias = ConsultarMateriasXApunte(apu.idApunte);           
+                lista.Add(apu);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
+
+
+
+
+
     }
 }
