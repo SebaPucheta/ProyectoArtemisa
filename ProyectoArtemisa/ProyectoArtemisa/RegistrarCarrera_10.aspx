@@ -18,6 +18,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_universidad" OnSelectedIndexChanged="ddl_universidad_SelectedIndexChanged"/>
                        </div>
                     <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarUniversidad" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                          <!--Valido que se ingrese una facultad-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="ddl_universidad" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -39,6 +40,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_facultad" AutoPostBack="true"/>
                        </div>
                          <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                         <asp:LinkButton ID="btn_modificarFacultad"  runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                         <!--Valido que se ingrese una facultad-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="ddl_facultad" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">

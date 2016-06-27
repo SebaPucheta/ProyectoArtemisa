@@ -18,91 +18,245 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                cargarComboCarrera();
+                CargarComboTipoItem();
             }
         }
 
-        protected void ddl_materia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cargarComboMateria();
-        }
+       
         protected void ddl_universidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarComboMateria();
+            CargarComboFacultad(Convert.ToInt32(ddl_universidad.SelectedValue));
         }
         protected void ddl_facultad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarComboMateria();
+            CargarComboMateria(Convert.ToInt32(ddl_facultad.SelectedValue));
+            CargarComboCarrera(Convert.ToInt32(ddl_facultad.SelectedValue));
         }
         protected void ddl_carrera_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarComboMateria();
+            if(ddl_carrera.SelectedIndex==0)
+            {
+                ddl_materia.Enabled = false;
+            }
+        }
+        protected void ddl_materia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddl_carrera.SelectedIndex==0)
+            {
+                ddl_carrera.Enabled = false;
+            }
         }
         protected void ddl_tipoItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarComboMateria();
+            CargarComboUniversidad();
+            
+            if (ddl_tipoItem.SelectedIndex == 1)
+            {
+                lbl_tipoApunte.Visible = true;
+                lbl_apunteDigital.Visible = true;
+                lbl_apunteImpreso.Visible = true;
+                
+            }
+            else
+            {
+                lbl_tipoApunte.Visible = false;
+                lbl_apunteDigital.Visible = false;
+                lbl_apunteImpreso.Visible = false;
+            }
+        }
+
+        protected void CargarComboUniversidad()
+        {
+            ddl_universidad.DataSource = UniversidadDao.ConsultarUniversidad();
+            ddl_universidad.DataTextField = "nombreUniversidad";
+            ddl_universidad.DataValueField = "idUniversidad";
+            ddl_universidad.DataBind();
+            ddl_universidad.Items.Insert(0, new ListItem("(Universidad)", "0"));
+            ddl_universidad.SelectedIndex = 0;
+        }
+
+        //Cargar combo Facultad apartir de la universidad selecionada
+        protected void CargarComboFacultad(int idUniversidad)
+        {
+            ddl_facultad.DataSource = FacultadDao.ConsultarFacultadXUniversidad(idUniversidad);
+            ddl_facultad.DataTextField = "nombreFacultad";
+            ddl_facultad.DataValueField = "idFacultad";
+            ddl_facultad.DataBind();
+            ddl_facultad.Items.Insert(0, new ListItem("(Facultad)", "0"));
+            ddl_facultad.SelectedIndex = 0;
+        }
+
+        //Cargar combo Materia apartir de la facultad seleccionada
+        protected void CargarComboMateria(int idFacultad)
+        {
+            ddl_materia.DataSource = MateriaDao.DevolverMateriaXFacultad(idFacultad);
+            ddl_materia.DataTextField = "nombreMateria";
+            ddl_materia.DataValueField = "idMateria";
+            ddl_materia.DataBind();
+            ddl_materia.Items.Insert(0, new ListItem("(Materia)", "0"));
+            ddl_materia.SelectedIndex = 0;
+        }
+
+        protected void CargarComboCarrera(int idFacultad)
+        {
+            ddl_carrera.DataSource = MateriaDao.DevolverMateriaXFacultad(idFacultad);
+            ddl_carrera.DataTextField = "nombreCarrera";
+            ddl_carrera.DataValueField = "idCarrera";
+            ddl_carrera.DataBind();
+            ddl_carrera.Items.Insert(0, new ListItem("(Carrera)", "0"));
+            ddl_carrera.SelectedIndex = 0;
+        }
+
+        protected void CargarComboTipoItem()
+        {
+            ddl_tipoItem.Items.Insert(0, new ListItem("(Tipo Apunte)", "0"));
+            ddl_tipoItem.Items.Insert(1, new ListItem("Apunte", "1"));
+            ddl_tipoItem.Items.Insert(2, new ListItem("Libro", "2"));
+            ddl_tipoItem.SelectedIndex = 0;
+        }
+
+        protected void btn_eliminarApunte_RowDeleting(Object sender, GridViewDeleteEventArgs e)
+        {
+            ApunteDao.EliminarApunte((int)dgv_grillaApunte.DataKeys[e.RowIndex].Value);
+            CargarApunteEnGrilla(BuscarListaApunteXfiltro());
+            dgv_grillaLibro.Visible = false;
+            dgv_grillaApunte.Visible = true;
+        }
+
+        protected void btn_modificarApunte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["idApunte"] = (int)dgv_grillaApunte.SelectedDataKey.Value;
+            PilaForms.AgregarForm("ConsultarLibroApunte.aspx");
+            Response.Redirect("RegistrarApunte_26.aspx");
+        }
+
+        protected void btn_eliminarLibro_RowDeleting(Object sender, GridViewDeleteEventArgs e)
+        {
+            LibroDao.EliminarLibro((int)dgv_grillaLibro.DataKeys[e.RowIndex].Value);
+            CargarLibroEnGrilla(BuscarListaLibroXfiltro());
+            dgv_grillaApunte.Visible = false;
+            dgv_grillaLibro.Visible = true;
+        }
+
+        protected void btn_modificarLibro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["idLibro"] = (int)dgv_grillaLibro.SelectedDataKey.Value;
+            PilaForms.AgregarForm("ConsultarLibroApunte.aspx");
+            Response.Redirect("RegistarLibro_2.aspx");
         }
 
         protected void btn_buscar_Click(object sender, EventArgs e)
         {
-           
+            if (ddl_tipoItem.SelectedIndex == 0)
+            {
+                Response.Write("<script>window.alert('Se debe seleccionar un tipo de item');</script>");
+            }
+            else
+            {
+                if (ddl_tipoItem.SelectedIndex == 1)
+                {
+                    CargarApunteEnGrilla(BuscarListaApunteXfiltro());
+                    dgv_grillaLibro.Visible = false;
+                    dgv_grillaApunte.Visible = true;
+                }
+                else
+                {
+                    CargarLibroEnGrilla(BuscarListaLibroXfiltro());
+                    dgv_grillaApunte.Visible = false;
+                    dgv_grillaLibro.Visible = true;
+                }
+            }
+             
         }
 
-        //protected List<ApunteEntidad> BuscarListaApunteXfiltro()
-        //{
-        //    string tipoApunte = "";
-        //    string universidad = "";
-        //    string facultad = "";
-        //    string materia = "";
-        //    string carrera = "";
-
-        //    if (!((chk_apunteDigital.Checked) && (chk_apunteImpreso.Checked)))
-        //    {
-        //        if((chk_apunteDigital.Checked) || (chk_apunteImpreso.Checked))
-        //        {
-        //            if(chk_apunteDigital.Checked)
-        //            { tipoApunte = "2"; }
-        //            else
-        //            { tipoApunte = "1"; }
-        //        }
-        //    }
-            
-        //    if (Convert.ToInt32(ddl_universidad.SelectedIndex) != 0)
-        //    {
-        //        universidad = ddl_universidad.SelectedValue;
-        //    }
-
-        //    if (Convert.ToInt32(ddl_facultad.SelectedIndex) != 0)
-        //    {
-        //        facultad = ddl_facultad.SelectedValue;
-        //    }
-
-        //    if (Convert.ToInt32(ddl_materia.SelectedIndex) != 0)
-        //    {
-        //        materia = ddl_materia.SelectedValue;
-        //    }
-
-        //    if (Convert.ToInt32(ddl_carrera.SelectedIndex) != 0)
-        //    {
-        //        universidad = ddl_carrera.SelectedValue;
-        //    }
-
-        //    List<ApunteEntidadQuery> listaApunte = new List<ApunteEntidadQuery>();
-        //    return listaApunte;
-        //}
-
-
-        protected void cargarComboCarrera()
+        protected List<ApunteEntidadQuery> BuscarListaApunteXfiltro()
         {
+            string tipoApunte = " ";
+            string universidad = " ";
+            string facultad = " ";
+            string materia = " ";
+            string carrera = " ";
+            string nombreApunte = txt_nombreItem.Text;
 
-        }
+            if (!((chk_apunteDigital.Checked) && (chk_apunteImpreso.Checked)))
+            {
+                if ((chk_apunteDigital.Checked) || (chk_apunteImpreso.Checked))
+                {
+                    if (chk_apunteDigital.Checked)
+                    { tipoApunte = "2"; }
+                    else
+                    { tipoApunte = "1"; }
+                }
+            }
 
-        protected void cargarComboMateria()
-        {
+            if (Convert.ToInt32(ddl_universidad.SelectedIndex) != 0)
+            {
+                universidad = ddl_universidad.SelectedValue;
+            }
+
+            if (Convert.ToInt32(ddl_facultad.SelectedIndex) != 0)
+            {
+                facultad = ddl_facultad.SelectedValue;
+            }
+
+            if (Convert.ToInt32(ddl_materia.SelectedIndex) != 0)
+            {
+                materia = ddl_materia.SelectedValue;
+            }
+            else
+            {
+                if (Convert.ToInt32(ddl_carrera.SelectedIndex) != 0)
+                {
+                    carrera = ddl_carrera.SelectedValue;
+                }
+            }
+
+
+            List<ApunteEntidadQuery> listaApunte = ApunteDao.ConsultarApunteXFiltro(tipoApunte, nombreApunte, universidad, facultad, carrera, materia);
             
+            return listaApunte;
         }
+
+        protected List<LibroEntidadQuery> BuscarListaLibroXfiltro()
+        {
+            string nombreLibro = txt_nombreItem.Text;
+            string universidad = "";
+            string facultad = "";
+            string materia = "";
+            string carrera = "";
+
+            if (Convert.ToInt32(ddl_universidad.SelectedIndex) != 0)
+            {
+                universidad = ddl_universidad.SelectedValue;
+            }
+
+            if (Convert.ToInt32(ddl_facultad.SelectedIndex) != 0)
+            {
+                facultad = ddl_facultad.SelectedValue;
+            }
+
+            if (Convert.ToInt32(ddl_materia.SelectedIndex) != 0)
+            {
+                materia = ddl_materia.SelectedValue;
+            }
+            else
+            {
+                if (Convert.ToInt32(ddl_carrera.SelectedIndex) != 0)
+                {
+                    carrera = ddl_carrera.SelectedValue;
+                }
+            }
+
+
+            List<LibroEntidadQuery> listaLibro = LibroDao.ConsultarLibroXFiltro(nombreLibro , universidad, facultad, carrera, materia);
+
+            return listaLibro;
+        }
+
+        
 
         //Creo una tabla para luego cargarla en el GridView
+
         protected void CargarApunteEnGrilla(List<ApunteEntidadQuery> listaApunteFiltrados)
         {
             DataTable tabla = new DataTable();
@@ -127,10 +281,10 @@ namespace ProyectoArtemisa
                 fila[1] = apunte.nombreApunte;
                 fila[2] = apunte.precioApunte;
                 fila[3] = apunte.stock;
-                
-                List<CarreraEntidad> listaCarrera = CarreraDao.ConsultarCarreraXMateria(apunte.idMateria);
+
+                List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
                 string carreras = listaCarrera[0].nombreCarrera;
-                for(int i =1; i<listaCarrera.Count;i++)
+                for (int i = 1; i < listaCarrera.Count; i++)
                 {
                     carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
                 }
@@ -138,7 +292,7 @@ namespace ProyectoArtemisa
                 fila[4] = carreras;
                 fila[5] = apunte.nombreMateria;
                 fila[6] = apunte.nombreEditorial;
-                fila[7] = apunte.nombreProfesor;
+                fila[7] = apunte.apellidoProfesor + ", " + apunte.nombreProfesor;
                 fila[8] = apunte.nombreTipoApunte;
 
                 tabla.Rows.Add(fila);
@@ -146,11 +300,61 @@ namespace ProyectoArtemisa
 
             DataView dataView = new DataView(tabla);
 
-            dgv_grillaItem.DataSource = dataView;
-            dgv_grillaItem.DataKeyNames = new string[] {"idApunte"};
-            dgv_grillaItem.DataBind();
+            dgv_grillaApunte.DataSource = dataView;
+            dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };
+            dgv_grillaApunte.DataBind();
         }
 
+        protected void CargarLibroEnGrilla(List<LibroEntidadQuery> listalibroFiltrados)
+        {
+            DataTable tabla = new DataTable();
+            DataRow fila;
+
+            //Creo las columnas de la tabla
+            tabla.Columns.Add("idApunte", typeof(int));
+            tabla.Columns.Add("nombre", typeof(string));
+            tabla.Columns.Add("precio", typeof(float));
+            tabla.Columns.Add("stock", typeof(int));
+            tabla.Columns.Add("carrera", typeof(string));
+            tabla.Columns.Add("materia", typeof(string));
+            tabla.Columns.Add("editorial", typeof(string));
+            tabla.Columns.Add("autor", typeof(string));
+            
+            foreach (LibroEntidadQuery libro in listalibroFiltrados)
+            {
+                fila = tabla.NewRow();
+
+                fila[0] = libro.idLibro;
+                fila[1] = libro.nombreLibro;
+                fila[2] = libro.precioLibro;
+                fila[3] = libro.stock;
+
+                List<CarreraEntidad> listaCarrera = libro.listaCarreras;
+                string carreras = listaCarrera[0].nombreCarrera;
+                for (int i = 1; i < listaCarrera.Count; i++)
+                {
+                    carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
+                }
+
+                fila[4] = carreras;
+                fila[5] = libro.nombreMateria;
+                fila[6] = libro.nombreEditorial;
+                fila[7] = libro.autorLibro;
+                
+                tabla.Rows.Add(fila);
+            }
+
+            DataView dataView = new DataView(tabla);
+
+            dgv_grillaLibro.DataSource = dataView;
+            dgv_grillaLibro.DataKeyNames = new string[] { "idLibro" };
+            dgv_grillaLibro.DataBind();
+        }
+
+      
+
+
+        
 
     }
 }

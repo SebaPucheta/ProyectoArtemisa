@@ -23,8 +23,9 @@ using System.Threading.Tasks;
         public string nombreProfesor { get; set; }
         public string apellidoProfesor { get; set; }
         public string nombreMateria { get; set; }
-        
-        
+        public List<CarreraEntidad> listaCarreras { get; set; }
+        public string  nombreFacultad  { get; set; }
+        public string nombreUniversidad { get; set; }
     }
 }
     

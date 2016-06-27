@@ -10,5 +10,9 @@ namespace Entidades
     {
         public string nombreEditorial { get; set; }
         public string nombreEstado { get; set; }
+        public string nombreMateria { get; set; }
+        public List<CarreraEntidad> listaCarreras { get; set; }
+        public string nombreFacultad { get; set; }
+        public string nombreUniversidad { get; set; }
     }
 }

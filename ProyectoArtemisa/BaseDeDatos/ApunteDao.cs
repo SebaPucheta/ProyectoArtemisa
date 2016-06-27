@@ -30,6 +30,7 @@ namespace BaseDeDatos
             cmd.Parameters.AddWithValue(@"codigoBarraApunte", nuevoApunte.codigoBarraApunte);
             cmd.Parameters.AddWithValue(@"idTipoApunte", nuevoApunte.idTipoApunte);
             cmd.Parameters.AddWithValue(@"idCategoria", nuevoApunte.idCategoria);
+            cmd.Parameters.AddWithValue(@"idMateria", nuevoApunte.idMateria);
             if (nuevoApunte.idPrecioHoja.HasValue)
             {
                 cmd.Parameters.AddWithValue(@"idPrecioHoja", nuevoApunte.idPrecioHoja);
@@ -40,9 +41,17 @@ namespace BaseDeDatos
                 cmd.Parameters.AddWithValue(@"idPrecioHoja", DBNull.Value);
             }
             cmd.Parameters.AddWithValue(@"idEditorial", nuevoApunte.idEditorial);
-           // cmd.Parameters.AddWithValue(@"idEstado", nuevoApunte.idEstado);
-            cmd.Parameters.AddWithValue(@"idProfesor", nuevoApunte.idProfesor);
-            cmd.Parameters.AddWithValue(@"idMateria", nuevoApunte.idMateria);
+            // cmd.Parameters.AddWithValue(@"idEstado", nuevoApunte.idEstado);
+            if (nuevoApunte.idProfesor.HasValue)
+            {
+                cmd.Parameters.AddWithValue(@"idProfesor", nuevoApunte.idProfesor);
+
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue(@"idProfesor", DBNull.Value);
+            }
+            
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
@@ -68,27 +77,44 @@ namespace BaseDeDatos
         /// <param name="id"></param>
         public static void ModificarApunte(ApunteEntidad apu)
         {
-            string consulta = @"UPDATE Apunte SET stock = @stock, precioApunte = @precioApunte, cantHoja = @cantHoja, nombreApunte = @nombreApunte,
+            string consulta = @"UPDATE Apunte SET precioApunte = @precioApunte, cantHoja = @cantHoja, nombreApunte = @nombreApunte,
                                                   descripcionApunte = @descripcionApunte, anoApunte = @anoApunte, codigoBarraApunte = @codigoBarraApunte,
                                                   idPrecioHoja = @idPrecioHoja, idCategoria = @idCategoria, idTipoApunte = @idTipoApunte,
-                                                  idEditorial = @idEditorial, idEstado = @idEstado, idProfesor = @idProfesor, idMateria = @idMateria
+                                                  idEditorial = @idEditorial, idProfesor = @idProfesor, idMateria = @idMateria
                                               WHERE idApunte = @idApunte";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"idApunte", apu.idApunte);
-            cmd.Parameters.AddWithValue(@"stock", apu.stock);
             cmd.Parameters.AddWithValue(@"precioApunte", apu.precioApunte);
             cmd.Parameters.AddWithValue(@"cantHoja", apu.cantHoja);
             cmd.Parameters.AddWithValue(@"nombreApunte", apu.nombreApunte);
             cmd.Parameters.AddWithValue(@"descripcionApunte", apu.descripcionApunte);
             cmd.Parameters.AddWithValue(@"anoApunte", apu.anoApunte);
             cmd.Parameters.AddWithValue(@"codigoBarraApunte", apu.codigoBarraApunte);
-            cmd.Parameters.AddWithValue(@"idPrecioHoja", apu.idPrecioHoja);
             cmd.Parameters.AddWithValue(@"idCategoria", apu.idCategoria);
             cmd.Parameters.AddWithValue(@"idTipoApunte", apu.idTipoApunte);
             cmd.Parameters.AddWithValue(@"idEditorial", apu.idEditorial);
-            cmd.Parameters.AddWithValue(@"idEstado", apu.idEstado);
             cmd.Parameters.AddWithValue(@"idProfesor", apu.idProfesor);
             cmd.Parameters.AddWithValue(@"idMateria", apu.idMateria);
+            if (apu.idPrecioHoja.HasValue)
+            {
+                cmd.Parameters.AddWithValue(@"idPrecioHoja", apu.idPrecioHoja);
+
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue(@"idPrecioHoja", DBNull.Value);
+            }
+            cmd.Parameters.AddWithValue(@"idEditorial", apu.idEditorial);
+            // cmd.Parameters.AddWithValue(@"idEstado", nuevoApunte.idEstado);
+            if (apu.idProfesor.HasValue)
+            {
+                cmd.Parameters.AddWithValue(@"idProfesor", apu.idProfesor);
+
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue(@"idProfesor", DBNull.Value);
+            }
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
@@ -211,7 +237,7 @@ namespace BaseDeDatos
                                                                       string idFacultad, string idCarrera, string idMateria)
         {
             List<ApunteEntidadQuery> lista = new List<ApunteEntidadQuery>();
-            string consulta = @"SELECT a.idApunte, a.stock, a.precioApunte, a.cantHoja, a.nombreApunte, a.descripcionApunte, a.anoApunte, 
+            string consulta = @"SELECT a.idApunte, a.stock, a.precioApunte, a.cantHoja, m.nombreMateria, a.nombreApunte, a.descripcionApunte, a.anoApunte, 
                                        a.codigoBarraApunte, pxh.precioHoja, cat.nombreCategoria, ta.nombreTipoApunte,  e.nombreEditorial, 
                                        est.nombreEstado, pr.nombreProfesor, pr.apellidoProfesor, m.nombreMateria, u.nombreUniversidad, f.nombreFacultad
                                 FROM Apunte a INNER JOIN Materia m ON a.idMateria = m.idMateria
@@ -228,12 +254,12 @@ namespace BaseDeDatos
                                 WHERE a.idTipoApunte LIKE @idTipoApu AND a.nombreApunte LIKE @nomApu AND u.idUniversidad LIKE @idUni 
 									 AND f.idFacultad LIKE @idFacu AND c.idCarrera LIKE @idCar AND m.idMateria LIKE @idMat AND a.baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"idTipoApu", idTipoApunte + "%");
-            cmd.Parameters.AddWithValue(@"nomApu", "%" + nombreApunte + "%");
-            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + "%");
-            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + "%");
-            cmd.Parameters.AddWithValue(@"idCar", idCarrera + "%");
-            cmd.Parameters.AddWithValue(@"idMat", idMateria + "%");
+            cmd.Parameters.AddWithValue(@"idTipoApu", idTipoApunte + '%');
+            cmd.Parameters.AddWithValue(@"nomApu",  nombreApunte + '%');
+            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + '%');
+            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + '%');
+            cmd.Parameters.AddWithValue(@"idCar", idCarrera + '%');
+            cmd.Parameters.AddWithValue(@"idMat", idMateria + '%');
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -256,7 +282,7 @@ namespace BaseDeDatos
                 apu.nombreFacultad = dr["nombreFacultad"].ToString();
                 apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
                 apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
-                apu.listaMaterias = ConsultarMateriasXApunte(apu.idApunte);
+                apu.nombreMateria = (string)dr["nombreMateria"];
                 lista.Add(apu);
             }
             dr.Close();
@@ -269,7 +295,7 @@ namespace BaseDeDatos
                                                                       string idFacultad, string idCarrera)
         {
             List<ApunteEntidadQuery> lista = new List<ApunteEntidadQuery>();
-            string consulta = @"SELECT a.idApunte, a.cantHoja, a.nombreApunte, a.descripcionApunte, a.codigoBarraApunte,
+            string consulta = @"SELECT a.idApunte, a.cantHoja, a.nombreApunte, m.nombreMateria a.descripcionApunte, a.codigoBarraApunte,
                                        u.nombreUniversidad, f.nombreFacultad, e.nombreEditorial, pr.nombreProfesor, pr.apellidoProfesor,
 		                               a.stock, a.precioApunte, a.anoApunte, m.nombreMateria, ta.nombreTipoApunte
                                 FROM Apunte a INNER JOIN Materia m ON a.idMateria = m.idMateria
@@ -283,11 +309,11 @@ namespace BaseDeDatos
                                 WHERE a.idTipoApunte LIKE @idTipoApu AND a.nombreApunte LIKE @nomApu AND u.idUniversidad LIKE @idUni 
 									 AND f.idFacultad LIKE @idFacu AND c.idCarrera LIKE @idCar";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"idTipoApu", idTipoApunte + "%");
-            cmd.Parameters.AddWithValue(@"nomApu", "%" + nombreApunte + "%");
-            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + "%");
-            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + "%");
-            cmd.Parameters.AddWithValue(@"idCar", idCarrera + "%");
+            cmd.Parameters.AddWithValue(@"idTipoApu", idTipoApunte + '%');
+            cmd.Parameters.AddWithValue(@"nomApu", '%' + nombreApunte + '%');
+            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + '%');
+            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + '%');
+            cmd.Parameters.AddWithValue(@"idCar", idCarrera + '%');
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -300,7 +326,7 @@ namespace BaseDeDatos
                 apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
                 apu.nombreFacultad = dr["nombreFacultad"].ToString();
                 apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
-                apu.listaMaterias = ConsultarMateriasXApunte(apu.idApunte);
+                apu.nombreMateria = (string)dr["nombreMateria"];
                 apu.nombreApunte = dr["nombreApunte"].ToString();
                 apu.stock = int.Parse(dr["stock"].ToString());
                 apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
@@ -362,7 +388,7 @@ namespace BaseDeDatos
                                                                             string idUniversidad, string idFacultad, string idMateria)
         {
             List<ApunteEntidadQuery> lista = new List<ApunteEntidadQuery>();
-            string consulta = @"SELECT a.idApunte, a.nombreApunte, a.precioApunte, a.stock, e.nombreEditorial, p.nombreProfesor,
+            string consulta = @"SELECT a.idApunte, a.nombreApunte, a.precioApunte, m.nombreMateria a.stock, e.nombreEditorial, p.nombreProfesor,
                                        p.apellidoProfesor, ta.nombreTipoApunte, a.codigoBarraApunte,
 									   a.anoApunte, a.cantHoja, u.nombreUniversidad, f.nombreFacultad, a.descripcionApunte
                                 FROM Apunte a JOIN Editorial e ON a.idEditorial = e.idEditorial
@@ -400,7 +426,7 @@ namespace BaseDeDatos
                 apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
                 apu.nombreFacultad = dr["nombreFacultad"].ToString();
                 apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
-                apu.listaMaterias = ConsultarMateriasXApunte(apu.idApunte);           
+                apu.nombreMateria = (string)dr["nombreMateria"];           
                 lista.Add(apu);
             }
             dr.Close();

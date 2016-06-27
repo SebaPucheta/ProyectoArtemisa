@@ -14,7 +14,10 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((bool)Session["modificarUniversidad"])
+            {
+                txt_nombre.Text = UniversidadDao.ConsultarUnaUniversidad((int)Session["idUniversidad"]).nombreUniversidad;
+            }
         }
 
 
@@ -29,15 +32,18 @@ namespace ProyectoArtemisa
             {
                 UniversidadEntidad uni = new UniversidadEntidad();
                 uni.nombreUniversidad = txt_nombre.Text;
-                UniversidadDao.RegistrarUniversidad(uni);
-                if (PilaForms.pila.Peek().Equals("Default.aspx"))
+                
+                if ((bool)Session["modificarUniversidad"])
                 {
-                    limpiarForm();
+                    uni.idUniversidad = (int)Session["idUniversidad"];
+                    UniversidadDao.ModificarUniversidad(uni);
+                    Session["modificarUniversidad"] = false;
                 }
                 else
                 {
-                    Response.Redirect(PilaForms.DevolverForm());
+                    UniversidadDao.RegistrarUniversidad(uni);
                 }
+                Response.Redirect(PilaForms.DevolverForm());
                // UniversidadDao.RegistrarUniversidad(uni);
                 
                 //Confiracion
@@ -51,6 +57,7 @@ namespace ProyectoArtemisa
 
         protected void btn_salir_Click(object sender, EventArgs e)
         {
+            Session["modificarUniversidad"] = false;
             Response.Redirect(PilaForms.DevolverForm());
             //Volver al form anterior
         }

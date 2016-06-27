@@ -166,13 +166,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_editorialApunte;
         
         /// <summary>
-        /// Control btn_regitrarEditorial.
+        /// Control btn_registrarEditorial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_regitrarEditorial;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarEditorial;
         
         /// <summary>
         /// Control btn_modificarEditorial.

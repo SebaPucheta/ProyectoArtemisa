@@ -14,25 +14,32 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((bool)Session["modificarCategoria"])
+            {
+                txt_nombreCategoria.Text = CategoriaDao.ConsultarUnaCategoria((int)Session["idCategoria"]).nombreCategoria;
+            }
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
             CategoriaEntidad categoria = new CategoriaEntidad();
             categoria.nombreCategoria = txt_nombreCategoria.Text;
-            CategoriaDao.RegistrarCategoria(categoria);
-            if (PilaForms.pila.Peek().Equals("Default.aspx"))
+
+            if ((bool)Session["modificarCategoria"])
             {
-                LimpiarForm();
+                categoria.idCategoria = (int)Session["idCategoria"];
+                CategoriaDao.ModificarCategoria(categoria);
+                Session["modificarCategoria"] = false;
             }
             else
             {
-                Response.Redirect(PilaForms.DevolverForm());
+                CategoriaDao.RegistrarCategoria(categoria);
             }
+            Response.Redirect(PilaForms.DevolverForm());
         }
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
+            Session["modificarCategoria"] = false;
             Response.Redirect(PilaForms.DevolverForm());
         }
         

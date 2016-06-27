@@ -15,38 +15,63 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
+                if((bool)Session["modificarCarrera"])
+                { CargarUnaCarreraEnElForm(CarreraDao.ConsultarUnaCarrera((int)Session["idCarrera"])); }
                 CargarForm();
             }
         }
+
+        //Registrar un nueva Universidad
         protected void btn_registrarUniversidad_onClick(object sender, EventArgs e)
         {
             PilaForms.AgregarForm("RegistrarCarrera_10.aspx");
             Response.Redirect("RegistrarUniversidad_69.aspx");
         }
 
+        //Modificar un Universidad
+        protected void btn_modificarUniversidad_onClick(object sender, EventArgs e)
+        {
+            Session["idUniversidad"] = ddl_universidad.SelectedValue;
+            Session["modificarUniversidad"] = true;
+            PilaForms.AgregarForm("RegistrarCarrera_10.aspx");
+            Response.Redirect("RegistrarUniversidad_69.aspx");
+        }
+
+        //Registrar una nueva Facultad
         protected void btn_registrarFacultad_onClick(object sender, EventArgs e)
         {
             PilaForms.AgregarForm("RegistrarCarrera_10.aspx");
             Response.Redirect("RegistrarFacultad_65.aspx");
         }
+
+        //Modificar una Facultad
+        protected void btn_modificarFacultad_onClick(object sender, EventArgs e)
+        {
+            Session["idFacultad"] = ddl_facultad.SelectedValue;
+            Session["modificarFacultad"] = true;
+            PilaForms.AgregarForm("RegistrarCarrera_10.aspx");
+            Response.Redirect("RegistrarFacultad_65.aspx");
+        }
+
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            CarreraEntidad carrera = new CarreraEntidad();
-            carrera.nombreCarrera = txt_nombreCarrera.Text;
-            carrera.idFacultad =Convert.ToInt32(ddl_facultad.SelectedValue);
-            CarreraDao.RegistrarCarrera(carrera);
-            if (PilaForms.pila.Peek().Equals("Default.aspx")) 
+            if((bool)Session["modificarCarrera"])
             {
-                LimpiarForm();
+                CarreraEntidad carrera = CrearCarreraDelForm();
+                carrera.idCarrera = (int)Session["idCarrera"];
+                CarreraDao.ModificarCarrera(CrearCarreraDelForm());
+                Session["modificarCarrera"] = false;
             }
             else
             {
-                Response.Redirect(PilaForms.DevolverForm());
+                CarreraDao.RegistrarCarrera(CrearCarreraDelForm());
             }
+            Response.Redirect(PilaForms.DevolverForm());
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
+            Session["modificarCarrera"] = false;
             Response.Redirect(PilaForms.DevolverForm());
         }
         protected void cargarComboUniversidad()
@@ -76,6 +101,16 @@ namespace ProyectoArtemisa
             ddl_facultad.SelectedIndex = 0;
             cargarComboUniversidad();
         }
+        
+        protected void CargarUnaCarreraEnElForm(CarreraEntidad carrera)
+        {
+            txt_nombreCarrera.Text = carrera.nombreCarrera;
+            cargarComboUniversidad();
+            ddl_universidad.SelectedValue = FacultadDao.ConsultarIdUniversidadDeUnaFacultad(carrera.idFacultad).ToString();
+            cargarComboFacultad(Convert.ToInt32(ddl_universidad.SelectedValue));
+            ddl_facultad.SelectedValue = carrera.idFacultad.ToString();
+
+        }
         protected void ddl_universidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             cargarComboFacultad(Convert.ToInt32(ddl_universidad.SelectedValue));
@@ -91,6 +126,14 @@ namespace ProyectoArtemisa
                 if (Session["idFacultad"] != null)
                 { ddl_facultad.SelectedValue = Session["idFacultad"].ToString(); }
             }
+        }
+
+        protected CarreraEntidad CrearCarreraDelForm()
+        {
+            CarreraEntidad carrera = new CarreraEntidad();
+            carrera.nombreCarrera = txt_nombreCarrera.Text;
+            carrera.idFacultad = Convert.ToInt32(ddl_facultad.SelectedValue);
+            return carrera;
         }
 }
 }

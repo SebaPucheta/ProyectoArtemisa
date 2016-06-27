@@ -68,6 +68,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_materiaProfesor"  AutoPostBack="true" />
                     </div>
                     <asp:LinkButton ID="btn_registrarMateria" runat="server" OnClick="btn_registrarMateria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarMateria"  runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />

@@ -71,7 +71,7 @@
                         <asp:DropDownList AutoPostBack="true" CssClass="form-control" runat="server" ID="ddl_universidadesLibro" OnSelectedIndexChanged="ddl_universidadesLibro_SelectedIndexChanged" />
                     </div>
                     <asp:LinkButton ID="btn_registrarUniversidad" OnClick="btn_registrarUniversidad_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarUniversidad"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarUniversidad" OnClick="btn_modificarUniversidad_Click" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="cv_pension" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_universidadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una universidad"></asp:CustomValidator>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                         <asp:DropDownList AutoPostBack="true" CssClass="form-control" runat="server" ID="ddl_facultadesLibro" OnSelectedIndexChanged="ddl_facultadesLibro_SelectedIndexChanged" />
                     </div>
                     <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarFacultad"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarFacultad" OnClick="btn_modificarFacultad_Click" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator1" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_facultadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una facultad"></asp:CustomValidator>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                         <asp:DropDownList CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddl_materiasLibro_SelectedIndexChanged" runat="server" ID="ddl_materiasLibro" />
                     </div>
                     <asp:LinkButton ID="btn_registrarMateria" OnClick="btn_registrarMateria_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarMateria"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarMateria" OnClick="btn_modificarMateria_Click" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator2" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_materiasLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una materia"></asp:CustomValidator>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                     <label for="option" id="lbl_carreras" class="control-label col-md-3">Carreras: </label>
                     <br />
                     <div class="col-lg-6 ">
-                    <asp:GridView CssClass="table table-bordered bs-table table-responsive" ID="dgv_carrerasLibro" runat="server" AutoGenerateColumns="False">
+                    <asp:GridView CssClass="table table-bordered bs-table table-responsive" ID="dgv_carrerasLibro" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="btn_modificarCarrera_OnSelectedIndexChanged" OnRowDeleting="btn_eliminarMateria_OnRowDeleting">
                         <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                         <EditRowStyle BackColor="#ffffcc" />
                         <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -124,7 +124,7 @@
                             </asp:BoundField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btn_modificarCarrera" CommandName="select" runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btn_modificarCarrera" CommandName="select" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                                     <asp:LinkButton ID="btn_eliminarMateria" CommandName="select"  runat="server" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                                 </ItemTemplate>   
                             </asp:TemplateField>
@@ -166,7 +166,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_editorialLibro" />
                     </div>
                     <asp:LinkButton ID="btn_registrarEditorial" OnClick="btn_registrarEditorial_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarEditorial"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarEditorial" OnClick="btn_modificarEditorial_onClick" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                     <asp:CustomValidator ID="CustomValidator3" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_editorialLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una editorial"></asp:CustomValidator>
                 </div>
             </div>

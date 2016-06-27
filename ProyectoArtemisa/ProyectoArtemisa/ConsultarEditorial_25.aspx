@@ -69,7 +69,7 @@
             <br />
 
             
-    <asp:GridView ID="dgv_grillaEditorial" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true">
+    <asp:GridView ID="dgv_grillaEditorial" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarEditorial_RowDeleting" OnSelectedIndexChanged="btn_modificarEditorial_SelectedIndexChanged">
                             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                             <EditRowStyle BackColor="#ffffcc" />
                             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -80,8 +80,21 @@
             <asp:BoundField DataField="nombreCiudadEditorial" HeaderText="Ciudad" />
             <asp:BoundField DataField="direccion" HeaderText="Direccion" />
             <asp:BoundField DataField="email" HeaderText="Email" />
-            <asp:ButtonField Text="Modificar" CommandName="select" />
-            <asp:ButtonField Text="Eliminar" CommandName="delete" />
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:LinkButton ID="btn_modificarEditorial" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
+                </ItemTemplate>
+                <ControlStyle Width="3px" />
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+            </asp:TemplateField>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:LinkButton ID="btn_eliminarEditorial" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                </ItemTemplate>
+                <ControlStyle Width="3px" />
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+            </asp:TemplateField>
+
         </Columns>
     </asp:GridView>
 

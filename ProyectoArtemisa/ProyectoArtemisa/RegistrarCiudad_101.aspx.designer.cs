@@ -22,13 +22,22 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_provincia;
         
         /// <summary>
-        /// Control btn_registrarUniversidad.
+        /// Control btn_registrarProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarProvincia;
+        
+        /// <summary>
+        /// Control btn_modificarProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarProvincia;
         
         /// <summary>
         /// Control txt_nombreCiudad.

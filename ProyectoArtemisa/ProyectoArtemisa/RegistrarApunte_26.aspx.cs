@@ -19,12 +19,17 @@ namespace ProyectoArtemisa
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
-            {
-                CargarForm();       
+            { 
+                if (PilaForms.pila.Peek().Equals("ConsultarLibroApunte.aspx"))
+                {
+                    CargarUnApunteEnElForm(ApunteDao.ConsultarApunte((int)Session["idApunte"]));
+                }
+                else
+                {
+                    CargarForm();       
+                }        
             }
-
-            
-        }
+         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Metodos para cargar los combos y grilla
         //Cargar combo Universidad
@@ -104,7 +109,7 @@ namespace ProyectoArtemisa
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Metodos de eventos
-        //Botones para regitrar nueva/o...
+        //Botones para regitrar y modificar...
         //Registrar nueva Universidad
         protected void btn_registrarUniversidad_onClick(object sender, EventArgs e)
         {
@@ -113,9 +118,29 @@ namespace ProyectoArtemisa
             Response.Redirect("RegistrarUniversidad_69.aspx");
         }
 
+        //Modificar una Universidad
+        protected void btn_modificarUniversidad_onClick(object sender, EventArgs e)
+        {
+            Session["idUniversidad"] = Convert.ToInt32(ddl_universidadApunte.SelectedValue);
+            Session["modificarUniversidad"] = true;
+            GuardarForm();
+            PilaForms.AgregarForm("RegistrarApunte_26.aspx");
+            Response.Redirect("RegistrarUniversidad_69.aspx");
+        }
+
         //Registrar nuevo Profesor
         protected void btn_registrarProfesor_onClick(object sender, EventArgs e)
         {
+            GuardarForm();
+            PilaForms.AgregarForm("RegistrarApunte_26.aspx");
+            Response.Redirect("RegistrarProfesor_14.aspx");
+        }
+
+        //Modificar un Profesor
+        protected void btn_modificarProfesor_onClick(object sender, EventArgs e)
+        {
+            Session["idProfesor"] = Convert.ToInt32(ddl_profesorApunte.SelectedValue);
+            Session["modificarProfesor"] = true;
             GuardarForm();
             PilaForms.AgregarForm("RegistrarApunte_26.aspx");
             Response.Redirect("RegistrarProfesor_14.aspx");
@@ -137,9 +162,29 @@ namespace ProyectoArtemisa
             Response.Redirect("RegistrarCategoria_18.aspx");
         }
 
+        //Modificar una Categoria
+        protected void btn_modificarCategoria_onClick(object sender, EventArgs e)
+        {
+            Session["idCategoria"] = Convert.ToInt32(ddl_categoriaApunte.SelectedValue);
+            Session["modificarCategoria"] = true;
+            GuardarForm();
+            PilaForms.AgregarForm("RegistrarApunte_26.aspx");
+            Response.Redirect("RegistrarCategoria_18.aspx");
+        }
+
         //Registrar nueva Materia
         protected void btn_registrarMateria_onClick(object sender, EventArgs e)
         {
+            GuardarForm();
+            PilaForms.AgregarForm("RegistrarApunte_26.aspx");
+            Response.Redirect("RegistrarMateria_6.aspx");
+        }
+
+        //Modificar una Materia
+        protected void btn_modificarMateria_onClick(object sender, EventArgs e)
+        {
+            Session["idMateria"] = Convert.ToInt32(ddl_materiaApunte.SelectedValue);
+            Session["modificarMateria"] = true;
             GuardarForm();
             PilaForms.AgregarForm("RegistrarApunte_26.aspx");
             Response.Redirect("RegistrarMateria_6.aspx");
@@ -153,9 +198,30 @@ namespace ProyectoArtemisa
             Response.Redirect("RegistrarEditorial_22.aspx");
         }
 
+
+        //Modificar una Editorial
+        protected void btn_modificarEditorial_onClick(object sender, EventArgs e)
+        {
+            Session["idEditorial"] = Convert.ToInt32(ddl_editorialApunte.SelectedValue);
+            Session["modificarEditorial"] = true;
+            GuardarForm();
+            PilaForms.AgregarForm("RegistrarApunte_26.aspx");
+            Response.Redirect("RegistrarEditorial_22.aspx");
+        }
+
         //Registrar nueva Facultad
         protected void btn_registrarFacultad_onClick(object sender, EventArgs e)
         {
+            GuardarForm();
+            PilaForms.AgregarForm("RegistrarApunte_26.aspx");
+            Response.Redirect("RegistrarFacultad_65.aspx");
+        }
+
+        //Modificar una Facultad
+        protected void btn_modificarFacultad_onClick(object sender, EventArgs e)
+        {
+            Session["idFacultad"] = Convert.ToInt32(ddl_facultadApunte.SelectedValue);
+            Session["modificarFacultad"] = true;
             GuardarForm();
             PilaForms.AgregarForm("RegistrarApunte_26.aspx");
             Response.Redirect("RegistrarFacultad_65.aspx");
@@ -182,6 +248,23 @@ namespace ProyectoArtemisa
             CargarComboProfesor(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
             CargarGrilla(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
             btn_registrarCarrera.Visible = true;
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Metodos de eventos
+        //Metodo de evento de la grilla Carreras
+        protected void btn_modificarCarrera_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["idCarrera"] = (int)dgv_carrera.SelectedDataKey.Value;
+            Session["modificarCarrera"] = true;
+            GuardarForm();
+            PilaForms.AgregarForm("RegistrarApunte_26.aspx");
+            Response.Redirect("RegistarCarrera_10.aspx");
+        }
+
+        protected void btn_eliminarMateria_OnRowDeleting(Object sender, GridViewDeleteEventArgs e)
+        {
+            CarreraDao.EliminarCarreraXMateria(Convert.ToInt32(ddl_materiaApunte.SelectedValue), (int)dgv_carrera.DataKeys[e.RowIndex].Value);
+            CargarGrilla(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,6 +315,7 @@ namespace ProyectoArtemisa
 
                     if (chk_impreso.Checked)
                     { RegistrarApunteImpreso(); }
+                    LimpiarVariablesForm();
                     LimpiarForm();
                 }
                 else
@@ -241,21 +325,23 @@ namespace ProyectoArtemisa
 
                     if (chk_impreso.Checked)
                     { ModificarApunteImpreso(); }
-
+                    Session["idApunte"] = null;
+                    LimpiarVariablesForm();
                     Response.Redirect(PilaForms.DevolverForm());
                 }
                 
             }
             else
             {
-                Response.Write("<script>window.alert('Deve seleccionar un tipo apunte');</script>");
+                Response.Write("<script>window.alert('Debe seleccionar un tipo apunte');</script>");
             }
-            LimpiarVariablesForm();
+            
         }
 
         //Boton Cancelar
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
+            Session["idApunte"] = null;
             LimpiarVariablesForm();
             Response.Redirect(PilaForms.DevolverForm());
         }
@@ -344,6 +430,7 @@ namespace ProyectoArtemisa
             nuevoApunte.precioApunte= float.Parse(txt_precioApunteDigital.Text);
             nuevoApunte.idTipoApunte = 2; //Hace referencia a un apunte de tipo Digital
             nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja;//ACA ESTABA NULL
+            nuevoApunte.idApunte = (int)Session["idApunte"];
             ApunteDao.ModificarApunte(nuevoApunte);
         }
 
@@ -359,7 +446,8 @@ namespace ProyectoArtemisa
                 nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
                 nuevoApunte.precioApunte = float.Parse(txt_precioXHoja.Text);
                 nuevoApunte.idTipoApunte = 1;
-                nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja; 
+                nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja;
+                nuevoApunte.idApunte = (int)Session["idApunte"];
                 ApunteDao.ModificarApunte(nuevoApunte);
             }
             else
@@ -389,6 +477,9 @@ namespace ProyectoArtemisa
             ddl_facultadApunte.SelectedIndex = 0;
             ddl_materiaApunte.SelectedIndex = 0;
             ddl_profesorApunte.SelectedIndex = 0;
+            chk_digital.Checked = false;
+            chk_digital.Checked = false;
+            CargarGrilla(0);
         }
 
         /// <summary>
@@ -401,15 +492,15 @@ namespace ProyectoArtemisa
             Session["codigoBarra"] = txt_codigoBarra.Text;
             Session["nombreApunte"] = txt_nombreApunte.Text;
             Session["ano"] = txt_ano.Text;
-            Session["idUniversidad"] = ddl_universidadApunte.SelectedIndex;
-            Session["idFacultad"] = ddl_facultadApunte.SelectedIndex;
-            Session["idMateria"] = ddl_materiaApunte.SelectedIndex;
-            Session["idEditorial"] = ddl_editorialApunte.SelectedIndex;
+            Session["idUniversidad"] =Convert.ToInt32(ddl_universidadApunte.SelectedValue);
+            Session["idFacultad"] = Convert.ToInt32(ddl_facultadApunte.SelectedValue);
+            Session["idMateria"] = Convert.ToInt32(ddl_materiaApunte.SelectedValue);
+            Session["idEditorial"] = Convert.ToInt32(ddl_editorialApunte.SelectedValue);
             Session["cantidadHojas"] = txt_cantHojasApunte.Text;
             Session["precionImpreso"] = txt_precioXHoja.Text;
             Session["precioDigital"] = txt_precioApunteDigital.Text;
-            Session["idProfesor"] = ddl_profesorApunte.SelectedIndex;
-            Session["idCategoria"] = ddl_categoriaApunte.SelectedIndex;
+            Session["idProfesor"] = Convert.ToInt32(ddl_profesorApunte.SelectedValue);
+            Session["idCategoria"] = Convert.ToInt32(ddl_categoriaApunte.SelectedValue);
             Session["descripcion"] = txt_descripcion.Text;
         }
 
@@ -437,32 +528,45 @@ namespace ProyectoArtemisa
             CargarComboUniversidad();
             if (Session["idUniversidad"]!=null)
             {
-                ddl_universidadApunte.SelectedIndex = int.Parse(Session["idUniversidad"].ToString());
+                ddl_universidadApunte.SelectedValue = (Session["idUniversidad"].ToString());
                 CargarComboFacultad(Convert.ToInt32(ddl_universidadApunte.SelectedValue));
                 if (Session["idFacultad"] != null)
                 {
-                    ddl_facultadApunte.SelectedIndex = int.Parse(Session["idFacultad"].ToString());
+                    ddl_facultadApunte.SelectedValue = (Session["idFacultad"].ToString());
                     CargarComboMateria(Convert.ToInt32(ddl_facultadApunte.SelectedValue));
                     if (Session["idMateria"] != null)
                     {
-                        ddl_materiaApunte.SelectedIndex = int.Parse(Session["idMateria"].ToString());
+                        ddl_materiaApunte.SelectedValue = (Session["idMateria"].ToString());
                         CargarGrilla(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
                         btn_registrarCarrera.Visible = true;
                         CargarComboProfesor(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
                         if (Session["idProfesor"] != null)
-                        { ddl_profesorApunte.SelectedIndex = int.Parse(Session["idProfesor"].ToString()); }
+                        { ddl_profesorApunte.SelectedValue = (Session["idProfesor"].ToString()); }
                     }
-                    
+                    else
+                    {
+                        CargarComboProfesor(0);
+                    }
                 }
-                    
+                else
+                {
+                    CargarComboMateria(0);
+                    CargarComboProfesor(0);
+                }
+            }
+            else
+            {
+                CargarComboFacultad(0);
+                CargarComboMateria(0);
+                CargarComboProfesor(0);
             }
             CargarComboEditorial();
             if (Session["idEditorial"]!=null)
-            { ddl_editorialApunte.SelectedIndex = int.Parse(Session["idEditorial"].ToString()); }
+            { ddl_editorialApunte.SelectedValue= (Session["idEditorial"].ToString()); }
             txt_cantHojasApunte.Text = Session["cantidadHojas"].ToString();
             CargarComboCategoria();
             if (Session["idCategoria"]!=null)
-            { ddl_categoriaApunte.SelectedIndex = int.Parse(Session["idCategoria"].ToString()); }
+            { ddl_categoriaApunte.SelectedValue = (Session["idCategoria"].ToString()); }
             txt_descripcion.Text = Session["descripcion"].ToString();
         }
 
@@ -487,6 +591,54 @@ namespace ProyectoArtemisa
             Session["idProfesor"] = null;
             Session["idCategoria"] = null;
             Session["descripcion"] = "";
+        }
+
+        /// <summary>
+        /// Recibe un objeto ApunteEntidad por parametro y carga el form con
+        /// los datos del mismo
+        /// </summary>
+        /// <param name="apunte"></param>
+        protected void CargarUnApunteEnElForm(ApunteEntidad apunte)
+        {
+            txt_ano.Text = apunte.anoApunte.ToString();
+            txt_cantHojasApunte.Text = apunte.cantHoja.ToString();
+            txt_descripcion.Text = apunte.descripcionApunte;
+            txt_nombreApunte.Text = apunte.nombreApunte;
+            CargarComboUniversidad();
+            ddl_universidadApunte.SelectedValue= FacultadDao.ConsultarIdUniversidadDeUnaFacultad(MateriaDao.DevolverIdFacultadDeUnaMateria(apunte.idMateria)).ToString();
+            CargarComboCategoria();
+            ddl_categoriaApunte.SelectedValue = apunte.idCategoria.ToString();
+            CargarComboEditorial();
+            ddl_editorialApunte.SelectedValue = apunte.idEditorial.ToString();
+            CargarComboFacultad(Convert.ToInt32(ddl_universidadApunte.SelectedValue));
+            ddl_facultadApunte.SelectedValue = MateriaDao.DevolverIdFacultadDeUnaMateria(apunte.idMateria).ToString();
+            CargarComboMateria(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
+            ddl_materiaApunte.SelectedValue = apunte.idMateria.ToString();
+            CargarGrilla(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
+            CargarComboProfesor(Convert.ToInt32(ddl_profesorApunte.SelectedValue));
+            ddl_profesorApunte.SelectedValue= apunte.idProfesor.ToString();
+
+            if(apunte.idTipoApunte==1)
+            {
+                chk_impreso.Checked = true;
+                txt_codigoBarra.Text = apunte.codigoBarraApunte;
+                txt_codigoBarra.Enabled = true;
+                txt_precioApunteDigital.Text = "";
+                txt_precioApunteDigital.Enabled = false;
+                txt_precioXHoja.Text = apunte.precioApunte.ToString();
+                txt_precioXHoja.Enabled =true;
+            }
+            else
+            {
+                chk_digital.Checked = true;
+                txt_codigoBarra.Text = "";
+                txt_codigoBarra.Enabled = false;
+                txt_precioApunteDigital.Text = apunte.precioApunte.ToString();
+                txt_precioApunteDigital.Enabled = true;
+                txt_precioXHoja.Text = "";
+                txt_precioXHoja.Enabled = false;
+            }
+            
         }
     }
 }

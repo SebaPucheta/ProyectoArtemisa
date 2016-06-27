@@ -135,5 +135,21 @@ namespace BaseDeDatos
             return fac;
         }
 
+        /// <summary>
+        /// Recibe el id de una facultad y devuelve el id de la universidad
+        /// a la que pertenese 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>int</returns>
+        public static int ConsultarIdUniversidadDeUnaFacultad(int id)
+        {
+            string query = "SELECT idUniversidad FROM Facultad WHERE idFacultad = @idFacultad";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue("@idFacultad", id);
+            int idUniversidad = (int)(cmd.ExecuteScalar());
+            cmd.Connection.Close();
+            return idUniversidad;
+        }
+
     }
 }

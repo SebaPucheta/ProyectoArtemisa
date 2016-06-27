@@ -166,7 +166,7 @@ namespace BaseDeDatos
         public static List<MateriaEntidad> DevolverMateriaXFacultad(int idFacultad)
         {
             List<MateriaEntidad> listaMateria = new List<MateriaEntidad>();
-            string query = @"SELECT M.idMateria, M.nivelCursado, M.nombreMateria, M.descripcionMateria  
+            string query = @"SELECT DISTINCT M.idMateria, M.nivelCursado, M.nombreMateria, M.descripcionMateria  
                              FROM Materia M JOIN CarreraXMateria CM ON M.idMateria=CM.idMateria 
 					                        JOIN Carrera C ON C.idCarrera=CM.idCarrera
 					                        WHERE C.idFacultad = @idFacultad 
@@ -242,7 +242,40 @@ namespace BaseDeDatos
             return lista;
         }
 
+        /// <summary>
+        /// Recibe un id de Materia y devuelve el id de la
+        /// Facultad a la que pertenece
+        /// </summary>
+        /// <param name="idMateria"></param>
+        /// <returns>int</returns>
+        public static int DevolverIdFacultadDeUnaMateria(int idMateria)
+        {
+            string query = @"SELECT C.idFacultad  
+                             FROM Materia M JOIN CarreraXMateria CM ON M.idMateria=CM.idMateria 
+					                        JOIN Carrera C ON C.idCarrera=CM.idCarrera
+					                        WHERE M.idMateria = @idMateria 
+					                        AND M.baja= 0";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idMateria", idMateria);
+            int idFacultad = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return idFacultad;
+        }
 
-
+        /// <summary>
+        /// Recibe un idCarrera y un idMateria, con estos datos elimina una fila de la tabla
+        /// CarreraXMateria. Osea que la carrera ingresada ya no tiene mas la materia ingresada. 
+        /// </summary>
+        /// <param name="idMateria"></param>
+        /// <param name="idCarrera"></param>
+        public static void EliminarCarreraXMateria(int idMateria, int idCarrera)
+        {
+            string query = @"delete from CarreraXMateria Where idCarrera = @idCarrera and idMateria = @idMateria";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idMateria", idMateria);
+            cmd.Parameters.AddWithValue(@"idCarrera", idCarrera);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
     }
 }

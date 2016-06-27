@@ -22,13 +22,22 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_universidadFacultad;
         
         /// <summary>
-        /// Control LinkButton2.
+        /// Control btn_registrarUniversidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
+        
+        /// <summary>
+        /// Control btn_modificarUniversidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarUniversidad;
         
         /// <summary>
         /// Control txt_nombre.
@@ -49,13 +58,22 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_provincia;
         
         /// <summary>
-        /// Control btn_registrarUniversidad.
+        /// Control btn_registrarProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_registrarUniversidad;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarProvincia;
+        
+        /// <summary>
+        /// Control btn_modificarProvincia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarProvincia;
         
         /// <summary>
         /// Control ddl_ciudad.
@@ -67,13 +85,22 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_ciudad;
         
         /// <summary>
-        /// Control LinkButton1.
+        /// Control btn_registrarCiudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton btn_registrarCiudad;
+        
+        /// <summary>
+        /// Control btn_modificarCiudad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_modificarCiudad;
         
         /// <summary>
         /// Control btn_registrar.

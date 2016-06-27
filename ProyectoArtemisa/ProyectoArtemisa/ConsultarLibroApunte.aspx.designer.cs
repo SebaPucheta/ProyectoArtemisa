@@ -22,6 +22,24 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_tipoItem;
         
         /// <summary>
+        /// Control lbl_tipoApunte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tipoApunte;
+        
+        /// <summary>
+        /// Control lbl_apunteDigital.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_apunteDigital;
+        
+        /// <summary>
         /// Control chk_apunteDigital.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.CheckBox chk_apunteDigital;
         
         /// <summary>
+        /// Control lbl_apunteImpreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_apunteImpreso;
+        
+        /// <summary>
         /// Control chk_apunteImpreso.
         /// </summary>
         /// <remarks>
@@ -38,6 +65,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chk_apunteImpreso;
+        
+        /// <summary>
+        /// Control txt_nombreItem.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_nombreItem;
         
         /// <summary>
         /// Control ddl_universidad.
@@ -85,12 +121,21 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultar;
         
         /// <summary>
-        /// Control dgv_grillaItem.
+        /// Control dgv_grillaApunte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgv_grillaItem;
+        protected global::System.Web.UI.WebControls.GridView dgv_grillaApunte;
+        
+        /// <summary>
+        /// Control dgv_grillaLibro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgv_grillaLibro;
     }
 }

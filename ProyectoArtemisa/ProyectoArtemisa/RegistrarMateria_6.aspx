@@ -21,6 +21,7 @@
                     <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_universidadMateria" OnSelectedIndexChanged="ddl_universidadMateria_SelectedIndexChanged"  AutoPostBack="true"/>
                 </div>
                 <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                <asp:LinkButton ID="btn_modificarUniversidad"  runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
             </div>
         </div>
         <br />
@@ -32,6 +33,7 @@
                     <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_facultadMateria" OnSelectedIndexChanged="ddl_facultadMateria_SelectedIndexChanged" AutoPostBack="true" />
                 </div>
                 <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                <asp:LinkButton ID="btn_modificarFacultad"  runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
             </div>
         </div>
         <br />
@@ -53,7 +55,13 @@
                         <asp:CheckBox ID="chk_seleccionado" runat="server" DataField="df_chk_seleccionado" EnableViewState="true" />
                         </ItemTemplate>
                         </asp:TemplateField>
-                       
+                       <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btn_modificarCarrera" CommandName="select" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
+                                </ItemTemplate>   
+                                <ControlStyle Width="3px" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
                 </div>

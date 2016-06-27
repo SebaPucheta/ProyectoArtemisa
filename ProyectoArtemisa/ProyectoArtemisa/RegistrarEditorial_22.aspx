@@ -11,7 +11,7 @@
             <br />
 
         <div>
-            <!--Ingreso el nombre de-->
+            <!--Ingreso el nombre de la editorial-->
             <div class="row">
                 <div class="form-group">
                     <label for="cuil" class="control-label col-md-3">Nombre Editorial</label>
@@ -33,7 +33,7 @@
 
         </div>
         <div>
-            <!--Ingreso el nombre de-->
+            <!--Ingreso el nombre del contacto-->
             <div class="row">
                 <div class="form-group">
                     <label for="cuil" class="control-label col-md-3">Nombre del contacto</label>
@@ -56,7 +56,7 @@
         </div>
 
         <div>
-            <!--Ingreso el nombre de-->
+            <!--Ingreso el telefono-->
             <div class="row">
                 <div class="form-group">
                     <label for="cuil" class="control-label col-md-3">Telefono</label>
@@ -87,6 +87,7 @@
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_provincia" OnSelectedIndexChanged="ddl_provinciaApunte_SelectedIndexChanged"/>
                     </div>
                    <asp:LinkButton ID="btn_registrarProvincia" runat="server" OnClick="btn_registrarProvincia_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                   <asp:LinkButton ID="btn_modificarProvincia" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 
                 </div>
             </div>
@@ -100,12 +101,12 @@
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_ciudad" />
                     </div>
                     <asp:LinkButton ID="btn_registrarCiudad" runat="server" OnClick="btn_registrarCiudad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                
+                    <asp:LinkButton ID="btn_modificarCiudad" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
 
-            <!--Ingreso el nombre de-->
+            <!--Ingreso del cuil-->
             <div class="row">
                 <div class="form-group">
                     <label for="cuil" class="control-label col-md-3">Direccion</label>
@@ -127,7 +128,7 @@
 
         </div>
         <div>
-            <!--Ingreso el nombre de-->
+            <!--Ingreso el email-->
             <div class="row">
                 <div class="form-group">
                     <label for="cuil" class="control-label col-md-3">Email</label>

@@ -20,8 +20,8 @@
                     <div class="col-md-5">
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_universidadFacultad" />
                     </div>
-                    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                
+                    <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarUniversidad"  runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -53,8 +53,8 @@
                     <div class="col-md-5">
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_provincia" OnSelectedIndexChanged="ddl_provinciaApunte_SelectedIndexChanged"/>
                     </div>
-                   <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarProvincia_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                
+                   <asp:LinkButton ID="btn_registrarProvincia" runat="server" OnClick="btn_registrarProvincia_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarProvincia" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -66,8 +66,8 @@
                     <div class="col-md-5">
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_ciudad" />
                     </div>
-                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="btn_registrarCiudad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                
+                    <asp:LinkButton ID="btn_registrarCiudad" runat="server" OnClick="btn_registrarCiudad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarCiudad" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />

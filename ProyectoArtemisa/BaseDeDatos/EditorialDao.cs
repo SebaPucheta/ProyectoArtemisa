@@ -177,10 +177,10 @@ namespace BaseDeDatos
             string consulta = @"SELECT e.idEditorial, e.nombreEditorial, e.nombreContacto, e.telefono, c.nombreCiudad, p.nombreProvincia, e.email 
                                 FROM Editorial e INNER JOIN Ciudad c ON e.idCiudadEditorial = c.idCiudad
                                                  INNER JOIN Provincia p ON p.idProvincia = c.idProvincia
-                                WHERE e.nombreEditorial LIKE @nomEdi AND e.nombreContacto LIKE @nomCon AND p.idProvincia LIKE @idProv  AND c.idCiudad LIKE @idCiu AND baja = 0";
+                                WHERE e.nombreEditorial LIKE @nomEdi AND e.nombreContacto LIKE @nomCon AND p.idProvincia LIKE @idProv  AND c.idCiudad LIKE @idCiu AND e.baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"nomEdi", "%" + nombreEditorial + "%");
-            cmd.Parameters.AddWithValue(@"nomCon", "%" + nombreContacto + "%");
+            cmd.Parameters.AddWithValue(@"nomEdi", nombreEditorial + "%");
+            cmd.Parameters.AddWithValue(@"nomCon", nombreContacto + "%");
             cmd.Parameters.AddWithValue(@"idProv", idProvincia + "%");
             cmd.Parameters.AddWithValue(@"idCiu", idCiudad + "%");
             SqlDataReader dr = cmd.ExecuteReader();

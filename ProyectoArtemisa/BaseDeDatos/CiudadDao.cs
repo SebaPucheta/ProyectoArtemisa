@@ -79,10 +79,10 @@ namespace BaseDeDatos
         }
 
         /// <summary>
-        /// Consultar: una ciudad registrada en la base de datos
+        /// Consultar: una ciudad registrada en la base de datos por un idProvincia
         /// </summary>
         /// <returns>Lista de objetos ciudad</returns>
-        public static List<CiudadEntidad> ConsultarCiudad(int id)
+        public static List<CiudadEntidad> ConsultarCiudadXProvincia(int id)
         {
             
             string consulta = @"SELECT idCiudad, idProvincia, nombreCiudad FROM Ciudad WHERE idProvincia = @id AND baja = 0";
@@ -102,6 +102,46 @@ namespace BaseDeDatos
             cmd.Connection.Close();
             return listaCiudad;
         }
+
+        /// <summary>
+        /// Consultar: una ciudad registrada en la base de datos por un idCiudad
+        /// </summary>
+        /// <returns>CiudadEntidad</returns>
+        public static CiudadEntidad ConsultarCiudad(int id)
+        {
+
+            string consulta = @"SELECT idCiudad, idProvincia, nombreCiudad FROM Ciudad WHERE idCiudad = @id AND baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", id);
+            SqlDataReader dr = cmd.ExecuteReader();
+            CiudadEntidad ciudad = new CiudadEntidad();
+            while (dr.Read())
+            {
+                ciudad.idCiudad = int.Parse(dr["idCiudad"].ToString());
+                ciudad.nombreCiudad = dr["nombreCiudad"].ToString();
+                ciudad.idProvincia = int.Parse(dr["idProvincia"].ToString());
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return ciudad;
+        }
+        /// <summary>
+        /// El metodo recibe el id de una ciudad y devuelve el id de la provincia
+        /// a la que pertenece
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>int</returns>
+        public static int ConsultaridProvinciaDeLaCiudad(int id)
+        {
+            string consulta = @"SELECT idProvincia FROM Ciudad WHERE idCiudad = @id AND baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", id);
+            int idProvincia = (int)(cmd.ExecuteScalar());
+            
+            cmd.Connection.Close();
+            return idProvincia;
+        }
+
 
     }
 }

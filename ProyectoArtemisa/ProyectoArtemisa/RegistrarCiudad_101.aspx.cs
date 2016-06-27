@@ -17,10 +17,20 @@ namespace ProyectoArtemisa
             if(!IsPostBack)
             {
                 CargarComboProvincia();
-                if (Session["idProvincia"] != null)
+                if ((bool)Session["modificarCiudad"])
                 {
-                    ddl_provincia.SelectedIndex = int.Parse(Session["idProvincia"].ToString());
+                    ddl_provincia.SelectedIndex =CiudadDao.ConsultaridProvinciaDeLaCiudad((int)Session["idCiudad"]);
+                    txt_nombreCiudad.Text = CiudadDao.ConsultarCiudad((int)Session["idCiudad"]).nombreCiudad;
                 }
+                else 
+                {
+                    if (Session["idProvincia"] != null)
+                    {
+                        ddl_provincia.SelectedValue = Session["idProvincia"].ToString();
+                    }
+                }
+                
+                
             }
             
         }
@@ -50,20 +60,24 @@ namespace ProyectoArtemisa
         }
         protected void btn_registrar_Click(object sender, EventArgs e)
         {
-            CiudadDao.RegistrarCiudad(CargarCiudadDesdeForm());
-            if (PilaForms.pila.Peek().Equals("Default.aspx"))
+            
+            if ((bool)Session["modificarCiudad"])
             {
-                LimpiarForm();
+                CiudadEntidad ciudad = CargarCiudadDesdeForm();
+                ciudad.idCiudad = (int)Session["idCiudad"];
+                CiudadDao.ModificarCiudad(ciudad);
+                Session["modificarCiudad"] = false;
             }
             else
             {
-                Response.Redirect(PilaForms.DevolverForm());
+                CiudadDao.RegistrarCiudad(CargarCiudadDesdeForm());
             }
-
+            Response.Redirect(PilaForms.DevolverForm());
         }
 
         protected void btn_salir_Click(object sender, EventArgs e)
         {
+            Session["modificarCiudad"] = false;
             Response.Redirect(PilaForms.DevolverForm());
         }
 
@@ -73,6 +87,13 @@ namespace ProyectoArtemisa
             Response.Redirect("RegistrarProvincia_105.aspx");
         }
 
+        protected void btn_modificarProvincia_onClick(object sender, EventArgs e)
+        {
+            Session["idProvincia"] = ddl_provincia.SelectedValue;
+            Session["modificarProvincia"] = true;
+            PilaForms.AgregarForm("RegistrarCiudad_101.aspx");
+            Response.Redirect("RegistrarProvincia_105.aspx");
+        }
 
 
     }

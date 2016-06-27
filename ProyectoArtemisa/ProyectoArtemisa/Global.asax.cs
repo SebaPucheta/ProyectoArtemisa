@@ -18,12 +18,25 @@ namespace ProyectoArtemisa
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["PilaForm"] = new Stack<string>();
+            //IDs
             Session["idApunte"] = null;
             Session["idLibro"] = null;
             Session["idCiudad"] = null;
             Session["idProvincia"] = null;
+            Session["idCarrera"] = null;
 
+            //Banderas de Modificar
+            Session["modificarUniversidad"] = false;
+            Session["modificarFacultad"] = false;
+            Session["modificarMateria"] = false;
+            Session["modificarCarrera"] = false;
+            Session["modificarProvincia"] = false;
+            Session["modificarCiudad"] = false;
+            Session["modificarEditorial"] = false;
+            Session["modificarCategoria"] = false;
+            Session["modificarProfesor"] = false;
+            
+            
             //Form Apunte
             Session["chk_Impreso"] = false;
             Session["chk_Digital"] = false;

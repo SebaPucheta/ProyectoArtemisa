@@ -182,7 +182,21 @@ namespace BaseDeDatos
             return lista;
         }
 
-        
+        /// <summary>
+        /// Recibe un idCarrera y un idMateria, con estos datos elimina una fila de la tabla
+        /// CarreraXMateria. Osea que la carrera ingresada ya no tiene mas la materia ingresada. 
+        /// </summary>
+        /// <param name="idMateria"></param>
+        /// <param name="idCarrera"></param>
+        public static void EliminarCarreraXMateria(int idMateria, int idCarrera)
+        {
+            string query = @"delete from CarreraXMateria Where idCarrera = @idCarrera and idMateria = @idMateria";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idMateria", idMateria);
+            cmd.Parameters.AddWithValue(@"idCarrera", idCarrera);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
 
 
 

@@ -16,26 +16,42 @@ namespace ProyectoArtemisa
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            { CargarForm(); }
+            {
+                if ((bool)Session["modificarMateria"])
+                {
+                    CargarUnMateriaEnElForm(MateriaDao.ConsultarMateria((int)Session["idMateria"]));
+                }
+                else
+                {
+                    CargarForm();
+                }
+                
+                 
+            }
         }
 
         
         protected void btn_registrarMateria_Click(object sender, EventArgs e)
         {
-            MateriaDao.RegistrarMateria(CargarMateriaDesdeForm());
-
-            if (PilaForms.pila.Peek().Equals("Default.aspx"))
+            
+            
+            if ((bool)Session["modificarMateria"])
             {
-                LimpiarForm();
+                MateriaEntidad materia = CargarMateriaDesdeForm();
+                materia.idMateria = (int)Session["idMateria"];
+                Session["modificarMateria"] = false;
+                MateriaDao.ModificarMateria(materia);
             }
             else
             {
-                Response.Redirect(PilaForms.DevolverForm());
+                MateriaDao.RegistrarMateria(CargarMateriaDesdeForm());    
             }
+            Response.Redirect(PilaForms.DevolverForm());
         }
         
         protected void btn_cancelarMateria_Click(object sender, EventArgs e)
         {
+            Session["modificarMateria"] = false;
             Response.Redirect(PilaForms.DevolverForm());
         }
         
@@ -108,16 +124,28 @@ namespace ProyectoArtemisa
             txt_nombreMateriaLibro.Text = "";
         }
 
+        protected void CargarUnMateriaEnElForm(MateriaEntidad materia)
+        {
+            txt_descripcionMateriaLibro.Text = materia.descripcionMateria;
+            txt_nivelCursadoMateria.Text = materia.nivelCursado.ToString();
+            txt_nombreMateriaLibro.Text = materia.nombreMateria;
+            CargarComboUniversidad();
+            ddl_universidadMateria.SelectedValue=FacultadDao.ConsultarIdUniversidadDeUnaFacultad(MateriaDao.DevolverIdFacultadDeUnaMateria(materia.idMateria)).ToString();
+            CargarComboFacultad(Convert.ToInt32(ddl_universidadMateria.SelectedValue));
+            ddl_facultadMateria.SelectedValue = MateriaDao.DevolverIdFacultadDeUnaMateria(materia.idMateria).ToString();
+            CargarGrilla();
+        }
+
         public void CargarForm()
         {
             CargarComboUniversidad();
             if (Session["idUniversidad"] != null)
             {
-                ddl_universidadMateria.SelectedIndex = int.Parse(Session["idUniversidad"].ToString());
+                ddl_universidadMateria.SelectedValue = Session["idUniversidad"].ToString();
                 CargarComboFacultad(Convert.ToInt32(ddl_universidadMateria.SelectedValue));
                 if (Session["idFacultad"] != null)
                 {
-                    ddl_facultadMateria.SelectedIndex = int.Parse(Session["idFacultad"].ToString());
+                    ddl_facultadMateria.SelectedValue= Session["idFacultad"].ToString();
                     CargarGrilla(); 
                 }
             }
@@ -128,8 +156,23 @@ namespace ProyectoArtemisa
             Response.Redirect("RegistrarUniversidad_69.aspx");
         }
 
+        protected void btn_modificarUniversidad_onClick(object sender, EventArgs e)
+        {
+            Session["idUniversidad"] = ddl_universidadMateria.SelectedValue;
+            Session["modificarUniversidad"] = true;
+            PilaForms.AgregarForm("RegistrarMateria_6.aspx");
+            Response.Redirect("RegistrarUniversidad_69.aspx");
+        }
         protected void btn_registrarFacultad_onClick(object sender, EventArgs e)
         {
+            PilaForms.AgregarForm("RegistrarMateria_6.aspx");
+            Response.Redirect("RegistrarFacultad_65.aspx");
+        }
+
+        protected void btn_modificarFacultad_onClick(object sender, EventArgs e)
+        {
+            Session["idFacultad"] = ddl_facultadMateria.SelectedValue;
+            Session["modificarFacultad"] = true;
             PilaForms.AgregarForm("RegistrarMateria_6.aspx");
             Response.Redirect("RegistrarFacultad_65.aspx");
         }

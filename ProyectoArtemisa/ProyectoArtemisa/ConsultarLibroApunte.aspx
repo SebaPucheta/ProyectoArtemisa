@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label for="option" class="control-label col-md-3">Tipo Item:</label>
                     <div class="col-md-4">
-                        <asp:DropDownList  CssClass="form-control" runat="server" ID="ddl_tipoItem" AutoPostBack="true" OnSelectedIndexChanged=" ddl_tipoItem_SelectedIndexChanged"/>
+                        <asp:DropDownList  CssClass="form-control" runat="server" ID="ddl_tipoItem" AutoPostBack="true" OnSelectedIndexChanged="ddl_tipoItem_SelectedIndexChanged"/>
                    </div>
                 </div>
              <br />
@@ -27,14 +27,14 @@
                 <!--Tipo de apunte -->
                 <div class="row">
                     <div class="form-group">
-                        <asp:label runat="server"  Visible="false" for="option" class="control-label col-md-3"><strong>Tipo de Apunte:</strong></asp:label>
+                        <asp:label runat="server" ID="lbl_tipoApunte" Visible="false" for="option" class="control-label col-md-3"><strong>Tipo de Apunte:</strong></asp:label>
                         <div class=" col-md-5">
                             <div class="col-md-4">
-                                <asp:Label runat="server" Visible="false" class="checkbox-inline">
+                                <asp:Label runat="server" ID="lbl_apunteDigital" Visible="false" class="checkbox-inline">
                                     <asp:CheckBox runat="server" type="checkbox" name="" ID="chk_apunteDigital" /><strong>Digital</strong></asp:Label>
                             </div>
                             <div class="col-md-4">
-                                <asp:Label runat="server" Visible="false" class="checkbox-inline">
+                                <asp:Label runat="server" ID="lbl_apunteImpreso" Visible="false" class="checkbox-inline">
                                     <asp:CheckBox runat="server" type="checkbox" name="" ID="chk_apunteImpreso" /><strong>Impreso</strong></asp:Label>
                             </div>
                         </div>
@@ -42,6 +42,16 @@
                 </div>
                 <br />
             
+                <!-- Nombre del Item -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="nombre" class="control-label col-md-3">Nombre del Item:</label>
+                    <div class="col-md-7">
+                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreItem" value="" ViewStateMode="Enabled" />
+                    </div>
+                </div>
+            </div>
+            <br />
             
             <!-- Universidad -->
             <div class="row">
@@ -95,24 +105,67 @@
             <br />
             <br />
 
-            
-    <asp:GridView ID="dgv_grillaItem" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true">
-                            <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                            <EditRowStyle BackColor="#ffffcc" />
-                            <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
-        <Columns>
-            <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-            <asp:BoundField DataField="precio" HeaderText="Precio" />
-            <asp:BoundField DataField="stock" HeaderText="Stock" />
-            <asp:BoundField DataField="carrera" HeaderText="Carrera" />
-            <asp:BoundField DataField="materia" HeaderText="Materia" />
-            <asp:BoundField DataField="editorial" HeaderText="Editorial" />
-            <asp:BoundField DataField="profesor" HeaderText="Profesor" />
-            <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Apunte" />
-            <asp:ButtonField Text="Modificar" CommandName="select" />
-            <asp:ButtonField Text="Eliminar" CommandName="delete" />
-        </Columns>
-    </asp:GridView>
+                <!-- Grilla Apunte-->
+                <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged">
+                    <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                    <EditRowStyle BackColor="#ffffcc" />
+                    <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                    <Columns>
+                        <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                        <asp:BoundField DataField="precio" HeaderText="Precio" />
+                        <asp:BoundField DataField="stock" HeaderText="Stock" />
+                        <asp:BoundField DataField="carrera" HeaderText="Carrera" />
+                        <asp:BoundField DataField="materia" HeaderText="Materia" />
+                        <asp:BoundField DataField="editorial" HeaderText="Editorial" />
+                        <asp:BoundField DataField="profesor" HeaderText="Profesor" />
+                        <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Apunte" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btn_modificarApunte" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
+
+                            </ItemTemplate>
+                            <ControlStyle Width="3px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btn_eliminarApunte" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                            </ItemTemplate>
+                            <ControlStyle Width="3px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+                <!-- Grilla Libro-->
+                <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged">
+                    <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                    <EditRowStyle BackColor="#ffffcc" />
+                    <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                    <Columns>
+                        <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                        <asp:BoundField DataField="precio" HeaderText="Precio" />
+                        <asp:BoundField DataField="stock" HeaderText="Stock" />
+                        <asp:BoundField DataField="carrera" HeaderText="Carrera" />
+                        <asp:BoundField DataField="materia" HeaderText="Materia" />
+                        <asp:BoundField DataField="editorial" HeaderText="Editorial" />
+                        <asp:BoundField DataField="autor" HeaderText="Autor" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btn_modificarLibro" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
+
+                            </ItemTemplate>
+                            <ControlStyle Width="3px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btn_eliminarLibro" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                            </ItemTemplate>
+                            <ControlStyle Width="3px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
 
             </div>
         </div>

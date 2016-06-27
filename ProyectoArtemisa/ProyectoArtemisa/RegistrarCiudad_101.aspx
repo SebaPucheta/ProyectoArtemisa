@@ -16,7 +16,8 @@
                     <div class="col-md-5">
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_provincia"/>
                     </div>
-                    <asp:LinkButton ID="btn_registrarUniversidad" runat="server" OnClick="btn_registrarProvincia_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarProvincia" runat="server" OnClick="btn_registrarProvincia_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarProvincia" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 
                 </div>
             </div>

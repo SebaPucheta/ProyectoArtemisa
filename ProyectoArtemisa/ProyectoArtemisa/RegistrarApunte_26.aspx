@@ -102,7 +102,7 @@
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_universidadApunte" OnSelectedIndexChanged="ddl_universidadApunte_SelectedIndexChanged"/>
                     </div>
                     <asp:LinkButton ID="btn_registrarUniversidad"  runat="server" OnClick="btn_registrarUniversidad_onClick"><span class="glyphicon glyphicon-plus " aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarUniversidad"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarUniversidad"  runat="server" OnClick="btn_modificarUniversidad_onClick"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -115,7 +115,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_facultadApunte" OnSelectedIndexChanged="ddl_facultadApunte_SelectedIndexChanged" />
                     </div>
                     <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarFacultad"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarFacultad" OnClick="btn_modificarFacultad_onClick" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -128,7 +128,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_materiaApunte" OnSelectedIndexChanged="ddl_materiaApunte_SelectedIndexChanged" AutoPostBack="true" />
                     </div>
                     <asp:LinkButton ID="btn_registrarMateria" runat="server" OnClick="btn_registrarMateria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarMateria"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarMateria" runat="server" OnClick="btn_modificarMateria_onClick"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -138,7 +138,7 @@
                  <label for="option" class="control-label col-md-3">Carrera:</label>
                
                 <div class="col-lg-6 ">
-                    <asp:GridView ID="dgv_carrera" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered bs-table table-responsive ">
+                    <asp:GridView ID="dgv_carrera" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered bs-table table-responsive" OnSelectedIndexChanged="btn_modificarCarrera_OnSelectedIndexChanged" OnRowDeleting="btn_eliminarMateria_OnRowDeleting">
                         <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                         <EditRowStyle BackColor="#ffffcc" />
                         <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -148,7 +148,7 @@
                             </asp:BoundField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btn_modificarCarrera" CommandName="select" runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btn_modificarCarrera" CommandName="select" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                                     
                                 </ItemTemplate>   
                                 <ControlStyle Width="3px" />
@@ -156,7 +156,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btn_eliminarMateria" CommandName="select"  runat="server" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btn_eliminarMateria" CommandName="delete"  runat="server" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                                 </ItemTemplate>   
                                 <ControlStyle Width="3px" />
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -176,8 +176,8 @@
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_editorialApunte" />
                     </div>
-                    <asp:LinkButton ID="btn_regitrarEditorial" OnClick="btn_registrarEditorial_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarEditorial"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_registrarEditorial" OnClick="btn_registrarEditorial_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarEditorial" OnClick="btn_modificarEditorial_onClick"  runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -240,7 +240,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_profesorApunte" />
                     </div>
                     <asp:LinkButton ID="btn_registrarProfesor" runat="server" OnClick="btn_registrarProfesor_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarProfesor"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarProfesor" runat="server" OnClick="btn_modificarProfesor_onClick"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />
@@ -253,7 +253,7 @@
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_categoriaApunte" />
                     </div>
                     <asp:LinkButton ID="btn_registrarCategoria" runat="server" OnClick="btn_registrarCategoria_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarCategoria"  runat="server" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="btn_modificarCategoria" runat="server" OnClick="btn_modificarCategoria_onClick"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </div>
             </div>
             <br />

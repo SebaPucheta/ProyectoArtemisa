@@ -16,7 +16,14 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                CargarComboMateria();
+                if ((bool)Session["modificarProfesor"])
+                {
+                    CargarUnProfesorEnElForm(ProfesorDao.ConsultarUnProfesor((int)Session["idProfesor"]));
+                }
+                else
+                {
+                    CargarComboMateria();
+                }
             }
         }
 
@@ -36,6 +43,13 @@ namespace ProyectoArtemisa
             txt_nombre.Text = string.Empty;
         }
 
+        protected void CargarUnProfesorEnElForm(ProfesorEntidad profesor)
+        {
+            txt_apellido.Text = profesor.apellidoProfesor;
+            txt_nombre.Text = profesor.nombreProfesor;
+            CargarComboMateria();
+            ddl_materiaProfesor.SelectedValue = profesor.idMateria.ToString();
+        }
         //Eventos del form
         protected void btn_registrar_Click(object sender, EventArgs e)
         {
@@ -45,15 +59,18 @@ namespace ProyectoArtemisa
                 prof.apellidoProfesor = txt_apellido.Text;
                 prof.nombreProfesor = txt_nombre.Text;
                 prof.idMateria =Convert.ToInt32(ddl_materiaProfesor.SelectedValue);
-                ProfesorDao.RegistrarProfesor(prof);
-                if (PilaForms.pila.Peek().Equals("Default.aspx"))
+                
+                if ((bool)Session["modificarProfesor"])
                 {
-                    limpiarForm();
+                    prof.idProfesor = (int)Session["idProfesor"];
+                    ProfesorDao.ModificarProfesor(prof);
+                    Session["modificarProfesor"]= false;
                 }
                 else
                 {
-                    Response.Redirect(PilaForms.DevolverForm());
+                    ProfesorDao.RegistrarProfesor(prof);
                 }
+                Response.Redirect(PilaForms.DevolverForm());
                 //Agregar boton emergente
             }
             catch
@@ -64,12 +81,22 @@ namespace ProyectoArtemisa
 
         protected void btn_salir_Click(object sender, EventArgs e)
         {
+            Session["modificarProfesor"] = false;
             Response.Redirect(PilaForms.DevolverForm());
             //Response redirect al form anterior
         }
 
         protected void btn_registrarMateria_onClick(object sender, EventArgs e)
         {
+            PilaForms.AgregarForm("RegistrarProfesor_14.aspx");
+            Response.Redirect("RegistrarMateria_6.aspx");
+            //Response redirect al form anterior
+        }
+
+        protected void btn_modificarMateria_onClick(object sender, EventArgs e)
+        {
+            Session["idMateria"] = ddl_materiaProfesor.SelectedValue;
+            Session["modificarMateria"] = true;
             PilaForms.AgregarForm("RegistrarProfesor_14.aspx");
             Response.Redirect("RegistrarMateria_6.aspx");
             //Response redirect al form anterior

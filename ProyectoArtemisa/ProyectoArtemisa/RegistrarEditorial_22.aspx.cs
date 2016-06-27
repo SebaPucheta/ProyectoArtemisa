@@ -14,21 +14,59 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                CargarComboProvincia();
+                if ((PilaForms.pila.Peek().Equals("ConsultarEditorial_25.aspx")) || ((bool)Session["modificarEditorial"]))
+                {
+                    CargarUnObjetoEnElForm(EditorialDao.ConsultarUnaEditorial((int)Session["idEditorial"]));
+                }
+                else
+                {
+                    CargarComboProvincia();
+                }
+
             }
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            //    int idEditorial
-            //string nombre
-            //string telefono
-            //string direccion
-            //string email
-            //string nombreContacto
+            if ((PilaForms.pila.Peek().Equals("ConsultarEditorial_25.aspx")) || ((bool)Session["modificarEditorial"]))
+            {
+                EditorialEntidad editorial = CrearUnObjetoDesdeElForm();
+                editorial.idEditorial = (int)Session["idEditorial"];
+                EditorialDao.ModificarEditorial(editorial);
+                LimpiarForm();
+                Session["idEditorial"] = null;
+                Session["modificarEditorial"] = false;
+            }
+            else
+            {
+                EditorialDao.RegistrarEditorial(CrearUnObjetoDesdeElForm());
+                Response.Redirect(PilaForms.DevolverForm());
+            }
 
+        }
+        protected void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            Session["modificarEditorial"] = false;
+            Response.Redirect(PilaForms.DevolverForm());
+        }
+
+        protected void CargarUnObjetoEnElForm(EditorialEntidad editorial)
+        {
+            txt_direccion.Text = editorial.direccion;
+            txt_email.Text = editorial.email;
+            txt_nombreContacto.Text = editorial.nombreContacto;
+            txt_nombreEditorial.Text = editorial.nombreEditorial;
+            txt_telefono.Text = editorial.telefono;
+            CargarComboProvincia();
+            ddl_provincia.SelectedValue = CiudadDao.ConsultaridProvinciaDeLaCiudad(editorial.idCiudadEditorial).ToString();
+            CargarComboCiudad(Convert.ToInt32(ddl_provincia.SelectedValue));
+            ddl_ciudad.SelectedValue = editorial.idCiudadEditorial.ToString();
+        }
+
+        protected EditorialEntidad CrearUnObjetoDesdeElForm()
+        {
             EditorialEntidad editorial = new EditorialEntidad();
             editorial.nombreEditorial = txt_nombreEditorial.Text;
             editorial.nombreContacto = txt_nombreContacto.Text;
@@ -36,23 +74,8 @@ namespace ProyectoArtemisa
             editorial.email = txt_email.Text;
             editorial.direccion = txt_direccion.Text;
             editorial.idCiudadEditorial = Convert.ToInt32(ddl_ciudad.SelectedValue);
-            EditorialDao.RegistrarEditorial(editorial);
-
-            if (PilaForms.pila.Peek().Equals("Default.aspx"))
-            {
-                LimpiarForm();
-            }
-            else
-            {
-                Response.Redirect(PilaForms.DevolverForm());
-            }
-
+            return editorial;
         }
-        protected void btn_cancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(PilaForms.DevolverForm());
-        }
-
         protected void LimpiarForm()
         {
             txt_direccion.Text = "";
@@ -66,8 +89,24 @@ namespace ProyectoArtemisa
             PilaForms.AgregarForm("RegistrarEditorial_22.aspx");
             Response.Redirect("RegistrarProvincia_105.aspx");
         }
+        protected void btn_modificarProvincia_onClick(object sender, EventArgs e)
+        {
+            Session["idProvincia"] = ddl_provincia.SelectedValue;
+            Session["modificarProvincia"] = true;
+            PilaForms.AgregarForm("RegistrarEditorial_22.aspx");
+            Response.Redirect("RegistrarProvincia_105.aspx");
+        }
+
         protected void btn_registrarCiudad_onClick(object sender, EventArgs e)
         {
+            PilaForms.AgregarForm("RegistrarEditorial_22.aspx");
+            Response.Redirect("RegistrarCiudad_101.aspx");
+        }
+
+        protected void btn_modificarCiudad_onClick(object sender, EventArgs e)
+        {
+            Session["idCiudad"] = ddl_ciudad.SelectedValue;
+            Session["modificarCiudad"] = true;
             PilaForms.AgregarForm("RegistrarEditorial_22.aspx");
             Response.Redirect("RegistrarCiudad_101.aspx");
         }
@@ -89,7 +128,7 @@ namespace ProyectoArtemisa
 
         protected void CargarComboCiudad(int idProvincia)
         {
-            ddl_ciudad.DataSource = CiudadDao.ConsultarCiudad(idProvincia);
+            ddl_ciudad.DataSource = CiudadDao.ConsultarCiudadXProvincia(idProvincia);
             ddl_ciudad.DataTextField = "nombreciudad";
             ddl_ciudad.DataValueField = "idCiudad";
             ddl_ciudad.DataBind();
