@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
 
-    <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+    <div class="container col-lg-offset-5 col-lg-3" id="div_form">
      <div class="form-group">
         
          <!-- Titulo -->
@@ -13,7 +13,7 @@
             <br />
 
          <div class="row">
-             <div class ="col-lg-4">
+             <div class ="col-lg-offset-2 col-lg-8">
          <asp:GridView ID="dgv_grillaPrecio" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true">
                             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                             <EditRowStyle BackColor="#ffffcc" />

@@ -26,7 +26,7 @@ namespace ProyectoArtemisa
                     CargarComboProvincia();
                     if (Session["idUniversidad"] != null)
                     {
-                        ddl_universidadFacultad.SelectedValue = (Session["idUniversidad"].ToString();
+                        ddl_universidadFacultad.SelectedValue = Session["idUniversidad"].ToString();
                     }
                 }
             }

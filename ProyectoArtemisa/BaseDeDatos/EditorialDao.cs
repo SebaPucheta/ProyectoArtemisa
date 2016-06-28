@@ -174,7 +174,7 @@ namespace BaseDeDatos
         public static List<EditorialEntidadQuery> ConsultarEditorialXFiltro(string idCiudad, string idProvincia, string nombreContacto, string nombreEditorial)
         {
             List<EditorialEntidadQuery> lista = new List<EditorialEntidadQuery>();
-            string consulta = @"SELECT e.idEditorial, e.nombreEditorial, e.nombreContacto, e.telefono, c.nombreCiudad, p.nombreProvincia, e.email 
+            string consulta = @"SELECT e.idEditorial, e.nombreEditorial, e.nombreContacto, e.telefono, c.nombreCiudad, p.nombreProvincia, e.email, e.direccion
                                 FROM Editorial e INNER JOIN Ciudad c ON e.idCiudadEditorial = c.idCiudad
                                                  INNER JOIN Provincia p ON p.idProvincia = c.idProvincia
                                 WHERE e.nombreEditorial LIKE @nomEdi AND e.nombreContacto LIKE @nomCon AND p.idProvincia LIKE @idProv  AND c.idCiudad LIKE @idCiu AND e.baja = 0";
@@ -194,6 +194,7 @@ namespace BaseDeDatos
                 edi.nombreCiudadEditorial = dr["nombreCiudad"].ToString();
                 edi.nombreProvinciaEditorial = dr["nombreProvincia"].ToString();
                 edi.email = dr["email"].ToString();
+                edi.direccion = (string)dr["direccion"];
                 lista.Add(edi);
             }
             dr.Close();

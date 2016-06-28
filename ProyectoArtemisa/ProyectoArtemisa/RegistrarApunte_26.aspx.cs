@@ -427,9 +427,10 @@ namespace ProyectoArtemisa
         protected void ModificarApunteDigital()
         {
             ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
+            nuevoApunte.codigoBarraApunte = "";
             nuevoApunte.precioApunte= float.Parse(txt_precioApunteDigital.Text);
             nuevoApunte.idTipoApunte = 2; //Hace referencia a un apunte de tipo Digital
-            nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja;//ACA ESTABA NULL
+            nuevoApunte.idPrecioHoja = null;//ACA ESTABA NULL
             nuevoApunte.idApunte = (int)Session["idApunte"];
             ApunteDao.ModificarApunte(nuevoApunte);
         }
@@ -440,20 +441,13 @@ namespace ProyectoArtemisa
         /// </summary>
         protected void ModificarApunteImpreso()
         {
-            if (ApunteDao.VerificarCodigoBarra(txt_codigoBarra.Text))
-            {
-                ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
-                nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
-                nuevoApunte.precioApunte = float.Parse(txt_precioXHoja.Text);
-                nuevoApunte.idTipoApunte = 1;
-                nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja;
-                nuevoApunte.idApunte = (int)Session["idApunte"];
-                ApunteDao.ModificarApunte(nuevoApunte);
-            }
-            else
-            {
-                Response.Write("<script>window.alert('El código de barra ingresado ya esta cargado');</script>");
-            }
+            ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
+            nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
+            nuevoApunte.precioApunte = float.Parse(txt_precioXHoja.Text);
+            nuevoApunte.idTipoApunte = 1;
+            nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja;
+            nuevoApunte.idApunte = (int)Session["idApunte"];
+            ApunteDao.ModificarApunte(nuevoApunte);
         }
 
         /// <summary>
@@ -612,10 +606,10 @@ namespace ProyectoArtemisa
             ddl_editorialApunte.SelectedValue = apunte.idEditorial.ToString();
             CargarComboFacultad(Convert.ToInt32(ddl_universidadApunte.SelectedValue));
             ddl_facultadApunte.SelectedValue = MateriaDao.DevolverIdFacultadDeUnaMateria(apunte.idMateria).ToString();
-            CargarComboMateria(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
+            CargarComboMateria(Convert.ToInt32(ddl_facultadApunte.SelectedValue));
             ddl_materiaApunte.SelectedValue = apunte.idMateria.ToString();
             CargarGrilla(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
-            CargarComboProfesor(Convert.ToInt32(ddl_profesorApunte.SelectedValue));
+            CargarComboProfesor(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
             ddl_profesorApunte.SelectedValue= apunte.idProfesor.ToString();
 
             if(apunte.idTipoApunte==1)

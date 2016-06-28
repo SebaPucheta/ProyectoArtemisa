@@ -62,17 +62,18 @@ namespace BaseDeDatos
         {
             string consulta = @"UPDATE Libro SET nombreLibro = @nombre, descripcionLibro = @descripcion, codigoBarraLibro = @codigoBarra,
                                                  autorLibro = @autor,  idMateria = @idMateria,
-                                                 cantidadHojasLibro = @cantidadHojas, precioLibro = @precio, idEditorial = @idEditorial,
+                                                 cantidadHojasLibro = @cantidadHojas, precioLibro = @precio, idEditorial = @idEditorial
                                                   WHERE idLibro = @idLibro";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idLibro", libro.idLibro);
             cmd.Parameters.AddWithValue(@"nombre", libro.nombreLibro);
             cmd.Parameters.AddWithValue(@"autor", libro.autorLibro);
             cmd.Parameters.AddWithValue(@"codigoBarra", libro.codigoBarraLibro);
-            cmd.Parameters.AddWithValue(@"descripcion", libro.autorLibro);
-            cmd.Parameters.AddWithValue(@"cantidadHojas", libro.stock);
-            cmd.Parameters.AddWithValue(@"precio", libro.cantidadHojasLibro);
-            cmd.Parameters.AddWithValue(@"idEditorial", libro.precioLibro);
-            cmd.Parameters.AddWithValue(@"idLibro", libro.idEstado);
+            cmd.Parameters.AddWithValue(@"descripcion", libro.descripcionLibro);
+            cmd.Parameters.AddWithValue(@"cantidadHojas", libro.cantidadHojasLibro);
+            cmd.Parameters.AddWithValue(@"precio", libro.precioLibro);
+            cmd.Parameters.AddWithValue(@"idEditorial", libro.idEditorial);
+            //cmd.Parameters.AddWithValue(@"idEstado", libro.idEstado);
             cmd.Parameters.AddWithValue(@"idMateria", libro.idMateria);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
@@ -119,7 +120,7 @@ namespace BaseDeDatos
         public static List<LibroEntidadQuery> ConsultarLibrosQuery()
         {
             List<LibroEntidadQuery> lista = new List<LibroEntidadQuery>();
-            string consulta = @"SELECT l.idLibro, l.codigoBarraLibro, l.nombreLibro, l.autorLibro, l.descripcionLibro, l.stock,
+            string consulta = @"SELECT l.idLibro, l.codigoBarraLibro, l.nombreLibro, l.autorLibro, l.descripcionLibro, l.stock, l.idMateria
                                 l.cantidadHojasLibro, l.precioLibro, e.nombreEditorial, es.nombreEstado
                                 FROM Libro l INNER JOIN Editorial e ON l.idEditorial = e.idEditorial
 			                                 INNER JOIN Estado es ON l.idEstado = es.idEstado
@@ -139,6 +140,7 @@ namespace BaseDeDatos
                 libro.precioLibro = float.Parse(dr["precioLibro"].ToString());
                 libro.nombreEditorial = dr["nombreEditorial"].ToString();
                 libro.nombreEstado = dr["nombreEstado"].ToString();
+                libro.idMateria = (int)dr["idMateria"];
                 lista.Add(libro);
             }
             dr.Close();
@@ -156,7 +158,7 @@ namespace BaseDeDatos
         {
             LibroEntidad libro = new LibroEntidad();
             string consulta = @"SELECT idLibro, codigoBarraLibro, nombreLibro, autorLibro, descripcionLibro, stock,
-                                cantidadHojasLibro, precioLibro, idEditorial, idEstado FROM Libro WHERE idLibro = @id";
+                                cantidadHojasLibro, precioLibro, idEditorial, idEstado, idMateria FROM Libro WHERE idLibro = @id";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"id", id);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -171,7 +173,10 @@ namespace BaseDeDatos
                 libro.cantidadHojasLibro = int.Parse(dr["cantidadHojasLibro"].ToString());
                 libro.precioLibro = float.Parse(dr["precioLibro"].ToString());
                 libro.idEditorial = int.Parse(dr["idEditorial"].ToString());
-                libro.idEstado = int.Parse(dr["idEstado"].ToString());
+                libro.idMateria = (int)dr["idMateria"];
+                if (dr["idEstado"]!=DBNull.Value)
+                { libro.idEstado = (int)dr["idEstado"]; }
+                
             }
             dr.Close();
             cmd.Connection.Close();
@@ -258,13 +263,99 @@ namespace BaseDeDatos
             return lista;
         }
 
+        public static List<LibroEntidadQuery> ConsultarLibroXFiltroMateria(string nombreLibro, string idUniversidad, string idFacultad,
+                                                                     string idMateria)
+        {
+            List<LibroEntidadQuery> lista = new List<LibroEntidadQuery>();
+            string consulta = @"SELECT DISTINCT l.idLibro, l.codigoBarraLibro, l.nombreLibro, l.autorLibro, l.descripcionLibro, l.stock,
+                                       l.cantidadHojasLibro, l.precioLibro, e.nombreEditorial,  
+                                       u.nombreUniversidad, f.nombreFacultad, m.nombreMateria
+                                FROM Libro l INNER JOIN Materia m ON m.idMateria = l.idMateria
+			                                  INNER JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  INNER JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                  INNER JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                  INNER JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+											  INNER JOIN Editorial e ON e.idEditorial = l.idEditorial
+								WHERE l.nombreLibro LIKE @nomLib AND u.idUniversidad LIKE @idUni AND f.idFacultad LIKE @idFacu
+													AND l.idMateria LIKE @idMat  AND l.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"nomLib",  nombreLibro + '%');
+            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + '%');
+            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + '%');
+            cmd.Parameters.AddWithValue(@"idMat", idMateria + '%');
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                LibroEntidadQuery libro = new LibroEntidadQuery();
+                libro.idLibro = int.Parse(dr["idLibro"].ToString());
+                libro.codigoBarraLibro = dr["codigoBarraLibro"].ToString();
+                libro.nombreLibro = dr["nombreLibro"].ToString();
+                libro.autorLibro = dr["autorLibro"].ToString();
+                libro.descripcionLibro = dr["descripcionLibro"].ToString();
+                libro.stock = int.Parse(dr["stock"].ToString());
+                libro.cantidadHojasLibro = int.Parse(dr["cantidadHojasLibro"].ToString());
+                libro.precioLibro = float.Parse(dr["precioLibro"].ToString());
+                libro.nombreEditorial = dr["nombreEditorial"].ToString();
+                libro.nombreFacultad = dr["nombreFacultad"].ToString();
+                libro.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                libro.listaCarreras = ConsultarCarrerasXLibro(libro.idLibro);
+                libro.nombreMateria = (string)dr["nombreMateria"];
+                lista.Add(libro);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
+
+        public static List<LibroEntidadQuery> ConsultarLibroXFiltroCarrera(string nombreLibro, string idUniversidad, string idFacultad, string idCarrera)
+        {
+            List<LibroEntidadQuery> lista = new List<LibroEntidadQuery>();
+            string consulta = @"SELECT l.idLibro, l.codigoBarraLibro, l.nombreLibro, l.autorLibro, l.descripcionLibro, l.stock,
+                                       l.cantidadHojasLibro, l.precioLibro, e.nombreEditorial, 
+                                       u.nombreUniversidad, f.nombreFacultad, m.nombreMateria
+                                FROM Libro l INNER JOIN Materia m ON m.idMateria = l.idMateria
+			                                  INNER JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  INNER JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                  INNER JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                  INNER JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+											  INNER JOIN Editorial e ON e.idEditorial = l.idEditorial
+								WHERE l.nombreLibro LIKE @nomLib AND u.idUniversidad LIKE @idUni AND f.idFacultad LIKE @idFacu
+													AND  c.idCarrera like @idCar AND l.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"nomLib", nombreLibro + '%');
+            cmd.Parameters.AddWithValue(@"idUni", idUniversidad + '%');
+            cmd.Parameters.AddWithValue(@"idFacu", idFacultad + '%');
+            cmd.Parameters.AddWithValue(@"idCar", idCarrera + '%');
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                LibroEntidadQuery libro = new LibroEntidadQuery();
+                libro.idLibro = int.Parse(dr["idLibro"].ToString());
+                libro.codigoBarraLibro = dr["codigoBarraLibro"].ToString();
+                libro.nombreLibro = dr["nombreLibro"].ToString();
+                libro.autorLibro = dr["autorLibro"].ToString();
+                libro.descripcionLibro = dr["descripcionLibro"].ToString();
+                libro.stock = int.Parse(dr["stock"].ToString());
+                libro.cantidadHojasLibro = int.Parse(dr["cantidadHojasLibro"].ToString());
+                libro.precioLibro = float.Parse(dr["precioLibro"].ToString());
+                libro.nombreEditorial = dr["nombreEditorial"].ToString();
+                libro.nombreFacultad = dr["nombreFacultad"].ToString();
+                libro.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                libro.listaCarreras = ConsultarCarrerasXLibro(libro.idLibro);
+                libro.nombreMateria = (string)dr["nombreMateria"];
+                lista.Add(libro);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
 
         public static List<CarreraEntidad> ConsultarCarrerasXLibro(int idLibro)
         {
             List<CarreraEntidad> lista = new List<CarreraEntidad>();
             string consulta = @"SELECT cxm.idCarrera, c.nombreCarrera 
                                 FROM Libro l JOIN CarreraXMateria cxm ON l.idMateria = cxm.idMateria
-									          JOIN Carrera c ON cxm.idCarrera = c.idCarrera WHERE l.idApunte = @id AND l.baja = 0";
+									          JOIN Carrera c ON cxm.idCarrera = c.idCarrera WHERE l.idLibro = @id AND l.baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"id", idLibro);
             SqlDataReader dr = cmd.ExecuteReader();

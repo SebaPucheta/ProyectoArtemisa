@@ -35,9 +35,9 @@ namespace ProyectoArtemisa
                 EditorialEntidad editorial = CrearUnObjetoDesdeElForm();
                 editorial.idEditorial = (int)Session["idEditorial"];
                 EditorialDao.ModificarEditorial(editorial);
-                LimpiarForm();
                 Session["idEditorial"] = null;
                 Session["modificarEditorial"] = false;
+                Response.Redirect(PilaForms.DevolverForm());
             }
             else
             {

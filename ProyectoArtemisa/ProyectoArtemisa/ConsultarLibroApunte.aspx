@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
-   <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+   <div class="container col-lg-offset-2 col-lg-9" id="div_form">
      <div class="form-group">
         
          <!-- Titulo -->
@@ -106,7 +106,7 @@
             <br />
 
                 <!-- Grilla Apunte-->
-                <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged">
+                <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged">
                     <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                     <EditRowStyle BackColor="#ffffcc" />
                     <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -114,8 +114,12 @@
                         <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                         <asp:BoundField DataField="precio" HeaderText="Precio" />
                         <asp:BoundField DataField="stock" HeaderText="Stock" />
-                        <asp:BoundField DataField="carrera" HeaderText="Carrera" />
-                        <asp:BoundField DataField="materia" HeaderText="Materia" />
+                        <asp:BoundField DataField="carrera" HeaderText="Carrera" >
+                        <ItemStyle HorizontalAlign="Justify" VerticalAlign="Middle" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="materia" HeaderText="Materia" >
+                        <ItemStyle HorizontalAlign="Justify" VerticalAlign="Middle" />
+                        </asp:BoundField>
                         <asp:BoundField DataField="editorial" HeaderText="Editorial" />
                         <asp:BoundField DataField="profesor" HeaderText="Profesor" />
                         <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Apunte" />
@@ -124,20 +128,20 @@
                                 <asp:LinkButton ID="btn_modificarApunte" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
 
                             </ItemTemplate>
-                            <ControlStyle Width="3px" />
-                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            <ControlStyle Width="10px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10px" />
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton ID="btn_eliminarApunte" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                             </ItemTemplate>
-                            <ControlStyle Width="3px" />
-                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            <ControlStyle Width="10px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10px" />
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
                 <!-- Grilla Libro-->
-                <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged">
+                <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarLibro_RowDeleting" OnSelectedIndexChanged="btn_modificarLibro_SelectedIndexChanged">
                     <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                     <EditRowStyle BackColor="#ffffcc" />
                     <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -154,14 +158,14 @@
                                 <asp:LinkButton ID="btn_modificarLibro" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
 
                             </ItemTemplate>
-                            <ControlStyle Width="3px" />
+                            <ControlStyle Width="10px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton ID="btn_eliminarLibro" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                             </ItemTemplate>
-                            <ControlStyle Width="3px" />
+                            <ControlStyle Width="10px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                         </asp:TemplateField>
                     </Columns>

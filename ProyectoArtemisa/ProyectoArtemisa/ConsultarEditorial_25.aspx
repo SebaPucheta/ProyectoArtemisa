@@ -84,14 +84,14 @@
                 <ItemTemplate>
                     <asp:LinkButton ID="btn_modificarEditorial" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                 </ItemTemplate>
-                <ControlStyle Width="3px" />
+                <ControlStyle Width="10px" />
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:LinkButton ID="btn_eliminarEditorial" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                 </ItemTemplate>
-                <ControlStyle Width="3px" />
+                <ControlStyle Width="10px" />
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
             </asp:TemplateField>
 

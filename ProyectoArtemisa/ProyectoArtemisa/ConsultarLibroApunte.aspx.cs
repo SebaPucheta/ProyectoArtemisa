@@ -36,12 +36,20 @@ namespace ProyectoArtemisa
         {
             if(ddl_carrera.SelectedIndex==0)
             {
+                ddl_materia.Enabled = true;
+            }
+            else
+            {
                 ddl_materia.Enabled = false;
             }
         }
         protected void ddl_materia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddl_carrera.SelectedIndex==0)
+            if(ddl_materia.SelectedIndex==0)
+            {
+                ddl_carrera.Enabled = true;
+            }
+            else
             {
                 ddl_carrera.Enabled = false;
             }
@@ -99,7 +107,7 @@ namespace ProyectoArtemisa
 
         protected void CargarComboCarrera(int idFacultad)
         {
-            ddl_carrera.DataSource = MateriaDao.DevolverMateriaXFacultad(idFacultad);
+            ddl_carrera.DataSource = CarreraDao.ConsultarCarreraXFacultad(idFacultad);
             ddl_carrera.DataTextField = "nombreCarrera";
             ddl_carrera.DataValueField = "idCarrera";
             ddl_carrera.DataBind();
@@ -171,11 +179,12 @@ namespace ProyectoArtemisa
 
         protected List<ApunteEntidadQuery> BuscarListaApunteXfiltro()
         {
-            string tipoApunte = " ";
-            string universidad = " ";
-            string facultad = " ";
-            string materia = " ";
-            string carrera = " ";
+            List<ApunteEntidadQuery> listaApunte ;
+            string tipoApunte = "";
+            string universidad = "";
+            string facultad = "";
+            string materia = "";
+            string carrera = "";
             string nombreApunte = txt_nombreItem.Text;
 
             if (!((chk_apunteDigital.Checked) && (chk_apunteImpreso.Checked)))
@@ -202,23 +211,27 @@ namespace ProyectoArtemisa
             if (Convert.ToInt32(ddl_materia.SelectedIndex) != 0)
             {
                 materia = ddl_materia.SelectedValue;
+                 listaApunte = ApunteDao.ConsultarApunteXFiltroMateria(tipoApunte, nombreApunte, universidad, facultad, materia);
             }
             else
             {
                 if (Convert.ToInt32(ddl_carrera.SelectedIndex) != 0)
                 {
                     carrera = ddl_carrera.SelectedValue;
+                    listaApunte = ApunteDao.ConsultarApunteXFiltroCarrera(tipoApunte, nombreApunte, universidad, facultad, carrera);
                 }
+                listaApunte = ApunteDao.ConsultarApunteXFiltroCarrera(tipoApunte, nombreApunte, universidad, facultad, carrera);
             }
 
 
-            List<ApunteEntidadQuery> listaApunte = ApunteDao.ConsultarApunteXFiltro(tipoApunte, nombreApunte, universidad, facultad, carrera, materia);
+           
             
             return listaApunte;
         }
 
         protected List<LibroEntidadQuery> BuscarListaLibroXfiltro()
         {
+            List<LibroEntidadQuery> listaLibro;
             string nombreLibro = txt_nombreItem.Text;
             string universidad = "";
             string facultad = "";
@@ -238,6 +251,7 @@ namespace ProyectoArtemisa
             if (Convert.ToInt32(ddl_materia.SelectedIndex) != 0)
             {
                 materia = ddl_materia.SelectedValue;
+                listaLibro = LibroDao.ConsultarLibroXFiltroMateria(nombreLibro, universidad, facultad, materia);
             }
             else
             {
@@ -245,10 +259,11 @@ namespace ProyectoArtemisa
                 {
                     carrera = ddl_carrera.SelectedValue;
                 }
+                listaLibro = LibroDao.ConsultarLibroXFiltroCarrera(nombreLibro, universidad, facultad, carrera);
             }
 
 
-            List<LibroEntidadQuery> listaLibro = LibroDao.ConsultarLibroXFiltro(nombreLibro , universidad, facultad, carrera, materia);
+           
 
             return listaLibro;
         }
@@ -311,7 +326,7 @@ namespace ProyectoArtemisa
             DataRow fila;
 
             //Creo las columnas de la tabla
-            tabla.Columns.Add("idApunte", typeof(int));
+            tabla.Columns.Add("idLibro", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
             tabla.Columns.Add("precio", typeof(float));
             tabla.Columns.Add("stock", typeof(int));

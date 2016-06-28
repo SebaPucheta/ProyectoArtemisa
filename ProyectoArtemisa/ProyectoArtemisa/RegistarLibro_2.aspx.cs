@@ -123,14 +123,21 @@ namespace ProyectoArtemisa
         //Boton Confirmar
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
-            if (LibroDao.VerificarCodigoBarra(txt_codgoBarra.Text))
-            {
+           
                 if (Page.IsValid)
                 {
                     if (PilaForms.pila.Peek().Equals("Default.aspx"))
                     {
-                        LibroDao.RegistrarLibro(CrearObjetoLibro());
-                        LimpiarForm();
+                        if (LibroDao.VerificarCodigoBarra(txt_codgoBarra.Text))
+                        {
+                            LibroDao.RegistrarLibro(CrearObjetoLibro());
+                            LimpiarForm();
+                        }
+                        else
+                        {
+                            Response.Write("<script>window.alert('El código de barra ingresado ya esta cargado');</script>");
+                        }
+
                     }
                     else
                     {
@@ -140,12 +147,7 @@ namespace ProyectoArtemisa
                         Response.Redirect(PilaForms.DevolverForm());
                     }
                 }
-            }
-            else
-            {
-                Response.Write("<script>window.alert('El código de barra ingresado ya esta cargado');</script>");
-            }
-
+           
         }
 
         //Boton cancelar
@@ -272,6 +274,7 @@ namespace ProyectoArtemisa
             libro.cantidadHojasLibro = int.Parse(txt_cantidadHojasLibro.Text);
             libro.codigoBarraLibro = txt_codgoBarra.Text;
             libro.idEditorial = int.Parse(ddl_editorialLibro.SelectedValue.ToString());
+            libro.idMateria = Convert.ToInt32(ddl_materiasLibro.SelectedValue);
             //Estado no esta, se inicializa en null por defecto
             libro.precioLibro = float.Parse(txt_precioLibro.Text);
             //Stock no esta, se inicializa en 0 por defecto
