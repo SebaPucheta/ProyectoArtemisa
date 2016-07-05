@@ -354,9 +354,12 @@ namespace ProyectoArtemisa
         //Metodo de evento de cambio de texto del texbox de cantidad de hojas
         protected void txt_cantHojasApunte_TextChanged(object sender, EventArgs e)
         {
-
-            float precioXHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().precioHoja;
-            txt_precioXHoja.Text = Convert.ToString(Convert.ToInt32(txt_cantHojasApunte.Text) * precioXHoja);
+            int res;
+            if (Int32.TryParse(txt_cantHojasApunte.Text, out res))
+            {
+                float precioXHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().precioHoja;
+                txt_precioXHoja.Text = Convert.ToString(Convert.ToInt32(txt_cantHojasApunte.Text) * precioXHoja);
+            }
         }
 
         //Metodos de eventos valida que se halla seleccionado de los combos un valor
