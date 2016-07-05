@@ -20,7 +20,6 @@
             <br />
             
 
-
             <!--Nombre del libro -->
             <div class="row">
                 <div class="form-group">
@@ -41,8 +40,7 @@
             </div>
             <br />
 
-
-             <!--Codigo de barra del libro -->
+            <!--Codigo de barra del libro -->
             <div class="row">
                 <div class="form-group">
                     <label for="option" id="lbl_codigoBarra" class="control-label col-md-3">Código de barra: </label>
@@ -62,7 +60,6 @@
             </div>
             <br />
 
-
             <!--Universidad -->
             <div class="row">
                 <div class="form-group">
@@ -72,11 +69,17 @@
                     </div>
                     <asp:LinkButton ID="btn_registrarUniversidad" OnClick="btn_registrarUniversidad_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                     <asp:LinkButton ID="btn_modificarUniversidad" OnClick="btn_modificarUniversidad_Click" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:CustomValidator ID="cv_pension" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_universidadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una universidad"></asp:CustomValidator>
+                    <asp:CustomValidator ID="cv_pension" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_universidadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red">
+                         <div class="alert alert-danger">
+                                  <strong>Se debe seleccionar una universidad</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                    </asp:CustomValidator>
                 </div>
             </div>
             <br />
-
 
             <!--Facultad -->
             <div class="row">
@@ -87,11 +90,17 @@
                     </div>
                     <asp:LinkButton ID="btn_registrarFacultad" OnClick="btn_registrarFacultad_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                     <asp:LinkButton ID="btn_modificarFacultad" OnClick="btn_modificarFacultad_Click" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:CustomValidator ID="CustomValidator1" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_facultadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una facultad"></asp:CustomValidator>
+                    <asp:CustomValidator ID="CustomValidator1" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_facultadesLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" >
+                        <div class="alert alert-danger">
+                                  <strong>Se debe seleccionar una facultad</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                        </div>
+                    </asp:CustomValidator>
                 </div>
             </div>
             <br />
-
 
             <!--Materia -->
             <div class="row">
@@ -102,11 +111,17 @@
                     </div>
                     <asp:LinkButton ID="btn_registrarMateria" OnClick="btn_registrarMateria_Click" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                     <asp:LinkButton ID="btn_modificarMateria" OnClick="btn_modificarMateria_Click" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:CustomValidator ID="CustomValidator2" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_materiasLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una materia"></asp:CustomValidator>
+                    <asp:CustomValidator ID="CustomValidator2" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_materiasLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" >
+                        <div class="alert alert-danger">
+                                  <strong>Se debe seleccionar una materia</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                    </asp:CustomValidator>
                 </div>
             </div>
             <br />
-
 
             <!--Carrera -->
             <div class="row">
@@ -136,7 +151,6 @@
             </div>
             <br />
 
-
             <!--Nombre autor -->
             <div class="row">
                 <div class="form-group">
@@ -157,7 +171,6 @@
             </div>
             <br />
 
-
             <!-- Nombre editorial -->
             <div class="row">
                 <div class="form-group">
@@ -167,11 +180,17 @@
                     </div>
                     <asp:LinkButton ID="btn_registrarEditorial" OnClick="btn_registrarEditorial_onClick" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                     <asp:LinkButton ID="btn_modificarEditorial" OnClick="btn_modificarEditorial_onClick" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:CustomValidator ID="CustomValidator3" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_editorialLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red" ErrorMessage="Debe seleccionar una editorial"></asp:CustomValidator>
+                    <asp:CustomValidator ID="CustomValidator3" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="ddl_editorialLibro" OnServerValidate="ddl_customValidator" runat="server" ForeColor="Red">
+                        <div class="alert alert-danger">
+                                  <strong>Se debe seleccionar una editorial</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                    </asp:CustomValidator>
                 </div>
             </div>
             <br />
-
 
             <!--Cantidad hojas -->
             <div class="row">
@@ -182,20 +201,34 @@
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_cantidadHojasLibro" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar una cantidad</strong> 
+                                  <strong>Se debe ingresar una cantidad de hojas</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
                               </div>
                         </asp:RequiredFieldValidator>
+                        <!-- Verifica que se ingrese un numero-->
+                            <asp:CompareValidator ControlToValidate="txt_cantidadHojasLibro" cultureinvariantvalues="true" display="Dynamic" ID="CompareValidator1" runat="server" Operator="DataTypeCheck" Type="Integer" setfocusonerror="true"  ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
+                               <div class="alert alert-danger">
+                                  <strong>No se a ingresado un número</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                            </asp:CompareValidator>
+                        <!--Verifica que el valor ingresado sea razonablemente valido-->
+                            <asp:RangeValidator ControlToValidate="txt_cantidadHojasLibro" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server"  ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                                <div class="alert alert-danger">
+                                  <strong>La cantidad de hojas ingresada es incorrecto</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                            </asp:RangeValidator>
                     </div>
                 </div>
             </div>
             <br />
-
-
-        
-
 
             <!--Precio Libro -->
             <div class="row">
@@ -215,26 +248,35 @@
                                  </button>
                               </div>
                         </asp:RequiredFieldValidator>
+                         <!-- Verifica que se ingrese un numero-->
+                            <asp:CompareValidator ControlToValidate="txt_precioLibro" cultureinvariantvalues="true" display="Dynamic" ID="CompareValidator2" runat="server" Operator="DataTypeCheck" Type="Double" setfocusonerror="true"  ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
+                               <div class="alert alert-danger">
+                                  <strong>No se a ingresado un número</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                            </asp:CompareValidator>
+                            <!--Verifica que el valor ingresado sea razonablemente valido-->
+                            <asp:RangeValidator ControlToValidate="txt_precioLibro" MaximumValue="1000000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server"  ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                                <div class="alert alert-danger">
+                                  <strong>El precio ingresado es incorrecto</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                            </asp:RangeValidator>
                     </div>
                 </div>
             </div>
             <br />
 
-                <!--Descripcion -->
+            <!--Descripcion -->
             <div class="row">
                 <div class="form-group">
                     <label for="option" id="lbl_descripcion" class="control-label col-md-3">Descripción:  </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" TextMode="MultiLine" ID="txt_descripcionLibro" value="" ViewStateMode="Enabled" />
-                        <!-- Verifica que se el textBox no este vacio-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_descripcionLibro" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un nombre</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                              </div>
-                        </asp:RequiredFieldValidator>
                     </div>
                 </div>
             </div>

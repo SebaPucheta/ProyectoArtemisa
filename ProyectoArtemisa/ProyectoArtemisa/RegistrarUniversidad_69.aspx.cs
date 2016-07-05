@@ -16,7 +16,7 @@ namespace ProyectoArtemisa
         {
             if ((bool)Session["modificarUniversidad"])
             {
-                txt_nombre.Text = UniversidadDao.ConsultarUnaUniversidad((int)Session["idUniversidad"]).nombreUniversidad;
+                txt_nombre.Text = UniversidadDao.ConsultarUnaUniversidad(int.Parse(Session["idUniversidad"].ToString())).nombreUniversidad;
             }
         }
 
@@ -28,14 +28,13 @@ namespace ProyectoArtemisa
 
         protected void btn_registrar_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 UniversidadEntidad uni = new UniversidadEntidad();
                 uni.nombreUniversidad = txt_nombre.Text;
                 
                 if ((bool)Session["modificarUniversidad"])
                 {
-                    uni.idUniversidad = (int)Session["idUniversidad"];
+                    uni.idUniversidad = int.Parse(Session["idUniversidad"].ToString());
                     UniversidadDao.ModificarUniversidad(uni);
                     Session["modificarUniversidad"] = false;
                 }
@@ -47,11 +46,8 @@ namespace ProyectoArtemisa
                // UniversidadDao.RegistrarUniversidad(uni);
                 
                 //Confiracion
-            }
-            catch
-            {
-                //Mensaje
-            }
+            
+            
 
         }
 

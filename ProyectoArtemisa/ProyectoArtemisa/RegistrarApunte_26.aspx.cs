@@ -258,7 +258,7 @@ namespace ProyectoArtemisa
             Session["modificarCarrera"] = true;
             GuardarForm();
             PilaForms.AgregarForm("RegistrarApunte_26.aspx");
-            Response.Redirect("RegistarCarrera_10.aspx");
+            Response.Redirect("RegistrarCarrera_10.aspx");
         }
 
         protected void btn_eliminarMateria_OnRowDeleting(Object sender, GridViewDeleteEventArgs e)
@@ -306,34 +306,37 @@ namespace ProyectoArtemisa
         //Boton confirmar
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
-            if ((chk_digital.Checked) || (chk_impreso.Checked))
+            if (Page.IsValid)
             {
-                if(PilaForms.pila.Peek().Equals("Default.aspx"))
+                if ((chk_digital.Checked) || (chk_impreso.Checked))
                 {
-                    if (chk_digital.Checked)
-                    { RegistrarApunteDigital(); }
+                    if (PilaForms.pila.Peek().Equals("Default.aspx"))
+                    {
+                        if (chk_digital.Checked)
+                        { RegistrarApunteDigital(); }
 
-                    if (chk_impreso.Checked)
-                    { RegistrarApunteImpreso(); }
-                    LimpiarVariablesForm();
-                    LimpiarForm();
+                        if (chk_impreso.Checked)
+                        { RegistrarApunteImpreso(); }
+                        LimpiarVariablesForm();
+                        LimpiarForm();
+                    }
+                    else
+                    {
+                        if (chk_digital.Checked)
+                        { ModificarApunteDigital(); }
+
+                        if (chk_impreso.Checked)
+                        { ModificarApunteImpreso(); }
+                        Session["idApunte"] = null;
+                        LimpiarVariablesForm();
+                        Response.Redirect(PilaForms.DevolverForm());
+                    }
+
                 }
                 else
                 {
-                    if (chk_digital.Checked)
-                    { ModificarApunteDigital(); }
-
-                    if (chk_impreso.Checked)
-                    { ModificarApunteImpreso(); }
-                    Session["idApunte"] = null;
-                    LimpiarVariablesForm();
-                    Response.Redirect(PilaForms.DevolverForm());
+                    Response.Write("<script>window.alert('Debe seleccionar un tipo apunte');</script>");
                 }
-                
-            }
-            else
-            {
-                Response.Write("<script>window.alert('Debe seleccionar un tipo apunte');</script>");
             }
             
         }
@@ -356,7 +359,19 @@ namespace ProyectoArtemisa
             txt_precioXHoja.Text = Convert.ToString(Convert.ToInt32(txt_cantHojasApunte.Text) * precioXHoja);
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Metodos de eventos valida que se halla seleccionado de los combos un valor
+        protected void ddl_customValidator(object sender, ServerValidateEventArgs e)
+        {
+            if (int.Parse(e.Value.ToString()) != 0)
+            {
+                e.IsValid = true;
+            }
+            else
+            {
+                e.IsValid = false;
+            }
+        }
+////////////////////////////////////////////////////////////////////////////////////////////////////
         //Metodos 
         /// <summary>
         /// Crea un objeto ApunteEntidad apartir de los datos que ya hay cargados en el form
@@ -391,12 +406,19 @@ namespace ProyectoArtemisa
         /// </summary>
         protected void RegistrarApunteDigital()
         {
-            ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
-            nuevoApunte.codigoBarraApunte = "";
-            nuevoApunte.precioApunte = float.Parse(txt_precioApunteDigital.Text);
-            nuevoApunte.idTipoApunte = 2; //Hace referencia a un apunte de tipo Digital
-            nuevoApunte.idPrecioHoja = null;
-            ApunteDao.RegistrarApunte(nuevoApunte);
+            if(txt_precioApunteDigital.Text != "")
+            { 
+                ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
+                nuevoApunte.codigoBarraApunte = "";
+                nuevoApunte.precioApunte = float.Parse(txt_precioApunteDigital.Text);
+                nuevoApunte.idTipoApunte = 2; //Hace referencia a un apunte de tipo Digital
+                nuevoApunte.idPrecioHoja = null;
+                ApunteDao.RegistrarApunte(nuevoApunte);
+            }
+            else
+            {
+                Response.Write("<script>window.alert('No se ha ingresado ningun precio para apuntes digitales');</script>");
+            }
         }
 
         /// <summary>
@@ -405,18 +427,25 @@ namespace ProyectoArtemisa
         /// </summary>
         protected void RegistrarApunteImpreso()
         {
-            if (ApunteDao.VerificarCodigoBarra(txt_codigoBarra.Text))
-            {
-                ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
-                nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
-                nuevoApunte.precioApunte = float.Parse(txt_precioXHoja.Text);
-                nuevoApunte.idTipoApunte = 1;
-                nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja; 
-                ApunteDao.RegistrarApunte(nuevoApunte);
+            if(txt_codigoBarra.Text != "")
+            { 
+                if (ApunteDao.VerificarCodigoBarra(txt_codigoBarra.Text))
+                {
+                    ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
+                    nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
+                    nuevoApunte.precioApunte = float.Parse(txt_precioXHoja.Text);
+                    nuevoApunte.idTipoApunte = 1;
+                    nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja; 
+                    ApunteDao.RegistrarApunte(nuevoApunte);
+                }
+                else
+                {
+                    Response.Write("<script>window.alert('El código de barra ingresado ya esta cargado');</script>");
+                }
             }
             else
             {
-                Response.Write("<script>window.alert('El código de barra ingresado ya esta cargado');</script>");
+                Response.Write("<script>window.alert('No se ingreso ningun código de barra');</script>");
             }
         }
 

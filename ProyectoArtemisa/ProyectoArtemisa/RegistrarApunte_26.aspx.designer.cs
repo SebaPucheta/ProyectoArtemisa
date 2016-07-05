@@ -58,6 +58,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_ano;
         
         /// <summary>
+        /// Control cvr_nroDocumento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvr_nroDocumento;
+        
+        /// <summary>
         /// Control ddl_universidadApunte.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_modificarUniversidad;
+        
+        /// <summary>
+        /// Control cv_pension.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cv_pension;
         
         /// <summary>
         /// Control ddl_facultadApunte.
@@ -112,6 +130,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_modificarFacultad;
         
         /// <summary>
+        /// Control CustomValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
+        
+        /// <summary>
         /// Control ddl_materiaApunte.
         /// </summary>
         /// <remarks>
@@ -137,6 +164,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_modificarMateria;
+        
+        /// <summary>
+        /// Control CustomValidator2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
         
         /// <summary>
         /// Control dgv_carrera.
@@ -184,6 +220,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_modificarEditorial;
         
         /// <summary>
+        /// Control CustomValidator3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator3;
+        
+        /// <summary>
         /// Control txt_cantHojasApunte.
         /// </summary>
         /// <remarks>
@@ -191,6 +236,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_cantHojasApunte;
+        
+        /// <summary>
+        /// Control CompareValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
         
         /// <summary>
         /// Control txt_precioXHoja.
@@ -202,6 +256,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_precioXHoja;
         
         /// <summary>
+        /// Control CompareValidator2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator2;
+        
+        /// <summary>
         /// Control txt_precioApunteDigital.
         /// </summary>
         /// <remarks>
@@ -209,6 +272,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_precioApunteDigital;
+        
+        /// <summary>
+        /// Control CompareValidator3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator3;
         
         /// <summary>
         /// Control ddl_profesorApunte.
@@ -238,6 +310,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LinkButton btn_modificarProfesor;
         
         /// <summary>
+        /// Control CustomValidator4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator4;
+        
+        /// <summary>
         /// Control ddl_categoriaApunte.
         /// </summary>
         /// <remarks>
@@ -263,6 +344,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_modificarCategoria;
+        
+        /// <summary>
+        /// Control CustomValidator5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator5;
         
         /// <summary>
         /// Control txt_descripcion.

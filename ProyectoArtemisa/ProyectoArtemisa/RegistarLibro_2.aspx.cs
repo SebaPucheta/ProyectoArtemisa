@@ -249,8 +249,8 @@ namespace ProyectoArtemisa
             Session["idCarrera"] = (int)dgv_carrerasLibro.SelectedDataKey.Value;
             Session["modificarCarrera"] = true;
             GuardarForm();
-            PilaForms.AgregarForm("RegistrarLibro_2.aspx");
-            Response.Redirect("RegistarCarrera_10.aspx");
+            PilaForms.AgregarForm("RegistarLibro_2.aspx");
+            Response.Redirect("RegistrarCarrera_10.aspx");
         }
 
         protected void btn_eliminarMateria_OnRowDeleting(Object sender, GridViewDeleteEventArgs e)

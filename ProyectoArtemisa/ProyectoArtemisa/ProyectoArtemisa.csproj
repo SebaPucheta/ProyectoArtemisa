@@ -84,6 +84,7 @@
     <Content Include="Estilo\Background\Tablet1.jpg" />
     <Content Include="Estilo\Background\verde.jpg" />
     <Content Include="Estilo\Forms.css" />
+    <Content Include="Estilo\LogoMasChico.jpg" />
     <Content Include="Estilo\menu.png" />
     <Content Include="Estilo\NavBar.css" />
     <Content Include="Estilo\Sidebar.css" />

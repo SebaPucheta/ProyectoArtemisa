@@ -17,6 +17,11 @@ body{
 
 }
 
+#img_educom{
+  padding-left: 7px;
+  padding-top: 350px;
+}
+
 #div_grilla {
   box-shadow: 2px 2px 20px 2px #000000;
   background-color: rgb(255, 255, 255);

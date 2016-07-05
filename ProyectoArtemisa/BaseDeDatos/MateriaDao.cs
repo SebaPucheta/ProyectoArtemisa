@@ -75,7 +75,7 @@ namespace BaseDeDatos
                                                     descripcionMateria = @descripcion WHERE idMateria = @id";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"nom", materia.nombreMateria);
-            cmd.Parameters.AddWithValue(@"nivelCursado", materia.nivelCursado);
+            cmd.Parameters.AddWithValue(@"nivel", materia.nivelCursado);
             cmd.Parameters.AddWithValue(@"descripcion", materia.descripcionMateria);
             cmd.Parameters.AddWithValue(@"id", materia.idMateria);
             cmd.ExecuteNonQuery();

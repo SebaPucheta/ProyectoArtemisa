@@ -54,7 +54,7 @@ namespace ProyectoArtemisa
 
         protected void CargarComboCiudad(int idProvincia)
         {
-            ddl_ciudad.DataSource = CiudadDao.ConsultarCiudad(idProvincia);
+            ddl_ciudad.DataSource = CiudadDao.ConsultarCiudadXProvincia(idProvincia);
             ddl_ciudad.DataTextField = "nombreciudad";
             ddl_ciudad.DataValueField = "idCiudad";
             ddl_ciudad.DataBind();

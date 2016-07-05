@@ -119,7 +119,7 @@ namespace BaseDeDatos
         public static UniversidadEntidad ConsultarUnaUniversidad(int id)
         {
             UniversidadEntidad uni = new UniversidadEntidad();
-            string consulta = @"SELECT idUniversidad, nombreUniversidad Provincia FROM Universidad WHERE idUniversidad = @id AND baja = 0";
+            string consulta = @"SELECT idUniversidad, nombreUniversidad  FROM Universidad WHERE idUniversidad = @id AND baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"id", id);
             SqlDataReader dr = cmd.ExecuteReader();

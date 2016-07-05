@@ -18,7 +18,7 @@ namespace ProyectoArtemisa
             {
                 if ((PilaForms.pila.Peek().Equals("ConsultarEditorial_25.aspx")) || ((bool)Session["modificarEditorial"]))
                 {
-                    CargarUnObjetoEnElForm(EditorialDao.ConsultarUnaEditorial((int)Session["idEditorial"]));
+                    CargarUnObjetoEnElForm(EditorialDao.ConsultarUnaEditorial(int.Parse(Session["idEditorial"].ToString())));
                 }
                 else
                 {
@@ -33,7 +33,7 @@ namespace ProyectoArtemisa
             if ((PilaForms.pila.Peek().Equals("ConsultarEditorial_25.aspx")) || ((bool)Session["modificarEditorial"]))
             {
                 EditorialEntidad editorial = CrearUnObjetoDesdeElForm();
-                editorial.idEditorial = (int)Session["idEditorial"];
+                editorial.idEditorial = int.Parse(Session["idEditorial"].ToString());
                 EditorialDao.ModificarEditorial(editorial);
                 Session["idEditorial"] = null;
                 Session["modificarEditorial"] = false;
