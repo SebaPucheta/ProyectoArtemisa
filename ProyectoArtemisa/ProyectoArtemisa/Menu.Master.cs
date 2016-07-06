@@ -53,6 +53,34 @@ namespace ProyectoArtemisa
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("ConsultarPrecioPorHoja_77.aspx");
         }
+
+        protected void btn_ventaXVentanilla_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarVentaVentanilla_128.aspx");
+        }
+
+        protected void btn_consultarHistorialFactura_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarHistorialFactura_130.aspx");
+        }
+
+        protected void btn_consultarOrdenImpresion_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarOrdenImpresion_126.aspx");
+        }
+
+        protected void btn_consultarHistorialOrdenImpresion_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarHistorialOrdenImpresion_129.aspx");
+        }
         
         protected void LimpiarVariablesGlobales()
         {

@@ -55,6 +55,10 @@
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarItem" Text="Consultar Item" OnClick="btn_consultarItem_OnClick" /></li>
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarEditorial" Text="Consultar Editorial" OnClick="btn_consultarEditorial_OnClick" /></li>
                 <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarPrecioXHoja" Text="Consultar Precio Por Hoja" OnClick="btn_consultarPrecioXHoja_OnClick" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarHistorialFactura" Text="Historial Factura" OnClick="btn_consultarHistorialFactura_OnClick" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarOrdenImpresion" Text="Consultar Orden Impresión" OnClick="btn_consultarOrdenImpresion_OnClick" /></li>
+                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarHistorialOrdenImpresion" Text="Historial Ordenes Impresión" OnClick="btn_consultarHistorialOrdenImpresion_OnClick" /></li>
             <asp:Image runat="server" id="img_educom" ImageUrl="~/Estilo/LogoMasChico.jpg" />
             </ul>
         </nav>

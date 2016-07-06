@@ -75,7 +75,10 @@
     <Content Include="Bootstrap\js\jquery.js" />
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="ConsultarEditorial_25.aspx" />
+    <Content Include="ConsultarHistorialFactura_130.aspx" />
+    <Content Include="ConsultarHistorialOrdenImpresion_129.aspx" />
     <Content Include="ConsultarLibroApunte.aspx" />
+    <Content Include="ConsultarOrdenImpresion_126.aspx" />
     <Content Include="ConsultarPrecioPorHoja_77.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Estilo\Background\abstract_polygonal_colorful_background-wallpaper-1920x1080.jpg" />
@@ -123,6 +126,7 @@
     <Content Include="RegistrarProfesor_14.aspx" />
     <Content Include="RegistrarProvincia_105.aspx" />
     <Content Include="RegistrarUniversidad_69.aspx" />
+    <Content Include="RegistrarVentaVentanilla_128.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -140,12 +144,33 @@
     <Compile Include="ConsultarEditorial_25.aspx.designer.cs">
       <DependentUpon>ConsultarEditorial_25.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarHistorialFactura_130.aspx.cs">
+      <DependentUpon>ConsultarHistorialFactura_130.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarHistorialFactura_130.aspx.designer.cs">
+      <DependentUpon>ConsultarHistorialFactura_130.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarHistorialOrdenImpresion_129.aspx.cs">
+      <DependentUpon>ConsultarHistorialOrdenImpresion_129.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarHistorialOrdenImpresion_129.aspx.designer.cs">
+      <DependentUpon>ConsultarHistorialOrdenImpresion_129.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarLibroApunte.aspx.cs">
       <DependentUpon>ConsultarLibroApunte.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ConsultarLibroApunte.aspx.designer.cs">
       <DependentUpon>ConsultarLibroApunte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarOrdenImpresion_126.aspx.cs">
+      <DependentUpon>ConsultarOrdenImpresion_126.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarOrdenImpresion_126.aspx.designer.cs">
+      <DependentUpon>ConsultarOrdenImpresion_126.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarPrecioPorHoja_77.aspx.cs">
       <DependentUpon>ConsultarPrecioPorHoja_77.aspx</DependentUpon>
@@ -258,6 +283,13 @@
     </Compile>
     <Compile Include="RegistrarUniversidad_69.aspx.designer.cs">
       <DependentUpon>RegistrarUniversidad_69.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarVentaVentanilla_128.aspx.cs">
+      <DependentUpon>RegistrarVentaVentanilla_128.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarVentaVentanilla_128.aspx.designer.cs">
+      <DependentUpon>RegistrarVentaVentanilla_128.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
