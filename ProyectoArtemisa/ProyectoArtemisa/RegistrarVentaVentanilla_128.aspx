@@ -47,7 +47,7 @@
              <div class="form-group">
                  <label for="documento" class="control-label col-md-1">Total : </label>
                  <div class="col-md-2">
-                     <asp:TextBox runat="server" class="form-control" type="text" ID="txt_total" value="" ViewStateMode="Enabled" />
+                     <asp:Label runat="server" class="form-control" type="text" ID="lbl_total"  />
                  </div>
              </div>
          </div>

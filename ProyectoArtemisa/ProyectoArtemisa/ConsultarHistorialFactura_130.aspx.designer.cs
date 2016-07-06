@@ -40,12 +40,12 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.GridView dgv_grillaOrdenesImpresion;
         
         /// <summary>
-        /// Control txt_total.
+        /// Control lbl_total.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_total;
+        protected global::System.Web.UI.WebControls.Label lbl_total;
     }
 }
