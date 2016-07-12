@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="option" id="lbl_nombreLibro" class="control-label col-md-3">Nombre del libro: </label>
                     <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreDelLibro" value="" ViewStateMode="Enabled" />
+                        <asp:TextBox runat="server" MaxLength="50" class="form-control" type="text" ID="txt_nombreDelLibro" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreDelLibro" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <label for="option" id="lbl_codigoBarra" class="control-label col-md-3">Código de barra: </label>
                     <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_codgoBarra" value="" ViewStateMode="Enabled" />
+                        <asp:TextBox runat="server" MaxLength="50" class="form-control" type="text" ID="txt_codgoBarra" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_codgoBarra" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -166,6 +166,15 @@
                                  </button>
                               </div>
                         </asp:RequiredFieldValidator>
+                         <!-- Verifica que se el textBox tenga un nombre solo con letras-->
+                        <asp:RegularExpressionValidator runat="server" ValidationExpression="^[A-Z a-zñÑáéíóúÁÉÍÓÚ]*$" ControlToValidate="txt_nombreAutorLibro" Display="Dynamic" ValidationGroup="AllValidator">
+                            <div class="alert alert-danger">
+                                  <strong>Se debe ingresar un nombre correcto</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                        </asp:RegularExpressionValidator>
                     </div>
                 </div>
             </div>
@@ -249,16 +258,17 @@
                               </div>
                         </asp:RequiredFieldValidator>
                          <!-- Verifica que se ingrese un numero-->
-                            <asp:CompareValidator ControlToValidate="txt_precioLibro" cultureinvariantvalues="true" display="Dynamic" ID="CompareValidator2" runat="server" Operator="DataTypeCheck" Type="Double" setfocusonerror="true"  ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
-                               <div class="alert alert-danger">
-                                  <strong>No se a ingresado un número</strong> 
+                             <!-- Verifica que se el textBox tenga un nombre solo con numeros-->
+                        <asp:RegularExpressionValidator runat="server" ValidationExpression="^[0-9,]*$" ControlToValidate="txt_precioLibro" Display="Dynamic" ValidationGroup="AllValidator">
+                            <div class="alert alert-danger">
+                                  <strong>Se debe ingresar un precio correcto</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
                               </div>
-                            </asp:CompareValidator>
+                        </asp:RegularExpressionValidator>
                             <!--Verifica que el valor ingresado sea razonablemente valido-->
-                            <asp:RangeValidator ControlToValidate="txt_precioLibro" MaximumValue="1000000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server"  ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                            <asp:RangeValidator ControlToValidate="txt_precioLibro" MaximumValue="1000000" Type="Double" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server"  ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">
                                   <strong>El precio ingresado es incorrecto</strong> 
                                   <button class="close" data-dismiss="alert">

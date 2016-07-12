@@ -279,14 +279,14 @@
                             <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
                             <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioXHoja" value="" ViewStateMode="Enabled" Enabled="false" />
                             <!-- Verifica que se ingrese un numero-->
-                            <asp:CompareValidator ControlToValidate="txt_precioXHoja" CultureInvariantValues="true" Display="Dynamic" ID="CompareValidator2" runat="server" Operator="DataTypeCheck" Type="Double" SetFocusOnError="true" ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
-                               <div class="alert alert-danger">
-                                  <strong>No se a ingresado un número</strong> 
+                             <asp:RegularExpressionValidator runat="server" ValidationExpression="^[0-9,]*$" ControlToValidate="txt_precioXHoja" Display="Dynamic" ValidationGroup="AllValidator">
+                            <div class="alert alert-danger">
+                                  <strong>Se debe ingresar el precio correctamente el precio (no usar punto)</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
                               </div>
-                            </asp:CompareValidator>
+                        </asp:RegularExpressionValidator>
                             <!--Verifica que el valor ingresado sea razonablemente valido-->
                             <asp:RangeValidator ControlToValidate="txt_precioXHoja" MaximumValue="1000000" Type="Double" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">

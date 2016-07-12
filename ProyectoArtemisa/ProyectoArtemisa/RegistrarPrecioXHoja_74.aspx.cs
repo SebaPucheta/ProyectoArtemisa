@@ -34,17 +34,20 @@ namespace ProyectoArtemisa
         {
             try
             {
-                PrecioXHojaEntidad pxh = new PrecioXHojaEntidad();
-                pxh.precioHoja = float.Parse(txt_precio.Text);
-                pxh.fecha = DateTime.Parse(txt_fecha.Text);
-                PrecioXHojaDao.RegistrarPrecioXHoja(pxh);
-                if (PilaForms.pila.Peek().Equals("Default.aspx"))
+                if (Page.IsValid)
                 {
-                    limpiarForm();
-                }
-                else
-                {
-                    Response.Redirect(PilaForms.DevolverForm());
+                    PrecioXHojaEntidad pxh = new PrecioXHojaEntidad();
+                    pxh.precioHoja = float.Parse(txt_precio.Text);
+                    pxh.fecha = DateTime.Parse(txt_fecha.Text);
+                    PrecioXHojaDao.RegistrarPrecioXHoja(pxh);
+                    if (PilaForms.pila.Peek().Equals("Default.aspx"))
+                    {
+                        limpiarForm();
+                    }
+                    else
+                    {
+                        Response.Redirect(PilaForms.DevolverForm());
+                    }
                 }
                 //Cosito de confirmar
             }

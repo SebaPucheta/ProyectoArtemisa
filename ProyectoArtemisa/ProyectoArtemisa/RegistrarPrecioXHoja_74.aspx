@@ -36,6 +36,15 @@
                                  </button>
                               </div>
                         </asp:RequiredFieldValidator>
+                         <!-- Verifica que se el textBox tenga un nombre solo con letras y coma (no se pueden poner puntos-->
+                        <asp:RegularExpressionValidator runat="server" ValidationExpression="^[0-9,]*$" ControlToValidate="txt_precio" Display="Dynamic" ValidationGroup="AllValidator">
+                            <div class="alert alert-danger">
+                                  <strong>Se debe ingresar el precio correctamente (no usar puntos)</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                        </asp:RegularExpressionValidator>
                     </div>
                 </div>
             </div>
@@ -72,7 +81,7 @@
             <br />
 
             <div class="row col-lg-offset-8">
-                <asp:Button runat="server" ID="btn_registrar" Text="Registrar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="val_precioHoja" Enabled="true" OnClick="btn_registrar_Click" />
+                <asp:Button runat="server" ID="btn_registrar" Text="Registrar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" OnClick="btn_registrar_Click" />
                 <asp:Button runat="server" ID="btn_salir" Text="Cancelar" CssClass="btn btn-lg btn_rojo btn_flat" OnClick="btn_salir_Click" />
             </div>
 

@@ -89,7 +89,7 @@ namespace ProyectoArtemisa
             cargarComboFacultad(int.Parse(ddl_universidadesLibro.SelectedValue.ToString()));
         }
 
-        //Seleccion de item del combo Universidad
+        //Seleccion de item del combo Facultad
         protected void ddl_facultadesLibro_SelectedIndexChanged(object sender, EventArgs e)
         {
             cargarComboMaterias(int.Parse(ddl_facultadesLibro.SelectedValue.ToString()));
