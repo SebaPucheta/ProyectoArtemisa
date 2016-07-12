@@ -50,6 +50,8 @@
     <Compile Include="CarreraEntidadQuery.cs" />
     <Compile Include="CategoriaEntidad.cs" />
     <Compile Include="CiudadEntidad.cs" />
+    <Compile Include="ClienteEntidad.cs" />
+    <Compile Include="ClienteEntidadQuery.cs" />
     <Compile Include="DetalleFacturaEntidad.cs" />
     <Compile Include="DetalleFacturaEntidadQuery.cs" />
     <Compile Include="EditorialEntidad.cs" />
@@ -68,7 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinciaEntidad.cs" />
     <Compile Include="TipoApunteEntidad.cs" />
+    <Compile Include="TipoDNIEntidad.cs" />
     <Compile Include="UniversidadEntidad.cs" />
+    <Compile Include="UsuarioEntidad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
