@@ -34,7 +34,7 @@ namespace BaseDeDatos
             if (nuevoApunte.idPrecioHoja.HasValue)
             {
                 cmd.Parameters.AddWithValue(@"idPrecioHoja", nuevoApunte.idPrecioHoja);
-                
+
             }
             else
             {
@@ -51,7 +51,7 @@ namespace BaseDeDatos
             {
                 cmd.Parameters.AddWithValue(@"idProfesor", DBNull.Value);
             }
-            
+
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
@@ -93,7 +93,7 @@ namespace BaseDeDatos
             cmd.Parameters.AddWithValue(@"idCategoria", apu.idCategoria);
             cmd.Parameters.AddWithValue(@"idTipoApunte", apu.idTipoApunte);
             cmd.Parameters.AddWithValue(@"idEditorial", apu.idEditorial);
-            
+
             cmd.Parameters.AddWithValue(@"idMateria", apu.idMateria);
             if (apu.idPrecioHoja.HasValue)
             {
@@ -104,7 +104,7 @@ namespace BaseDeDatos
             {
                 cmd.Parameters.AddWithValue(@"idPrecioHoja", DBNull.Value);
             }
-            
+
             // cmd.Parameters.AddWithValue(@"idEstado", nuevoApunte.idEstado);
             if (apu.idProfesor.HasValue)
             {
@@ -142,7 +142,8 @@ namespace BaseDeDatos
             {
                 ApunteEntidadQuery apu = new ApunteEntidadQuery();
                 apu.idApunte = int.Parse(dr["idApunte"].ToString());
-                apu.stock = int.Parse(dr["stock"].ToString());
+                if (dr["stock"] != DBNull.Value)
+                    apu.stock = int.Parse(dr["stock"].ToString());
                 apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
                 apu.cantHoja = int.Parse(dr["cantHoja"].ToString());
                 apu.nombreApunte = dr["nombreApunte"].ToString();
@@ -163,7 +164,7 @@ namespace BaseDeDatos
             cmd.Connection.Close();
             return lista;
         }
-        
+
         /// <summary>
         /// Consultar: codigo de barra para que el apunte no se ingrese con un codigo de barra igual a uno ya registrado
         /// </summary>
@@ -204,14 +205,15 @@ namespace BaseDeDatos
             while (dr.Read())
             {
                 apu.idApunte = int.Parse(dr["idApunte"].ToString());
-                apu.stock = int.Parse(dr["stock"].ToString());
+                if (dr["stock"] != DBNull.Value)
+                    apu.stock = int.Parse(dr["stock"].ToString());
                 apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
                 apu.cantHoja = int.Parse(dr["cantHoja"].ToString());
                 apu.nombreApunte = dr["nombreApunte"].ToString();
                 apu.descripcionApunte = dr["descripcionApunte"].ToString();
                 apu.anoApunte = int.Parse(dr["anoApunte"].ToString());
                 apu.codigoBarraApunte = dr["codigoBarraApunte"].ToString();
-                if(dr["idPrecioHoja"]!=DBNull.Value)
+                if (dr["idPrecioHoja"] != DBNull.Value)
                 { apu.idPrecioHoja = int.Parse(dr["idPrecioHoja"].ToString()); }
                 apu.idCategoria = int.Parse(dr["idCategoria"].ToString());
                 apu.idTipoApunte = int.Parse(dr["idTipoApunte"].ToString());
@@ -260,7 +262,7 @@ namespace BaseDeDatos
 									 AND f.idFacultad LIKE @idFacu AND c.idCarrera LIKE @idCar AND m.idMateria LIKE @idMat AND a.baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"idTipoApu", idTipoApunte + '%');
-            cmd.Parameters.AddWithValue(@"nomApu",  nombreApunte + '%');
+            cmd.Parameters.AddWithValue(@"nomApu", nombreApunte + '%');
             cmd.Parameters.AddWithValue(@"idUni", idUniversidad + '%');
             cmd.Parameters.AddWithValue(@"idFacu", idFacultad + '%');
             cmd.Parameters.AddWithValue(@"idCar", idCarrera + '%');
@@ -270,7 +272,8 @@ namespace BaseDeDatos
             {
                 ApunteEntidadQuery apu = new ApunteEntidadQuery();
                 apu.idApunte = int.Parse(dr["idApunte"].ToString());
-                apu.stock = int.Parse(dr["stock"].ToString());
+                if (dr["stock"] != DBNull.Value)
+                    apu.stock = int.Parse(dr["stock"].ToString());
                 apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
                 apu.cantHoja = int.Parse(dr["cantHoja"].ToString());
                 apu.nombreApunte = dr["nombreApunte"].ToString();
@@ -333,7 +336,8 @@ namespace BaseDeDatos
                 apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
                 apu.nombreMateria = (string)dr["nombreMateria"];
                 apu.nombreApunte = dr["nombreApunte"].ToString();
-                apu.stock = int.Parse(dr["stock"].ToString());
+                if (dr["stock"] != DBNull.Value)
+                    apu.stock = int.Parse(dr["stock"].ToString());
                 apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
                 apu.nombreEditorial = dr["nombreEditorial"].ToString();
                 apu.nombreProfesor = dr["nombreProfesor"].ToString();
@@ -389,11 +393,11 @@ namespace BaseDeDatos
         }
 
         //Filtro de apunte con MATERIA
-        public static List<ApunteEntidadQuery> ConsultarApunteXFiltroMateria(string idTipoApunte, string nombreApunte, 
+        public static List<ApunteEntidadQuery> ConsultarApunteXFiltroMateria(string idTipoApunte, string nombreApunte,
                                                                             string idUniversidad, string idFacultad, string idMateria)
         {
             List<ApunteEntidadQuery> lista = new List<ApunteEntidadQuery>();
-            string consulta = @"SELECT DISTINCT a.idApunte, a.nombreApunte, a.precioApunte, m.nombreMateria, a.stock, e.nombreEditorial, p.nombreProfesor,
+            string consulta = @"SELECT DISTINCT a.idApunte, a.nombreApunte, a.precioApunte, m.nombreMateria, a.stock as 'stockApunte', e.nombreEditorial, p.nombreProfesor,
                                        p.apellidoProfesor, ta.nombreTipoApunte, a.codigoBarraApunte,
 									   a.anoApunte, a.cantHoja, u.nombreUniversidad, f.nombreFacultad, a.descripcionApunte
                                 FROM Apunte a JOIN Editorial e ON a.idEditorial = e.idEditorial
@@ -419,7 +423,8 @@ namespace BaseDeDatos
                 apu.idApunte = int.Parse(dr["idApunte"].ToString());
                 apu.nombreApunte = dr["nombreApunte"].ToString();
                 apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
-                apu.stock = int.Parse(dr["stock"].ToString());
+                if (dr["stockApunte"] != DBNull.Value)
+                    apu.stock = int.Parse(dr["stockApunte"].ToString());
                 apu.nombreEditorial = dr["nombreEditorial"].ToString();
                 apu.nombreProfesor = dr["nombreProfesor"].ToString();
                 apu.apellidoProfesor = dr["apellidoProfesor"].ToString();
@@ -431,7 +436,7 @@ namespace BaseDeDatos
                 apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
                 apu.nombreFacultad = dr["nombreFacultad"].ToString();
                 apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
-                apu.nombreMateria = (string)dr["nombreMateria"];           
+                apu.nombreMateria = (string)dr["nombreMateria"];
                 lista.Add(apu);
             }
             dr.Close();
