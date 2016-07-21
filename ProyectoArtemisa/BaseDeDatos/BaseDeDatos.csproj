@@ -50,9 +50,11 @@
     <Compile Include="CiudadDao.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="EditorialDao.cs" />
+    <Compile Include="EstadoOrdenImpresionDao.cs" />
     <Compile Include="FacultadDao.cs" />
     <Compile Include="LibroDao.cs" />
     <Compile Include="MateriaDao.cs" />
+    <Compile Include="OrdenImpresionDao.cs" />
     <Compile Include="PrecioXHojaDao.cs" />
     <Compile Include="ProfesorDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

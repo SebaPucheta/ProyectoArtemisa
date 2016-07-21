@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using BaseDeDatos;
 using System.Data;
 using Entidades;
 using Negocio;
@@ -43,7 +44,7 @@ namespace ProyectoArtemisa
             nuevaOrden.nombreApunte = Session["nombreApunte"].ToString();
             nuevaOrden.nombreEstadoOrdenImpresion = EstadoOrdenImpresionDao.DevolverNombreEstado(1);
             nuevaOrden.fecha = DateTime.Now;
-            nuevaOrden.idOrdenImpresion = OrdenImpresionDao.RegistrarOrdenImpresion(OrdenImpresionQuery nuevaOrden);
+            nuevaOrden.idOrdenImpresion = OrdenImpresionDao.RegistrarOrdenImpresion(nuevaOrden);
             ColeccionOrdenImpresion.GuardarOrdenImpresion(nuevaOrden);
             CargarOrdenEnGrilla();
             BorrarVariablesGlobales();
@@ -59,7 +60,7 @@ namespace ProyectoArtemisa
         //Inicializar la coleccion de ordenes de impresion y carga la grilla
         protected void InicializarColeccion()
         {
-            ColeccionOrdenImpresion.Inicializar(OrdenesImpresionDao.ListarOrdenApuntePendientes());
+            ColeccionOrdenImpresion.Inicializar(OrdenImpresionDao.ListarOrdenApuntePendientes());
             CargarOrdenEnGrilla();
         }
 
@@ -83,7 +84,7 @@ namespace ProyectoArtemisa
                 fila[1] = orden.nombreApunte;
                 fila[2] = orden.cantidad;
 
-                if (orden.nombreOrdenImpresion.Equals("Impreso"))
+                if (orden.nombreEstadoOrdenImpresion.Equals("Impreso"))
                 {
                     fila[3] = true;
                 }
@@ -110,7 +111,7 @@ namespace ProyectoArtemisa
 
         protected void btn_consultarApunte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["idApunte"] = OrdenImpresionDao.DevolverApunte((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
+            Session["idApunte"] = OrdenImpresionDao.DevolverIdApunte((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
             PilaForms.AgregarForm("ConsultarOrdenImpresion_126.aspx");
             Response.Redirect("ConsultarOrdenImpresion_126.aspx");
         }
