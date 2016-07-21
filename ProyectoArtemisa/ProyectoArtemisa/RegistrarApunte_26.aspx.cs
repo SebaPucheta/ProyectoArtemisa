@@ -291,12 +291,14 @@ namespace ProyectoArtemisa
                 txt_precioXHoja.Enabled = true;
                 txt_cantHojasApunte.Enabled = true;
                 txt_codigoBarra.Enabled = true;
+                txt_stock.Enabled = true;
             }
             else
             {
                 txt_precioXHoja.Enabled = false;
                 txt_cantHojasApunte.Enabled = false;
                 txt_codigoBarra.Enabled = false;
+                txt_stock.Enabled = false;
             }
         }
 
@@ -387,6 +389,7 @@ namespace ProyectoArtemisa
             nuevoApunte.nombreApunte = txt_nombreApunte.Text;
             nuevoApunte.anoApunte = Convert.ToInt32(txt_ano.Text);
             nuevoApunte.cantHoja = Convert.ToInt32(txt_cantHojasApunte.Text);
+            nuevoApunte.stock = Convert.ToInt32(txt_stock.Text);
             nuevoApunte.descripcionApunte = txt_descripcion.Text;
             nuevoApunte.idCategoria = Convert.ToInt32( ddl_categoriaApunte.SelectedValue);
             nuevoApunte.idEditorial = Convert.ToInt32( ddl_editorialApunte.SelectedValue);
@@ -438,6 +441,7 @@ namespace ProyectoArtemisa
                     nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
                     nuevoApunte.precioApunte = float.Parse(txt_precioXHoja.Text);
                     nuevoApunte.idTipoApunte = 1;
+                    nuevoApunte.stock = int.Parse(txt_stock.Text);
                     nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja; 
                     ApunteDao.RegistrarApunte(nuevoApunte);
                 }
@@ -497,6 +501,8 @@ namespace ProyectoArtemisa
             txt_precioApunteDigital.Enabled = false;
             txt_precioXHoja.Text = "";
             txt_precioXHoja.Enabled = false;
+            txt_stock.Text = "";
+            txt_stock.Enabled = false;
             CargarComboUniversidad();
             ddl_categoriaApunte.SelectedIndex = 0;
             ddl_editorialApunte.SelectedIndex = 0;
@@ -523,6 +529,7 @@ namespace ProyectoArtemisa
             Session["idMateria"] = Convert.ToInt32(ddl_materiaApunte.SelectedValue);
             Session["idEditorial"] = Convert.ToInt32(ddl_editorialApunte.SelectedValue);
             Session["cantidadHojas"] = txt_cantHojasApunte.Text;
+            Session["stock"] = txt_stock.Text;
             Session["precionImpreso"] = txt_precioXHoja.Text;
             Session["precioDigital"] = txt_precioApunteDigital.Text;
             Session["idProfesor"] = Convert.ToInt32(ddl_profesorApunte.SelectedValue);
@@ -542,6 +549,8 @@ namespace ProyectoArtemisa
                 txt_codigoBarra.Text = Session["codigoBarra"].ToString();
                 txt_precioXHoja.Enabled = true;
                 txt_precioXHoja.Text = Session["precionImpreso"].ToString();
+                txt_stock.Enabled = true;
+                txt_stock.Text = Session["stock"].ToString();
             }
             chk_digital.Checked = bool.Parse(Session["chk_Digital"].ToString());
             if(chk_digital.Checked)
@@ -612,6 +621,7 @@ namespace ProyectoArtemisa
             Session["nombreAutor"] = "";
             Session["idEditorial"] = null;
             Session["cantidadHojas"] = "";
+            Session["stock"] = "";
             Session["precionImpreso"] = "";
             Session["precioDigital"] = "";
             Session["idProfesor"] = null;
@@ -644,12 +654,14 @@ namespace ProyectoArtemisa
             CargarComboProfesor(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
             ddl_profesorApunte.SelectedValue= apunte.idProfesor.ToString();
 
-            if(apunte.idTipoApunte==1)
+            if (apunte.idTipoApunte == 1)
             {
                 chk_impreso.Checked = true;
                 txt_codigoBarra.Text = apunte.codigoBarraApunte;
                 txt_codigoBarra.Enabled = true;
                 txt_precioApunteDigital.Text = "";
+                txt_stock.Enabled = true;
+                txt_stock.Text = apunte.stock.ToString();
                 txt_precioApunteDigital.Enabled = false;
                 txt_precioXHoja.Text = apunte.precioApunte.ToString();
                 txt_precioXHoja.Enabled =true;
@@ -659,6 +671,8 @@ namespace ProyectoArtemisa
                 chk_digital.Checked = true;
                 txt_codigoBarra.Text = "";
                 txt_codigoBarra.Enabled = false;
+                txt_stock.Enabled = false;
+                txt_stock.Text = "";
                 txt_precioApunteDigital.Text = apunte.precioApunte.ToString();
                 txt_precioApunteDigital.Enabled = true;
                 txt_precioXHoja.Text = "";

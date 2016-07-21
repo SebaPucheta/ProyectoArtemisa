@@ -21,7 +21,7 @@ namespace BaseDeDatos
         {
             string query = @"INSERT INTO Libro (nombreLibro, autorLibro, descripcionLibro, stock, cantidadHojasLibro,
                                                 precioLibro, idEditorial, codigoBarraLibro, idMateria, baja) VALUES
-                                                (@nombre, @autor, @descripcion, 0, @cantidadHojas,
+                                                (@nombre, @autor, @descripcion, @stock, @cantidadHojas,
                                                  @precioLibro, @idEditorial, @codigoBarra, @idMateria, 0)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"nombre", libro.nombreLibro);
@@ -30,6 +30,7 @@ namespace BaseDeDatos
             { cmd.Parameters.AddWithValue(@"descripcion", DBNull.Value); }
             else
             { cmd.Parameters.AddWithValue(@"descripcion", libro.descripcionLibro); }
+            cmd.Parameters.AddWithValue(@"stock", libro.stock);
             cmd.Parameters.AddWithValue(@"cantidadHojas", libro.cantidadHojasLibro);
             cmd.Parameters.AddWithValue(@"precioLibro", libro.precioLibro);
             cmd.Parameters.AddWithValue(@"idEditorial", libro.idEditorial);
@@ -61,13 +62,14 @@ namespace BaseDeDatos
         public static void ModificarLibro(LibroEntidad libro)
         {
             string consulta = @"UPDATE Libro SET nombreLibro = @nombre, descripcionLibro = @descripcion, codigoBarraLibro = @codigoBarra,
-                                                 autorLibro = @autor,  idMateria = @idMateria,
+                                                 autorLibro = @autor,  idMateria = @idMateria, stock = @stock, 
                                                  cantidadHojasLibro = @cantidadHojas, precioLibro = @precio, idEditorial = @idEditorial
                                                   WHERE idLibro = @idLibro";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"idLibro", libro.idLibro);
             cmd.Parameters.AddWithValue(@"nombre", libro.nombreLibro);
             cmd.Parameters.AddWithValue(@"autor", libro.autorLibro);
+            cmd.Parameters.AddWithValue(@"stock", libro.stock);
             cmd.Parameters.AddWithValue(@"codigoBarra", libro.codigoBarraLibro);
             cmd.Parameters.AddWithValue(@"descripcion", libro.descripcionLibro);
             cmd.Parameters.AddWithValue(@"cantidadHojas", libro.cantidadHojasLibro);

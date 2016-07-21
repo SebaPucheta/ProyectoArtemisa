@@ -277,7 +277,7 @@ namespace ProyectoArtemisa
             libro.idMateria = Convert.ToInt32(ddl_materiasLibro.SelectedValue);
             //Estado no esta, se inicializa en null por defecto
             libro.precioLibro = float.Parse(txt_precioLibro.Text);
-            //Stock no esta, se inicializa en 0 por defecto
+            libro.stock = int.Parse(txt_stock.Text);
 
             return libro;
         }
@@ -293,6 +293,7 @@ namespace ProyectoArtemisa
             txt_nombreAutorLibro.Text = "";
             txt_nombreDelLibro.Text = "";
             txt_precioLibro.Text = "";
+            txt_stock.Text = "";
             cargarComboUniversidad();
             cargarComboEditorial();
             ddl_facultadesLibro.SelectedIndex = 0;
@@ -315,6 +316,7 @@ namespace ProyectoArtemisa
             Session["cantidadHojas"] = txt_cantidadHojasLibro.Text;
             Session["precionImpreso"] = txt_precioLibro.Text;
             Session["descripcion"] = txt_descripcionLibro.Text;
+            Session["stock"] = txt_stock.Text;
         }
 
         /// <summary>
@@ -324,6 +326,7 @@ namespace ProyectoArtemisa
         {
             txt_nombreDelLibro.Text = Session["nombreApunte"].ToString();
             txt_codgoBarra.Text = Session["codigoBarra"].ToString();
+            txt_stock.Text = Session["stock"].ToString();
             cargarComboUniversidad();
             if (Session["idUniversidad"] != null)
             {
@@ -373,6 +376,7 @@ namespace ProyectoArtemisa
             Session["cantidadHojas"] = "";
             Session["precionImpreso"] = "";
             Session["descripcion"] = "";
+            Session["stock"] = "";
         }
 
         /// <summary>
@@ -387,6 +391,7 @@ namespace ProyectoArtemisa
             txt_nombreAutorLibro.Text = libro.autorLibro;
             txt_nombreDelLibro.Text = libro.nombreLibro;
             txt_precioLibro.Text = libro.precioLibro.ToString();
+            txt_stock.Text = libro.stock.ToString();
             cargarComboUniversidad();
             ddl_universidadesLibro.SelectedValue = FacultadDao.ConsultarIdUniversidadDeUnaFacultad(MateriaDao.DevolverIdFacultadDeUnaMateria(libro.idMateria)).ToString();
             cargarComboFacultad(Convert.ToInt32(ddl_universidadesLibro.SelectedValue));

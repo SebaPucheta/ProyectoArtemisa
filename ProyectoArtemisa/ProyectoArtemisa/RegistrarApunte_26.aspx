@@ -235,7 +235,7 @@
             <div class="row">
                 <div class="form-group">
                     <label for="nombre" class="control-label col-md-3">Cantidad de Hojas :</label>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_cantHojasApunte" value="" ViewStateMode="Enabled" OnTextChanged="txt_cantHojasApunte_TextChanged" AutoPostBack="true" />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_cantHojasApunte" Display="Dynamic" ValidationGroup="AllValidator">
@@ -264,6 +264,44 @@
                                  </button>
                               </div>
                         </asp:RangeValidator>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+              <!-- Stock -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="option" id="lbl_stock" class="control-label col-md-3">Stock: </label>
+                    <div class="col-md-2">
+                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_stock" value="" ViewStateMode="Enabled" Enabled="false"/>
+                        <!-- Verifica que se el textBox no este vacio-->
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_stock" Display="Dynamic" ValidationGroup="AllValidator">
+                            <div class="alert alert-danger">
+                                  <strong>Se debe ingresar un stock</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                        </asp:RequiredFieldValidator>
+                        <!-- Verifica que se ingrese un numero-->
+                            <asp:CompareValidator ControlToValidate="txt_stock" cultureinvariantvalues="true" display="Dynamic" ID="CompareValidator2" runat="server" Operator="DataTypeCheck" Type="Integer" setfocusonerror="true"  ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
+                               <div class="alert alert-danger">
+                                  <strong>No se a ingresado un número</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                            </asp:CompareValidator>
+                        <!--Verifica que el valor ingresado sea razonablemente valido-->
+                            <asp:RangeValidator ControlToValidate="txt_stock" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server"  ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                                <div class="alert alert-danger">
+                                  <strong>El stock ingresada es incorrecto</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                            </asp:RangeValidator>
                     </div>
                 </div>
             </div>

@@ -19,12 +19,13 @@ namespace BaseDeDatos
         public static void RegistrarApunte(ApunteEntidad nuevoApunte)
         {
             string query = @"INSERT INTO Apunte (precioApunte, cantHoja, nombreApunte, stock, descripcionApunte, anoApunte, codigoBarraApunte, idPrecioHoja, idCategoria, idTipoApunte, idEditorial, idProfesor, idMateria, baja) 
-                            VALUES (@precioApunte, @cantHoja, @nombreApunte, 0, @descripcionApunte, @anoApunte, @codigoBarraApunte, @idPrecioHoja, @idCategoria, @idTipoApunte, @idEditorial, @idProfesor, @idMateria, 0)";
+                            VALUES (@precioApunte, @cantHoja, @nombreApunte, @stock, @descripcionApunte, @anoApunte, @codigoBarraApunte, @idPrecioHoja, @idCategoria, @idTipoApunte, @idEditorial, @idProfesor, @idMateria, 0)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
             cmd.Parameters.AddWithValue(@"precioApunte", nuevoApunte.precioApunte);
             cmd.Parameters.AddWithValue(@"cantHoja", nuevoApunte.cantHoja);
             cmd.Parameters.AddWithValue(@"nombreApunte", nuevoApunte.nombreApunte);
+            cmd.Parameters.AddWithValue(@"stock", nuevoApunte.stock);
             cmd.Parameters.AddWithValue(@"descripcionApunte", nuevoApunte.descripcionApunte);
             cmd.Parameters.AddWithValue(@"anoApunte", nuevoApunte.anoApunte);
             cmd.Parameters.AddWithValue(@"codigoBarraApunte", nuevoApunte.codigoBarraApunte);
@@ -80,7 +81,7 @@ namespace BaseDeDatos
             string consulta = @"UPDATE Apunte SET precioApunte = @precioApunte, cantHoja = @cantHoja, nombreApunte = @nombreApunte,
                                                   descripcionApunte = @descripcionApunte, anoApunte = @anoApunte, codigoBarraApunte = @codigoBarraApunte,
                                                   idPrecioHoja = @idPrecioHoja, idCategoria = @idCategoria, idTipoApunte = @idTipoApunte,
-                                                  idEditorial = @idEditorial, idProfesor = @idProfesor, idMateria = @idMateria
+                                                  idEditorial = @idEditorial, idProfesor = @idProfesor, idMateria = @idMateria, stock = @stock 
                                               WHERE idApunte = @idApunte";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"idApunte", apu.idApunte);
@@ -93,7 +94,7 @@ namespace BaseDeDatos
             cmd.Parameters.AddWithValue(@"idCategoria", apu.idCategoria);
             cmd.Parameters.AddWithValue(@"idTipoApunte", apu.idTipoApunte);
             cmd.Parameters.AddWithValue(@"idEditorial", apu.idEditorial);
-
+            cmd.Parameters.AddWithValue(@"stock", apu.stock);
             cmd.Parameters.AddWithValue(@"idMateria", apu.idMateria);
             if (apu.idPrecioHoja.HasValue)
             {

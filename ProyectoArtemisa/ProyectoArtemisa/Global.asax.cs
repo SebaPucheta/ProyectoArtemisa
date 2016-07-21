@@ -53,6 +53,7 @@ namespace ProyectoArtemisa
             Session["idProfesor"] = null;
             Session["idCategoria"] = null;
             Session["descripcion"] = "";
+            Session["stock"] = "";
             
             
         }
