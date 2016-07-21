@@ -32,9 +32,13 @@ namespace Negocio
             ordenesImpresion.Add(ordenImpresion);
         }
 
-        static public void EliminarOrdenImpresion(int indice)
+        static public void EliminarOrdenImpresion(int idOrdenImpresion)
         {
-            ordenesImpresion.RemoveAt(indice);
+            foreach (OrdenImpresionEntidadQuery orden in OrdenesImpresion)
+            { 
+                if(orden.idOrdenImpresion==idOrdenImpresion)
+                { ordenesImpresion.Remove(orden); }
+            }
         }
     }
 }

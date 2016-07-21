@@ -24,7 +24,7 @@
 
                  <asp:TemplateField>
                      <ItemTemplate>
-                         <asp:LinkButton ID="btn_consultarApunte" CommandName="select" runat="server"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
+                         <asp:LinkButton ID="btn_consultarApunte" CommandName="select" runat="server"  ><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
                      </ItemTemplate>
                      <ControlStyle Width="10px" />
                      <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -40,13 +40,13 @@
 
                  <asp:TemplateField  ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px" HeaderText="Impreso">
                      <ItemTemplate>
-                         <asp:CheckBox ID="chk_impreso" runat="server" DataField="df_chk_impreso" EnableViewState="true" />
+                         <asp:CheckBox ID="chk_impreso" runat="server" DataField="df_chk_impreso" EnableViewState="true" AutoPostBack="true" OnCheckedChanged="chk_impreso_OnCheckedChanged"/>
                      </ItemTemplate>
                  </asp:TemplateField>
 
                  <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px" HeaderText="En local">
                      <ItemTemplate>
-                         <asp:CheckBox ID="chk_enLocal" runat="server" DataField="df_chk_enLocal" EnableViewState="true"  />
+                         <asp:CheckBox ID="chk_enLocal" runat="server" DataField="df_chk_enLocal" EnableViewState="true" AutoPostBack="true" OnCheckedChanged="chk_enLocal_OnCheckedChanged" />
                      </ItemTemplate>
                  </asp:TemplateField>
              </Columns>

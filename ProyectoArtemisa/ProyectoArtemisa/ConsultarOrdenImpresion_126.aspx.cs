@@ -17,24 +17,54 @@ namespace ProyectoArtemisa
         {
             if(!IsPostBack)
             {
-                InicializarColeccion();
+                if(bool.Parse(Session["agregarOrden"].ToString()))
+                {
+                    CargarNuevaOrden();
+                }
+                else
+                {
+                    InicializarColeccion();
+                }
             }
         }
 
         protected void btn_agregar_Click(object sender, EventArgs e)
         {
+            Session["agregarOrden"] = true;
+            PilaForms.AgregarForm("ConsultarOrdenImpresion_126.aspx");
+            Response.Redirect("ConsultarLibroApunte.aspx");
+        }
+        
+        protected void CargarNuevaOrden()
+        {
             OrdenImpresionEntidadQuery nuevaOrden = new OrdenImpresionEntidadQuery();
-            nuevaOrden.idApunte = 
+            nuevaOrden.idApunte = int.Parse(Session["idApunte"].ToString());
+            nuevaOrden.idEstadoOrden= 1;
+            nuevaOrden.nombreApunte = Session["nombreApunte"].ToString();
+            nuevaOrden.nombreEstadoOrdenImpresion = EstadoOrdenImpresionDao.DevolverNombreEstado(1);
+            nuevaOrden.fecha = DateTime.Now;
+            nuevaOrden.idOrdenImpresion = OrdenImpresionDao.RegistrarOrdenImpresion(OrdenImpresionQuery nuevaOrden);
+            ColeccionOrdenImpresion.GuardarOrdenImpresion(nuevaOrden);
+            CargarOrdenEnGrilla();
+            BorrarVariablesGlobales();
         }
 
-        //Inicializar la coleccion de ordenes de impresion
+        protected void BorrarVariablesGlobales()
+        {
+            Session["agregarOrden"] = false;
+            Session["nombreApunte"] = "";
+            Session["idApunte"] = null;
+        }
+
+        //Inicializar la coleccion de ordenes de impresion y carga la grilla
         protected void InicializarColeccion()
         {
             ColeccionOrdenImpresion.Inicializar(OrdenesImpresionDao.ListarOrdenApuntePendientes());
+            CargarOrdenEnGrilla();
         }
 
         //Creo una tabla para luego cargarla en el GridView
-        protected void CargarApunteEnGrilla()
+        protected void CargarOrdenEnGrilla()
         {
             DataTable tabla = new DataTable();
             DataRow fila;
@@ -73,12 +103,27 @@ namespace ProyectoArtemisa
         }
         protected void btn_eliminarOrden_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-           
+            OrdenImpresionDao.EliminarOrdenImpresion((int)dgv_grillaOrdenesImpresion.DataKeys[e.RowIndex].Value);
+            ColeccionOrdenImpresion.EliminarOrdenImpresion((int)dgv_grillaOrdenesImpresion.DataKeys[e.RowIndex].Value);
+            CargarOrdenEnGrilla();
         }
 
         protected void btn_consultarApunte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            Session["idApunte"] = OrdenImpresionDao.DevolverApunte((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
+            PilaForms.AgregarForm("ConsultarOrdenImpresion_126.aspx");
+            Response.Redirect("ConsultarOrdenImpresion_126.aspx");
+        }
+
+        protected void chk_impreso_OnCheckedChanged(EventArgs e)
+        {
+            OrdenImpresionDao.CambiarEstadoImpreso((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
+
+        }
+
+        protected void chk_enLocal_OnCheckedChanged(EventArgs e)
+        {
+            OrdenImpresionDao.CambiarEstadoEnLocal((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
         }
 
 

@@ -36,6 +36,8 @@ namespace ProyectoArtemisa
             Session["modificarCategoria"] = false;
             Session["modificarProfesor"] = false;
             
+            //Banderas de orden de impresion
+            Session["agregarOrden"] = false;
             
             //Form Apunte
             Session["chk_Impreso"] = false;

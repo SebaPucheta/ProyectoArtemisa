@@ -9,6 +9,6 @@ namespace Entidades
     public class OrdenImpresionEntidadQuery : OrdenImpresionEntidad
     {
         public string nombreApunte { get; set; }
-        public string nombreOrdenImpresion { get; set; }
+        public string nombreEstadoOrdenImpresion { get; set; }
     }
 }
