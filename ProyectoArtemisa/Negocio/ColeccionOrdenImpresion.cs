@@ -10,24 +10,24 @@ namespace Negocio
 {
     public class ColeccionOrdenImpresion
     {
-        private static List<OrdenImpresionEntidad> ordenesImpresion;
+        private static List<OrdenImpresionEntidadQuery> ordenesImpresion;
 
-        public static List<OrdenImpresionEntidad> Impresiones
+        public static List<OrdenImpresionEntidadQuery> OrdenesImpresion
         {
             get { return ColeccionOrdenImpresion.ordenesImpresion; }
         }
 
         static public void Inicializar()
         {
-            ordenesImpresion = new List<OrdenImpresionEntidad>();
+            ordenesImpresion = new List<OrdenImpresionEntidadQuery>();
         }
 
-        static public void Inicializar(List<OrdenImpresionEntidad> listaOrdenImpresion)
+        static public void Inicializar(List<OrdenImpresionEntidadQuery> listaOrdenImpresion)
         {
             ordenesImpresion = listaOrdenImpresion;
         }
 
-        static public void GuardarOrdenImpresion(OrdenImpresionEntidad ordenImpresion)
+        static public void GuardarOrdenImpresion(OrdenImpresionEntidadQuery ordenImpresion)
         {
             ordenesImpresion.Add(ordenImpresion);
         }
