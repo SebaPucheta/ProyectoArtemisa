@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public  class DetalleFacturaEntidadQuery
+    public  class DetalleFacturaEntidadQuery : DetalleFacturaEntidad
     {
         public string nombreApunte { get; set; }
     }

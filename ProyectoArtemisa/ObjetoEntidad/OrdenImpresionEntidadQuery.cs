@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class OrdenImpresionEntidadQuery
+    public class OrdenImpresionEntidadQuery : OrdenImpresionEntidad
     {
         public string nombreApunte { get; set; }
     }
