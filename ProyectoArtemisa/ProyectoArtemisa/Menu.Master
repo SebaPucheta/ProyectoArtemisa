@@ -1,94 +1,109 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Menu.master.cs" Inherits="ProyectoArtemisa.Menu" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Aca va el titulo-->
-    <title><asp:ContentPlaceHolder ID="ContentPlaceHolder_encabezado" runat="server"></asp:ContentPlaceHolder></title>
+    <title>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder_encabezado" runat="server"></asp:ContentPlaceHolder>
+    </title>
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="Estilo/NavBar.css"/>
-    <link rel="stylesheet" href="Estilo/Sidebar.css"/>
-    <link rel="stylesheet" href="Estilo/Forms.css"/>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="Estilo/NavBar.css" />
+    <link rel="stylesheet" href="Estilo/Sidebar.css" />
+    <link rel="stylesheet" href="Estilo/Forms.css" />
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
-    <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'/>
-    
-    
+    <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css' />
+
+
 </head>
 <body>
     <form id="form1" runat="server">
-    
-        
-          <nav id="nav_navbar" class="navbar">
-                
-                    <div id="nav_titulo" class="col-lg-1 container-fluid">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
-                            <span class="sr-only">Menu</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a id="btn_mostrarNav" class="navbar-brand"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-                    </div>
 
-                    <div class="collapse navbar-collapse" id="navbar-1">
-                        <div class="col-lg-offset-10">
-                            <asp:Button runat="server" ID="btn_usuario" CssClass=" btn-usuario" Text="Sebastián Pucheta" />
-                            
-                        </div>
 
-                        
-                    </div>
-                
-             </nav>
-    
-        
+        <nav id="nav_navbar" class="navbar">
 
-       
+            <div id="nav_titulo" class="col-lg-1 container-fluid">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="btn_mostrarNav" class="navbar-brand"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-1">
+                <div class="col-lg-offset-10">
+                    <asp:Button runat="server" ID="btn_usuario" CssClass=" btn-usuario" Text="Sebastián Pucheta" />
+
+                </div>
+
+
+            </div>
+
+        </nav>
+
+
+
+
         <nav id="sidenav" class="mostrar">
             <ul class="menu">
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarApunte" Text="Registrar Apunte"  OnClick="btn_registrarApunte_OnClick"/></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarLibro" Text="Registrar Libro" OnClick="btn_registrarLibro_OnClick" /></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_modificarPrecioHoja" Text="Registrar Precio Hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarItem" Text="Consultar Item" OnClick="btn_consultarItem_OnClick" /></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarEditorial" Text="Consultar Editorial" OnClick="btn_consultarEditorial_OnClick" /></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarPrecioXHoja" Text="Consultar Precio Por Hoja" OnClick="btn_consultarPrecioXHoja_OnClick" /></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarHistorialFactura" Text="Historial Factura" OnClick="btn_consultarHistorialFactura_OnClick" /></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarOrdenImpresion" Text="Consultar Orden Impresión" OnClick="btn_consultarOrdenImpresion_OnClick" /></li>
-                <li><asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarHistorialOrdenImpresion" Text="Historial Ordenes Impresión" OnClick="btn_consultarHistorialOrdenImpresion_OnClick" /></li>
-            <asp:Image runat="server" id="img_educom" ImageUrl="~/Estilo/LogoMasChico.jpg" />
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarApunte" Text="Registrar Apunte" OnClick="btn_registrarApunte_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarLibro" Text="Registrar Libro" OnClick="btn_registrarLibro_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_modificarPrecioHoja" Text="Registrar Precio Hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarItem" Text="Consultar Item" OnClick="btn_consultarItem_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarEditorial" Text="Consultar Editorial" OnClick="btn_consultarEditorial_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarPrecioXHoja" Text="Consultar Precio Por Hoja" OnClick="btn_consultarPrecioXHoja_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarHistorialFactura" Text="Historial Factura" OnClick="btn_consultarHistorialFactura_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarOrdenImpresion" Text="Consultar Orden Impresión" OnClick="btn_consultarOrdenImpresion_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarHistorialOrdenImpresion" Text="Historial Ordenes Impresión" OnClick="btn_consultarHistorialOrdenImpresion_OnClick" /></li>
+                <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarProveedor" Text="Registrar Proveedor" OnClick="btn_registrarProveedor_OnClick" /></li>
+                <asp:Image runat="server" ID="img_educom" ImageUrl="~/Estilo/LogoMasChico.jpg" />
             </ul>
         </nav>
 
-      
+
 
         <!-- Paginas hijas -->
-    <div>
-        <!-- Aca van el cuerpo-->
-        <br />
-        <br />
-        <br />
-        <br />
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder_cuerpo" runat="server">
-        </asp:ContentPlaceHolder>
-          <br />
-        <br />
-    </div>
+        <div>
+            <!-- Aca van el cuerpo-->
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder_cuerpo" runat="server">
+            </asp:ContentPlaceHolder>
+            <br />
+            <br />
+        </div>
     </form>
-   
-   
+
+
     <script src="Bootstrap/js/bootstrap.min.js"></script>
-    <script src ="Bootstrap/js/jquery.js"></script>
+    <script src="Bootstrap/js/jquery.js"></script>
     <!-- Codigo js para que ande el boton btn-mostrarNav -->
     <script type="text/javascript">$('#btn_mostrarNav').on('click', function () {
     $('#sidenav').toggleClass('mostrar');
-    })</script>
+})</script>
 
     <!-- Aca van los script-->
-     <asp:ContentPlaceHolder ID="ContentPlaceHolder_pie" runat="server">
-        </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_pie" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>

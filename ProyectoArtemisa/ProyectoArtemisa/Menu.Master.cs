@@ -81,7 +81,14 @@ namespace ProyectoArtemisa
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("ConsultarHistorialOrdenImpresion_129.aspx");
         }
-        
+
+        protected void btn_registrarProveedor_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarProveedor_132.aspx");
+        }
+
         protected void LimpiarVariablesGlobales()
         {
             Session["chk_Impreso"] = false;

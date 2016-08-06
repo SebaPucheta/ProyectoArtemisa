@@ -24,6 +24,7 @@ namespace ProyectoArtemisa
             Session["idCiudad"] = null;
             Session["idProvincia"] = null;
             Session["idCarrera"] = null;
+            Session["idProveedor"] = null;
 
             //Banderas de Modificar
             Session["modificarUniversidad"] = false;
@@ -35,6 +36,8 @@ namespace ProyectoArtemisa
             Session["modificarEditorial"] = false;
             Session["modificarCategoria"] = false;
             Session["modificarProfesor"] = false;
+            Session["modificarProveedor"] = false;
+            
             
             //Banderas de orden de impresion
             Session["agregarOrden"] = false;

@@ -10,11 +10,6 @@ namespace Entidades
     {
         public int idEditorial { get; set; }
         public string nombreEditorial { get; set; }
-        public string telefono { get; set; }
-        public string direccion { get; set; }
-        public string email { get; set; }
-        public string nombreContacto { get; set; }
-        public int idCiudadEditorial { get; set; }
-
+       
     }
 }

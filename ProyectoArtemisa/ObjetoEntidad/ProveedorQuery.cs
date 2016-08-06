@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class EditorialEntidadQuery: EditorialEntidad
+    public class ProveedorQuery : ProveedorEntidad
     {
         public string nombreCiudadEditorial { get; set; }
-        public string nombreProvinciaEditorial { get; set; }
-
     }
 }

@@ -10,38 +10,18 @@
             </div>
             <br />
 
+   
+
         <div>
-            <!--Ingreso el nombre de la editorial-->
+            <!--Ingreso el nombre de la editorial -->
             <div class="row">
                 <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Nombre Editorial</label>
+                    <label for="cuil" class="control-label col-md-3">Nombre del proveedor</label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreEditorial" value="" ViewStateMode="Enabled" />
                         <br />
                         <!--Valido que se haya insertado una categoria-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreEditorial" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar el nombre de la Editorial</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                                </div>
-                        </asp:RequiredFieldValidator>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div>
-            <!--Ingreso el nombre del contacto-->
-            <div class="row">
-                <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Nombre del contacto</label>
-                    <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreContacto" value="" ViewStateMode="Enabled" />
-                        <br />
-                        <!--Valido que se haya insertado una categoria-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreContacto" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
                                   <strong>Se debe ingresar el nombre del contacto de la Editorial</strong> 
                                   <button class="close" data-dismiss="alert">
@@ -55,108 +35,7 @@
 
         </div>
 
-        <div>
-            <!--Ingreso el telefono-->
-            <div class="row">
-                <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Telefono</label>
-                    <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_telefono" value="" ViewStateMode="Enabled" />
-                        <br />
-                        <!--Valido que se haya insertado una categoria-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_telefono" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar el numero de la Editorial</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                                </div>
-                        </asp:RequiredFieldValidator>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div>
-             <!-- Provincia -->
-            <div class="row">
-                <div class="form-group">
-                    <label for="option" class="control-label col-md-3">Provincia:</label>
-                    <div class="col-md-5">
-                        <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_provincia" OnSelectedIndexChanged="ddl_provinciaApunte_SelectedIndexChanged"/>
-                    </div>
-                   <asp:LinkButton ID="btn_registrarProvincia" runat="server" OnClick="btn_registrarProvincia_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                   <asp:LinkButton ID="btn_modificarProvincia" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
-                
-                </div>
-            </div>
-            <br />
-
-            <!--Ciudad -->
-            <div class="row">
-                <div class="form-group">
-                    <label for="option" class="control-label col-md-3">Ciudad:</label>
-                    <div class="col-md-5">
-                        <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_ciudad" />
-                    </div>
-                    <asp:LinkButton ID="btn_registrarCiudad" runat="server" OnClick="btn_registrarCiudad_onClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
-                    <asp:LinkButton ID="btn_modificarCiudad" runat="server" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
-                </div>
-            </div>
-            <br />
-
-            <!--Ingreso del cuil-->
-            <div class="row">
-                <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Direccion</label>
-                    <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_direccion" value="" ViewStateMode="Enabled" />
-                        <br />
-                        <!--Valido que se haya insertado una categoria-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_direccion" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar la direccion de la Editorial</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                                </div>
-                        </asp:RequiredFieldValidator>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div>
-            <!--Ingreso el email-->
-            <div class="row">
-                <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Email</label>
-                    <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_email" value="" ViewStateMode="Enabled" />
-                        <br />
-                        <!--Valido que se haya insertado una categoria-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_email" Display="Dynamic" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar el email de la Editorial</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                                </div>
-                        </asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="reEmail" runat="server" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txt_email" ValidationGroup="AllValidator">
-                            <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un email valido</strong> 
-                                  <button class="close" data-dismiss="alert">
-                                      <span>&times;</span>
-                                 </button>
-                                </div>
-                        </asp:RegularExpressionValidator>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br />
+   
 
         <div class="row col-lg-offset-8">
             <asp:Button runat="server" ID="btn_guardar" Text="Confirmar" OnClick="btn_guardar_Click" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" />
