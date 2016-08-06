@@ -116,13 +116,12 @@ namespace ProyectoArtemisa
             Response.Redirect("ConsultarOrdenImpresion_126.aspx");
         }
 
-        protected void chk_impreso_OnCheckedChanged(EventArgs e)
+        protected void chk_impreso_OnCheckedChanged(object sender, EventArgs e)
         {
             OrdenImpresionDao.CambiarEstadoImpreso((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
-
         }
 
-        protected void chk_enLocal_OnCheckedChanged(EventArgs e)
+        protected void chk_enLocal_OnCheckedChanged(object sender, EventArgs e)
         {
             OrdenImpresionDao.CambiarEstadoEnLocal((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
         }

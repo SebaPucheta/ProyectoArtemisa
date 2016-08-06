@@ -40,7 +40,7 @@
 
                  <asp:TemplateField  ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px" HeaderText="Impreso">
                      <ItemTemplate>
-                         <asp:CheckBox ID="chk_impreso" runat="server" DataField="df_chk_impreso" EnableViewState="true" AutoPostBack="true" OnCheckedChanged="chk_impreso_OnCheckedChanged"/>
+                         <asp:CheckBox id="chk_impreso" runat="server" DataField="df_chk_impreso" EnableViewState="true" AutoPostBack="true" OnCheckedChanged="chk_impreso_OnCheckedChanged"/>
                      </ItemTemplate>
                  </asp:TemplateField>
 

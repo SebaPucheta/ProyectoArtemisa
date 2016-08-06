@@ -274,7 +274,7 @@
                 <div class="form-group">
                     <label for="option" id="lbl_stock" class="control-label col-md-3">Stock: </label>
                     <div class="col-md-2">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_stock" value="" ViewStateMode="Enabled" Enabled="false"/>
+                        <asp:TextBox runat="server" class="form-control" type="text" id="txt_stock" value="" ViewStateMode="Enabled" Enabled="false"/>
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_stock" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
