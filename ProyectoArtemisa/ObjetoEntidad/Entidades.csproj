@@ -59,6 +59,7 @@
     <Compile Include="EstadoEntidad.cs" />
     <Compile Include="EstadoOrdenImpresionEntidad.cs" />
     <Compile Include="FacturaEntidad.cs" />
+    <Compile Include="FacturaEntidadQuery.cs" />
     <Compile Include="FacultadEntidad.cs" />
     <Compile Include="LibroEntidad.cs" />
     <Compile Include="LibroEntidadQuery.cs" />
