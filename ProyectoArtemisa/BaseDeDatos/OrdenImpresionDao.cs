@@ -10,6 +10,40 @@ namespace BaseDeDatos
 {
     public class OrdenImpresionDao : Conexion
     {
+        /// <summary>
+        /// Lista todas las ordenes de impresion
+        /// </summary>
+        /// <returns></returns>
+        public static List<OrdenImpresionEntidadQuery> ListarOrdenesImpresion()
+        {
+            List<OrdenImpresionEntidadQuery> lista = new List<OrdenImpresionEntidadQuery>();
+            //idOrdenImpresion
+            //idApunte
+            //cantidad
+            //idEstadoOrdenImpresion
+            //fecha
+
+            string query = @"SELECT o.idOrdenImpresion, a.nombreApunte, o.cantidad, eo.nombreEstadoOrdenImpresion, o.fecha
+                             FROM OrdenImpresion o INNER JOIN EstadoOrdenImpresion eo ON o.idEstadoOrdenImpresion = eo.idEstadoOrdenImpresion
+					                               INNER JOIN Apunte a ON o.idApunte = a.idApunte";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                OrdenImpresionEntidadQuery orden = new OrdenImpresionEntidadQuery();
+                orden.idOrdenImpresion = int.Parse(dr["idOrdenImpresion"].ToString());
+                orden.nombreApunte = dr["nombreApunte"].ToString();
+                orden.cantidad = int.Parse(dr["cantidad"].ToString());
+                orden.nombreEstadoOrdenImpresion = dr["nombreEstadoOrdenImpresion"].ToString();
+                orden.fecha = DateTime.Parse(dr["fecha"].ToString());
+                lista.Add(orden);
+            }
+
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
 
         //Verificar que las ordenes esten en estado pendiente o impreso
         //Estados orden de impresion: 1-Pendiente, 2-Impreso, 3-En Local, 4-Cancelada
