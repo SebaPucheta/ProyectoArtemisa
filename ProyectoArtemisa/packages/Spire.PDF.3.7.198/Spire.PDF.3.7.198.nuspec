@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Spire.PDF</id>
+    <version>3.7.198</version>
+    <title>Spire.PDF for .NET</title>
+    <authors>Administrator</authors>
+    <owners>Administrator</owners>
+    <licenseUrl>http://www.e-iceblue.com/Knowledgebase/Licensing/License-Agreement.html</licenseUrl>
+    <projectUrl>http://www.e-iceblue.com/Introduce/pdf-for-net-introduce.html</projectUrl>
+    <iconUrl>http://www.e-iceblue.com/images/product_logo/product_buy/pdfnet.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Spire.PDF for .NET is a versatile PDF library that enables software developers to generate, edit, read and manipulate PDF files within their own .NET applications. As a standalone PDF component, Spire.PDF for .NET provides users an incredible wealth of features without installing Adobe Acrobat. This component is completely written in C#, but also supports VB.NET, Windows Forms and ASP.NET. 
+With the Spire.PDF for .NET API, you can get the ability to read PDF text and image even attachments with high efficiency. Even the special content such as language written from right to left can be extracted such as Herbrew and Arabic. Other basic features such as text, image, table, shapes, hyperlinks, bookmark, headings, footnotes, lists, form fields, pagination, booklet barcode, attachments, transparency, annotations, actions, overlay etc all work great for users. As for security, Spire.PDF for .NET enables you to protect your PDF files by passwords and digital signature.</description>
+    <summary>This package is designed to introduce developers a .NET PDF application Spire.PDF for .NET. This PDF application enables users to create, read, edit and maniplate PDF files with high efficiency.</summary>
+    <releaseNotes>Spire.PDF 3.7.198 
+
+We add new method to load the XPS file from stream, and add new properties to check if the document is encrypted. We also fixed the bugs in this version for the verification of signature, the issues of conversion from XPS to PDF, PDF to image and etc.
+
+New features:
+
+Spire.PDF adds new method to load the XPS file from stream.
+Add new feature to instantiate the PdfCertificate from a byte array with password.
+Add new feature to check if the document is encrypted.
+Add new method to convert HTML to PDF until the Html DOM load completely.
+
+Bug solutions:
+Fixes the issue that caused the verification of signature failed.
+Fixes the issue that caused the exception when find the text that isn't included in the PDF document.
+Fixes the issue that caused the error that string was not recognized as a valid DateTime.
+Resolves the issue that caused the content shuffled/displaced when convert XPS to PDF.
+Fixes the issue where wrong pdf pageSize was set when windows Display Setting bigger than 100% while converting XPS to PDF.
+Fixes the issue that caused some objects were shuffled/displaced when convert PDF to Image.
+Resolves the issue that caused the exception that Rectangle. "{X=0,Y=0,Width=780,Height=0}" width or height cannot be equal to zero when load HTML.
+
+Spire.PDF 3.7.91
+Add the method to support to apply highlight of the searched text with unicode.
+Fixes the issue that caused the output not readable when printing.
+Fixes the issue that caused the non-English character lost when print.
+Fixes the issue that caused garbled mess when print.
+Fixes the issue that caused graphic draw incorrectly.
+Resolves the issue where the comb field went away when fill the field and flatten comb fields.
+Improve the performance of extracting text.
+Fixes the issue that caused Javascript not to run inside the pdf for the calculation.
+
+Spire.PDF 3.7
+Fixes the issue that content is blank when printing PDF.
+Fixes the issue that multi pages are printed into one page when printing PDF.
+Fixes the issue that text color changes when converting PDF to Images.
+Fixes the issue that signature size becomes larger when converting PDF to Images.
+Fixes the issue that content is changed when converting PDF to Text.
+Fixes the issue that converted xps file cannot be opened by Adobe Reader when converting PDF to XPS.
+Fixes the issue that barcode location is changed when converting XPS to PDF.
+
+
+Spire.PDF 3.6.260
+
+Add the new feature to change the font size of a labeled digital sign.
+Fixes the issue that caused the exception when convert PDF to Image.
+Fixes the issue that caused the color incorrect when convert PDF to Image.
+Fixes the issue that caused the exception when load PDF document.
+Resolves the issue that caused the Argumentexception when replace the image in PDF document.
+Fixes the issue that caused content lost when print a PDF document.
+Fixes the issue that caused NullReferenceException when use InsertPageRange method.
+Resolves the issue that caused InvalidOperationException when saving merged PDF.
+Fixes the issue where pdf version can't be changed.
+Fixes the issue where text was extracted incorrectly with ExtractText method.</releaseNotes>
+    <copyright>Copyright © 2016 e-iceblue. All Rights Reserved.</copyright>
+    <language>en-US</language>
+    <tags>PDF application library component control to XPS Image HTML PDF/A</tags>
+  </metadata>
+</package>
