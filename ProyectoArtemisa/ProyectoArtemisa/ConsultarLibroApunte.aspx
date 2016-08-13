@@ -125,6 +125,14 @@
                         <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Apunte" />
                         <asp:TemplateField>
                             <ItemTemplate>
+                                <asp:LinkButton ID="btn_imprimirApunte" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
+
+                            </ItemTemplate>
+                            <ControlStyle Width="10px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
                                 <asp:LinkButton ID="btn_modificarApunte" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
 
                             </ItemTemplate>
@@ -176,4 +184,13 @@
      </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">
+    
+    <script  type="text/javascript">
+
+        document.getElementById("btn_imprimirApunte").onclick = function () { CrearOrdenImpresion() };
+
+    function CrearOrdenImpresion() {
+            __doPostBack('CrearOrdenImpresion', elemento.value);
+    }
+ </script>
 </asp:Content>

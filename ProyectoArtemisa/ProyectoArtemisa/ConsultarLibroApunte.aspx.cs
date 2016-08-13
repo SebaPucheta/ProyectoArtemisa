@@ -20,6 +20,28 @@ namespace ProyectoArtemisa
             {
                 CargarComboTipoItem();
             }
+            if(IsPostBack)
+            {
+                string eventTarget;
+                string eventArgument;
+                    
+                if (Request["__EVENTARGUMENT"] == null) 
+                {eventTarget = string.Empty;}
+                else
+                { eventTarget = Request["__EVENTTARGET"];}
+                if (Request["__EVENTARGUMENT"] == null) 
+                { eventArgument = string.Empty; }
+                else
+                { eventArgument = Request["__EVENTARGUMENT"]; }
+
+                if (eventTarget == "CrearOrdenImpresion")
+                {
+                    string valuePassed  = eventArgument;
+                    CrearOrdenImpresion();
+                }
+
+                string parameter = Request["__EVENTARGUMENT"];
+            }
         }
 
        
@@ -366,6 +388,18 @@ namespace ProyectoArtemisa
             dgv_grillaLibro.DataBind();
         }
 
+        protected void CrearOrdenImpresion()
+        {
+            Session["idLibro"] = (int)dgv_grillaLibro.SelectedDataKey.Value;
+            if (PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx"))
+            { Response.Redirect(PilaForms.DevolverForm()); }
+            else
+            {
+                PilaForms.AgregarForm("ConsultarLibroApunte.aspx");
+                Response.Redirect("ConsultarOrdenImpresion_126.aspx");
+            }
+            
+        }
       
 
 
