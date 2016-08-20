@@ -17,7 +17,7 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                cargarGrillaFactura(FacultadDao.listarFacturas);
+                cargarGrillaFactura(FacturaDao.ListarFacturas());
             }
 
         }

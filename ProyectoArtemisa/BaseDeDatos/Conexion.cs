@@ -18,7 +18,7 @@ namespace BaseDeDatos
         protected static SqlConnection obtenerBD()
         {
 
-            string stringConexion = @"Data Source=WIN-47M7SG2H3VL\SQLEXPRESS;Initial Catalog=ProyectoArtemisa;Integrated Security=True";
+            string stringConexion = @"Data Source=DESKTOP-AOAFIPR\SQLEXPRESS;Initial Catalog=ProyectoArtemisa;Integrated Security=True";
             SqlConnection con = new SqlConnection(stringConexion);
             con.Open();
             return con;

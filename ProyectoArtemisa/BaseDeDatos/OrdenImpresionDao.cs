@@ -77,6 +77,10 @@ namespace BaseDeDatos
             string query = @"INSERT INTO OrdenImpresion (idApunte, cantidad, idEstadoOrdenImpresion, fecha)
 			                 VALUES (@idApunte, @cantidad, @idEstado, @fecha); SELECT SCOPE_IDENTITY()";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue("@idApunte", nuevaOrden.idApunte);
+            cmd.Parameters.AddWithValue("@cantidad", nuevaOrden.cantidad);
+            cmd.Parameters.AddWithValue("@idEstado", nuevaOrden.idEstadoOrden);
+            cmd.Parameters.AddWithValue("@fecha", nuevaOrden.fecha);
             int ordenRegistrada = int.Parse(cmd.ExecuteScalar().ToString());
             cmd.Connection.Close();
             return ordenRegistrada;
@@ -120,6 +124,15 @@ namespace BaseDeDatos
             cmd.Connection.Close();
         }
 
+        //Se ingresa un id de un orden de impresion y cambia el estado de la orden de impresion a "Pendiente" osea el 2
+        public static void CambiarEstadoPendiente(int idOrdenImpresion)
+        {
+            string query = @"UPDATE OrdenImpresion SET idEstadoOrdenImpresion = 1 WHERE idOrdenImpresion = @id";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", idOrdenImpresion);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
 
         //Se ingresa un id de un orden de impresion y cambia el estado de la orden de impresion a "En local" osea el 3
         public static void CambiarEstadoEnLocal(int idOrdenImpresion)

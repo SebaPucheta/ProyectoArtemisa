@@ -106,7 +106,7 @@
             <br />
 
                 <!-- Grilla Apunte-->
-                <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged">
+                <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged" OnRowCommand="dgv_grillaApunte_RowCommand">
                     <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                     <EditRowStyle BackColor="#ffffcc" />
                     <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -125,7 +125,7 @@
                         <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Apunte" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="btn_imprimirApunte" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
+                                <asp:LinkButton ID="btn_imprimirApunte" CommandName="imprimir"   runat="server"><span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span></asp:LinkButton>
 
                             </ItemTemplate>
                             <ControlStyle Width="10px" />

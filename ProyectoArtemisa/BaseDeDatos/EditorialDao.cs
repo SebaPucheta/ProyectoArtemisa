@@ -26,8 +26,8 @@ namespace BaseDeDatos
         /// <param name="editorial"></param>
         public static void RegistrarEditorial(EditorialEntidad editorial)
         {
-            string query = @"INSERT INTO Editorial(nombreEditorial, baja) 
-                            VALUES (@nombreEditorial, 0)";
+            string query = @"INSERT INTO Editorial(nombreEditorial) 
+                            VALUES (@nombreEditorial)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"nombreEditorial", editorial.nombreEditorial);
             cmd.ExecuteNonQuery();
@@ -70,7 +70,7 @@ namespace BaseDeDatos
         /// <returns></returns>
         public static List<EditorialEntidad> ConsultarEditorial()
         {
-            string query = @"SELECT idEditorial, nombreEditorial FROM Editorial WHERE baja = 0";
+            string query = @"SELECT idEditorial, nombreEditorial FROM Editorial";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             SqlDataReader dr = cmd.ExecuteReader();
             List<EditorialEntidad> listaEditorial = new List<EditorialEntidad>();

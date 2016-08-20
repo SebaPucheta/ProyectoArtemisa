@@ -20,28 +20,29 @@ namespace ProyectoArtemisa
             {
                 CargarComboTipoItem();
             }
-            if(IsPostBack)
-            {
-                string eventTarget;
-                string eventArgument;
+            //Toma los metodos ejecutados en JavaScript en el HTML
+            //if(IsPostBack)
+            //{
+            //    string eventTarget;
+            //    string eventArgument;
                     
-                if (Request["__EVENTARGUMENT"] == null) 
-                {eventTarget = string.Empty;}
-                else
-                { eventTarget = Request["__EVENTTARGET"];}
-                if (Request["__EVENTARGUMENT"] == null) 
-                { eventArgument = string.Empty; }
-                else
-                { eventArgument = Request["__EVENTARGUMENT"]; }
+            //    if (Request["__EVENTARGUMENT"] == null) 
+            //    {eventTarget = string.Empty;}
+            //    else
+            //    { eventTarget = Request["__EVENTTARGET"];}
+            //    if (Request["__EVENTARGUMENT"] == null) 
+            //    { eventArgument = string.Empty; }
+            //    else
+            //    { eventArgument = Request["__EVENTARGUMENT"]; }
 
-                if (eventTarget == "CrearOrdenImpresion")
-                {
-                    string valuePassed  = eventArgument;
-                    CrearOrdenImpresion();
-                }
+            //    if (eventTarget == "CrearOrdenImpresion")
+            //    {
+            //        string valuePassed  = eventArgument;
+            //        CrearOrdenImpresion();
+            //    }
 
-                string parameter = Request["__EVENTARGUMENT"];
-            }
+            //    string parameter = Request["__EVENTARGUMENT"];
+            //}
         }
 
        
@@ -284,9 +285,6 @@ namespace ProyectoArtemisa
                 listaLibro = LibroDao.ConsultarLibroXFiltroCarrera(nombreLibro, universidad, facultad, carrera);
             }
 
-
-           
-
             return listaLibro;
         }
 
@@ -337,8 +335,9 @@ namespace ProyectoArtemisa
 
             DataView dataView = new DataView(tabla);
 
-            dgv_grillaApunte.DataSource = dataView;
+            
             dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };
+            dgv_grillaApunte.DataSource = dataView;
             dgv_grillaApunte.DataBind();
         }
 
@@ -388,9 +387,10 @@ namespace ProyectoArtemisa
             dgv_grillaLibro.DataBind();
         }
 
-        protected void CrearOrdenImpresion()
+        protected void CrearOrdenImpresion(int indice)
         {
-            Session["idLibro"] = (int)dgv_grillaLibro.SelectedDataKey.Value;
+            int clave = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
+            Session["idApunte"] = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
             if (PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx"))
             { Response.Redirect(PilaForms.DevolverForm()); }
             else
@@ -400,8 +400,14 @@ namespace ProyectoArtemisa
             }
             
         }
-      
-
+        protected void dgv_grillaApunte_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+           int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
+                
+            if(e.CommandName == "imprimir")
+            { CrearOrdenImpresion(indice); }
+        }
+        
 
         
 

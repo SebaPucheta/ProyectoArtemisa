@@ -11,7 +11,7 @@ namespace BaseDeDatos
 {
     public class FacturaDao : Conexion
     {
-        public static list<FacturaEntidadQuery> ListarFacturas()
+        public static List<FacturaEntidadQuery> ListarFacturas()
         {
             string query = @"SELECT f.idFactura, f.fecha, f.total, tp.descripcion
                             FROM Factura f INNER JOIN TipoPago tp ON f.idTipoPago = tp.idTipoPago";
@@ -24,7 +24,7 @@ namespace BaseDeDatos
                 factura.idFactura = int.Parse(dr["idFactura"].ToString());
                 factura.fecha = DateTime.Parse(dr["fecha"].ToString());
                 factura.total = float.Parse(dr["total"].ToString());
-                factura.descripcion = dr["descripcion"].ToString();
+               // factura.descripcion = dr["descripcion"].ToString(); //Que carajo es descripcion
                 lista.Add(factura);
             }
             dr.Close();

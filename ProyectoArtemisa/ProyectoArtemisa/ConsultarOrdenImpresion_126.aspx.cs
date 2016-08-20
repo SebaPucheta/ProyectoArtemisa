@@ -21,10 +21,12 @@ namespace ProyectoArtemisa
                 if(bool.Parse(Session["agregarOrden"].ToString()))
                 {
                     CargarNuevaOrden();
+                    CargarOrdenEnGrilla();
+                    BorrarVariablesGlobales();
                 }
                 else
                 {
-                    InicializarColeccion();
+                    CargarOrdenEnGrilla();
                 }
             }
         }
@@ -36,6 +38,7 @@ namespace ProyectoArtemisa
             Response.Redirect("ConsultarLibroApunte.aspx");
         }
         
+        //Registra una orden de impresion.
         protected void CargarNuevaOrden()
         {
             OrdenImpresionEntidadQuery nuevaOrden = new OrdenImpresionEntidadQuery();
@@ -45,9 +48,6 @@ namespace ProyectoArtemisa
             nuevaOrden.nombreEstadoOrdenImpresion = EstadoOrdenImpresionDao.DevolverNombreEstado(1);
             nuevaOrden.fecha = DateTime.Now;
             nuevaOrden.idOrdenImpresion = OrdenImpresionDao.RegistrarOrdenImpresion(nuevaOrden);
-            ColeccionOrdenImpresion.GuardarOrdenImpresion(nuevaOrden);
-            CargarOrdenEnGrilla();
-            BorrarVariablesGlobales();
         }
 
         protected void BorrarVariablesGlobales()
@@ -56,14 +56,7 @@ namespace ProyectoArtemisa
             Session["nombreApunte"] = "";
             Session["idApunte"] = null;
         }
-
-        //Inicializar la coleccion de ordenes de impresion y carga la grilla
-        protected void InicializarColeccion()
-        {
-            ColeccionOrdenImpresion.Inicializar(OrdenImpresionDao.ListarOrdenApuntePendientes());
-            CargarOrdenEnGrilla();
-        }
-
+    
         //Creo una tabla para luego cargarla en el GridView
         protected void CargarOrdenEnGrilla()
         {
@@ -76,7 +69,7 @@ namespace ProyectoArtemisa
             tabla.Columns.Add("cantidad", typeof(int));
             tabla.Columns.Add("chk_impreso", typeof(bool));
 
-            foreach (OrdenImpresionEntidadQuery orden in ColeccionOrdenImpresion.OrdenesImpresion)
+            foreach (OrdenImpresionEntidadQuery orden in OrdenImpresionDao.ListarOrdenApuntePendientes())
             {
                 fila = tabla.NewRow();
 
@@ -84,6 +77,7 @@ namespace ProyectoArtemisa
                 fila[1] = orden.nombreApunte;
                 fila[2] = orden.cantidad;
 
+                //No toma los valores true o false el checkbox
                 if (orden.nombreEstadoOrdenImpresion.Equals("Impreso"))
                 {
                     fila[3] = true;
@@ -92,20 +86,20 @@ namespace ProyectoArtemisa
                 {
                     fila[3] = false;
                 }
+
                 
                 tabla.Rows.Add(fila);
             }
 
             DataView dataView = new DataView(tabla);
-
-            dgv_grillaOrdenesImpresion.DataSource = dataView;
+            
             dgv_grillaOrdenesImpresion.DataKeyNames = new string[] { "idOrden" };
+            dgv_grillaOrdenesImpresion.DataSource = dataView;
             dgv_grillaOrdenesImpresion.DataBind();
         }
         protected void btn_eliminarOrden_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
             OrdenImpresionDao.EliminarOrdenImpresion((int)dgv_grillaOrdenesImpresion.DataKeys[e.RowIndex].Value);
-            ColeccionOrdenImpresion.EliminarOrdenImpresion((int)dgv_grillaOrdenesImpresion.DataKeys[e.RowIndex].Value);
             CargarOrdenEnGrilla();
         }
 
@@ -118,12 +112,25 @@ namespace ProyectoArtemisa
 
         protected void chk_impreso_OnCheckedChanged(object sender, EventArgs e)
         {
-            OrdenImpresionDao.CambiarEstadoImpreso((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
+            CheckBox check = (CheckBox)sender;
+            int indice = ((GridViewRow)((DataControlFieldCell)check.Parent).Parent).RowIndex;
+            if(check.Checked)
+            { OrdenImpresionDao.CambiarEstadoImpreso((int)dgv_grillaOrdenesImpresion.DataKeys[indice].Value); }
+            else
+            { OrdenImpresionDao.CambiarEstadoPendiente((int)dgv_grillaOrdenesImpresion.DataKeys[indice].Value); }
+            
         }
 
         protected void chk_enLocal_OnCheckedChanged(object sender, EventArgs e)
         {
-            OrdenImpresionDao.CambiarEstadoEnLocal((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
+            CheckBox check = (CheckBox)sender;
+            int indice = ((GridViewRow)((DataControlFieldCell)check.Parent).Parent).RowIndex;
+            if (check.Checked)
+            { OrdenImpresionDao.CambiarEstadoEnLocal((int)dgv_grillaOrdenesImpresion.DataKeys[indice].Value); }
+            else
+            { OrdenImpresionDao.CambiarEstadoImpreso((int)dgv_grillaOrdenesImpresion.DataKeys[indice].Value); }
+            
+            
         }
 
 

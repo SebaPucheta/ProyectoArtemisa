@@ -17,7 +17,7 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                cargarGrillaOrdenImpresion(OrdenImpresionDao.listarOrdenesImpresion);
+                cargarGrillaOrdenImpresion(OrdenImpresionDao.ListarOrdenesImpresion());
             }
         }
         protected void cargarGrillaOrdenImpresion(List<OrdenImpresionEntidadQuery> listaOrdenesImpresion)
