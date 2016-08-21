@@ -186,7 +186,50 @@ namespace BaseDeDatos
             return libro;
         }
 
-        public static LibroEntidadQuery ConsultarLibroQuery(int id);
+        /// <summary>
+        /// Consultar: un solo libro dada una ID pero con los datos de las otras tablas
+        /// </summary>
+        /// <param name="idLibro"></param>
+        /// <returns></returns>
+        public static LibroEntidadQuery ConsultarLibroQuery(int idLibro)
+        {
+            LibroEntidadQuery libro = new LibroEntidadQuery();
+            string query = @"SELECT l.idLibro, l.codigoBarraLibro, l.nombreLibro, l.autorLibro, l.descripcionLibro, l.stock,
+                                       l.cantidadHojasLibro, l.precioLibro, e.nombreEditorial, est.nombreEstado, 
+                                       u.nombreUniversidad, f.nombreFacultad, m.nombreMateria
+                                FROM Libro l INNER JOIN Materia m ON m.idMateria = l.idMateria
+			                                  INNER JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  INNER JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                  INNER JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                  INNER JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+											  INNER JOIN Editorial e ON e.idEditorial = l.idEditorial
+											  INNER JOIN Estado est ON est.idEstado = l.idEstado
+                                WHERE l.idLibro = @idLibro AND l.baja = 0";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idLibro", idLibro);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                libro.idLibro = int.Parse(dr["idLibro"].ToString());
+                libro.codigoBarraLibro = dr["codigoBarraLibro"].ToString();
+                libro.nombreLibro = dr["nombreLibro"].ToString();
+                libro.autorLibro = dr["autorLibro"].ToString();
+                libro.descripcionLibro = dr["descripcionLibro"].ToString();
+                libro.stock = int.Parse(dr["stock"].ToString());
+                libro.cantidadHojasLibro = int.Parse(dr["cantidadHojasLibro"].ToString());
+                libro.precioLibro = float.Parse(dr["precioLibro"].ToString());
+                libro.nombreEditorial = dr["nombreEditorial"].ToString();
+                libro.nombreEstado = dr["nombreEstado"].ToString();
+                libro.nombreFacultad = dr["nombreFacultad"].ToString();
+                libro.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                libro.listaCarreras = ConsultarCarrerasXLibro(libro.idLibro);
+                libro.nombreMateria = dr["nombreMateria"].ToString();
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return libro;
+
+        }
 
         /// <summary>
         /// Verifica que el codigo de barra recibido por parametro no este en

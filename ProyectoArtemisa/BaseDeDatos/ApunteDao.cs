@@ -230,7 +230,58 @@ namespace BaseDeDatos
             return apu;
         }
 
-        public static ApunteEntidadQuery ConsultarApunteQuery(int id);
+        /// <summary>
+        /// Consultar: un solo apunte de un ID determinado pero con los datos de las otras tablas
+        /// </summary>
+        /// <param name="idApunte"></param>
+        /// <returns></returns>
+        public static ApunteEntidadQuery ConsultarApunteQuery(int idApunte)
+        {
+            ApunteEntidadQuery apu = new ApunteEntidadQuery();
+            string query = @"SELECT a.idApunte, a.stock, a.precioApunte, a.cantHoja, m.nombreMateria, a.nombreApunte, a.descripcionApunte, a.anoApunte, 
+                                       a.codigoBarraApunte, pxh.precioHoja, cat.nombreCategoria, ta.nombreTipoApunte,  e.nombreEditorial, 
+                                       est.nombreEstado, pr.nombreProfesor, pr.apellidoProfesor, m.nombreMateria, u.nombreUniversidad, f.nombreFacultad
+                                FROM Apunte a INNER JOIN Materia m ON a.idMateria = m.idMateria
+			                                  INNER JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  INNER JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                  INNER JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                  INNER JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+											  INNER JOIN Editorial e ON e.idEditorial = a.idEditorial
+											  INNER JOIN Profesor pr ON pr.idProfesor = a.idProfesor
+											  INNER JOIN TipoApunte ta ON ta.idTipoApunte = a.idTipoApunte
+											  INNER JOIN Categoria cat ON a.idCategoria = cat.idCategoria
+											  INNER JOIN Estado est ON est.idEstado = a.idEstado
+											  INNER JOIN PrecioXHoja pxh ON pxh.idPrecioHoja = a.idPrecioHoja
+                                WHERE a.idApunte = @idApunte AND a.baja = 0";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idApunte", idApunte);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                apu.idApunte = int.Parse(dr["idApunte"].ToString());
+                apu.stock = int.Parse(dr["stock"].ToString()); //stock nulo?
+                apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
+                apu.cantHoja = int.Parse(dr["cantHoja"].ToString());
+                apu.nombreApunte = dr["nombreApunte"].ToString();
+                apu.descripcionApunte = dr["descripcionApunte"].ToString();
+                apu.anoApunte = int.Parse(dr["anoApunte"].ToString());
+                apu.codigoBarraApunte = dr["codigoBarraApunte"].ToString();
+                apu.precioHoja = float.Parse(dr["precioHoja"].ToString());
+                apu.nombreCategoria = dr["nombreCategoria"].ToString();
+                apu.nombreTipoApunte = dr["nombreTipoApunte"].ToString();
+                apu.nombreEditorial = dr["nombreEditorial"].ToString();
+                apu.nombreEstado = dr["nombreEstado"].ToString();
+                apu.nombreProfesor = dr["nombreProfesor"].ToString();
+                apu.apellidoProfesor = dr["apellidoProfesor"].ToString();
+                apu.nombreFacultad = dr["nombreFacultad"].ToString();
+                apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
+                apu.nombreMateria = (string)dr["nombreMateria"];
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return apu;
+        }
 
         /// <summary>
         /// Consultar: todos los apuntes query por filtro (solo se puede o por carrera o por materia)

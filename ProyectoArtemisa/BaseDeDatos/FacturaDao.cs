@@ -32,6 +32,14 @@ namespace BaseDeDatos
             return lista;
         }
 
-        public static void RegistrarFactura(FacturaEntidad factura);
+        public static void RegistrarFactura(FacturaEntidad factura)
+        {
+            string query = "INSERT INTO Factura(fecha, total) VALUES (@fecha, @total)";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"fecha", factura.fecha);
+            cmd.Parameters.AddWithValue(@"total", factura.total);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
     }
 }
