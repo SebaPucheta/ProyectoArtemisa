@@ -13,15 +13,45 @@
             </div>
          <br />
 
+         <!--Grilla Nueva Orden de Impresion-->
+         <asp:GridView ID="dgv_ordenNueva" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="false" OnRowDeleting="btn_limpiarGrilla_RowDeleting" OnSelectedIndexChanged="btn_registrarOrden_SelectedIndexChanged" >
+             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+             <EditRowStyle BackColor="#ffffcc" />
+             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+             <Columns>
+                 <asp:BoundField DataField="nombreApunte" HeaderText="Nombre" />
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                        <asp:TextBox ID="txt_cantidadImprimir" runat="server" HeaderText="Cantidad" Width="40px"></asp:TextBox>
+                     </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                         <asp:LinkButton ID="btn_registrarOrden" CommandName="select" runat="server" Text="Registrar"></asp:LinkButton>
+                     </ItemTemplate>
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                         <asp:LinkButton ID="btn_limpiar" CommandName="delete" runat="server" Text="Limpiar"></asp:LinkButton>
+                     </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+                 
+             </Columns>
+          </asp:GridView>
+          <br />
+
+
          <!-- Grilla Ordenes de Impresion-->
-         <asp:GridView ID="dgv_grillaOrdenesImpresion" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarOrden_RowDeleting" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged">
+         <asp:GridView ID="dgv_grillaOrdenesImpresion" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarOrden_RowDeleting" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged" OnRowCommand="dgv_grillaApunte_RowCommand">
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
              <EditRowStyle BackColor="#ffffcc" />
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
                  <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                 <asp:BoundField DataField="cantidad" HeaderText="Cantidad"  ApplyFormatInEditMode="False" />
-
+                 <asp:BoundField DataField="cantidad" HeaderText="Cantidad"   />
                  <asp:TemplateField>
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_consultarApunte" CommandName="select" runat="server"  ><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
@@ -29,7 +59,9 @@
                      <ControlStyle Width="10px" />
                      <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
-
+                 
+                 <asp:CheckBoxField DataField="chk_impreso"  HeaderText="Impreso" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"/>
+                 
                  <asp:TemplateField>
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_eliminarOrden" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
@@ -37,17 +69,19 @@
                      <ControlStyle Width="10px" />
                      <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
-
-                 <asp:TemplateField  ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px" HeaderText="Impreso">
+                 
+                 <asp:TemplateField>
                      <ItemTemplate>
-                         <asp:CheckBox id="chk_impreso" runat="server" DataField="df_chk_impreso" EnableViewState="true" AutoPostBack="true" OnCheckedChanged="chk_impreso_OnCheckedChanged"/>
+                         <asp:LinkButton ID="btn_impreso" CommandName="impreso" runat="server" Text="Impreso"></asp:LinkButton>
                      </ItemTemplate>
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
-
-                 <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200px" HeaderText="En local">
+                 
+                 <asp:TemplateField>
                      <ItemTemplate>
-                         <asp:CheckBox ID="chk_enLocal" runat="server" DataField="df_chk_enLocal" EnableViewState="true" AutoPostBack="true" OnCheckedChanged="chk_enLocal_OnCheckedChanged" />
+                         <asp:LinkButton ID="btn_enLocal" CommandName="enLocal" runat="server" Text="En Local"></asp:LinkButton>
                      </ItemTemplate>
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
              </Columns>
          </asp:GridView>
@@ -64,13 +98,16 @@
     <br />
     <br />
 
+
+    
+
+
 </asp:Content>
 
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">
 
-
-
+   
 
 </asp:Content>

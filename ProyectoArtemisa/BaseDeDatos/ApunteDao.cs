@@ -445,8 +445,19 @@ namespace BaseDeDatos
             return lista;
         }
 
-
-
+        /// <summary>
+        /// Se ingresa la cantidad de apuntes que se añaden a la cantidad existente 
+        /// </summary>
+        /// <param name="stock"></param>
+        public static void AgregarStockApunte(int idApunte, int stock)
+        {
+            string consulta = @"UPDATE Apunte SET  stock = stock + @stock WHERE idApunte = @idApunte";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idApunte", idApunte);
+            cmd.Parameters.AddWithValue(@"stock", stock);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
 
 
     }

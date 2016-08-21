@@ -144,9 +144,42 @@ namespace BaseDeDatos
             cmd.Connection.Close();
         }
 
+        //Se ingresa un id de un orden de impresion y cambia el estado de la orden de impresion a "En local" osea el 3
+        public static void CambiarCantidadDeCopias(int idOrdenImpresion, int cantidad)
+        {
+            string query = @"UPDATE OrdenImpresion SET cantidad = @cantidad WHERE idOrdenImpresion = @id";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", idOrdenImpresion);
+            cmd.Parameters.AddWithValue(@"cantidad", cantidad);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
 
+        //Devuelve el estado de la orden de impresion
+        public static int DevolverEstadoOrdenImpresion(int idOrdenImpresion)
+        {
+            string query = @"SELECT OrdenImpresion.idEstadoOrdenImpresion
+                             FROM OrdenImpresion
+                             WHERE OrdenImpresion.idOrdenImpresion = @id";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"id", idOrdenImpresion);
+            int idEstado = (int)cmd.ExecuteScalar();
+            cmd.Connection.Close();
+            return idEstado;
+        }
 
-
+//        //Devuelve el idApunte
+//        public static int DevolverIdApunte(int idOrdenImpresion)
+//        {
+//            string query = @"SELECT OrdenImpresion.idApunte
+//                             FROM OrdenImpresion
+//                             WHERE OrdenImpresion.idOrdenImpresion = @id";
+//            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+//            cmd.Parameters.AddWithValue(@"id", idOrdenImpresion);
+//            int idApunte = (int)cmd.ExecuteScalar();
+//            cmd.Connection.Close();
+//            return idApunte;
+//        }
 
     }
 }
