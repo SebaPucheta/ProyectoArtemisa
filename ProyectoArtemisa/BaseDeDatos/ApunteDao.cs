@@ -230,6 +230,7 @@ namespace BaseDeDatos
             return apu;
         }
 
+        public static ApunteEntidadQuery ConsultarApunteQuery(int id);
 
         /// <summary>
         /// Consultar: todos los apuntes query por filtro (solo se puede o por carrera o por materia)

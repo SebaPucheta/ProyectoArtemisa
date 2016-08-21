@@ -23,6 +23,41 @@
              </div>
          </div>
          <br />
+          <!--Grilla que tiene un nuevo detalle-->
+         <asp:GridView ID="dgv_nuevoDetalle" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="false" OnRowDeleting="btn_limpiarGrilla_RowDeleting" OnSelectedIndexChanged="btn_agregarDetalle_SelectedIndexChanged" >
+             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+             <EditRowStyle BackColor="#ffffcc" />
+             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+             <Columns>
+                 <asp:BoundField DataField="nombreApunte" HeaderText="Nombre" />
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                        <asp:TextBox ID="txt_precioUnitario" runat="server" HeaderText="Cantidad" Width="60px"></asp:TextBox>
+                     </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                        <asp:TextBox ID="txt_cantidad" runat="server" HeaderText="Cantidad" Width="40px"></asp:TextBox>
+                     </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                         <asp:LinkButton ID="btn_agregarDetalle" CommandName="select" runat="server" Text="Registrar"></asp:LinkButton>
+                     </ItemTemplate>
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                         <asp:LinkButton ID="btn_limpiar" CommandName="delete" runat="server" Text="Limpiar"></asp:LinkButton>
+                     </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+                 
+             </Columns>
+          </asp:GridView>
+          <br />
 
          <!-- Boton agregar Apunte-->
          <div class="row ">
@@ -31,14 +66,29 @@
          <br />
 
          <!-- Grilla Detalle de factura-->
-         <asp:GridView ID="dgv_grillaDetalleFactura" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true">
+         <asp:GridView ID="dgv_grillaDetalleFactura" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarDetalle_RowDeleting" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged">
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
              <EditRowStyle BackColor="#ffffcc" />
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
                  <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                 <asp:BoundField DataField="precioUnitario" HeaderText="Precio U."  ApplyFormatInEditMode="False" />
                  <asp:BoundField DataField="cantidad" HeaderText="Cantidad"  ApplyFormatInEditMode="False" />
                  <asp:BoundField DataField="subtotal" HeaderText="Subtotal"  ApplyFormatInEditMode="False" />
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                         <asp:LinkButton ID="btn_consultarApunte" CommandName="select" runat="server"  ><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
+                     </ItemTemplate>
+                     <ControlStyle Width="10px" />
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                         <asp:LinkButton ID="btn_eliminarDetalle" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                     </ItemTemplate>
+                     <ControlStyle Width="10px" />
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
              </Columns>
          </asp:GridView>
 

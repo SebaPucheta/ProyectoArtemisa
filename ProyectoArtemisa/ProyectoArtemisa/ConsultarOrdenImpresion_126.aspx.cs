@@ -134,7 +134,7 @@ namespace ProyectoArtemisa
         {
             Session["idApunte"] = OrdenImpresionDao.DevolverIdApunte((int)dgv_grillaOrdenesImpresion.SelectedDataKey.Value);
             PilaForms.AgregarForm("ConsultarOrdenImpresion_126.aspx");
-            Response.Redirect("ConsultarOrdenImpresion_126.aspx");
+            Response.Redirect("ConsultarLibroApunte.aspx");
         }
 
         protected void ApunteImpreso(int idOrdenImpresion)

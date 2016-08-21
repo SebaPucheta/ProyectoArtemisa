@@ -41,7 +41,12 @@ namespace ProyectoArtemisa
             
             //Banderas de orden de impresion
             Session["agregarOrden"] = false;
-            
+
+            //Bandera de venta por ventanilla
+            Session["agregarDetalle"] = false;
+            Session["precioUnitario"] = null;
+            Session["tablaDetalles"] = null;
+
             //Form Apunte
             Session["chk_Impreso"] = false;
             Session["chk_Digital"] = false;

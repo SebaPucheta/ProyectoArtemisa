@@ -31,5 +31,7 @@ namespace BaseDeDatos
             cmd.Connection.Close();
             return lista;
         }
+
+        public static void RegistrarFactura(FacturaEntidad factura);
     }
 }

@@ -19,6 +19,15 @@ namespace ProyectoArtemisa
             if (!IsPostBack)
             {
                 CargarComboTipoItem();
+                if((PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx")||PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))&&((Session["idApunte"]!=null)||(Session["idLibro"]!=null)))
+                {
+                    if (Session["idApunte"] != null)
+                    { CargarUnApunteEnGrilla(ApunteDao.ConsultarApunteQuery(int.Parse(Session["idApunte"].ToString()))); }
+                    else
+                    {
+                        CargarUnLibroEnGrilla(LibroDao.ConsultarLibroQuery(int.Parse(Session["idLibro"].ToString())));
+                    }
+                }
             }
             //Toma los metodos ejecutados en JavaScript en el HTML
             //if(IsPostBack)
@@ -199,6 +208,11 @@ namespace ProyectoArtemisa
             }
              
         }
+        protected void btn_salir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(PilaForms.pila.Pop());
+        }
+        
 
         protected List<ApunteEntidadQuery> BuscarListaApunteXfiltro()
         {
@@ -288,7 +302,56 @@ namespace ProyectoArtemisa
             return listaLibro;
         }
 
-        
+
+
+        //Creo una tabla para luego cargarla en el GridView
+        protected void CargarUnApunteEnGrilla(ApunteEntidadQuery apunte)
+        {
+            DataTable tabla = new DataTable();
+            DataRow fila;
+
+            //Creo las columnas de la tabla
+            tabla.Columns.Add("idApunte", typeof(int));
+            tabla.Columns.Add("nombre", typeof(string));
+            tabla.Columns.Add("precio", typeof(float));
+            tabla.Columns.Add("stock", typeof(int));
+            tabla.Columns.Add("carrera", typeof(string));
+            tabla.Columns.Add("materia", typeof(string));
+            tabla.Columns.Add("editorial", typeof(string));
+            tabla.Columns.Add("profesor", typeof(string));
+            tabla.Columns.Add("tipoApunte", typeof(string));
+
+            
+                fila = tabla.NewRow();
+
+                fila[0] = apunte.idApunte;
+                fila[1] = apunte.nombreApunte;
+                fila[2] = apunte.precioApunte;
+                fila[3] = apunte.stock;
+
+                List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
+                string carreras = listaCarrera[0].nombreCarrera;
+                for (int i = 1; i < listaCarrera.Count; i++)
+                {
+                    carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
+                }
+
+                fila[4] = carreras;
+                fila[5] = apunte.nombreMateria;
+                fila[6] = apunte.nombreEditorial;
+                fila[7] = apunte.apellidoProfesor + ", " + apunte.nombreProfesor;
+                fila[8] = apunte.nombreTipoApunte;
+
+                tabla.Rows.Add(fila);
+            
+
+            DataView dataView = new DataView(tabla);
+
+
+            dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };
+            dgv_grillaApunte.DataSource = dataView;
+            dgv_grillaApunte.DataBind();
+        }
 
         //Creo una tabla para luego cargarla en el GridView
 
@@ -379,6 +442,50 @@ namespace ProyectoArtemisa
                 
                 tabla.Rows.Add(fila);
             }
+
+            DataView dataView = new DataView(tabla);
+
+            dgv_grillaLibro.DataSource = dataView;
+            dgv_grillaLibro.DataKeyNames = new string[] { "idLibro" };
+            dgv_grillaLibro.DataBind();
+        }
+
+        protected void CargarUnLibroEnGrilla(LibroEntidadQuery libro)
+        {
+            DataTable tabla = new DataTable();
+            DataRow fila;
+
+            //Creo las columnas de la tabla
+            tabla.Columns.Add("idLibro", typeof(int));
+            tabla.Columns.Add("nombre", typeof(string));
+            tabla.Columns.Add("precio", typeof(float));
+            tabla.Columns.Add("stock", typeof(int));
+            tabla.Columns.Add("carrera", typeof(string));
+            tabla.Columns.Add("materia", typeof(string));
+            tabla.Columns.Add("editorial", typeof(string));
+            tabla.Columns.Add("autor", typeof(string));
+
+                fila = tabla.NewRow();
+
+                fila[0] = libro.idLibro;
+                fila[1] = libro.nombreLibro;
+                fila[2] = libro.precioLibro;
+                fila[3] = libro.stock;
+
+                List<CarreraEntidad> listaCarrera = libro.listaCarreras;
+                string carreras = listaCarrera[0].nombreCarrera;
+                for (int i = 1; i < listaCarrera.Count; i++)
+                {
+                    carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
+                }
+
+                fila[4] = carreras;
+                fila[5] = libro.nombreMateria;
+                fila[6] = libro.nombreEditorial;
+                fila[7] = libro.autorLibro;
+
+                tabla.Rows.Add(fila);
+         
 
             DataView dataView = new DataView(tabla);
 

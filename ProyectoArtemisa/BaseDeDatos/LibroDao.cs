@@ -114,6 +114,7 @@ namespace BaseDeDatos
             return lista;
         }
 
+       
 
         /// <summary>
         /// Consultar: todos los libros para mostrar en grilla (con todos los nombres)
@@ -184,6 +185,8 @@ namespace BaseDeDatos
             cmd.Connection.Close();
             return libro;
         }
+
+        public static LibroEntidadQuery ConsultarLibroQuery(int id);
 
         /// <summary>
         /// Verifica que el codigo de barra recibido por parametro no este en
