@@ -16,15 +16,17 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
+
                 if (bool.Parse(Session["agregarDetalle"].ToString()))
                 {
+                    txt_fecha.Text = Session["fecha"].ToString();
                     CargarGrillaDetalles();
                     CargarNuevoDetalle();
-                    CalcularTotal();
                     BorrarVariablesGlobales();
                 }
                 else
                 {
+                    txt_fecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
                     inicializarVariableSessionTabla();
                 }
             }
@@ -57,7 +59,7 @@ namespace ProyectoArtemisa
         }
 
         //Inicializa la variable de session que contiene la tabla con los detalles de factura
-        protected void inicializarVariableSessionTabla()
+        protected void InicializarVariableSessionTabla()
         {
             DataTable tabla = new DataTable();
 
@@ -78,8 +80,8 @@ namespace ProyectoArtemisa
 
             fila = (Session["tablaDetalles"] as DataTable).NewRow();
 
-            fila[0] = int.Parse(Session["idApunte"].ToString());
-            fila[1] = Session["nombreApunte"].ToString();
+            fila[0] = dgv_nuevoDetalle.DataKeys[0].Value;
+            fila[1] = Page.Server.HtmlDecode(dgv_nuevoDetalle.Rows[0].Cells[0].Text);
             fila[2] = float.Parse(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[1].FindControl("txt_precioUnitario")).Text);
             fila[3] = Convert.ToInt32(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_cantidad")).Text);
             fila[4] = float.Parse(fila[2].ToString()) * float.Parse(fila[3].ToString());
@@ -94,7 +96,7 @@ namespace ProyectoArtemisa
         {
             DataView dataView = new DataView(Session["tablaDetalles"] as DataTable);
 
-            dgv_grillaDetalleFactura.DataKeyNames = new string[] { "idOrden" };
+            dgv_grillaDetalleFactura.DataKeyNames = new string[] { "idApunte" };
             dgv_grillaDetalleFactura.DataSource = dataView;
             dgv_grillaDetalleFactura.DataBind();
         }
@@ -120,12 +122,16 @@ namespace ProyectoArtemisa
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
             FacturaDao.RegistrarFactura(CrearFactura());
+            InicializarVariableSessionTabla();
+            dgv_grillaDetalleFactura.Visible = false;
+            
         }
 
         protected void btn_agregarDetalle_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarNuevoDetalleGrillaDetalle();
             dgv_nuevoDetalle.Visible = false;
+            lbl_total.Text = CalcularTotal().ToString();
         }
 
         protected void btn_limpiarGrilla_RowDeleting(Object sender, GridViewDeleteEventArgs e)
@@ -138,7 +144,7 @@ namespace ProyectoArtemisa
             FacturaEntidad factura = new FacturaEntidad();
             List<DetalleFacturaEntidad> listaDetalles = new List<DetalleFacturaEntidad>(); 
             factura.fecha = Convert.ToDateTime(txt_fecha.Text);
-            factura.total = float.Parse(txt_fecha.Text);
+            factura.total = float.Parse(lbl_total.Text);
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)
             {
                 DetalleFacturaEntidad detalleFactura = new DetalleFacturaEntidad();
@@ -158,6 +164,7 @@ namespace ProyectoArtemisa
 
         protected void btn_agregar_Click(object sender, EventArgs e)
         {
+            Session["fecha"] = txt_fecha.Text;
             Session["agregarDetalle"] = true;
             PilaForms.AgregarForm("RegistrarVentaVentanilla_128.aspx");
             Response.Redirect("ConsultarLibroApunte.aspx");
@@ -165,6 +172,7 @@ namespace ProyectoArtemisa
 
         protected void btn_consultarApunte_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Session["fecha"] = txt_fecha.Text;
             Session["idApunte"] = OrdenImpresionDao.DevolverIdApunte((int)dgv_grillaDetalleFactura.SelectedDataKey.Value);
             PilaForms.AgregarForm("RegistrarVentaVentanilla_128.aspx");
             Response.Redirect("ConsultarLibroApunte.aspx");

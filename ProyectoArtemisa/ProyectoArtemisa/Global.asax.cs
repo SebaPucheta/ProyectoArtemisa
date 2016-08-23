@@ -46,6 +46,7 @@ namespace ProyectoArtemisa
             Session["agregarDetalle"] = false;
             Session["precioUnitario"] = null;
             Session["tablaDetalles"] = null;
+            Session["fecha"] = "";
 
             //Form Apunte
             Session["chk_Impreso"] = false;

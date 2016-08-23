@@ -20,7 +20,7 @@
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
                  <asp:BoundField DataField="nombreApunte" HeaderText="Nombre" />
-                 <asp:TemplateField>
+                 <asp:TemplateField HeaderText="Cantidad" HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle" >
                      <ItemTemplate>
                         <asp:TextBox ID="txt_cantidadImprimir" runat="server" HeaderText="Cantidad" Width="40px"></asp:TextBox>
                      </ItemTemplate>

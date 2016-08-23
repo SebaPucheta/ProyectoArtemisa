@@ -101,7 +101,7 @@
             <!-- Boton de busqueda-->
             <div class="row col-lg-offset-9 col-md-offset-9 col-md-offset-9 col-sm-offset-9">
               <asp:Button Text="Buscar" OnClick="btn_buscar_Click" ID="btn_consultar" CssClass="btn btn-lg btn_verde btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
-              <asp:Button Text="Buscar" OnClick="btn_salir_Click" ID="btn_salir" CssClass="btn btn-lg btn_verde btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
+              <asp:Button Text="Salir" OnClick="btn_salir_Click" ID="btn_salir" CssClass="btn btn-lg btn_rojo btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
             </div>
             <br />
             <br />

@@ -17,7 +17,7 @@
          <div class="row">
              <div class="form-group">
                  <label for="documento" class="control-label col-md-2">Fecha:</label>
-                 <div class="col-md-2">
+                 <div class="col-md-3">
                      <asp:TextBox runat="server" class="form-control" TextMode="Date" type="text" ID="txt_fecha" value="" ViewStateMode="Enabled" />
                  </div>
              </div>
@@ -30,15 +30,15 @@
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
                  <asp:BoundField DataField="nombreApunte" HeaderText="Nombre" />
-                 <asp:TemplateField>
+                 <asp:TemplateField HeaderText="Precio Unit." HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle">
                      <ItemTemplate>
-                        <asp:TextBox ID="txt_precioUnitario" runat="server" HeaderText="Cantidad" Width="60px"></asp:TextBox>
+                        <asp:TextBox ID="txt_precioUnitario" runat="server"  Width="60px"></asp:TextBox>
                      </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
-                 <asp:TemplateField>
+                 <asp:TemplateField HeaderText="Cantidad" HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle">
                      <ItemTemplate>
-                        <asp:TextBox ID="txt_cantidad" runat="server" HeaderText="Cantidad" Width="40px"></asp:TextBox>
+                        <asp:TextBox ID="txt_cantidad" runat="server"  Width="40px"></asp:TextBox>
                      </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
@@ -60,7 +60,7 @@
           <br />
 
          <!-- Boton agregar Apunte-->
-         <div class="row ">
+         <div class="row">
               <asp:Button Text="Agregar" OnClick="btn_agregar_Click" ID="btn_agregar" CssClass="btn btn-lg btn_verde btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
          </div>
          <br />
@@ -95,10 +95,13 @@
          <!-- Total -->
          <div class="row">
              <div class="form-group">
-                 <label for="documento" class="control-label col-md-1">Total : </label>
+                 <label for="documento" class="control-label col-md-2">Total : </label>
                  <div class="col-md-2">
+                     <div class="input-group">
+                      <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
                      <asp:Label runat="server" class="form-control" type="text" ID="lbl_total"  />
                  </div>
+               </div>
              </div>
          </div>
          <br />

@@ -499,6 +499,11 @@ namespace ProyectoArtemisa
             int clave = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
             Session["idApunte"] = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
             Session["nombreApunte"] = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
+            if (PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))
+            { 
+                Session["precioUnitario"] = dgv_grillaApunte.Rows[indice].Cells[1].Text;
+                Response.Redirect(PilaForms.DevolverForm()); 
+            }
             if (PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx"))
             { Response.Redirect(PilaForms.DevolverForm()); }
             else
