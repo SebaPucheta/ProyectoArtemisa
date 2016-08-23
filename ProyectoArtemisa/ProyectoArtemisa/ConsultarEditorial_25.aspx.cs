@@ -22,10 +22,10 @@ namespace ProyectoArtemisa
         }
         
 
-        protected void btn_buscar_Click(object sender, EventArgs e)
-        {
-            CargarEditorialEnGrilla(BuscarListaEditorialXFiltro());
-        }
+        //protected void btn_buscar_Click(object sender, EventArgs e)
+        //{
+        //    CargarEditorialEnGrilla(BuscarListaEditorialXFiltro());
+        //}
 
         protected void btn_modificarEditorial_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -39,10 +39,10 @@ namespace ProyectoArtemisa
             EditorialDao.EliminarEditorial((int)dgv_grillaEditorial.DataKeys[e.RowIndex].Value);
         }
 
-        private void CargarEditorialEnGrilla(Func<List<EditorialEntidadQuery>> BuscarListaEditorialXFiltro)
-        {
-            throw new NotImplementedException();
-        }
+        //private void CargarEditorialEnGrilla(Func<List<EditorialEntidadQuery>> BuscarListaEditorialXFiltro)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         protected void ddl_provincia_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -69,62 +69,62 @@ namespace ProyectoArtemisa
             ddl_ciudad.SelectedIndex = 0;
         }
 
-        protected List<EditorialEntidadQuery> BuscarListaEditorialXFiltro()
-        {
-            string nombreEditorial = txt_nombreEditorial.Text;
-            string nombreContacto = txt_nombreContacto.Text; 
-            string provincia = "";
-            string ciudad = ""; 
+        //protected List<EditorialEntidadQuery> BuscarListaEditorialXFiltro()
+        //{
+        //    string nombreEditorial = txt_nombreEditorial.Text;
+        //    string nombreContacto = txt_nombreContacto.Text; 
+        //    string provincia = "";
+        //    string ciudad = ""; 
 
-            if (Convert.ToInt32(ddl_provincia.SelectedIndex) != 0)
-            {
-                provincia = ddl_provincia.SelectedValue;
-            }
+        //    if (Convert.ToInt32(ddl_provincia.SelectedIndex) != 0)
+        //    {
+        //        provincia = ddl_provincia.SelectedValue;
+        //    }
 
-            if (Convert.ToInt32(ddl_ciudad.SelectedIndex) != 0)
-            {
-                ciudad = ddl_ciudad.SelectedValue;
-            }
+        //    if (Convert.ToInt32(ddl_ciudad.SelectedIndex) != 0)
+        //    {
+        //        ciudad = ddl_ciudad.SelectedValue;
+        //    }
 
-            return EditorialDao.ConsultarEditorialXFiltro(ciudad, provincia, nombreContacto, nombreEditorial);
-        }
+        //    return EditorialDao.ConsultarEditorialXFiltro(ciudad, provincia, nombreContacto, nombreEditorial);
+        //}
 
 
-        protected void CargarEditorialEnGrilla(List<EditorialEntidadQuery> listaEditorialFiltrados)
-        {
-            DataTable tabla = new DataTable();
-            DataRow fila;
+        //protected void CargarEditorialEnGrilla(List<EditorialEntidadQuery> listaEditorialFiltrados)
+        //{
+        //    DataTable tabla = new DataTable();
+        //    DataRow fila;
 
-            //Creo las columnas de la tabla
-            tabla.Columns.Add("idEditorial", typeof(int));
-            tabla.Columns.Add("nombreEditorial", typeof(string));
-            tabla.Columns.Add("nombreContacto", typeof(string));
-            tabla.Columns.Add("telefono", typeof(string));
-            tabla.Columns.Add("nombreCiudadEditorial", typeof(string));
-            tabla.Columns.Add("direccion", typeof(string));
-            tabla.Columns.Add("email", typeof(string));
+        //    //Creo las columnas de la tabla
+        //    tabla.Columns.Add("idEditorial", typeof(int));
+        //    tabla.Columns.Add("nombreEditorial", typeof(string));
+        //    tabla.Columns.Add("nombreContacto", typeof(string));
+        //    tabla.Columns.Add("telefono", typeof(string));
+        //    tabla.Columns.Add("nombreCiudadEditorial", typeof(string));
+        //    tabla.Columns.Add("direccion", typeof(string));
+        //    tabla.Columns.Add("email", typeof(string));
 
-            foreach (EditorialEntidadQuery editorial in listaEditorialFiltrados)
-            {
-                fila = tabla.NewRow();
+        //    foreach (EditorialEntidadQuery editorial in listaEditorialFiltrados)
+        //    {
+        //        fila = tabla.NewRow();
 
-                fila[0] = editorial.idEditorial;
-                fila[1] = editorial.nombreEditorial;
-                fila[2] = editorial.nombreContacto;
-                fila[3] = editorial.telefono;
-                fila[4] = editorial.nombreCiudadEditorial + ", " + editorial.nombreProvinciaEditorial;
-                fila[5] = editorial.direccion;
-                fila[6] = editorial.email;
+        //        fila[0] = editorial.idEditorial;
+        //        fila[1] = editorial.nombreEditorial;
+        //        fila[2] = editorial.nombreContacto;
+        //        fila[3] = editorial.telefono;
+        //        fila[4] = editorial.nombreCiudadEditorial + ", " + editorial.nombreProvinciaEditorial;
+        //        fila[5] = editorial.direccion;
+        //        fila[6] = editorial.email;
 
-                tabla.Rows.Add(fila);
-            }
+        //        tabla.Rows.Add(fila);
+        //    }
 
-            DataView dataView = new DataView(tabla);
+        //    DataView dataView = new DataView(tabla);
 
-            dgv_grillaEditorial.DataSource = dataView;
-            dgv_grillaEditorial.DataKeyNames = new string[] { "idEditorial" };
-            dgv_grillaEditorial.DataBind();
-        }
+        //    dgv_grillaEditorial.DataSource = dataView;
+        //    dgv_grillaEditorial.DataKeyNames = new string[] { "idEditorial" };
+        //    dgv_grillaEditorial.DataBind();
+        //}
 
         
     }

@@ -31,7 +31,7 @@ namespace ProyectoArtemisa
         {
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
-            Response.Redirect("ConsultarEditorial_25.aspx");
+            Response.Redirect("RegistrarEditorial_22.aspx");
         }
         protected void btn_registrarLibro_OnClick(Object sender, EventArgs e)
         {
@@ -87,6 +87,13 @@ namespace ProyectoArtemisa
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("RegistrarProveedor_132.aspx");
+        }
+
+        protected void btn_consultarProveedor_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarProveedor_134.aspx");
         }
 
         protected void LimpiarVariablesGlobales()

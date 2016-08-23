@@ -13,10 +13,6 @@ namespace BaseDeDatos
     {
         //idEditorial
         //nombreEditorial
-        //telefono
-        //email
-        //direccion
-        //nombreContacto
         //baja
 
 
@@ -26,8 +22,8 @@ namespace BaseDeDatos
         /// <param name="editorial"></param>
         public static void RegistrarEditorial(EditorialEntidad editorial)
         {
-            string query = @"INSERT INTO Editorial(nombreEditorial) 
-                            VALUES (@nombreEditorial)";
+            string query = @"INSERT INTO Editorial(nombreEditorial, baja) 
+                            VALUES (@nombreEditorial, 0)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"nombreEditorial", editorial.nombreEditorial);
             cmd.ExecuteNonQuery();
@@ -59,10 +55,44 @@ namespace BaseDeDatos
                                                  WHERE idEditorial = @idEditorial AND baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"nomEditorial", editorial.nombreEditorial);
+            cmd.Parameters.AddWithValue(@"idEditorial", editorial.idEditorial);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
 
+        ///// <summary>
+        ///// Verificar si el nombre ya existe
+        ///// </summary>
+        ///// <param name="nombre"></param>
+        ///// <returns></returns>
+        //public static bool ConsultarNombreExistente(string nombre)
+        //{
+        //    string consulta = @"SELECT nombreEditorial FROM Editorial
+        //                                         WHERE nombreEditorial = @nombre AND baja = 0";
+        //    SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+        //    cmd.Parameters.AddWithValue(@"nombre", nombre);
+
+        //    if (string.IsNullOrEmpty(nombre))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+
+
+        //        if (int.Parse(cmd.ExecuteScalar().ToString()) == 0)
+        //        {
+        //            return false;
+        //            cmd.Connection.Close();
+        //        }
+        //        else
+        //        {
+        //            return true;
+        //            cmd.Connection.Close();
+        //        }
+
+        //    }
+        //}
 
         /// <summary>
         /// Consultar: todas las editoriales
@@ -70,7 +100,7 @@ namespace BaseDeDatos
         /// <returns></returns>
         public static List<EditorialEntidad> ConsultarEditorial()
         {
-            string query = @"SELECT idEditorial, nombreEditorial FROM Editorial";
+            string query = @"SELECT idEditorial, nombreEditorial FROM Editorial WHERE baja = 0";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             SqlDataReader dr = cmd.ExecuteReader();
             List<EditorialEntidad> listaEditorial = new List<EditorialEntidad>();
@@ -87,7 +117,7 @@ namespace BaseDeDatos
         }
 
 
-     
+
         /// <summary>
         /// Consultar: una sola editorial determinada por un ID
         /// </summary>
@@ -105,7 +135,7 @@ namespace BaseDeDatos
             {
                 editorial.idEditorial = int.Parse(dr["idEditorial"].ToString());
                 editorial.nombreEditorial = dr["nombreEditorial"].ToString();
-                
+
             }
             dr.Close();
             cmd.Connection.Close();
@@ -114,7 +144,7 @@ namespace BaseDeDatos
 
 
 
-    
+
 
 
     }

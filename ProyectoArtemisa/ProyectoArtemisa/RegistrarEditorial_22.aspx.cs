@@ -16,40 +16,49 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                if ((PilaForms.pila.Peek().Equals("ConsultarEditorial_25.aspx")) || ((bool)Session["modificarEditorial"]))
+                if (Session["idEditorial"] != null)
                 {
+                    //Vengo del boton modificar
                     CargarUnObjetoEnElForm(EditorialDao.ConsultarUnaEditorial(int.Parse(Session["idEditorial"].ToString())));
                 }
                 else
                 {
-                   
+                    //Vengo sin el modificar
+
                 }
+
+                //Cargar editoriales desde un inicio
+                CargarEditorialEnGrilla();
+
 
             }
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            if ((PilaForms.pila.Peek().Equals("ConsultarEditorial_25.aspx")) || ((bool)Session["modificarEditorial"]))
+
+            //No existe el nombre
+            if (Session["idEditorial"] != null)
             {
+                //Modificacion
                 EditorialEntidad editorial = CrearUnObjetoDesdeElForm();
                 editorial.idEditorial = int.Parse(Session["idEditorial"].ToString());
                 EditorialDao.ModificarEditorial(editorial);
-                Session["idEditorial"] = null;
-                Session["modificarEditorial"] = false;
-                Response.Redirect(PilaForms.DevolverForm());
             }
             else
             {
+                //Nuevo
                 EditorialDao.RegistrarEditorial(CrearUnObjetoDesdeElForm());
-                Response.Redirect(PilaForms.DevolverForm());
             }
+            Session["idEditorial"] = null;
+            LimpiarForm();
 
         }
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Session["modificarEditorial"] = false;
-            Response.Redirect(PilaForms.DevolverForm());
+            Session["idEditorial"] = null;
+            LimpiarForm();
+            CargarEditorialEnGrilla();
         }
 
         protected void CargarUnObjetoEnElForm(EditorialEntidad editorial)
@@ -65,8 +74,32 @@ namespace ProyectoArtemisa
         }
         protected void LimpiarForm()
         {
-            txt_nombreEditorial.Text = ""; 
+            txt_nombreEditorial.Text = "";
+            CargarEditorialEnGrilla();
         }
-       
+
+        //Cargar grilla
+        protected void CargarEditorialEnGrilla()
+        {
+            dgv_grillaEditorial.DataSource = EditorialDao.ConsultarEditorial();
+            dgv_grillaEditorial.DataKeyNames = new string[] { "idEditorial" };
+            dgv_grillaEditorial.DataBind();
+        }
+
+        //Eliminar editorial de la grilla
+        protected void btn_eliminarEditorial_RowDeleting(Object sender, GridViewDeleteEventArgs e)
+        {
+            EditorialDao.EliminarEditorial((int)dgv_grillaEditorial.DataKeys[e.RowIndex].Value);
+            LimpiarForm();
+            Session["idEditorial"] = null;
+        }
+
+        //Modificar editorial de la grilla
+        protected void btn_modificarEditorial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["idEditorial"] = (int)dgv_grillaEditorial.SelectedDataKey.Value;
+            Response.Redirect("RegistrarEditorial_22.aspx");
+        }
+
     }
 }
