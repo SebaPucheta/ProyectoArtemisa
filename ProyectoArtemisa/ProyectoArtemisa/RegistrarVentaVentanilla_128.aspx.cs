@@ -27,7 +27,7 @@ namespace ProyectoArtemisa
                 else
                 {
                     txt_fecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                    inicializarVariableSessionTabla();
+                    InicializarVariableSessionTabla();
                 }
             }
             lbl_total.Text = CalcularTotal().ToString();
