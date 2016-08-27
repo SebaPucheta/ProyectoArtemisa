@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Entidades
 
 {
-    public class ApunteEntidad
+    public class ApunteEntidad:ItemEntidad
     {
         public int idApunte { get; set; }
         public string codigoBarraApunte { get; set; }

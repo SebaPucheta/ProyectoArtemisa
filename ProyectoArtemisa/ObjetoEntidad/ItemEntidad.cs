@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public  class DetalleFacturaEntidadQuery : DetalleFacturaEntidad
+    public interface ItemEntidad
     {
-        public string nombreItem { get; set; }
     }
 }

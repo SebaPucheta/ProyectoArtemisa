@@ -9,8 +9,10 @@ namespace Entidades
     public class DetalleFacturaEntidad
     {
         public int idDetalleFactura { get; set; }
-        public int idItem { get; set; }
+        public ItemEntidad item { get; set; }
         public int cantidad { get; set; }
         public float subtotal { get; set; }
+        public int idTipoItem { get; set; }
+
     }
 }
