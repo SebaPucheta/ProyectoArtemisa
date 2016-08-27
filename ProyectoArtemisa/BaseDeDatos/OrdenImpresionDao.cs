@@ -137,11 +137,60 @@ namespace BaseDeDatos
         //Se ingresa un id de un orden de impresion y cambia el estado de la orden de impresion a "En local" osea el 3
         public static void CambiarEstadoEnLocal(int idOrdenImpresion)
         {
-            string query = @"UPDATE OrdenImpresion SET idEstadoOrdenImpresion = 3 WHERE idOrdenImpresion = @id";
+            SqlConnection cnn = obtenerBD();
+            SqlTransaction trans = cnn.BeginTransaction();
+
+            try
+            {
+                string query1 = @"UPDATE OrdenImpresion SET idEstadoOrdenImpresion = 3 WHERE idOrdenImpresion = @id";
+                SqlCommand cmd1 = new SqlCommand(query1, obtenerBD(), trans);
+                cmd1.Parameters.AddWithValue(@"id", idOrdenImpresion);
+                cmd1.ExecuteNonQuery();
+
+                //creamos el objeto ordenImpresion con el metodo devolverUnaOrdenImpresion
+                OrdenImpresionEntidad ordenImpresion = DevolverUnaOrdenImpresion(idOrdenImpresion);
+
+                string query2 = @"UPDATE Apunte SET stock = stock + @cantidad WHERE idApunte = @id";
+                SqlCommand cmd2 = new SqlCommand(query2, obtenerBD(), trans);
+                cmd2.Parameters.AddWithValue(@"cantidad", ordenImpresion.cantidad);
+                cmd2.Parameters.AddWithValue(@"id", ordenImpresion.idApunte);
+                cmd2.ExecuteNonQuery();
+                //--- Commit
+                trans.Commit();
+            }
+            catch (Exception e)
+            {
+                trans.Rollback();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+        }
+        /// <summary>
+        /// devuelve una orden de impresion
+        /// </summary> Gumer
+        /// <param name="idOrdenImpresion"></param>
+        /// <returns></returns>
+        public static OrdenImpresionEntidad DevolverUnaOrdenImpresion(int idOrdenImpresion)
+        {
+            OrdenImpresionEntidad orden = new OrdenImpresionEntidad();
+            string query = @"SELECT idOrdenImpresion, idApunte, cantidad, idEstadoOrdenImpresion, fecha FROM OrdenImpresion WHERE idOrdenImpresion = @id";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"id", idOrdenImpresion);
-            cmd.ExecuteNonQuery();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                orden.idOrdenImpresion = int.Parse(dr["idOrdenImpresion"].ToString());
+                orden.idApunte = int.Parse(dr["idApunte"].ToString());
+                orden.cantidad = int.Parse(dr["cantidad"].ToString());
+                orden.idEstadoOrden = int.Parse(dr["idEstadoOrdenImpresion"].ToString());
+                orden.fecha = DateTime.Parse(dr["fecha"].ToString());
+            }
+            dr.Close();
             cmd.Connection.Close();
+            return orden;
         }
 
         //Se ingresa un id de un orden de impresion y cambia el estado de la orden de impresion a "En local" osea el 3
@@ -168,18 +217,19 @@ namespace BaseDeDatos
             return idEstado;
         }
 
-//        //Devuelve el idApunte
-//        public static int DevolverIdApunte(int idOrdenImpresion)
-//        {
-//            string query = @"SELECT OrdenImpresion.idApunte
-//                             FROM OrdenImpresion
-//                             WHERE OrdenImpresion.idOrdenImpresion = @id";
-//            SqlCommand cmd = new SqlCommand(query, obtenerBD());
-//            cmd.Parameters.AddWithValue(@"id", idOrdenImpresion);
-//            int idApunte = (int)cmd.ExecuteScalar();
-//            cmd.Connection.Close();
-//            return idApunte;
-//        }
+        //        //Devuelve el idApunte
+        //        public static int DevolverIdApunte(int idOrdenImpresion)
+        //        {
+        //            string query = @"SELECT OrdenImpresion.idApunte
+        //                             FROM OrdenImpresion
+        //                             WHERE OrdenImpresion.idOrdenImpresion = @id";
+        //            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+        //            cmd.Parameters.AddWithValue(@"id", idOrdenImpresion);
+        //            int idApunte = (int)cmd.ExecuteScalar();
+        //            cmd.Connection.Close();
+        //            return idApunte;
+        //        }
 
+        
     }
 }

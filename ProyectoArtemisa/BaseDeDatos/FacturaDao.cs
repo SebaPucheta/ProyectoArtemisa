@@ -11,6 +11,11 @@ namespace BaseDeDatos
 {
     public class FacturaDao : Conexion
     {
+        /// <summary>
+        /// devuelve una lista de facturas
+        /// 
+        /// </summary> Gumer
+        /// <returns></returns>
         public static List<FacturaEntidadQuery> ListarFacturas()
         {
             string query = @"SELECT f.idFactura, f.fecha, f.total, tp.descripcion
@@ -24,7 +29,7 @@ namespace BaseDeDatos
                 factura.idFactura = int.Parse(dr["idFactura"].ToString());
                 factura.fecha = DateTime.Parse(dr["fecha"].ToString());
                 factura.total = float.Parse(dr["total"].ToString());
-               // factura.descripcion = dr["descripcion"].ToString(); //Que carajo es descripcion
+                factura.nombreTipoPago = dr["descripcion"].ToString();
                 lista.Add(factura);
             }
             dr.Close();
@@ -32,14 +37,66 @@ namespace BaseDeDatos
             return lista;
         }
 
+        /// <summary>
+        ///
+        /// Tipo 1-Libro
+        /// Tipo 2-Apunte
+        /// </summary> Gumer
+        /// <param name="factura"></param>
         public static void RegistrarFactura(FacturaEntidad factura)
         {
-            string query = "INSERT INTO Factura(fecha, total) VALUES (@fecha, @total)";
-            SqlCommand cmd = new SqlCommand(query, obtenerBD());
-            cmd.Parameters.AddWithValue(@"fecha", factura.fecha);
-            cmd.Parameters.AddWithValue(@"total", factura.total);
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+            SqlConnection cnn= obtenerBD();
+            SqlTransaction trans = cnn.BeginTransaction();
+            
+            try
+            {
+
+                string query1 = "INSERT INTO Factura(fecha, total) VALUES (@fecha, @total); select scope_identity()";
+                SqlCommand cmd1 = new SqlCommand(query1, obtenerBD(),trans);
+                cmd1.Parameters.AddWithValue(@"fecha", factura.fecha);
+                cmd1.Parameters.AddWithValue(@"total", factura.total);
+                int idFactura = (int)cmd1.ExecuteScalar();
+
+                foreach (DetalleFacturaEntidad detalleFactura in factura.listaDetalleFactura)
+                {
+                    string query2 = "INSERT INTO DetalleFactura (idItem, cantidad, subtotal, idFactura, idTipoItem) VALUES (@idItem, @cantidad, @subtotal, @idFactura)";
+                    SqlCommand cmd2 = new SqlCommand(query2, obtenerBD(), trans);
+                    cmd2.Parameters.AddWithValue(@"cantidad", detalleFactura.cantidad);
+                    cmd2.Parameters.AddWithValue(@"subtotal", detalleFactura.subtotal);
+                    cmd2.Parameters.AddWithValue(@"idFactura", idFactura);
+
+                    if (detalleFactura.item is ApunteEntidad )//Apunte
+                    {
+                        cmd2.Parameters.AddWithValue(@"idTipoItem", 2);
+                        cmd2.Parameters.AddWithValue(@"idItem", ((ApunteEntidad)(detalleFactura.item)).idApunte);
+                        cmd2.ExecuteNonQuery();
+                        //Restar la cantidad de stock al apunte
+                        string query3 = "UPDATE Apunte SET stock = stock - @cantidad";
+                        SqlCommand cmd3 = new SqlCommand(query3, obtenerBD(), trans);
+                        cmd3.Parameters.AddWithValue(@"cantidad", detalleFactura.cantidad);
+                        cmd3.ExecuteNonQuery();
+                    }
+                    else//Libro
+                    {
+                        cmd2.Parameters.AddWithValue(@"idTipoItem", 1);
+                        cmd2.Parameters.AddWithValue(@"idItem", ((LibroEntidad)(detalleFactura.item)).idLibro);
+                        cmd2.ExecuteNonQuery();
+                        //Restar la cantidad de stock al libro
+                        string query3 = "UPDATE Libro SET stock = stock - @cantidad";
+                        SqlCommand cmd3 = new SqlCommand(query3, obtenerBD(), trans);
+                        cmd3.Parameters.AddWithValue(@"cantidad", detalleFactura.cantidad);
+                        cmd3.ExecuteNonQuery();
+                    }
+                    
+                }
+                //--- Commit
+                trans.Commit();
+            }
+            catch(Exception e)
+            {
+                trans.Rollback();
+            }
+            finally { cnn.Close(); }
         }
     }
 }
