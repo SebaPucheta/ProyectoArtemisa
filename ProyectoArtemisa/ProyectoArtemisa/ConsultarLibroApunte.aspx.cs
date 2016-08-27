@@ -501,7 +501,22 @@ namespace ProyectoArtemisa
             Session["nombreApunte"] = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
             if (PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))
             { 
-                Session["precioUnitario"] = dgv_grillaApunte.Rows[indice].Cells[1].Text;
+                if(Convert.ToInt32(ddl_tipoItem.SelectedValue)==1)
+                {
+                    ApunteEntidad apunteSeleccionado = new ApunteEntidad();
+                    apunteSeleccionado.idApunte = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
+                    apunteSeleccionado.nombreApunte = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
+                    apunteSeleccionado.precioApunte =Convert.ToInt32(dgv_grillaApunte.Rows[indice].Cells[1].Text);
+                    Session["objetoApunteEntidad"] = apunteSeleccionado;
+                }
+                else 
+                {
+                    LibroEntidad libroSeleccionado = new LibroEntidad();
+                    libroSeleccionado.idLibro = (Int32)dgv_grillaLibro.DataKeys[indice].Value;
+                    libroSeleccionado.nombreLibro = Page.Server.HtmlDecode(dgv_grillaLibro.Rows[indice].Cells[0].Text);
+                    libroSeleccionado.precioLibro = Convert.ToInt32(dgv_grillaLibro.Rows[indice].Cells[1].Text);
+                    Session["objetoLibroEntidad"] = libroSeleccionado;
+                }
                 Response.Redirect(PilaForms.DevolverForm()); 
             }
             if (PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx"))
