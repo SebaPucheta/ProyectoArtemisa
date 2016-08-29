@@ -19,7 +19,8 @@
              <div class="form-group">
                  <label for="documento" class="control-label col-md-2">Fecha desde :</label>
                  <div class="col-md-2">
-                     <asp:TextBox runat="server" class="form-control" TextMode="Date" type="text" ID="txt_fechaDesde" value="" ViewStateMode="Enabled" />
+                     <!--Le quito el TextMode="Date" y le coloco jquery Autor: Martin-->
+                     <asp:TextBox runat="server" class="form-control" type="text" ID="txt_fechaDesde" placeholder="dd/mm/aaaa" value="" ViewStateMode="Enabled" />
                  </div>
              </div>
          </div>
@@ -30,7 +31,8 @@
              <div class="form-group">
                  <label for="documento" class="control-label col-md-2">Fecha hasta :</label>
                  <div class="col-md-2">
-                     <asp:TextBox runat="server" class="form-control" TextMode="Date" type="text" ID="txt_fechaHasta" value="" ViewStateMode="Enabled" />
+                     <!--Le quito el TextMode="Date" y le coloco jquery Autor: Martin-->
+                     <asp:TextBox runat="server" class="form-control"  type="text" ID="txt_fechaHasta" placeholder="dd/mm/aaaa" value="" ViewStateMode="Enabled" />
                  </div>
              </div>
          </div>
@@ -54,11 +56,21 @@
         <br />
         <br />
         </div>
-       </div>
-
+       </div>  
 
 </asp:Content>
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">
+    <%-- Son los JQUERY para los datapicker Autor: Martin--%>
+    <script>
+        $(function () {
+            $("#<%= txt_fechaDesde.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' }).val();
+        });
+  </script>
+<script>
+    $(function () {
+        $("#<%= txt_fechaHasta.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' }).val();
+    });
+  </script>
 </asp:Content>

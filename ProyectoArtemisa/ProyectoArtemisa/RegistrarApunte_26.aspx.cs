@@ -10,6 +10,9 @@ using AjaxControlToolkit;
 using BaseDeDatos;
 using Entidades;
 using Negocio;
+using Spire.Pdf;
+using Spire.Pdf.Security;
+
 
 
 namespace ProyectoArtemisa
@@ -276,6 +279,7 @@ namespace ProyectoArtemisa
             if (chk_digital.Checked)
             {
                 txt_precioApunteDigital.Enabled = true;
+                fu_subirArchivo.Enabled = true;
             }
             else
             {
@@ -412,8 +416,8 @@ namespace ProyectoArtemisa
         /// </summary>
         protected void RegistrarApunteDigital()
         {
-            if(txt_precioApunteDigital.Text != "")
-            { 
+            if (txt_precioApunteDigital.Text != "")
+            {
                 ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
                 nuevoApunte.codigoBarraApunte = "";
                 nuevoApunte.precioApunte = float.Parse(txt_precioApunteDigital.Text);
@@ -535,6 +539,7 @@ namespace ProyectoArtemisa
             Session["idProfesor"] = Convert.ToInt32(ddl_profesorApunte.SelectedValue);
             Session["idCategoria"] = Convert.ToInt32(ddl_categoriaApunte.SelectedValue);
             Session["descripcion"] = txt_descripcion.Text;
+
         }
 
         /// <summary>
@@ -551,10 +556,12 @@ namespace ProyectoArtemisa
                 txt_precioXHoja.Text = Session["precionImpreso"].ToString();
                 txt_stock.Enabled = true;
                 txt_stock.Text = Session["stock"].ToString();
+                
             }
             chk_digital.Checked = bool.Parse(Session["chk_Digital"].ToString());
             if(chk_digital.Checked)
             {
+                fu_subirArchivo.Enabled = true;
                 txt_precioApunteDigital.Enabled = true;
                 txt_precioApunteDigital.Text = Session["precioDigital"].ToString();
             }
@@ -680,5 +687,43 @@ namespace ProyectoArtemisa
             }
             
         }
+        //Cuando hacemos clic en el boton cargar se realiza la carga del documento en la ruta indicada
+        protected void btn_cargarArchivo_Click(object sender, EventArgs e)
+        {
+        if(fu_subirArchivo.HasFile)
+    {
+        try
+        {
+            //creo un nuevo pdf
+            PdfDocument pdf = new PdfDocument();            
+            // Indico la ruta deseada donde quiero gurdar el archivo.
+            string rutaPDF = "C:/" + fu_subirArchivo.FileName +" - "+ DateTime.Now.ToString("dd-MM-yyyy") + ".pdf";
+            //Guardo el archivo
+            fu_subirArchivo.SaveAs(rutaPDF);
+            //Selecciono donde guarde el archivo
+            pdf.LoadFromFile(rutaPDF);
+            //Aplico seguridad
+            pdf.Security.KeySize = PdfEncryptionKeySize.Key256Bit;
+            pdf.Security.OwnerPassword = "test";
+            //Por defecto se le quitan todos los permisos al PDF
+            //si quiero agregarle algun permiso tengo que descomentar las siguiente linea
+            pdf.Security.Permissions = PdfPermissionsFlags.None;
+            //en la pagina http://www.e-iceblue.com/Tutorials/Spire.PDF/Spire.PDF-Program-Guide/Security/How-to-Change-Security-Permission-of-PDF-Document-in-C-VB.NET.html
+            //nos muestran los tipos de seguridad que se le pueden colocar
+
+            //lo guardo en donde quiero, en este caso del string rutaPDF
+            pdf.SaveToFile(rutaPDF);
+            //indico que el archivo se cargo exitosamente.
+            StatusLabel.Text = "Estado de carga: Archivo cargado exitosamente!";
+        }
+        catch(Exception ex)
+        {
+            StatusLabel.Text = "Estado de carga: El archivo no se pudo cargar. El error que ocurrio fue: " + ex.Message;
+        }
+    }
+        }
+
+        
+
     }
 }

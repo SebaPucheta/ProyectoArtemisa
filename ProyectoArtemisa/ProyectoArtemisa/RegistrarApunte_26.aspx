@@ -269,12 +269,12 @@
             </div>
             <br />
 
-              <!-- Stock -->
+            <!-- Stock -->
             <div class="row">
                 <div class="form-group">
                     <label for="option" id="lbl_stock" class="control-label col-md-3">Stock: </label>
                     <div class="col-md-2">
-                        <asp:TextBox runat="server" class="form-control" type="text" id="txt_stock" value="" ViewStateMode="Enabled" Enabled="false"/>
+                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_stock" value="" ViewStateMode="Enabled" Enabled="false" />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_stock" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -285,23 +285,23 @@
                               </div>
                         </asp:RequiredFieldValidator>
                         <!-- Verifica que se ingrese un numero-->
-                            <asp:CompareValidator ControlToValidate="txt_stock" cultureinvariantvalues="true" display="Dynamic" ID="CompareValidator2" runat="server" Operator="DataTypeCheck" Type="Integer" setfocusonerror="true"  ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
+                        <asp:CompareValidator ControlToValidate="txt_stock" CultureInvariantValues="true" Display="Dynamic" ID="CompareValidator2" runat="server" Operator="DataTypeCheck" Type="Integer" SetFocusOnError="true" ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
                                <div class="alert alert-danger">
                                   <strong>No se a ingresado un número</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
                               </div>
-                            </asp:CompareValidator>
+                        </asp:CompareValidator>
                         <!--Verifica que el valor ingresado sea razonablemente valido-->
-                            <asp:RangeValidator ControlToValidate="txt_stock" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server"  ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                        <asp:RangeValidator ControlToValidate="txt_stock" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">
                                   <strong>El stock ingresada es incorrecto</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
                               </div>
-                            </asp:RangeValidator>
+                        </asp:RangeValidator>
                     </div>
                 </div>
             </div>
@@ -317,14 +317,14 @@
                             <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
                             <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioXHoja" value="" ViewStateMode="Enabled" Enabled="false" />
                             <!-- Verifica que se ingrese un numero-->
-                             <asp:RegularExpressionValidator runat="server" ValidationExpression="^[0-9,]*$" ControlToValidate="txt_precioXHoja" Display="Dynamic" ValidationGroup="AllValidator">
+                            <asp:RegularExpressionValidator runat="server" ValidationExpression="^[0-9,]*$" ControlToValidate="txt_precioXHoja" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
                                   <strong>Se debe ingresar el precio correctamente el precio (no usar punto)</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
                               </div>
-                        </asp:RegularExpressionValidator>
+                            </asp:RegularExpressionValidator>
                             <!--Verifica que el valor ingresado sea razonablemente valido-->
                             <asp:RangeValidator ControlToValidate="txt_precioXHoja" MaximumValue="1000000" Type="Double" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">
@@ -424,9 +424,23 @@
                 </div>
             </div>
             <br />
-            <br />
-            <br />
 
+            <%-- File upload se utila para seleccionar el archivo que nosotros vamos a guardar en la BD Autor: Martin --%>
+            <div class="row">
+                <div class="form-group">
+                    <asp:Label Text="Seleccione un archivo: " Font-Bold="true" runat="server" CssClass="control-label col-md-3" Enabled="false" />
+                    <div class="col-md-7">
+                        <asp:FileUpload ID="fu_subirArchivo" Enabled="false" CssClass="form-control" runat="server" />
+                        <br />
+                        <asp:Button runat="server" ID="btn_cargarArchivo" Text="Cargar" CssClass="btn btn-lg btn_azul btn_flat right" ValidationGroup="z" Enabled="true" OnClick="btn_cargarArchivo_Click" />
+                        <br />
+                        <asp:Label runat="server" TextMode="MultiLine" ID="StatusLabel" CssClass="form-control" Text="Estado de carga: " />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
 
             <!-- Botones -->
             <div class="row col-lg-offset-8">
@@ -436,7 +450,6 @@
             <br />
         </div>
     </div>
-
 </asp:Content>
 
 

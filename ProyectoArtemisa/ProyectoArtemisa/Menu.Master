@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="Estilo/Forms.css" />
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css' />
+    <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    
 
 
 </head>
@@ -99,6 +103,10 @@
 
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/jquery.js"></script>
+    <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
+    <script src="jquery-ui-1.11.4.custom\external\jquery\jquery.js"></script>
+    <script src="jquery-ui-1.11.4.custom\jquery-ui.js"></script>
+
     <!-- Codigo js para que ande el boton btn-mostrarNav -->
     <script type="text/javascript">$('#btn_mostrarNav').on('click', function () {
     $('#sidenav').toggleClass('mostrar');

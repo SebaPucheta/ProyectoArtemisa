@@ -130,6 +130,24 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultarHistorialOrdenImpresion;
         
         /// <summary>
+        /// Control btn_registrarProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_registrarProveedor;
+        
+        /// <summary>
+        /// Control btn_consultarProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_consultarProveedor;
+        
+        /// <summary>
         /// Control img_educom.
         /// </summary>
         /// <remarks>
