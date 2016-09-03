@@ -14,7 +14,8 @@ namespace BaseDeDatos
         /// Lista todas las ordenes de impresion
         /// </summary>
         /// <returns></returns>
-        public static List<OrdenImpresionEntidadQuery> ListarOrdenesImpresion()
+        /// Autor: Gumer Modificado por: Puchi
+        public static List<OrdenImpresionEntidadQuery> ListarOrdenesImpresion(string fechaDesde, string fechaHasta)
         {
             List<OrdenImpresionEntidadQuery> lista = new List<OrdenImpresionEntidadQuery>();
             //idOrdenImpresion
@@ -25,10 +26,23 @@ namespace BaseDeDatos
 
             string query = @"SELECT o.idOrdenImpresion, a.nombreApunte, o.cantidad, eo.nombreEstadoOrdenImpresion, o.fecha
                              FROM OrdenImpresion o INNER JOIN EstadoOrdenImpresion eo ON o.idEstadoOrdenImpresion = eo.idEstadoOrdenImpresion
-					                               INNER JOIN Apunte a ON o.idApunte = a.idApunte";
+					                               INNER JOIN Apunte a ON o.idApunte = a.idApunte
+                             WHERE o.fecha BETWEEN convert(date, @fechaDesde, 103) AND convert(date, @fechaHasta, 103)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            
+            if (fechaDesde == "")
+            {
+                string FECHA = DateTime.Now.ToShortDateString();
+                cmd.Parameters.AddWithValue(@"fechaDesde", "01/01/1900");
+                cmd.Parameters.AddWithValue(@"fechaHasta", DateTime.Now.ToShortDateString());
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue(@"fechaDesde", fechaDesde);
+                cmd.Parameters.AddWithValue(@"fechaHasta", fechaHasta);
+        
+            }
             SqlDataReader dr = cmd.ExecuteReader();
-
             while (dr.Read())
             {
                 OrdenImpresionEntidadQuery orden = new OrdenImpresionEntidadQuery();

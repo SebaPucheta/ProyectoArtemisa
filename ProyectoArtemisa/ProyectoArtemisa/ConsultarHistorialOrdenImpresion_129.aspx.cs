@@ -17,7 +17,7 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                cargarGrillaOrdenImpresion(OrdenImpresionDao.ListarOrdenesImpresion());
+                
             }
         }
         protected void cargarGrillaOrdenImpresion(List<OrdenImpresionEntidadQuery> listaOrdenesImpresion)
@@ -34,6 +34,7 @@ namespace ProyectoArtemisa
 
             foreach (OrdenImpresionEntidadQuery ordenImpresion in listaOrdenesImpresion)
             {
+                
                 fila = tabla.NewRow();
 
                 fila[0] = ordenImpresion.idOrdenImpresion;
@@ -41,7 +42,7 @@ namespace ProyectoArtemisa
                 fila[2] = ordenImpresion.fecha;
                 fila[3] = ordenImpresion.nombreApunte;
                 fila[4] = ordenImpresion.nombreEstadoOrdenImpresion;
-
+            
                 tabla.Rows.Add(fila);
             }
 
@@ -50,6 +51,11 @@ namespace ProyectoArtemisa
             dgv_grillaOrdenesImpresion.DataSource = dataView;
             dgv_grillaOrdenesImpresion.DataKeyNames = new string[] { "idOrdenImpresion" };
             dgv_grillaOrdenesImpresion.DataBind();
+        }
+
+        protected void btn_confirmar_Click(object sender, EventArgs e)
+        {
+            cargarGrillaOrdenImpresion(OrdenImpresionDao.ListarOrdenesImpresion(txt_fechaDesde.Text, txt_fechaHasta.Text));
         }
     }
 }

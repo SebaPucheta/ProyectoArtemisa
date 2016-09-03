@@ -148,7 +148,13 @@ namespace ProyectoArtemisa
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)
             {
                 DetalleFacturaEntidad detalleFactura = new DetalleFacturaEntidad();
-                detalleFactura.idItem = Convert.ToInt32(fila[0]);
+                //if (detalleFactura.item is ApunteEntidad )
+                //{
+                //    (ApunteEntidad)(detalleFactura.item)).idApunte = Convert.ToInt32(fila[0]);
+                //}
+                //else
+                //{}
+
                 detalleFactura.cantidad = Convert.ToInt32(fila[3]);
                 detalleFactura.subtotal = float.Parse(fila[4].ToString());
                 listaDetalles.Add(detalleFactura);

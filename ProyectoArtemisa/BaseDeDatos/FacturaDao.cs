@@ -16,11 +16,27 @@ namespace BaseDeDatos
         /// 
         /// </summary> Gumer
         /// <returns></returns>
-        public static List<FacturaEntidadQuery> ListarFacturas()
+        /// Autor: Modificado por Martin 03-09-16
+        public static List<FacturaEntidadQuery> ListarFacturas(string fechaDesde, string fechaHasta)
         {
             string query = @"SELECT f.idFactura, f.fecha, f.total, tp.descripcion
-                            FROM Factura f INNER JOIN TipoPago tp ON f.idTipoPago = tp.idTipoPago";
+                            FROM Factura f INNER JOIN TipoPago tp ON f.idTipoPago = tp.idTipoPago
+                            WHERE f.fecha BETWEEN convert(date, @fechaDesde, 103) AND convert(date, @fechaHasta, 103)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
+
+            if (fechaDesde == "")
+            {
+                string FECHA = DateTime.Now.ToShortDateString();
+                cmd.Parameters.AddWithValue(@"fechaDesde", "01/01/1900");
+                cmd.Parameters.AddWithValue(@"fechaHasta", DateTime.Now.ToShortDateString());
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue(@"fechaDesde", fechaDesde);
+                cmd.Parameters.AddWithValue(@"fechaHasta", fechaHasta);
+
+            }
+
             SqlDataReader dr = cmd.ExecuteReader();
             List<FacturaEntidadQuery> lista = new List<FacturaEntidadQuery>();
             while (dr.Read())

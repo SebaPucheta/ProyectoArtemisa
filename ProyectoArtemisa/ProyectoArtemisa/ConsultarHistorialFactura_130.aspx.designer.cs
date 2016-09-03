@@ -31,6 +31,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_fechaHasta;
         
         /// <summary>
+        /// Control btn_buscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_buscar;
+        
+        /// <summary>
         /// Control dgv_grillaOrdenesImpresion.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_total;
+        
+        /// <summary>
+        /// Control txt_total.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txt_total;
     }
 }
