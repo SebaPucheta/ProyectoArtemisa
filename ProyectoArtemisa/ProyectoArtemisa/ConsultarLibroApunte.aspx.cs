@@ -496,9 +496,7 @@ namespace ProyectoArtemisa
 
         protected void CrearOrdenImpresion(int indice)
         {
-            int clave = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
-            Session["idApunte"] = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
-            Session["nombreApunte"] = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
+
             if (PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))
             { 
                 if(Convert.ToInt32(ddl_tipoItem.SelectedValue)==1)
@@ -535,7 +533,14 @@ namespace ProyectoArtemisa
             if(e.CommandName == "imprimir")
             { CrearOrdenImpresion(indice); }
         }
-        
+
+        protected void dgv_grillaLibro_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
+            
+            if (e.CommandName == "imprimir")
+            { CrearOrdenImpresion(indice); }
+        }
         
         
 

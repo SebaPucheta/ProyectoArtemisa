@@ -150,7 +150,10 @@
                     </Columns>
                 </asp:GridView>
                 <!-- Grilla Libro-->
-                <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarLibro_RowDeleting" OnSelectedIndexChanged="btn_modificarLibro_SelectedIndexChanged">
+                <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" 
+                    OnRowDeleting="btn_eliminarLibro_RowDeleting" 
+                    OnSelectedIndexChanged="btn_modificarLibro_SelectedIndexChanged"
+                    OnRowCommand="dgv_grillaLibro_RowCommand">
                     <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                     <EditRowStyle BackColor="#ffffcc" />
                     <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -162,6 +165,14 @@
                         <asp:BoundField DataField="materia" HeaderText="Materia" />
                         <asp:BoundField DataField="editorial" HeaderText="Editorial" />
                         <asp:BoundField DataField="autor" HeaderText="Autor" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btn_imprimirApunte" CommandName="imprimir"   runat="server"><span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span></asp:LinkButton>
+
+                            </ItemTemplate>
+                            <ControlStyle Width="10px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10px" />
+                        </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton ID="btn_modificarLibro" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
