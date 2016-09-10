@@ -506,7 +506,7 @@ namespace ProyectoArtemisa
                     ApunteEntidad apunteSeleccionado = new ApunteEntidad();
                     apunteSeleccionado.idApunte = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
                     apunteSeleccionado.nombreApunte = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
-                    apunteSeleccionado.precioApunte =Convert.ToInt32(dgv_grillaApunte.Rows[indice].Cells[1].Text);
+                    apunteSeleccionado.precioApunte =float.Parse(dgv_grillaApunte.Rows[indice].Cells[1].Text);
                     Session["objetoApunteEntidad"] = apunteSeleccionado;
                 }
                 else 
@@ -514,7 +514,7 @@ namespace ProyectoArtemisa
                     LibroEntidad libroSeleccionado = new LibroEntidad();
                     libroSeleccionado.idLibro = (Int32)dgv_grillaLibro.DataKeys[indice].Value;
                     libroSeleccionado.nombreLibro = Page.Server.HtmlDecode(dgv_grillaLibro.Rows[indice].Cells[0].Text);
-                    libroSeleccionado.precioLibro = Convert.ToInt32(dgv_grillaLibro.Rows[indice].Cells[1].Text);
+                    libroSeleccionado.precioLibro = float.Parse(dgv_grillaLibro.Rows[indice].Cells[1].Text);
                     Session["objetoLibroEntidad"] = libroSeleccionado;
                 }
                 Response.Redirect(PilaForms.DevolverForm()); 

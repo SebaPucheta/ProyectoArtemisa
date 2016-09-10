@@ -18,7 +18,7 @@
              <div class="form-group">
                  <label for="documento" class="control-label col-md-2">Fecha:</label>
                  <div class="col-md-3">
-                     <asp:TextBox runat="server" class="form-control" TextMode="Date" type="text" ID="txt_fecha" value="" ViewStateMode="Enabled" />
+                     <asp:TextBox runat="server" class="form-control" type="text" ID="txt_fecha" value="" ViewStateMode="Enabled" />
                  </div>
              </div>
          </div>
@@ -30,6 +30,7 @@
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
                  <asp:BoundField DataField="nombreApunte" HeaderText="Nombre" />
+                 <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Apunte" />
                  <asp:TemplateField HeaderText="Precio Unit." HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle">
                      <ItemTemplate>
                         <asp:TextBox ID="txt_precioUnitario" runat="server"  Width="60px"></asp:TextBox>
@@ -72,6 +73,7 @@
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
                  <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                 <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Apunte" />
                  <asp:BoundField DataField="precioUnitario" HeaderText="Precio U."  ApplyFormatInEditMode="False" />
                  <asp:BoundField DataField="cantidad" HeaderText="Cantidad"  ApplyFormatInEditMode="False" />
                  <asp:BoundField DataField="subtotal" HeaderText="Subtotal"  ApplyFormatInEditMode="False" />
@@ -120,4 +122,9 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">
+    <script>
+        $(function () {
+            $("#<%= txt_fecha.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' }).val();
+        });
+    </script>
 </asp:Content>

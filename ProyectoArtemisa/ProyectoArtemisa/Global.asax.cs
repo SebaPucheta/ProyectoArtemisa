@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.UI;
+using Negocio;
 
 namespace ProyectoArtemisa
 {
@@ -13,7 +14,8 @@ namespace ProyectoArtemisa
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            
+            PilaForms.Inicializar();
+            PilaForms.AgregarForm("Default.aspx");
         }
 
         protected void Session_Start(object sender, EventArgs e)

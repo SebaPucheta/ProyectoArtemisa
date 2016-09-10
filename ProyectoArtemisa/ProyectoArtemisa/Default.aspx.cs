@@ -12,8 +12,7 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            PilaForms.Inicializar();
-            PilaForms.AgregarForm("Default.aspx");
+            
         }
     }
 }

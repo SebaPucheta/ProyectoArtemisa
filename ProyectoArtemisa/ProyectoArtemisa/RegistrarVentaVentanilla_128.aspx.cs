@@ -84,6 +84,7 @@ namespace ProyectoArtemisa
             //Creo las columnas de la tabla
             tabla.Columns.Add("idItem", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
+            tabla.Columns.Add("tipoApunte", typeof(string));
             tabla.Columns.Add("precioUnitario", typeof(float));
             tabla.Columns.Add("cantidad", typeof(int));
             tabla.Columns.Add("subtotal", typeof(float));
