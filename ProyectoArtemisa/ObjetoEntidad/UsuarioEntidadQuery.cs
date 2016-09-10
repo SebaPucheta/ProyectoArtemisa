@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class ClienteEntidadQuery : ClienteEntidad
+    public class UsuarioEntidadQuery : UsuarioEntidad
     {
-        public string nombreTipoDNI { get; set; }
+        public ClienteEntidadQuery clienteQuery { get; set; }
     }
 }

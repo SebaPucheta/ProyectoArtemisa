@@ -77,6 +77,62 @@ namespace BaseDeDatos
             }
         }
 
+        /// <summary>
+        /// Consulta los datos de un usuario y completa con los del cliente
+        /// </summary> By Gumer 
+        /// <param name="idCliente"></param>
+        /// <returns></returns>
+        public static UsuarioEntidadQuery ConsultarUnUsuario(int idCliente)
+        {
+            UsuarioEntidadQuery usu = new UsuarioEntidadQuery();
+
+            string query = @"SELECT u.idUsuario, u.nombreUsuario, u.email, c.idCliente, c.nombreCliente, c.apellidoCliente, c.nroDni, t.idTipoDNI
+                             FROM Usuario u INNER JOIN Cliente c ON u.idCliente = c.idCliente
+                                            INNER JOIN TipoDNI t ON t.idTipoDNI = c.idTipoDNI
+                             WHERE c.idCliente = @idCliente";
+
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idCliente", idCliente);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                usu.clienteQuery = ConsultarUnClienteQuery(idCliente);
+                usu.idUsuario = int.Parse(dr["idUsuario"].ToString());
+                usu.nombreUsuario = dr["nombreUsuario"].ToString();
+                usu.email = dr["email"].ToString();
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return usu;
+        }
+
+        public static ClienteEntidadQuery ConsultarUnClienteQuery(int idCliente)
+        {
+            ClienteEntidadQuery cli = new ClienteEntidadQuery();
+            string query = @"SELECT c.idCliente, c.nombreCliente, c.apellidoCliente, c.nroDni, t.idTipoDNI
+                             FROM Cliente c INNER JOIN TipoDNI t ON t.idTipoDNI = c.idTipoDNI
+                             WHERE c.idCliente = @idCliente";
+
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idCliente", idCliente);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                cli.idCliente = int.Parse(dr["idCliente"].ToString());
+                cli.nombreCliente = dr["nombreCliente"].ToString();
+                cli.apellidoCliente = dr["idCliente"].ToString();
+                cli.nroDni = int.Parse(dr["nroDni"].ToString());
+                cli.idTipoDNI = int.Parse(dr["idTipoDNI"].ToString());
+                
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return cli;
+        }
+
+
 
     }
 }
