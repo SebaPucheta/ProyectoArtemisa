@@ -40,22 +40,40 @@ namespace ProyectoArtemisa
             DataTable tabla = new DataTable();
             DataRow fila;
 
+
             //Creo las columnas de la tabla
-            tabla.Columns.Add("idApunte", typeof(int));
+            tabla.Columns.Add("idItem", typeof(int));
             tabla.Columns.Add("nombreApunte", typeof(string));
+            tabla.Columns.Add("tipoApunte", typeof(string));
 
             fila = tabla.NewRow();
-
-            fila[0] = int.Parse(Session["idApunte"].ToString());
-            fila[1] = Session["nombreApunte"].ToString();
+            if (Session["objetoApunteEntidad"].ToString() != "")
+            {
+                fila[0] = (Session["objetoApunteEntidad"] as ApunteEntidad).idApunte;
+                fila[1] = (Session["objetoApunteEntidad"] as ApunteEntidad).nombreApunte;
+                fila[2] = "Apunte";
+            }
+            else
+            {
+                fila[0] = (Session["objetoLibroEntidad"] as LibroEntidad).idLibro;
+                fila[1] = (Session["objetoLibroEntidad"] as LibroEntidad).nombreLibro;
+                fila[2] = "Libro";
+            }
             tabla.Rows.Add(fila);
             DataView dataView = new DataView(tabla);
 
-            dgv_nuevoDetalle.DataKeyNames = new string[] { "idApunte" };
+            dgv_nuevoDetalle.DataKeyNames = new string[] { "idItem" };
             dgv_nuevoDetalle.DataSource = dataView;
             dgv_nuevoDetalle.DataBind();
 
-            ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[1].FindControl("txt_precioUnitario")).Text = Session["precioUnitario"].ToString();
+            if (Session["objetoApunteEntidad"].ToString() != "")
+            {
+                ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = (Session["objetoApunteEntidad"] as ApunteEntidad).precioApunte.ToString();
+            }
+            else
+            {
+                ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = (Session["objetoLibroEntidad"] as LibroEntidad).precioLibro.ToString();
+            }
         }
 
         //Inicializa la variable de session que contiene la tabla con los detalles de factura
@@ -64,7 +82,7 @@ namespace ProyectoArtemisa
             DataTable tabla = new DataTable();
 
             //Creo las columnas de la tabla
-            tabla.Columns.Add("idApunte", typeof(int));
+            tabla.Columns.Add("idItem", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
             tabla.Columns.Add("precioUnitario", typeof(float));
             tabla.Columns.Add("cantidad", typeof(int));
@@ -82,9 +100,10 @@ namespace ProyectoArtemisa
 
             fila[0] = dgv_nuevoDetalle.DataKeys[0].Value;
             fila[1] = Page.Server.HtmlDecode(dgv_nuevoDetalle.Rows[0].Cells[0].Text);
-            fila[2] = float.Parse(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[1].FindControl("txt_precioUnitario")).Text);
-            fila[3] = Convert.ToInt32(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_cantidad")).Text);
-            fila[4] = float.Parse(fila[2].ToString()) * float.Parse(fila[3].ToString());
+            fila[2] = Page.Server.HtmlDecode(dgv_nuevoDetalle.Rows[0].Cells[1].Text);
+            fila[3] = float.Parse(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text);
+            fila[4] = Convert.ToInt32(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[3].FindControl("txt_cantidad")).Text);
+            fila[5] = float.Parse(fila[3].ToString()) * float.Parse(fila[4].ToString());
 
             (Session["tablaDetalles"] as DataTable).Rows.Add(fila);
 
@@ -96,7 +115,7 @@ namespace ProyectoArtemisa
         {
             DataView dataView = new DataView(Session["tablaDetalles"] as DataTable);
 
-            dgv_grillaDetalleFactura.DataKeyNames = new string[] { "idApunte" };
+            dgv_grillaDetalleFactura.DataKeyNames = new string[] { "idItem" };
             dgv_grillaDetalleFactura.DataSource = dataView;
             dgv_grillaDetalleFactura.DataBind();
         }
@@ -108,6 +127,8 @@ namespace ProyectoArtemisa
             Session["idApunte"] = null;
             Session["precioUnitario"] = null;
             Session["agregarDetalle"] = false;
+            Session["objetoApunteEntidad"] = "";
+            Session["objetoLibroEntidad"] = "";
         }
 
         protected double CalcularTotal()
@@ -115,7 +136,7 @@ namespace ProyectoArtemisa
             double total=0;
             foreach(DataRow fila in (Session["tablaDetalles"] as DataTable).Rows )
             {
-                total += Convert.ToDouble(fila[4]);
+                total += Convert.ToDouble(fila[5]);
             }
             return total;
         }
@@ -124,6 +145,7 @@ namespace ProyectoArtemisa
             FacturaDao.RegistrarFactura(CrearFactura());
             InicializarVariableSessionTabla();
             dgv_grillaDetalleFactura.Visible = false;
+            lbl_total.Text = "";
             
         }
 
@@ -148,15 +170,14 @@ namespace ProyectoArtemisa
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)
             {
                 DetalleFacturaEntidad detalleFactura = new DetalleFacturaEntidad();
-                //if (detalleFactura.item is ApunteEntidad )
-                //{
-                //    (ApunteEntidad)(detalleFactura.item)).idApunte = Convert.ToInt32(fila[0]);
-                //}
-                //else
-                //{}
 
-                detalleFactura.cantidad = Convert.ToInt32(fila[3]);
-                detalleFactura.subtotal = float.Parse(fila[4].ToString());
+                if(fila[2].ToString().Equals("Apunte"))
+                { detalleFactura.item = ApunteDao.ConsultarApunte(Convert.ToInt32(fila[0])); }
+                else
+                { detalleFactura.item = LibroDao.ConsultarLibro(Convert.ToInt32(fila[0])); }
+                detalleFactura.cantidad = Convert.ToInt32(fila[4]);
+                detalleFactura.subtotal = float.Parse(fila[5].ToString());
+                
                 listaDetalles.Add(detalleFactura);
             }
 

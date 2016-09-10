@@ -42,7 +42,7 @@
 
             <div class="collapse navbar-collapse" id="navbar-1">
                 <div class="col-lg-offset-10">
-                    <asp:Button runat="server" ID="btn_usuario" CssClass=" btn-usuario" Text="Sebastián Pucheta" />
+                    <asp:Button runat="server" ID="btn_usuario" CssClass=" btn-usuario" Text="Uriarte Martin E." />
 
                 </div>
 
