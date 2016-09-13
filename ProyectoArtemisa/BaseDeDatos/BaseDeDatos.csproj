@@ -62,6 +62,7 @@
     <Compile Include="ProvinciaDao.cs" />
     <Compile Include="TipoApunteDao.cs" />
     <Compile Include="UniversidadDao.cs" />
+    <Compile Include="UsuarioDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ObjetoEntidad\Entidades.csproj">

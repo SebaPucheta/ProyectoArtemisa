@@ -55,12 +55,12 @@
     <Compile Include="DetalleFacturaEntidad.cs" />
     <Compile Include="DetalleFacturaEntidadQuery.cs" />
     <Compile Include="EditorialEntidad.cs" />
-    <Compile Include="EditorialEntidadQuery.cs" />
     <Compile Include="EstadoEntidad.cs" />
     <Compile Include="EstadoOrdenImpresionEntidad.cs" />
     <Compile Include="FacturaEntidad.cs" />
     <Compile Include="FacturaEntidadQuery.cs" />
     <Compile Include="FacultadEntidad.cs" />
+    <Compile Include="ItemEntidad.cs" />
     <Compile Include="LibroEntidad.cs" />
     <Compile Include="LibroEntidadQuery.cs" />
     <Compile Include="MateriaEntidad.cs" />
@@ -74,6 +74,7 @@
     <Compile Include="TipoDNIEntidad.cs" />
     <Compile Include="UniversidadEntidad.cs" />
     <Compile Include="UsuarioEntidad.cs" />
+    <Compile Include="UsuarioEntidadQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

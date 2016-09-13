@@ -16,6 +16,9 @@ body{
 
 
 }
+.textboxblanco{
+background-color: rgb(255, 255, 255);
+}
 
 #img_educom{
   padding-left: 7px;
@@ -37,6 +40,10 @@ body{
   border: none;
   border-radius: 0;
   //box-shadow: 2px 2px 15px 1px #000000;
+}
+
+.labelbajo{
+  z-index: 1000;
 }
 
 .btn_azul{

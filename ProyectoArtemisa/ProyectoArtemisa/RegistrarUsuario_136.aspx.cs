@@ -11,42 +11,44 @@ namespace ProyectoArtemisa
 {
     public partial class RegistrarUsuario_136 : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+    //    protected void Page_Load(object sender, EventArgs e)
+    //    {
 
 
-        }
+    //    }
 
 
-        protected ClienteEntidad crearObjetoCliente()
-        {
-            ClienteEntidad cli = new ClienteEntidad();
-            cli.nombreCliente = txt_nombre.Text;
-            cli.apellidoCliente = txt_apellido.Text;
-            cli.nroDni = int.Parse(txt_dni.Text);
-            //cli.idTipoDNI = int.Parse(ddl_tipoDNI.SelectedValue);
-            return cli;
-        }
+ 
+    //    protected ClienteEntidad crearObjetoCliente()
+    //    {
 
-        protected UsuarioEntidad crearObjetoUsuario()
-        {
-            UsuarioEntidad user = new UsuarioEntidad();
-            user.nombreUsuario = txt_nombreUsuario.Text;
-            user.contrasena = txt_pass.Text;
-            return user;
-        }
+    //        ClienteEntidad cli = new ClienteEntidad();
+    //        cli.nombreCliente = txt_nombre.Text;
+    //        cli.apellidoCliente = txt_apellido.Text;
+    //        cli.nroDni = int.Parse(txt_dni.Text);
+    //        //cli.idTipoDNI = int.Parse(ddl_tipoDNI.SelectedValue);
+    //        return cli;
+    //    }
 
-        protected bool verificarUsuarioYEmailExistente(string nombreUsuario, string email)
-        {
-            if (UsuarioDao.VerificarUsuarioYEmailExistente(nombreUsuario, email))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+    //    protected UsuarioEntidad crearObjetoUsuario()
+    //    {
+    //        UsuarioEntidad user = new UsuarioEntidad();
+    //        user.nombreUsuario = txt_nombreUsuario.Text;
+    //        user.contrasena = txt_pass.Text;
+    //        return user;
+    //    }
+
+    //    protected bool verificarUsuarioYEmailExistente(string nombreUsuario, string email)
+    //    {
+    //        if (UsuarioDao.VerificarUsuarioYEmailExistente(nombreUsuario, email))
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
 
 
 

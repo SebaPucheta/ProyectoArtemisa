@@ -44,6 +44,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Spire.License, Version=1.3.5.41, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spire.PDF.3.7.198\lib\net40-client\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=3.7.198.5041, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spire.PDF.3.7.198\lib\net40-client\Spire.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -53,6 +61,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -126,6 +135,8 @@
     <Content Include="RegistrarProfesor_14.aspx" />
     <Content Include="RegistrarProvincia_105.aspx" />
     <Content Include="RegistrarUniversidad_69.aspx" />
+    <Content Include="RegistrarUsuario.aspx" />
+    <Content Include="RegistrarUsuario_136.aspx" />
     <Content Include="RegistrarVentaVentanilla_128.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -283,6 +294,17 @@
     </Compile>
     <Compile Include="RegistrarUniversidad_69.aspx.designer.cs">
       <DependentUpon>RegistrarUniversidad_69.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarUsuario.aspx.cs">
+      <DependentUpon>RegistrarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarUsuario.aspx.designer.cs">
+      <DependentUpon>RegistrarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarUsuario_136.aspx.cs">
+      <DependentUpon>RegistrarUsuario_136.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RegistrarVentaVentanilla_128.aspx.cs">
       <DependentUpon>RegistrarVentaVentanilla_128.aspx</DependentUpon>

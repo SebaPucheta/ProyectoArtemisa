@@ -9,7 +9,7 @@
         
          <!-- Titulo -->
             <div class="row">
-                <h1 class="text-primary text-center"><b>Registrar Factura</b></h1>
+                <h1 class="text-primary text-center"><b>Registrar Comprobante</b></h1>
             </div>
             <br />
     
@@ -101,7 +101,7 @@
                  <div class="col-md-2">
                      <div class="input-group">
                       <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
-                     <asp:Label runat="server" class="form-control" type="text" ID="lbl_total"  />
+                     <asp:Label   runat="server" CssClass="form-control"  type="text" ID="lbl_total"  />
                  </div>
                </div>
              </div>
