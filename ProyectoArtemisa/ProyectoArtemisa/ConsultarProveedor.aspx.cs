@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BaseDeDatos;
 using Entidades;
+using System.Data;
+using Negocio;
 
 namespace ProyectoArtemisa
 {
@@ -32,6 +34,26 @@ namespace ProyectoArtemisa
             dgv_grillaEditoriales.DataKeyNames = new string[] { "idEditorial" };
             dgv_grillaEditoriales.DataBind();
         }
+        protected void dgv_grillaProveedores_OnRowDeleting(Object sender, GridViewDeleteEventArgs e)
+        {
+            ProveedorDao.EliminarProveedor((int)dgv_grillaProveedores.DataKeys[e.RowIndex].Value);
+            cargarGrillaProveedores();
+        }
+        protected void dgv_grillaProveedores_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaProveedores.PageIndex = e.NewPageIndex;
+            cargarGrillaProveedores();
+        }
+
+        protected void btn_modificarProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["modificarProveedor"]= true;
+            Session["idProveedor"] = (int)dgv_grillaProveedores.SelectedDataKey.Value;
+            PilaForms.AgregarForm("ConsultarProveedor.aspx");
+            Response.Redirect("RegistrarProveedor.aspx");
+        }
+        
+
 
         //Ver editoriales en la otra grilla
         protected void btn_consultarEditoriales(object sender, EventArgs e)
@@ -42,6 +64,7 @@ namespace ProyectoArtemisa
         }
         protected void btn_modificarProveedor(object sender, EventArgs e)
         {
+
         }
     }
 }

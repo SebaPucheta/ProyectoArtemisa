@@ -69,6 +69,8 @@
     <Compile Include="PrecioXHojaEntidad.cs" />
     <Compile Include="ProfesorEntidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedorEntidad.cs" />
+    <Compile Include="ProveedorQuery.cs" />
     <Compile Include="ProvinciaEntidad.cs" />
     <Compile Include="TipoApunteEntidad.cs" />
     <Compile Include="TipoDNIEntidad.cs" />

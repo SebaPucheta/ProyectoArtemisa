@@ -9,5 +9,6 @@ namespace Entidades
     public class UsuarioEntidadQuery : UsuarioEntidad
     {
         public ClienteEntidadQuery clienteQuery { get; set; }
+
     }
 }

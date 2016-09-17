@@ -188,7 +188,7 @@ namespace ProyectoArtemisa
             CargarGrillaEditorialesSeleccionadas();
             bandera = false;
         }
-
+        
         //Eliminar editorial de la grilla seleccionada
         protected void btn_eliminarEditorial_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {

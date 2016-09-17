@@ -89,6 +89,7 @@
     <Content Include="ConsultarLibroApunte.aspx" />
     <Content Include="ConsultarOrdenImpresion_126.aspx" />
     <Content Include="ConsultarPrecioPorHoja_77.aspx" />
+    <Content Include="ConsultarProveedor.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Estilo\Background\abstract_polygonal_colorful_background-wallpaper-1920x1080.jpg" />
     <Content Include="Estilo\Background\maxresdefault.jpg" />
@@ -133,6 +134,7 @@
     <Content Include="RegistrarMateria_6.aspx" />
     <Content Include="RegistrarPrecioXHoja_74.aspx" />
     <Content Include="RegistrarProfesor_14.aspx" />
+    <Content Include="RegistrarProveedor.aspx" />
     <Content Include="RegistrarProvincia_105.aspx" />
     <Content Include="RegistrarUniversidad_69.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
@@ -189,6 +191,13 @@
     </Compile>
     <Compile Include="ConsultarPrecioPorHoja_77.aspx.designer.cs">
       <DependentUpon>ConsultarPrecioPorHoja_77.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarProveedor.aspx.cs">
+      <DependentUpon>ConsultarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarProveedor.aspx.designer.cs">
+      <DependentUpon>ConsultarProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -280,6 +289,13 @@
     </Compile>
     <Compile Include="RegistrarProfesor_14.aspx.designer.cs">
       <DependentUpon>RegistrarProfesor_14.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProveedor.aspx.cs">
+      <DependentUpon>RegistrarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarProveedor.aspx.designer.cs">
+      <DependentUpon>RegistrarProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarProvincia_105.aspx.cs">
       <DependentUpon>RegistrarProvincia_105.aspx</DependentUpon>

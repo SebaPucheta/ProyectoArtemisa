@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ColeccionApunte.cs" />
     <Compile Include="ColeccionDetalleFactura.cs" />
+    <Compile Include="ColeccionEditorialesProveedores.cs" />
     <Compile Include="ColeccionFactura.cs" />
     <Compile Include="ColeccionOrdenImpresion.cs" />
     <Compile Include="PilaForms.cs" />
