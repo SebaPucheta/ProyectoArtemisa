@@ -172,7 +172,7 @@ namespace BaseDeDatos
                 //--- Commit
                 trans.Commit();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 trans.Rollback();
             }

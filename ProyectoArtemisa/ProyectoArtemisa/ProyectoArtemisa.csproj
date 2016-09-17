@@ -131,6 +131,7 @@
     <Content Include="RegistrarCiudad_101.aspx" />
     <Content Include="RegistrarEditorial_22.aspx" />
     <Content Include="RegistrarFacultad_65.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="RegistrarMateria_6.aspx" />
     <Content Include="RegistrarPrecioXHoja_74.aspx" />
     <Content Include="RegistrarProfesor_14.aspx" />
@@ -268,6 +269,13 @@
     </Compile>
     <Compile Include="RegistrarFacultad_65.aspx.designer.cs">
       <DependentUpon>RegistrarFacultad_65.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarMateria_6.aspx.cs">
       <DependentUpon>RegistrarMateria_6.aspx</DependentUpon>

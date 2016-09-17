@@ -7,12 +7,74 @@ using System.Web.UI.WebControls;
 using Negocio;
 namespace ProyectoArtemisa
 {
-	public partial class Menu : System.Web.UI.MasterPage
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class Menu : System.Web.UI.MasterPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Page.MaintainScrollPositionOnPostBack = true;
 
-		}
+            if (HttpContext.Current.User.IsInRole("administrador"))
+            {
+                btn_usuario.Text = "[" + HttpContext.Current.User.Identity.Name.ToString() + "]";
+
+                btn_registrarApunte.Visible = true;
+                btn_registrarLibro.Visible = true;
+                btn_modificarPrecioHoja.Visible = true;
+                btn_consultarItem.Visible = true;
+                btn_registrarEditorial.Visible = true;
+                btn_consultarPrecioXHoja.Visible = true;
+                btn_ventaXVentanilla.Visible = true;
+                btn_consultarHistorialFactura.Visible = true;
+                btn_consultarOrdenImpresion.Visible = true;
+                btn_consultarHistorialOrdenImpresion.Visible = true;
+                btn_registrarProveedor.Visible = true;
+                btn_registrarUsuario.Visible = true;
+                btn_registrarProveedor.Visible = true;
+            }
+            else if (HttpContext.Current.User.IsInRole("alumno"))
+            {
+                btn_usuario.Text = "[" + HttpContext.Current.User.Identity.Name.ToString() + "]";
+
+                btn_registrarApunte.Visible = false;
+                btn_registrarLibro.Visible = false;
+                btn_modificarPrecioHoja.Visible = false;
+                btn_consultarItem.Visible = true;
+                btn_registrarEditorial.Visible = true;
+                btn_consultarPrecioXHoja.Visible = false;
+                btn_ventaXVentanilla.Visible = false;
+                btn_consultarHistorialFactura.Visible = false;
+                btn_consultarOrdenImpresion.Visible = false;
+                btn_consultarHistorialOrdenImpresion.Visible = false;
+                btn_registrarProveedor.Visible = false;
+                btn_registrarUsuario.Visible = true;
+                btn_registrarProveedor.Visible = false;
+            }
+            else
+            {
+                btn_usuario.Text = "[" + "]";
+
+                btn_registrarApunte.Visible = false;
+                btn_registrarLibro.Visible = false;
+                btn_modificarPrecioHoja.Visible = false;
+                btn_consultarItem.Visible = true;
+                btn_registrarEditorial.Visible = true;
+                btn_consultarPrecioXHoja.Visible = false;
+                btn_ventaXVentanilla.Visible = false;
+                btn_consultarHistorialFactura.Visible = false;
+                btn_consultarOrdenImpresion.Visible = false;
+                btn_consultarHistorialOrdenImpresion.Visible = false;
+                btn_registrarProveedor.Visible = false;
+                btn_registrarUsuario.Visible = true;
+                btn_registrarProveedor.Visible = false;
+            }
+        }
+
+        protected void btn_usuario_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("Login.aspx");
+        }
 
         protected void btn_registrarApunte_OnClick(Object sender, EventArgs e)
         {
@@ -96,6 +158,13 @@ namespace ProyectoArtemisa
             Response.Redirect("ConsultarProveedor.aspx");
         }
 
+        protected void btn_registrarUsuario_OnClick(Object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarUsuario.aspx");
+        }
+
         protected void LimpiarVariablesGlobales()
         {
             Session["chk_Impreso"] = false;
@@ -115,5 +184,5 @@ namespace ProyectoArtemisa
             Session["idCategoria"] = null;
             Session["descripcion"] = "";
         }
-	}
+    }
 }

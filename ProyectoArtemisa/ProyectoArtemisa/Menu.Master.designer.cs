@@ -40,6 +40,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_usuario;
         
         /// <summary>
+        /// Control LoginStatus1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginStatus LoginStatus1;
+        
+        /// <summary>
         /// Control btn_registrarApunte.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultarItem;
         
         /// <summary>
-        /// Control btn_consultarEditorial.
+        /// Control btn_registrarEditorial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_consultarEditorial;
+        protected global::System.Web.UI.WebControls.Button btn_registrarEditorial;
         
         /// <summary>
         /// Control btn_consultarPrecioXHoja.
@@ -137,6 +146,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_registrarProveedor;
+        
+        /// <summary>
+        /// Control btn_registrarUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_registrarUsuario;
         
         /// <summary>
         /// Control btn_consultarProveedor.

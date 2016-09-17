@@ -21,7 +21,6 @@ namespace ProyectoArtemisa
 
         protected ClienteEntidad crearObjetoCliente()
         {
-
             ClienteEntidad cli = new ClienteEntidad();
             cli.nombreCliente = txt_nombre.Text;
             cli.apellidoCliente = txt_apellido.Text;
@@ -50,6 +49,15 @@ namespace ProyectoArtemisa
             }
         }
 
+        protected void btn_guardar_Click (Object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_cancelar_Click(Object sender, EventArgs e)
+        {
+
+        }
 
 
     }

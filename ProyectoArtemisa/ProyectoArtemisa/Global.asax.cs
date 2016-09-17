@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.UI;
 using Negocio;
+using BaseDeDatos;
 
 namespace ProyectoArtemisa
 {
@@ -81,6 +82,11 @@ namespace ProyectoArtemisa
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
+            if (HttpContext.Current.User != null)
+            {
+                var id = HttpContext.Current.User.Identity;
+                HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(id, LoginDao.ObtenerRoles(id.Name));
+            }
 
         }
 
