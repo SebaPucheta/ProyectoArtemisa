@@ -40,6 +40,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_codigoBarra;
         
         /// <summary>
+        /// Control cv_codBarra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cv_codBarra;
+        
+        /// <summary>
         /// Control txt_nombreApunte.
         /// </summary>
         /// <remarks>
@@ -256,13 +265,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_stock;
         
         /// <summary>
-        /// Control CompareValidator2.
+        /// Control CustomValidator7.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator2;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator7;
         
         /// <summary>
         /// Control txt_precioXHoja.
@@ -380,15 +389,6 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fu_subirArchivo;
-        
-        /// <summary>
-        /// Control btn_cargarArchivo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_cargarArchivo;
         
         /// <summary>
         /// Control StatusLabel.

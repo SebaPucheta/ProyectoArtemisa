@@ -41,6 +41,16 @@
                 </div>
             </div>
             <br />
+            <%-- Agrego un custom validator Autor: Martin --%>
+            <asp:CustomValidator ID="cv_codBarra" Display="Dynamic" ValidationGroup="AllValidator" ControlToValidate="txt_codigoBarra" OnServerValidate="cv_codBarra_ServerValidate" runat="server" ForeColor="Red">
+                        <div class="alert alert-danger">
+                                  <strong>Se debe ingresar un codigo de barra</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                    </asp:CustomValidator>
+            
 
             <!-- Nombre del apunte -->
             <div class="row">
@@ -276,7 +286,7 @@
                     <div class="col-md-2">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_stock" value="" ViewStateMode="Enabled" Enabled="false" />
                         <!-- Verifica que se el textBox no este vacio-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_stock" Display="Dynamic" ValidationGroup="AllValidator">
+                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txt_stock" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
                                   <strong>Se debe ingresar un stock</strong> 
                                   <button class="close" data-dismiss="alert">
@@ -301,7 +311,15 @@
                                       <span>&times;</span>
                                  </button>
                               </div>
-                        </asp:RangeValidator>
+                        </asp:RangeValidator>--%>
+                        <asp:CustomValidator ControlToValidate="txt_stock" runat="server" ID="CustomValidator7" Display="Dynamic" ValidationGroup="AllValidator" OnServerValidate="CustomValidator7_ServerValidate" ForeColor="Red">
+                        <div class="alert alert-danger">
+                                  <strong>Se debe ingresar el stock</strong> 
+                                  <button class="close" data-dismiss="alert">
+                                      <span>&times;</span>
+                                 </button>
+                              </div>
+                        </asp:CustomValidator>
                     </div>
                 </div>
             </div>
@@ -432,10 +450,9 @@
                     <div class="col-md-7">
                         <asp:FileUpload ID="fu_subirArchivo" Enabled="false" CssClass="form-control" runat="server" />
                         <br />
-                        <asp:Button runat="server" ID="btn_cargarArchivo" Text="Cargar" CssClass="btn btn-lg btn_azul btn_flat right" ValidationGroup="z" Enabled="true" OnClick="btn_cargarArchivo_Click" />
-                        <br />
                         <asp:Label runat="server" TextMode="MultiLine" ID="StatusLabel" CssClass="form-control" Text="Estado de carga: " />
                     </div>
+
                 </div>
             </div>
             <br />

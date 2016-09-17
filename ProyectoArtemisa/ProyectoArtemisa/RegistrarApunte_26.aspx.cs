@@ -21,18 +21,18 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            { 
+            if (!IsPostBack)
+            {
                 if (PilaForms.pila.Peek().Equals("ConsultarLibroApunte.aspx"))
                 {
                     CargarUnApunteEnElForm(ApunteDao.ConsultarApunte((int)Session["idApunte"]));
                 }
                 else
                 {
-                    CargarForm();       
-                }        
+                    CargarForm();
+                }
             }
-         }
+        }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Metodos para cargar los combos y grilla
         //Cargar combo Universidad
@@ -44,7 +44,7 @@ namespace ProyectoArtemisa
             ddl_universidadApunte.DataBind();
             ddl_universidadApunte.Items.Insert(0, new ListItem("(Universidad)", "0"));
             ddl_universidadApunte.SelectedIndex = 0;
-        
+
         }
 
         //Cargar combo Facultad apartir de la universidad selecionada
@@ -319,10 +319,15 @@ namespace ProyectoArtemisa
                     if (PilaForms.pila.Peek().Equals("Default.aspx"))
                     {
                         if (chk_digital.Checked)
-                        { RegistrarApunteDigital(); }
+                        { RegistrarApunteDigital();
+                        procesarPDF();
+                        }
 
                         if (chk_impreso.Checked)
-                        { RegistrarApunteImpreso(); }
+                        {
+                            RegistrarApunteImpreso();
+                            
+                        }
                         LimpiarVariablesForm();
                         LimpiarForm();
                     }
@@ -344,7 +349,7 @@ namespace ProyectoArtemisa
                     Response.Write("<script>window.alert('Debe seleccionar un tipo apunte');</script>");
                 }
             }
-            
+
         }
 
         //Boton Cancelar
@@ -380,7 +385,7 @@ namespace ProyectoArtemisa
                 e.IsValid = false;
             }
         }
-////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Metodos 
         /// <summary>
         /// Crea un objeto ApunteEntidad apartir de los datos que ya hay cargados en el form
@@ -393,13 +398,20 @@ namespace ProyectoArtemisa
             nuevoApunte.nombreApunte = txt_nombreApunte.Text;
             nuevoApunte.anoApunte = Convert.ToInt32(txt_ano.Text);
             nuevoApunte.cantHoja = Convert.ToInt32(txt_cantHojasApunte.Text);
-            nuevoApunte.stock = Convert.ToInt32(txt_stock.Text);
+            if (chk_digital.Checked)
+            {
+                nuevoApunte.stock = 0;
+            }
+            else
+            {
+                nuevoApunte.stock = Convert.ToInt32(txt_stock.Text);
+            }
             nuevoApunte.descripcionApunte = txt_descripcion.Text;
-            nuevoApunte.idCategoria = Convert.ToInt32( ddl_categoriaApunte.SelectedValue);
-            nuevoApunte.idEditorial = Convert.ToInt32( ddl_editorialApunte.SelectedValue);
-            nuevoApunte.idMateria = Convert.ToInt32( ddl_materiaApunte.SelectedValue);
-            
-            if (Convert.ToInt32(ddl_profesorApunte.SelectedValue)==0)
+            nuevoApunte.idCategoria = Convert.ToInt32(ddl_categoriaApunte.SelectedValue);
+            nuevoApunte.idEditorial = Convert.ToInt32(ddl_editorialApunte.SelectedValue);
+            nuevoApunte.idMateria = Convert.ToInt32(ddl_materiaApunte.SelectedValue);
+
+            if (Convert.ToInt32(ddl_profesorApunte.SelectedValue) == 0)
             { nuevoApunte.idProfesor = null; }
             else
             {
@@ -408,8 +420,8 @@ namespace ProyectoArtemisa
             //nuevoApunte.idEstado = null;
 
             return nuevoApunte;
-        }   
-          
+        }
+
         /// <summary>
         /// Registrar un apunte en la base de datos, como un TipoApunte "Digital", setea el precio de hoja
         /// desde el txt_precioApunteDigital y setea el código de barra como null
@@ -437,8 +449,8 @@ namespace ProyectoArtemisa
         /// </summary>
         protected void RegistrarApunteImpreso()
         {
-            if(txt_codigoBarra.Text != "")
-            { 
+            if (txt_codigoBarra.Text != "")
+            {
                 if (ApunteDao.VerificarCodigoBarra(txt_codigoBarra.Text))
                 {
                     ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
@@ -446,7 +458,7 @@ namespace ProyectoArtemisa
                     nuevoApunte.precioApunte = float.Parse(txt_precioXHoja.Text);
                     nuevoApunte.idTipoApunte = 1;
                     nuevoApunte.stock = int.Parse(txt_stock.Text);
-                    nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja; 
+                    nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja;
                     ApunteDao.RegistrarApunte(nuevoApunte);
                 }
                 else
@@ -468,7 +480,7 @@ namespace ProyectoArtemisa
         {
             ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
             nuevoApunte.codigoBarraApunte = "";
-            nuevoApunte.precioApunte= float.Parse(txt_precioApunteDigital.Text);
+            nuevoApunte.precioApunte = float.Parse(txt_precioApunteDigital.Text);
             nuevoApunte.idTipoApunte = 2; //Hace referencia a un apunte de tipo Digital
             nuevoApunte.idPrecioHoja = null;//ACA ESTABA NULL
             nuevoApunte.idApunte = (int)Session["idApunte"];
@@ -514,7 +526,7 @@ namespace ProyectoArtemisa
             ddl_materiaApunte.SelectedIndex = 0;
             ddl_profesorApunte.SelectedIndex = 0;
             chk_digital.Checked = false;
-            chk_digital.Checked = false;
+            chk_impreso.Checked = false;
             CargarGrilla(0);
         }
 
@@ -528,7 +540,7 @@ namespace ProyectoArtemisa
             Session["codigoBarra"] = txt_codigoBarra.Text;
             Session["nombreApunte"] = txt_nombreApunte.Text;
             Session["ano"] = txt_ano.Text;
-            Session["idUniversidad"] =Convert.ToInt32(ddl_universidadApunte.SelectedValue);
+            Session["idUniversidad"] = Convert.ToInt32(ddl_universidadApunte.SelectedValue);
             Session["idFacultad"] = Convert.ToInt32(ddl_facultadApunte.SelectedValue);
             Session["idMateria"] = Convert.ToInt32(ddl_materiaApunte.SelectedValue);
             Session["idEditorial"] = Convert.ToInt32(ddl_editorialApunte.SelectedValue);
@@ -548,7 +560,7 @@ namespace ProyectoArtemisa
         protected void CargarForm()
         {
             chk_impreso.Checked = bool.Parse(Session["chk_Impreso"].ToString());
-            if(chk_impreso.Checked)
+            if (chk_impreso.Checked)
             {
                 txt_codigoBarra.Enabled = true;
                 txt_codigoBarra.Text = Session["codigoBarra"].ToString();
@@ -556,11 +568,13 @@ namespace ProyectoArtemisa
                 txt_precioXHoja.Text = Session["precionImpreso"].ToString();
                 txt_stock.Enabled = true;
                 txt_stock.Text = Session["stock"].ToString();
-                
+                txt_stock.Enabled = false;
+
             }
             chk_digital.Checked = bool.Parse(Session["chk_Digital"].ToString());
-            if(chk_digital.Checked)
+            if (chk_digital.Checked)
             {
+                txt_stock.Enabled = false;
                 fu_subirArchivo.Enabled = true;
                 txt_precioApunteDigital.Enabled = true;
                 txt_precioApunteDigital.Text = Session["precioDigital"].ToString();
@@ -568,7 +582,7 @@ namespace ProyectoArtemisa
             txt_nombreApunte.Text = Session["nombreApunte"].ToString();
             txt_ano.Text = Session["ano"].ToString();
             CargarComboUniversidad();
-            if (Session["idUniversidad"]!=null)
+            if (Session["idUniversidad"] != null)
             {
                 ddl_universidadApunte.SelectedValue = (Session["idUniversidad"].ToString());
                 CargarComboFacultad(Convert.ToInt32(ddl_universidadApunte.SelectedValue));
@@ -603,11 +617,11 @@ namespace ProyectoArtemisa
                 CargarComboProfesor(0);
             }
             CargarComboEditorial();
-            if (Session["idEditorial"]!=null)
-            { ddl_editorialApunte.SelectedValue= (Session["idEditorial"].ToString()); }
+            if (Session["idEditorial"] != null)
+            { ddl_editorialApunte.SelectedValue = (Session["idEditorial"].ToString()); }
             txt_cantHojasApunte.Text = Session["cantidadHojas"].ToString();
             CargarComboCategoria();
-            if (Session["idCategoria"]!=null)
+            if (Session["idCategoria"] != null)
             { ddl_categoriaApunte.SelectedValue = (Session["idCategoria"].ToString()); }
             txt_descripcion.Text = Session["descripcion"].ToString();
         }
@@ -648,7 +662,7 @@ namespace ProyectoArtemisa
             txt_descripcion.Text = apunte.descripcionApunte;
             txt_nombreApunte.Text = apunte.nombreApunte;
             CargarComboUniversidad();
-            ddl_universidadApunte.SelectedValue= FacultadDao.ConsultarIdUniversidadDeUnaFacultad(MateriaDao.DevolverIdFacultadDeUnaMateria(apunte.idMateria)).ToString();
+            ddl_universidadApunte.SelectedValue = FacultadDao.ConsultarIdUniversidadDeUnaFacultad(MateriaDao.DevolverIdFacultadDeUnaMateria(apunte.idMateria)).ToString();
             CargarComboCategoria();
             ddl_categoriaApunte.SelectedValue = apunte.idCategoria.ToString();
             CargarComboEditorial();
@@ -659,7 +673,7 @@ namespace ProyectoArtemisa
             ddl_materiaApunte.SelectedValue = apunte.idMateria.ToString();
             CargarGrilla(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
             CargarComboProfesor(Convert.ToInt32(ddl_materiaApunte.SelectedValue));
-            ddl_profesorApunte.SelectedValue= apunte.idProfesor.ToString();
+            ddl_profesorApunte.SelectedValue = apunte.idProfesor.ToString();
 
             if (apunte.idTipoApunte == 1)
             {
@@ -671,7 +685,7 @@ namespace ProyectoArtemisa
                 txt_stock.Text = apunte.stock.ToString();
                 txt_precioApunteDigital.Enabled = false;
                 txt_precioXHoja.Text = apunte.precioApunte.ToString();
-                txt_precioXHoja.Enabled =true;
+                txt_precioXHoja.Enabled = true;
             }
             else
             {
@@ -685,45 +699,80 @@ namespace ProyectoArtemisa
                 txt_precioXHoja.Text = "";
                 txt_precioXHoja.Enabled = false;
             }
-            
+
         }
         //Cuando hacemos clic en el boton cargar se realiza la carga del documento en la ruta indicada
         protected void btn_cargarArchivo_Click(object sender, EventArgs e)
         {
-        if(fu_subirArchivo.HasFile)
-    {
-        try
+
+        }
+
+        protected void procesarPDF()
         {
-            //creo un nuevo pdf
-            PdfDocument pdf = new PdfDocument();            
-            // Indico la ruta deseada donde quiero gurdar el archivo.
-            string rutaPDF = "C:/" + fu_subirArchivo.FileName +" - "+ DateTime.Now.ToString("dd-MM-yyyy") + ".pdf";
-            //Guardo el archivo
-            fu_subirArchivo.SaveAs(rutaPDF);
-            //Selecciono donde guarde el archivo
-            pdf.LoadFromFile(rutaPDF);
-            //Aplico seguridad
-            pdf.Security.KeySize = PdfEncryptionKeySize.Key256Bit;
-            pdf.Security.OwnerPassword = "test";
-            //Por defecto se le quitan todos los permisos al PDF
-            //si quiero agregarle algun permiso tengo que descomentar las siguiente linea
-            pdf.Security.Permissions = PdfPermissionsFlags.None;
-            //en la pagina http://www.e-iceblue.com/Tutorials/Spire.PDF/Spire.PDF-Program-Guide/Security/How-to-Change-Security-Permission-of-PDF-Document-in-C-VB.NET.html
-            //nos muestran los tipos de seguridad que se le pueden colocar
+            if (fu_subirArchivo.HasFile)
+            {
+                try
+                {
+                    //creo un nuevo pdf
+                    PdfDocument pdf = new PdfDocument();
+                    // Indico la ruta deseada donde quiero gurdar el archivo.
+                    string rutaPDF = "C:/" + fu_subirArchivo.FileName + " - " + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf";
+                    //Guardo el archivo
+                    fu_subirArchivo.SaveAs(rutaPDF);
+                    //Selecciono donde guarde el archivo
+                    pdf.LoadFromFile(rutaPDF);
+                    //Aplico seguridad
+                    pdf.Security.KeySize = PdfEncryptionKeySize.Key256Bit;
+                    pdf.Security.OwnerPassword = "test";
+                    //Por defecto se le quitan todos los permisos al PDF
+                    //si quiero agregarle algun permiso tengo que descomentar las siguiente linea
+                    pdf.Security.Permissions = PdfPermissionsFlags.None;
+                    //en la pagina http://www.e-iceblue.com/Tutorials/Spire.PDF/Spire.PDF-Program-Guide/Security/How-to-Change-Security-Permission-of-PDF-Document-in-C-VB.NET.html
+                    //nos muestran los tipos de seguridad que se le pueden colocar
 
-            //lo guardo en donde quiero, en este caso del string rutaPDF
-            pdf.SaveToFile(rutaPDF);
-            //indico que el archivo se cargo exitosamente.
-            StatusLabel.Text = "Estado de carga: Archivo cargado exitosamente!";
+                    //lo guardo en donde quiero, en este caso del string rutaPDF
+                    pdf.SaveToFile(rutaPDF);
+                    //indico que el archivo se cargo exitosamente.
+                    StatusLabel.Text = "Estado de carga: Archivo cargado exitosamente!";
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "Estado de carga: El archivo no se pudo cargar. El error que ocurrio fue: " + ex.Message;
+                }
+
+            }
+
         }
-        catch(Exception ex)
+
+        protected void CustomValidator7_ServerValidate(object source, ServerValidateEventArgs e)
         {
-            StatusLabel.Text = "Estado de carga: El archivo no se pudo cargar. El error que ocurrio fue: " + ex.Message;
-        }
-    }
+            if (chk_digital.Checked)
+            {
+                e.IsValid = true;
+            }
+            else
+            {
+                if (int.Parse(e.Value.ToString()) != 0)
+                {
+                    e.IsValid = true;
+                }
+                else
+                {
+                    e.IsValid = false;
+                }
+            }
         }
 
-        
-
+        protected void cv_codBarra_ServerValidate(object source, ServerValidateEventArgs e)
+        {
+            if (e.ToString() == "")
+            {
+                e.IsValid = false;
+            }
+            else
+            {
+                e.IsValid = true;
+            }
+        }
     }
 }
