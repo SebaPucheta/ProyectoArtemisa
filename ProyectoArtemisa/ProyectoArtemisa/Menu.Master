@@ -18,8 +18,8 @@
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css' />
     <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
     
 
 
@@ -42,7 +42,8 @@
 
             <div class="collapse navbar-collapse" id="navbar-1">
                 <div class="col-lg-offset-10">
-                    <asp:Button runat="server" ID="btn_usuario" CssClass=" btn-usuario" Text="Uriarte Martin E." />
+                    <asp:Button runat="server" ID="btn_usuario" CssClass=" btn-usuario" Text="nombre" OnClick="btn_usuario_OnClick" />
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Desloguearse" LoginText="Loguearse" LogoutPageUrl="Login.aspx" />
 
                 </div>
 
@@ -65,7 +66,7 @@
                 <li>
                     <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarItem" Text="Consultar Item" OnClick="btn_consultarItem_OnClick" /></li>
                 <li>
-                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarEditorial" Text="Registrar Editorial" OnClick="btn_consultarEditorial_OnClick" /></li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarEditorial" Text="Registrar Editorial" OnClick="btn_consultarEditorial_OnClick" /></li>
                 <li>
                     <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarPrecioXHoja" Text="Consultar Precio Por Hoja" OnClick="btn_consultarPrecioXHoja_OnClick" /></li>
                 <li>
@@ -79,7 +80,10 @@
                 <li>
                     <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarProveedor" Text="Registrar Proveedor" OnClick="btn_registrarProveedor_OnClick" /></li>
                 <li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarUsuario" Text="Registrar Usuario" OnClick="btn_registrarUsuario_OnClick" /></li>
+                <li>
                     <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarProveedor" Text="Consultar Proveedor" OnClick="btn_consultarProveedor_OnClick" /></li>
+                
                 <asp:Image runat="server" ID="img_educom" ImageUrl="~/Estilo/LogoMasChico.jpg" />
             </ul>
         </nav>
