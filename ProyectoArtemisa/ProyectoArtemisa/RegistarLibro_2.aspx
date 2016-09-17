@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="RegistarLibro_2.aspx.cs" Inherits="ProyectoArtemisa.RegistarLibro_2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="RegistarLibro_2.aspx.cs" Inherits="ProyectoArtemisa.RegistarLibro_2" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
 </asp:Content>
@@ -219,7 +219,7 @@
                         <!-- Verifica que se ingrese un numero-->
                         <asp:CompareValidator ControlToValidate="txt_cantidadHojasLibro" CultureInvariantValues="true" Display="Dynamic" ID="CompareValidator1" runat="server" Operator="DataTypeCheck" Type="Integer" SetFocusOnError="true" ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
                                <div class="alert alert-danger">
-                                  <strong>No se a ingresado un número</strong> 
+                                  <strong>No se ha ingresado un número</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -257,7 +257,7 @@
                         <!-- Verifica que se ingrese un numero-->
                         <asp:CompareValidator ControlToValidate="txt_stock" CultureInvariantValues="true" Display="Dynamic" ID="CompareValidator2" runat="server" Operator="DataTypeCheck" Type="Integer" SetFocusOnError="true" ValidationGroup="AllValidator" BorderColor="Red" CssClass="danger">
                                <div class="alert alert-danger">
-                                  <strong>No se a ingresado un número</strong> 
+                                  <strong>No se ha ingresado un número</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -284,8 +284,10 @@
                     <div class="col-md-2">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
-                            <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precioLibro" value="" ViewStateMode="Enabled" />
+                            <asp:TextBox runat="server" class="form-control " type="text" ID="txt_precioLibro" value="" ViewStateMode="Enabled" />
                         </div>
+                        
+                    
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_precioLibro" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -315,8 +317,9 @@
                               </div>
                         </asp:RangeValidator>
                     </div>
+                    </div>
                 </div>
-            </div>
+            
             <br />
 
             <!--Descripcion -->
