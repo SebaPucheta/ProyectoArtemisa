@@ -26,7 +26,7 @@ namespace BaseDeDatos
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"nombre", libro.nombreLibro);
             cmd.Parameters.AddWithValue(@"autor", libro.autorLibro);
-            if(libro.descripcionLibro == null)
+            if (libro.descripcionLibro == null)
             { cmd.Parameters.AddWithValue(@"descripcion", DBNull.Value); }
             else
             { cmd.Parameters.AddWithValue(@"descripcion", libro.descripcionLibro); }
@@ -114,7 +114,7 @@ namespace BaseDeDatos
             return lista;
         }
 
-       
+
 
         /// <summary>
         /// Consultar: todos los libros para mostrar en grilla (con todos los nombres)
@@ -177,9 +177,9 @@ namespace BaseDeDatos
                 libro.precioLibro = float.Parse(dr["precioLibro"].ToString());
                 libro.idEditorial = int.Parse(dr["idEditorial"].ToString());
                 libro.idMateria = (int)dr["idMateria"];
-                if (dr["idEstado"]!=DBNull.Value)
+                if (dr["idEstado"] != DBNull.Value)
                 { libro.idEstado = (int)dr["idEstado"]; }
-                
+
             }
             dr.Close();
             cmd.Connection.Close();
@@ -194,7 +194,7 @@ namespace BaseDeDatos
         public static LibroEntidadQuery ConsultarLibroQuery(int idLibro)
         {
             LibroEntidadQuery libro = new LibroEntidadQuery();
-            string query = @"SELECT l.idLibro, l.codigoBarraLibro, l.nombreLibro, l.autorLibro, l.descripcionLibro, l.stock,
+            string query = @"SELECT DISTINCT l.idLibro, l.codigoBarraLibro, l.nombreLibro, l.autorLibro, l.descripcionLibro, l.stock,
                                        l.cantidadHojasLibro, l.precioLibro, e.nombreEditorial, est.nombreEstado, 
                                        u.nombreUniversidad, f.nombreFacultad, m.nombreMateria
                                 FROM Libro l INNER JOIN Materia m ON m.idMateria = l.idMateria
@@ -203,7 +203,7 @@ namespace BaseDeDatos
 			                                  INNER JOIN Facultad f ON c.idFacultad = f.idFacultad
 			                                  INNER JOIN Universidad u ON f.idUniversidad = u.idUniversidad
 											  INNER JOIN Editorial e ON e.idEditorial = l.idEditorial
-											  INNER JOIN Estado est ON est.idEstado = l.idEstado
+											  LEFT JOIN Estado est ON est.idEstado = l.idEstado
                                 WHERE l.idLibro = @idLibro AND l.baja = 0";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"idLibro", idLibro);
@@ -264,7 +264,7 @@ namespace BaseDeDatos
         /// <param name="idMateria"></param>
         /// <param name="idCarrera"></param>
         /// <returns></returns>
-        public static List<LibroEntidadQuery> ConsultarLibroXFiltro (string nombreLibro, string idUniversidad, string idFacultad,
+        public static List<LibroEntidadQuery> ConsultarLibroXFiltro(string nombreLibro, string idUniversidad, string idFacultad,
                                                                      string idMateria, string idCarrera)
         {
             List<LibroEntidadQuery> lista = new List<LibroEntidadQuery>();
@@ -281,7 +281,7 @@ namespace BaseDeDatos
 								WHERE l.nombreLibro LIKE @nomLib AND u.idUniversidad LIKE @idUni AND f.idFacultad LIKE @idFacu
 													AND l.idMateria LIKE @idMat AND c.idCarrera like @idCar AND l.baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"nomLib", "%" + nombreLibro +"%");
+            cmd.Parameters.AddWithValue(@"nomLib", "%" + nombreLibro + "%");
             cmd.Parameters.AddWithValue(@"idUni", idUniversidad + "%");
             cmd.Parameters.AddWithValue(@"idFacu", idFacultad + "%");
             cmd.Parameters.AddWithValue(@"idMat", idMateria + "%");
@@ -327,7 +327,7 @@ namespace BaseDeDatos
 								WHERE l.nombreLibro LIKE @nomLib AND u.idUniversidad LIKE @idUni AND f.idFacultad LIKE @idFacu
 													AND l.idMateria LIKE @idMat  AND l.baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
-            cmd.Parameters.AddWithValue(@"nomLib",  nombreLibro + '%');
+            cmd.Parameters.AddWithValue(@"nomLib", nombreLibro + '%');
             cmd.Parameters.AddWithValue(@"idUni", idUniversidad + '%');
             cmd.Parameters.AddWithValue(@"idFacu", idFacultad + '%');
             cmd.Parameters.AddWithValue(@"idMat", idMateria + '%');

@@ -238,7 +238,7 @@ namespace BaseDeDatos
         public static ApunteEntidadQuery ConsultarApunteQuery(int idApunte)
         {
             ApunteEntidadQuery apu = new ApunteEntidadQuery();
-            string query = @"SELECT a.idApunte, a.stock, a.precioApunte, a.cantHoja, m.nombreMateria, a.nombreApunte, a.descripcionApunte, a.anoApunte, 
+            string query = @"SELECT DISTINCT a.idApunte, a.stock, a.precioApunte, a.cantHoja, m.nombreMateria, a.nombreApunte, a.descripcionApunte, a.anoApunte, 
                                        a.codigoBarraApunte, pxh.precioHoja, cat.nombreCategoria, ta.nombreTipoApunte,  e.nombreEditorial, 
                                        est.nombreEstado, pr.nombreProfesor, pr.apellidoProfesor, m.nombreMateria, u.nombreUniversidad, f.nombreFacultad
                                 FROM Apunte a INNER JOIN Materia m ON a.idMateria = m.idMateria
@@ -250,7 +250,7 @@ namespace BaseDeDatos
 											  INNER JOIN Profesor pr ON pr.idProfesor = a.idProfesor
 											  INNER JOIN TipoApunte ta ON ta.idTipoApunte = a.idTipoApunte
 											  INNER JOIN Categoria cat ON a.idCategoria = cat.idCategoria
-											  INNER JOIN Estado est ON est.idEstado = a.idEstado
+											  LEFT JOIN Estado est ON est.idEstado = a.idEstado
 											  INNER JOIN PrecioXHoja pxh ON pxh.idPrecioHoja = a.idPrecioHoja
                                 WHERE a.idApunte = @idApunte AND a.baja = 0";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());

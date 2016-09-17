@@ -201,7 +201,12 @@ namespace ProyectoArtemisa
         protected void btn_consultarApunte_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["fecha"] = txt_fecha.Text;
-            Session["idApunte"] = OrdenImpresionDao.DevolverIdApunte((int)dgv_grillaDetalleFactura.SelectedDataKey.Value);
+            
+            int idApunte = (int)dgv_grillaDetalleFactura.SelectedDataKey.Value;
+            int indice = (int)dgv_grillaDetalleFactura.SelectedIndex;
+            string idTipoApunte =dgv_grillaDetalleFactura.Rows[indice].Cells[1].Text;
+            Session["idItem"] = (int)dgv_grillaDetalleFactura.SelectedDataKey.Value;
+            Session["idTipo"] = idTipoApunte;
             PilaForms.AgregarForm("RegistrarVentaVentanilla_128.aspx");
             Response.Redirect("ConsultarLibroApunte.aspx");
         }

@@ -19,13 +19,17 @@ namespace ProyectoArtemisa
             if (!IsPostBack)
             {
                 CargarComboTipoItem();
-                if((PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx")||PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))&&((Session["idApunte"]!=null)||(Session["idLibro"]!=null)))
+                if((PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx")||PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))&&((Session["idItem"]!=null)))
                 {
-                    if (Session["idApunte"] != null)
-                    { CargarUnApunteEnGrilla(ApunteDao.ConsultarApunteQuery(int.Parse(Session["idApunte"].ToString()))); }
+                    if (Session["idTipo"].ToString() == "Apunte" )
+                    { 
+                        int idApunte = int.Parse(Session["idItem"].ToString());
+                        CargarUnApunteEnGrilla(ApunteDao.ConsultarApunteQuery(idApunte)); 
+
+                    }
                     else
                     {
-                        CargarUnLibroEnGrilla(LibroDao.ConsultarLibroQuery(int.Parse(Session["idLibro"].ToString())));
+                        CargarUnLibroEnGrilla(LibroDao.ConsultarLibroQuery(int.Parse(Session["idItem"].ToString())));
                     }
                 }
             }

@@ -16,6 +16,7 @@ namespace ProyectoArtemisa
         {
             PilaForms.Inicializar();
             PilaForms.AgregarForm("Default.aspx");
+            
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -67,7 +68,9 @@ namespace ProyectoArtemisa
             Session["idCategoria"] = null;
             Session["descripcion"] = "";
             Session["stock"] = "";
-            
+
+            Session["objetoApunteEntidad"] = "";
+            Session["objetoLibroEntidad"] = "";
             
         }
 
