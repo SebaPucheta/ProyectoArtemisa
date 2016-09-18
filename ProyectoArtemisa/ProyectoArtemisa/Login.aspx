@@ -19,19 +19,31 @@
     <link rel="stylesheet" href="/resources/demos/style.css" />
 </head>
 <body>
+    <form id="form1" runat="server">
 
-    <div class="row">
-        <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+        <div class="row">
+            <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+                <!-- Titulo -->
+                <div>
+                    <h1 class="text-primary text-center"><b>Inicio Sesión</b></h1>
+                </div>
+                <br />
+                <%-- Login --%>
+                <div>
+                    <asp:Login ID="log_in" runat="server" OnAuthenticate="Login1_Authenticate" LoginButtonText="Ingresar" PasswordLabelText="Contraseña" TextLayout="TextOnTop" TitleText="" Width="717px" UserNameLabelText="Nombre de usuario">
+                        <TextBoxStyle CssClass="form-control" />
+                        <LoginButtonStyle CssClass="btn btn-lg btn_azul btn_flat" />
+                    </asp:Login>
+                    <br />
+                    <br />
 
-            <form id="form1" runat="server">
-                <asp:Login ID="log_in" runat="server" OnAuthenticate="Login1_Authenticate">
-                    <TextBoxStyle CssClass="form-control" />
-                </asp:Login>
-            </form>
-
+                </div>
+            </div>
         </div>
-    </div>
-     <script src="Bootstrap/js/bootstrap.min.js"></script>
+    </form>
+
+
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/jquery.js"></script>
     <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
     <script src="jquery-ui-1.11.4.custom\external\jquery\jquery.js"></script>
