@@ -160,7 +160,7 @@
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreAutorLibro" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un nombre</strong> 
+                                  <strong>Se debe ingresar un nombre de autor</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -204,13 +204,13 @@
             <!--Cantidad hojas -->
             <div class="row">
                 <div class="form-group">
-                    <label for="option" id="lbl_cantidadHojas" class="control-label col-md-3">Cantidad de Hojas: </label>
+                    <label for="option" id="lbl_cantidadHojas" class="control-label col-md-3">Cantidad de hojas: </label>
                     <div class="col-md-2">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_cantidadHojasLibro" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_cantidadHojasLibro" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar una cantidad de hojas</strong> 
+                                  <strong>Se debe ingresar la cantidad de hojas</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -266,7 +266,7 @@
                         <!--Verifica que el valor ingresado sea razonablemente valido-->
                         <asp:RangeValidator ControlToValidate="txt_stock" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">
-                                  <strong>El stock ingresada es incorrecto</strong> 
+                                  <strong>El stock ingresado es incorrecto</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
