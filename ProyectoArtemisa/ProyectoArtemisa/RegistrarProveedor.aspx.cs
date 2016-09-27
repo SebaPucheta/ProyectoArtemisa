@@ -63,7 +63,8 @@ namespace ProyectoArtemisa
             txt_email.Text = proveedor.emailProveedor;
             //Combos         
             CargarComboProvincia();
-            ddl_provincia.SelectedValue = CiudadDao.ConsultaridProvinciaDeLaCiudad(proveedor.idCiudadEditorial).ToString();
+            string idProvincia = CiudadDao.ConsultaridProvinciaDeLaCiudad(proveedor.idCiudadEditorial).ToString();
+            ddl_provincia.SelectedValue = idProvincia;
             CargarComboCiudad(Convert.ToInt32(ddl_provincia.SelectedValue));
             ddl_ciudad.SelectedValue = proveedor.idCiudadEditorial.ToString();
         }

@@ -72,7 +72,7 @@
                 <li>
                     <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
                 <li>
-                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarHistorialFactura" Text="Historial Factura" OnClick="btn_consultarHistorialFactura_OnClick" /></li>
+                    <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarHistorialFactura" Text="Historial de Ventas" OnClick="btn_consultarHistorialFactura_OnClick" /></li>
                 <li>
                     <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_consultarOrdenImpresion" Text="Consultar Orden Impresión" OnClick="btn_consultarOrdenImpresion_OnClick" /></li>
                 <li>

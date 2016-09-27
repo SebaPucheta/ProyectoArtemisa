@@ -137,7 +137,7 @@ namespace BaseDeDatos
             string consulta = @"SELECT idProvincia FROM Ciudad WHERE idCiudad = @id AND baja = 0";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"id", id);
-            if(cmd.ExecuteScalar() == DBNull.Value)
+            if(cmd.ExecuteScalar() != DBNull.Value)
                 idProvincia = (int)(cmd.ExecuteScalar());
             
             cmd.Connection.Close();

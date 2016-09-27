@@ -9,7 +9,7 @@
         
          <!-- Titulo -->
             <div class="row">
-                <h1 class="text-primary text-center"><b>Registrar Comprobante</b></h1>
+                <h1 class="text-primary text-center"><b>Registrar Venta</b></h1>
             </div>
             <br />
     

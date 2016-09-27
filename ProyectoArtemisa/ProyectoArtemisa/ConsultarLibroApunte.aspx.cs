@@ -498,31 +498,16 @@ namespace ProyectoArtemisa
             dgv_grillaLibro.DataBind();
         }
 
-        protected void CrearOrdenImpresion(int indice)
+        protected void RedirigirForm()
         {
-
             if (PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))
             { 
-                if(Convert.ToInt32(ddl_tipoItem.SelectedValue)==1)
-                {
-                    ApunteEntidad apunteSeleccionado = new ApunteEntidad();
-                    apunteSeleccionado.idApunte = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
-                    apunteSeleccionado.nombreApunte = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
-                    apunteSeleccionado.precioApunte =float.Parse(dgv_grillaApunte.Rows[indice].Cells[1].Text);
-                    Session["objetoApunteEntidad"] = apunteSeleccionado;
-                }
-                else 
-                {
-                    LibroEntidad libroSeleccionado = new LibroEntidad();
-                    libroSeleccionado.idLibro = (Int32)dgv_grillaLibro.DataKeys[indice].Value;
-                    libroSeleccionado.nombreLibro = Page.Server.HtmlDecode(dgv_grillaLibro.Rows[indice].Cells[0].Text);
-                    libroSeleccionado.precioLibro = float.Parse(dgv_grillaLibro.Rows[indice].Cells[1].Text);
-                    Session["objetoLibroEntidad"] = libroSeleccionado;
-                }
                 Response.Redirect(PilaForms.DevolverForm()); 
             }
             if (PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx"))
-            { Response.Redirect(PilaForms.DevolverForm()); }
+            {
+                Response.Redirect(PilaForms.DevolverForm()); 
+            }
             else
             {
                 PilaForms.AgregarForm("ConsultarLibroApunte.aspx");
@@ -535,7 +520,10 @@ namespace ProyectoArtemisa
            int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
                 
             if(e.CommandName == "imprimir")
-            { CrearOrdenImpresion(indice); }
+            {
+                CargarVariablesSesion(indice);
+                RedirigirForm();
+            }
         }
 
         protected void dgv_grillaLibro_RowCommand(Object sender, GridViewCommandEventArgs e)
@@ -543,10 +531,31 @@ namespace ProyectoArtemisa
             int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
             
             if (e.CommandName == "imprimir")
-            { CrearOrdenImpresion(indice); }
+            {
+                CargarVariablesSesion(indice);
+                RedirigirForm();
+            }
         }
         
-        
+        protected void CargarVariablesSesion(int indice)
+        {
+            if (Convert.ToInt32(ddl_tipoItem.SelectedValue) == 1)
+            {
+                ApunteEntidad apunteSeleccionado = new ApunteEntidad();
+                apunteSeleccionado.idApunte = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
+                apunteSeleccionado.nombreApunte = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
+                apunteSeleccionado.precioApunte = float.Parse(dgv_grillaApunte.Rows[indice].Cells[1].Text);
+                Session["objetoApunteEntidad"] = apunteSeleccionado;
+            }
+            else
+            {
+                LibroEntidad libroSeleccionado = new LibroEntidad();
+                libroSeleccionado.idLibro = (Int32)dgv_grillaLibro.DataKeys[indice].Value;
+                libroSeleccionado.nombreLibro = Page.Server.HtmlDecode(dgv_grillaLibro.Rows[indice].Cells[0].Text);
+                libroSeleccionado.precioLibro = float.Parse(dgv_grillaLibro.Rows[indice].Cells[1].Text);
+                Session["objetoLibroEntidad"] = libroSeleccionado;
+            }
+        }
 
     }
 }

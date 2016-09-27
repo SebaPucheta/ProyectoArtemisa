@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="Estilo/NavBar.css" />
     <link rel="stylesheet" href="Estilo/Sidebar.css" />
-    <link rel="stylesheet" href="Estilo/Forms.css" />
+    <link rel="stylesheet" href="Estilo/Login.css" />
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css' />
     <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
@@ -20,24 +20,27 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <div class="row">
-            <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+            <div class="container col-lg-offset-3 col-lg-6" id="login">
                 <!-- Titulo -->
                 <div>
                     <h1 class="text-primary text-center"><b>Inicio Sesión</b></h1>
                 </div>
                 <br />
                 <%-- Login --%>
-                <div>
+                
                     <asp:Login ID="log_in" runat="server" OnAuthenticate="Login1_Authenticate" LoginButtonText="Ingresar" PasswordLabelText="Contraseña" TextLayout="TextOnTop" TitleText="" Width="717px" UserNameLabelText="Nombre de usuario">
-                        <TextBoxStyle CssClass="form-control" />
+                        <TextBoxStyle CssClass="form-control txtboxs" />
                         <LoginButtonStyle CssClass="btn btn-lg btn_azul btn_flat" />
                     </asp:Login>
                     <br />
-                    <br />
-
-                </div>
+                    
             </div>
         </div>
     </form>

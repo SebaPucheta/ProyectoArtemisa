@@ -113,9 +113,9 @@ namespace ProyectoArtemisa
             tabla.Columns.Add("nombreApunte", typeof(string));
 
             fila = tabla.NewRow();
-
-            fila[0] = int.Parse(Session["idApunte"].ToString());
-            fila[1] = Session["nombreApunte"].ToString();
+            
+            fila[0] = (Session["objetoApunteEntidad"] as ApunteEntidad).idApunte;
+            fila[1] = (Session["objetoApunteEntidad"] as ApunteEntidad).nombreApunte;
             tabla.Rows.Add(fila);
             DataView dataView = new DataView(tabla);
 
