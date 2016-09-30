@@ -16,14 +16,14 @@
             <!--Ingreso el nombre del proveedor -->
             <div class="row">
                 <div class="form-group">
-                    <label for="nombreProveedor" class="control-label col-md-3">Nombre del proveedor</label>
+                    <label for="nombreProveedor" class="control-label col-md-3">Nombre del proveedor: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreProveedor" value="" ViewStateMode="Enabled" />
                         <br />
                         <!--Valido que se haya insertado una categoria-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreProveedor" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar el nombre del contacto del proveedor</strong> 
+                                  <strong>Se debe ingresar el nombre del proveedor</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -39,7 +39,7 @@
             <!--Ingreso el nombre del contacto-->
             <div class="row">
                 <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Nombre del contacto</label>
+                    <label for="cuil" class="control-label col-md-3">Nombre del contacto: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreContacto" value="" ViewStateMode="Enabled" />
                         <br />
@@ -61,14 +61,14 @@
             <!--Ingreso el telefono-->
             <div class="row">
                 <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Telefono</label>
+                    <label for="cuil" class="control-label col-md-3">Teléfono: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_telefono" value="" ViewStateMode="Enabled" />
                         <br />
                         <!--Valido que se haya insertado una categoria-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_telefono" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar el numero de la Editorial</strong> 
+                                  <strong>Se debe ingresar el número de teléfono de la editorial</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -84,7 +84,7 @@
             <!-- Provincia -->
             <div class="row">
                 <div class="form-group">
-                    <label for="option" class="control-label col-md-3">Provincia:</label>
+                    <label for="option" class="control-label col-md-3">Provincia: </label>
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_provincia" OnSelectedIndexChanged="ddl_provincia_SelectedIndexChanged" />
                     </div>
@@ -98,7 +98,7 @@
             <!--Ciudad -->
             <div class="row">
                 <div class="form-group">
-                    <label for="option" class="control-label col-md-3">Ciudad:</label>
+                    <label for="option" class="control-label col-md-3">Ciudad: </label>
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_ciudad" />
                     </div>
@@ -112,14 +112,14 @@
                 <!--Ingreso de la direccion-->
                 <div class="row">
                     <div class="form-group">
-                        <label for="cuil" class="control-label col-md-3">Dirección</label>
+                        <label for="cuil" class="control-label col-md-3">Dirección: </label>
                         <div class="col-md-7">
                             <asp:TextBox runat="server" class="form-control" type="text" ID="txt_direccion" value="" ViewStateMode="Enabled" />
                             <br />
                             <!--Valido que se haya insertado una categoria-->
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_direccion" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar una calle</strong> 
+                                  <strong>Se debe ingresar una dirección</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -135,7 +135,7 @@
             <!--Ingreso el email-->
             <div class="row">
                 <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Email</label>
+                    <label for="cuil" class="control-label col-md-3">Email: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_email" value="" ViewStateMode="Enabled" />
                         <br />
@@ -150,7 +150,7 @@
                         </asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="reEmail" runat="server" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txt_email" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un email valido</strong> 
+                                  <strong>Se debe ingresar un email válido</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>

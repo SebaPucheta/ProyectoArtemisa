@@ -182,8 +182,9 @@ namespace BaseDeDatos
         public static void RegistrarProveedorConEditoriales(ProveedorEntidad proveedor, List<EditorialEntidad> editoriales)
         {
             //Esto no se hace
-            SqlConnection con = new SqlConnection(@"Data Source=POSEIDON\SQLEXPRESS;Initial Catalog=HP2;Integrated Security=True");
-            con.Open();
+          
+            SqlConnection con = obtenerBD();
+            
             SqlTransaction tran = con.BeginTransaction();
 
             SqlCommand cmd = con.CreateCommand();

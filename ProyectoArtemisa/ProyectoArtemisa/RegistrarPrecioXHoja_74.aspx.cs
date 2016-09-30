@@ -27,7 +27,7 @@ namespace ProyectoArtemisa
         protected void limpiarForm()
         {
             txt_fecha.Text = DateTime.Today.ToShortDateString();
-            txt_precio.Text = string.Empty;
+            txt_precio.Text = "";
         }
 
         protected void btn_registrar_Click(object sender, EventArgs e)
@@ -64,5 +64,7 @@ namespace ProyectoArtemisa
             Response.Redirect(PilaForms.DevolverForm());
             //Volver al menu anterior
         }
+
+        
     }
 }

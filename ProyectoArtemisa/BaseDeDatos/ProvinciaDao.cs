@@ -60,7 +60,7 @@ namespace BaseDeDatos
         public static List<ProvinciaEntidad> ConsultarProvincias()
         {
             List<ProvinciaEntidad> lista = new List<ProvinciaEntidad>();
-            string consulta = @"SELECT idProvincia, nombreProvincia FROM Provincia WHERE baja = 0";
+            string consulta = @"SELECT idProvincia, nombreProvincia FROM Provincia WHERE baja = 0 order by nombreProvincia";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
 
             SqlDataReader dr = cmd.ExecuteReader();

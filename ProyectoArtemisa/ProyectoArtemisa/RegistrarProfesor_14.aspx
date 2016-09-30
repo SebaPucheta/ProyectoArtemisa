@@ -23,7 +23,7 @@
             <!-- Nombre -->
             <div class="row">
                 <div class="form-group">
-                    <label for="nombre" class="control-label col-md-3">Nombre :</label>
+                    <label for="nombre" class="control-label col-md-3">Nombre: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombre" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
@@ -43,7 +43,7 @@
             <!-- Apellido -->
             <div class="row">
                 <div class="form-group">
-                    <label for="apellido" class="control-label col-md-3">Apellido :</label>
+                    <label for="apellido" class="control-label col-md-3">Apellido: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_apellido" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
@@ -63,7 +63,7 @@
             <!-- Materia -->
             <div class="row">
                 <div class="form-group">
-                    <label for="option" class="control-label col-md-3">Materia:</label>
+                    <label for="option" class="control-label col-md-3">Materia: </label>
                     <div class="col-md-5">
                         <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_materiaProfesor"  AutoPostBack="true" />
                     </div>

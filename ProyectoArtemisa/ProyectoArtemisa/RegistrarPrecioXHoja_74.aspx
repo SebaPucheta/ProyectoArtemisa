@@ -28,7 +28,7 @@
 
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precio" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_precio" Display="Dynamic" ValidationGroup="val_precioHoja">
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_precio" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
                                   <strong>Se debe ingresar un precio</strong> 
                                   <button class="close" data-dismiss="alert">

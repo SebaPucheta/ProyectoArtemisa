@@ -85,7 +85,7 @@ namespace BaseDeDatos
         public static List<CiudadEntidad> ConsultarCiudadXProvincia(int id)
         {
             
-            string consulta = @"SELECT idCiudad, idProvincia, nombreCiudad FROM Ciudad WHERE idProvincia = @id AND baja = 0";
+            string consulta = @"SELECT idCiudad, idProvincia, nombreCiudad FROM Ciudad WHERE idProvincia = @id AND baja = 0 order by nombreCiudad";
             SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
             cmd.Parameters.AddWithValue(@"id", id);
             SqlDataReader dr = cmd.ExecuteReader();

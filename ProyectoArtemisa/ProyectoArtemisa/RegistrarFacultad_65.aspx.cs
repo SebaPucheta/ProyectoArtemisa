@@ -68,11 +68,20 @@ namespace ProyectoArtemisa
 
         protected  FacultadEntidad CargarFacultadDesdeForm()
         {
-            FacultadEntidad facultad = new FacultadEntidad();
-            facultad.idCiudad =Convert.ToInt32(ddl_ciudad.SelectedValue);
-            facultad.idUniversidad = Convert.ToInt32(ddl_universidadFacultad.SelectedValue);
-            facultad.nombreFacultad = txt_nombre.Text;
-            return facultad;
+            try
+            {
+                FacultadEntidad facultad = new FacultadEntidad();
+                facultad.idCiudad = Convert.ToInt32(ddl_ciudad.SelectedValue);
+                facultad.idUniversidad = Convert.ToInt32(ddl_universidadFacultad.SelectedValue);
+                facultad.nombreFacultad = txt_nombre.Text;
+                return facultad;
+            }
+            catch(Exception ex)
+            {
+                Response.Write("<script>window.alert('Debe ingresar Universidad, Provincia y Ciudad válida');</script>");
+                return null;
+            }
+
         }
 
         protected void LimpiarForm()
