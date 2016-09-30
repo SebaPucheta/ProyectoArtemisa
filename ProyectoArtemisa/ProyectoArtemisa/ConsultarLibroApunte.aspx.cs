@@ -541,11 +541,22 @@ namespace ProyectoArtemisa
         {
             if (Convert.ToInt32(ddl_tipoItem.SelectedValue) == 1)
             {
-                ApunteEntidad apunteSeleccionado = new ApunteEntidad();
-                apunteSeleccionado.idApunte = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
-                apunteSeleccionado.nombreApunte = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
-                apunteSeleccionado.precioApunte = float.Parse(dgv_grillaApunte.Rows[indice].Cells[1].Text);
-                Session["objetoApunteEntidad"] = apunteSeleccionado;
+                string tipoApunte = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[7].Text);
+                if (tipoApunte.Equals("Digital"))
+                {
+                    Response.Write("<script>window.alert('No puede vender por ventanilla un apunte digital');</script>");
+                }
+                else
+                {
+                    ApunteEntidad apunteSeleccionado = new ApunteEntidad();
+                    apunteSeleccionado.idApunte = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
+                    apunteSeleccionado.nombreApunte = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
+                    apunteSeleccionado.precioApunte = float.Parse(dgv_grillaApunte.Rows[indice].Cells[1].Text);
+                    Session["objetoApunteEntidad"] = apunteSeleccionado;
+                }
+                    
+                
+                
             }
             else
             {

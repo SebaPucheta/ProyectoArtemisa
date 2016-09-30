@@ -19,14 +19,14 @@ namespace ProyectoArtemisa
 
                 if (bool.Parse(Session["agregarDetalle"].ToString()))
                 {
-                    txt_fecha.Text = Session["fecha"].ToString();
+                    lbl_fecha.Text = Session["fecha"].ToString();
                     CargarGrillaDetalles();
                     CargarNuevoDetalle();
                     BorrarVariablesGlobales();
                 }
                 else
                 {
-                    txt_fecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    lbl_fecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
                     InicializarVariableSessionTabla();
                 }
             }
@@ -36,43 +36,46 @@ namespace ProyectoArtemisa
         //Cargar la Grilla que tiene un nuevo detalle
         protected void CargarNuevoDetalle()
         {
-            dgv_nuevoDetalle.Visible = true;
-            DataTable tabla = new DataTable();
-            DataRow fila;
-
-
-            //Creo las columnas de la tabla
-            tabla.Columns.Add("idItem", typeof(int));
-            tabla.Columns.Add("nombreApunte", typeof(string));
-            tabla.Columns.Add("tipoApunte", typeof(string));
-
-            fila = tabla.NewRow();
-            if (Session["objetoApunteEntidad"].ToString() != "")
+            if (Session["objetoApunteEntidad"].ToString() != "" || Session["objetoLibroEntidad"].ToString() != "")
             {
-                fila[0] = (Session["objetoApunteEntidad"] as ApunteEntidad).idApunte;
-                fila[1] = (Session["objetoApunteEntidad"] as ApunteEntidad).nombreApunte;
-                fila[2] = "Apunte";
-            }
-            else
-            {
-                fila[0] = (Session["objetoLibroEntidad"] as LibroEntidad).idLibro;
-                fila[1] = (Session["objetoLibroEntidad"] as LibroEntidad).nombreLibro;
-                fila[2] = "Libro";
-            }
-            tabla.Rows.Add(fila);
-            DataView dataView = new DataView(tabla);
+                dgv_nuevoDetalle.Visible = true;
+                DataTable tabla = new DataTable();
+                DataRow fila;
 
-            dgv_nuevoDetalle.DataKeyNames = new string[] { "idItem" };
-            dgv_nuevoDetalle.DataSource = dataView;
-            dgv_nuevoDetalle.DataBind();
 
-            if (Session["objetoApunteEntidad"].ToString() != "")
-            {
-                ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = (Session["objetoApunteEntidad"] as ApunteEntidad).precioApunte.ToString();
-            }
-            else
-            {
-                ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = (Session["objetoLibroEntidad"] as LibroEntidad).precioLibro.ToString();
+                //Creo las columnas de la tabla
+                tabla.Columns.Add("idItem", typeof(int));
+                tabla.Columns.Add("nombreApunte", typeof(string));
+                tabla.Columns.Add("tipoApunte", typeof(string));
+
+                fila = tabla.NewRow();
+                if (Session["objetoApunteEntidad"].ToString() != "")
+                {
+                    fila[0] = (Session["objetoApunteEntidad"] as ApunteEntidad).idApunte;
+                    fila[1] = (Session["objetoApunteEntidad"] as ApunteEntidad).nombreApunte;
+                    fila[2] = "Apunte";
+                }
+                else
+                {
+                    fila[0] = (Session["objetoLibroEntidad"] as LibroEntidad).idLibro;
+                    fila[1] = (Session["objetoLibroEntidad"] as LibroEntidad).nombreLibro;
+                    fila[2] = "Libro";
+                }
+                tabla.Rows.Add(fila);
+                DataView dataView = new DataView(tabla);
+
+                dgv_nuevoDetalle.DataKeyNames = new string[] { "idItem" };
+                dgv_nuevoDetalle.DataSource = dataView;
+                dgv_nuevoDetalle.DataBind();
+
+                if (Session["objetoApunteEntidad"].ToString() != "")
+                {
+                    ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = (Session["objetoApunteEntidad"] as ApunteEntidad).precioApunte.ToString();
+                }
+                else
+                {
+                    ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = (Session["objetoLibroEntidad"] as LibroEntidad).precioLibro.ToString();
+                }
             }
         }
 
@@ -143,10 +146,18 @@ namespace ProyectoArtemisa
         }
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
-            FacturaDao.RegistrarFactura(CrearFactura());
-            InicializarVariableSessionTabla();
-            dgv_grillaDetalleFactura.Visible = false;
-            lbl_total.Text = "";
+            if(int.Parse(lbl_total.Text) == 0)
+            {
+                Response.Write("<script>window.alert('No a ingresado ningun articulo');</script>");
+            }
+            else
+            {
+                FacturaDao.RegistrarFactura(CrearFactura());
+                InicializarVariableSessionTabla();
+                dgv_grillaDetalleFactura.Visible = false;
+                lbl_total.Text = "";
+            }
+            
             
         }
 
@@ -166,7 +177,7 @@ namespace ProyectoArtemisa
         {
             FacturaEntidad factura = new FacturaEntidad();
             List<DetalleFacturaEntidad> listaDetalles = new List<DetalleFacturaEntidad>(); 
-            factura.fecha = Convert.ToDateTime(txt_fecha.Text);
+            factura.fecha = Convert.ToDateTime(lbl_fecha.Text);
             factura.total = float.Parse(lbl_total.Text);
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)
             {
@@ -192,7 +203,7 @@ namespace ProyectoArtemisa
 
         protected void btn_agregar_Click(object sender, EventArgs e)
         {
-            Session["fecha"] = txt_fecha.Text;
+            Session["fecha"] = lbl_fecha.Text;
             Session["agregarDetalle"] = true;
             PilaForms.AgregarForm("RegistrarVentaVentanilla_128.aspx");
             Response.Redirect("ConsultarLibroApunte.aspx");
@@ -200,7 +211,7 @@ namespace ProyectoArtemisa
 
         protected void btn_consultarApunte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["fecha"] = txt_fecha.Text;
+            Session["fecha"] = lbl_fecha.Text;
             
             int idApunte = (int)dgv_grillaDetalleFactura.SelectedDataKey.Value;
             int indice = (int)dgv_grillaDetalleFactura.SelectedIndex;

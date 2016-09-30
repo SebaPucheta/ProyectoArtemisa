@@ -18,7 +18,7 @@
              <div class="form-group">
                  <label for="documento" class="control-label col-md-2">Fecha:</label>
                  <div class="col-md-3">
-                     <asp:TextBox runat="server" class="form-control" type="text" ID="txt_fecha" value="" ViewStateMode="Enabled" />
+                     <asp:label runat="server" type="text" ID="lbl_fecha" value=""  />
                  </div>
              </div>
          </div>
@@ -122,9 +122,5 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">
-    <script>
-        $(function () {
-            $("#<%= txt_fecha.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' }).val();
-        });
-    </script>
+    
 </asp:Content>

@@ -68,15 +68,15 @@ namespace BaseDeDatos
             {
 
                 string query1 = "INSERT INTO Factura(fecha, total) VALUES (@fecha, @total); select scope_identity()";
-                SqlCommand cmd1 = new SqlCommand(query1, obtenerBD(),trans);
+                SqlCommand cmd1 = new SqlCommand(query1, cnn,trans);
                 cmd1.Parameters.AddWithValue(@"fecha", factura.fecha);
                 cmd1.Parameters.AddWithValue(@"total", factura.total);
-                int idFactura = (int)cmd1.ExecuteScalar();
+                int idFactura = int.Parse(cmd1.ExecuteScalar().ToString());
 
                 foreach (DetalleFacturaEntidad detalleFactura in factura.listaDetalleFactura)
                 {
-                    string query2 = "INSERT INTO DetalleFactura (idItem, cantidad, subtotal, idFactura, idTipoItem) VALUES (@idItem, @cantidad, @subtotal, @idFactura)";
-                    SqlCommand cmd2 = new SqlCommand(query2, obtenerBD(), trans);
+                    string query2 = "INSERT INTO DetalleFactura (idItem, cantidad, subtotal, idFactura, idTipoItem) VALUES (@idItem, @cantidad, @subtotal, @idFactura, @idTipoItem)";
+                    SqlCommand cmd2 = new SqlCommand(query2, cnn, trans);
                     cmd2.Parameters.AddWithValue(@"cantidad", detalleFactura.cantidad);
                     cmd2.Parameters.AddWithValue(@"subtotal", detalleFactura.subtotal);
                     cmd2.Parameters.AddWithValue(@"idFactura", idFactura);
@@ -88,7 +88,7 @@ namespace BaseDeDatos
                         cmd2.ExecuteNonQuery();
                         //Restar la cantidad de stock al apunte
                         string query3 = "UPDATE Apunte SET stock = stock - @cantidad";
-                        SqlCommand cmd3 = new SqlCommand(query3, obtenerBD(), trans);
+                        SqlCommand cmd3 = new SqlCommand(query3, cnn, trans);
                         cmd3.Parameters.AddWithValue(@"cantidad", detalleFactura.cantidad);
                         cmd3.ExecuteNonQuery();
                     }
@@ -99,7 +99,7 @@ namespace BaseDeDatos
                         cmd2.ExecuteNonQuery();
                         //Restar la cantidad de stock al libro
                         string query3 = "UPDATE Libro SET stock = stock - @cantidad";
-                        SqlCommand cmd3 = new SqlCommand(query3, obtenerBD(), trans);
+                        SqlCommand cmd3 = new SqlCommand(query3, cnn, trans);
                         cmd3.Parameters.AddWithValue(@"cantidad", detalleFactura.cantidad);
                         cmd3.ExecuteNonQuery();
                     }
@@ -108,7 +108,7 @@ namespace BaseDeDatos
                 //--- Commit
                 trans.Commit();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 trans.Rollback();
             }
