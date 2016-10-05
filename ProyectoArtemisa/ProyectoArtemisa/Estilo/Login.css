@@ -1,3 +1,5 @@
+@import "bourbon";
+
 body{
   margin: 0 auto;
   background-image: url(Background/Tablet1.jpg);
@@ -16,11 +18,34 @@ body{
 }
 
 .txtboxs {
-  background-color: #fefefe;
-  width: 30px;
-  box-shadow: 2px 2px 20px 2px #000000;
+  outline: none;
+  z-index: 1;
+  position: relative;
+  background: none;
+  width: 100%;
+  height: 60px;
+  border: 0;
+  color: #212121;
+  font-size: 24px;
+  font-weight: 400;
 }
 
+  .textboxs:focus {
+   .text {
+      color: #9d9d9d;
+      transform: translate(-12%, -50%) scale(0.75);
+    }
+
+    ~ .bar {
+      &:before,
+      .textboxs:after {
+        width: 50%;
+      }
+    }
+}
+.textboxs:hover {
+  background: rgba($white, 0.9);
+}
 .textboxblanco{
 background-color: rgb(255, 255, 255);
 }

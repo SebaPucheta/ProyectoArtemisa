@@ -67,13 +67,31 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_registrarLibro;
         
         /// <summary>
-        /// Control btn_modificarPrecioHoja.
+        /// Control btn_registrarEditorial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_modificarPrecioHoja;
+        protected global::System.Web.UI.WebControls.Button btn_registrarEditorial;
+        
+        /// <summary>
+        /// Control btn_registrarProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_registrarProveedor;
+        
+        /// <summary>
+        /// Control btn_registrarUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_registrarUsuario;
         
         /// <summary>
         /// Control btn_consultarItem.
@@ -85,15 +103,6 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultarItem;
         
         /// <summary>
-        /// Control btn_registrarEditorial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrarEditorial;
-        
-        /// <summary>
         /// Control btn_consultarPrecioXHoja.
         /// </summary>
         /// <remarks>
@@ -101,15 +110,6 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_consultarPrecioXHoja;
-        
-        /// <summary>
-        /// Control btn_ventaXVentanilla.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_ventaXVentanilla;
         
         /// <summary>
         /// Control btn_consultarHistorialFactura.
@@ -139,24 +139,6 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultarHistorialOrdenImpresion;
         
         /// <summary>
-        /// Control btn_registrarProveedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrarProveedor;
-        
-        /// <summary>
-        /// Control btn_registrarUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_registrarUsuario;
-        
-        /// <summary>
         /// Control btn_consultarProveedor.
         /// </summary>
         /// <remarks>
@@ -166,13 +148,22 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultarProveedor;
         
         /// <summary>
-        /// Control img_educom.
+        /// Control btn_ventaXVentanilla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img_educom;
+        protected global::System.Web.UI.WebControls.Button btn_ventaXVentanilla;
+        
+        /// <summary>
+        /// Control btn_modificarPrecioHoja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_modificarPrecioHoja;
         
         /// <summary>
         /// Control ContentPlaceHolder_cuerpo.

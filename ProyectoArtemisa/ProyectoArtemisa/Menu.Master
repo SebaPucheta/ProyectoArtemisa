@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="Estilo/NavBar.css" />
-    <link rel="stylesheet" href="Estilo/Sidebar.css" />
+    <%--<link rel="stylesheet" href="Estilo/Sidebar.css" />--%>
     <link rel="stylesheet" href="Estilo/Forms.css" />
+    <link rel="stylesheet" href="Estilo/sidebarAcordeon.css" />
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css' />
     <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
@@ -28,7 +29,7 @@
     <form id="form1" runat="server">
 
 
-        <nav id="nav_navbar" class="navbar">
+        <%--<nav id="nav_navbar" class="navbar">
 
             <div id="nav_titulo" class="col-lg-1 container-fluid">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
@@ -50,12 +51,12 @@
 
             </div>
 
-        </nav>
+        </nav>--%>
 
 
 
 
-        <nav id="sidenav" class="mostrar">
+<%--        <nav id="sidenav" class="mostrar">
             <ul class="menu">
                 <li>
                     <asp:Button runat="server" CssClass="btn-sidebar" ID="btn_registrarApunte" Text="Registrar Apunte" OnClick="btn_registrarApunte_OnClick" /></li>
@@ -86,8 +87,46 @@
                 
                 <asp:Image runat="server" ID="img_educom" ImageUrl="~/Estilo/LogoMasChico.jpg" />
             </ul>
-        </nav>
-
+        </nav>--%>
+        
+        
+            <div class="contenedor-menu" >
+                <a  class="btn-menu btn-a"><i class="icono  glyphicon glyphicon-align-justify"></i>EDUCOM</a>
+                    <ul class="menu">
+                        <li><a href="#" class="usuario">Usuario<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                             <ul>   
+                                <li><asp:Button runat="server" ID="btn_usuario" CssClass="btn-a" Text="nombre" OnClick="btn_usuario_OnClick" /></li>
+                                <li><asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Desloguearse" LoginText="Loguearse" LogoutPageUrl="Login.aspx" /></li>
+                              </ul>
+                            </li>
+                        <li><a href="#">Registrar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                            <ul>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_registrarApunte" Text="Registrar Apunte" OnClick="btn_registrarApunte_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_registrarLibro" Text="Registrar Libro" OnClick="btn_registrarLibro_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_registrarEditorial" Text="Registrar Editorial" OnClick="btn_consultarEditorial_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_registrarProveedor" Text="Registrar Proveedor" OnClick="btn_registrarProveedor_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_registrarUsuario" Text="Registrar Usuario" OnClick="btn_registrarUsuario_OnClick" /></li>
+                            </ul>
+                         </li>
+                        <li><a href="#">Consultar Proveedor<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                            <ul>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_consultarItem" Text="Consultar Item" OnClick="btn_consultarItem_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_consultarPrecioXHoja" Text="Consultar Precio Por Hoja" OnClick="btn_consultarPrecioXHoja_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_consultarHistorialFactura" Text="Historial de Ventas" OnClick="btn_consultarHistorialFactura_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_consultarOrdenImpresion" Text="Consultar Orden Impresión" OnClick="btn_consultarOrdenImpresion_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_consultarHistorialOrdenImpresion" Text="Historial Ordenes Impresión" OnClick="btn_consultarHistorialOrdenImpresion_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_consultarProveedor" Text="Consultar Proveedor" OnClick="btn_consultarProveedor_OnClick" /></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Otros <i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                            <ul>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
+                                <li><asp:Button runat="server" CssClass="btn-a" ID="btn_modificarPrecioHoja" Text="Registrar Precio Hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
 
         <!-- Paginas hijas -->
@@ -97,7 +136,7 @@
             <br />
             <br />
             <br />
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder_cuerpo" runat="server">
+           <asp:ContentPlaceHolder ID="ContentPlaceHolder_cuerpo" runat="server">
             </asp:ContentPlaceHolder>
             <br />
             <br />
@@ -110,7 +149,36 @@
     <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
     <script src="jquery-ui-1.11.4.custom\external\jquery\jquery.js"></script>
     <script src="jquery-ui-1.11.4.custom\jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.menu li:has(ul)').click(function (e) {
+                
+                if ($(this).hasClass('activado')) {
+                    $(this).removeClass('activado');
+                    $(this).children('ul').slideUp();
+                } else {
+                    $('.menu li ul').slideUp();
+                    $('.menu li').removeClass('activado');
+                    $(this).addClass('activado');
+                    $(this).children('ul').slideDown();
+                }
+            });
+            $('.btn-menu').click(function () {
+                $('.contenedor-menu .menu').slideToggle();
+            });
+            $(window).resize(function () {
+                if ($(document).width() < 700) {
+                    $('.contenedor-menu .menu').css({ 'display': 'none' });
+                    $('.menu li ul').slideUp();
+                    $('.menu li').removeClass('activado');
+                }
+                if ($(document).width() > 700) {
+                    $('.contenedor-menu .menu').css({ 'display': 'block' });
+                }
 
+            });
+        });
+</script>
     <!-- Codigo js para que ande el boton btn-mostrarNav -->
     <script type="text/javascript">$('#btn_mostrarNav').on('click', function () {
     $('#sidenav').toggleClass('mostrar');

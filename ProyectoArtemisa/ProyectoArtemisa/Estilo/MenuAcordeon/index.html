@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="sidebarAcordeon.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="contenedor-menu" >
+      <a href="#" class="btn-menu"><i class="icono  glyphicon glyphicon-align-justify"></i>Menu</a>
+    <ul class="menu">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Producto<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+        <ul>
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Item 2</a></li>
+          <li><a href="#">Item 3</a></li>
+          <li><a href="#">Item 4</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Redes Sociales <i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+        <ul>
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Item 2</a></li>
+          <li><a href="#">Item 3</a></li>
+          <li><a href="#">Item 4</a></li>
+        </ul>
+      </li>
+    </ul>
+    </div>
+
+    <script scr="main.js"></script>
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+    <script src="Bootstrap/js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.menu li:has(ul)').click(function(e){
+        e.preventDefault();
+
+        if($(this).hasClass('activado')){
+          $(this).removeClass('activado');
+          $(this).children('ul').slideUp();
+        }else{
+          $('.menu li ul').slideUp();
+          $('.menu li').removeClass('activado');
+          $(this).addClass('activado');
+          $(this).children('ul').slideDown();
+        }
+      });
+      $('.btn-menu').click(function(){
+        $('.contenedor-menu .menu').slideToggle();
+      });
+      $(window).resize(function(){
+        if($(document).width() < 700){
+          $('.contenedor-menu .menu').css({'display' : 'none'});
+          $('.menu li ul').slideUp();
+          $('.menu li').removeClass('activado');
+        }
+        if($(document).width() > 700){
+          $('.contenedor-menu .menu').css({'display' : 'block'});
+        }
+
+      });
+    });
+</script>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="jquery-ui-1.11.4.custom\external\jquery\jquery.js"></script>
+    <script src="jquery-ui-1.11.4.custom\jquery-ui.js"></script>
+
+  </body>
+</html>
