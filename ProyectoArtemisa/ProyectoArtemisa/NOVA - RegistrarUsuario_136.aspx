@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="RegistrarUsuario_136.aspx.cs" Inherits="ProyectoArtemisa.RegistrarUsuario_136" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="NOVA - RegistrarUsuario_136.aspx.cs" Inherits="ProyectoArtemisa.RegistrarUsuario_136" %>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">

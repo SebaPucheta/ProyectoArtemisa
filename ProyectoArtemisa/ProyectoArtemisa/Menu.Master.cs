@@ -184,5 +184,71 @@ namespace ProyectoArtemisa
             Session["idCategoria"] = null;
             Session["descripcion"] = "";
         }
+
+        protected void btn_registrarCarrera_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarCarrera_10.aspx");
+        }
+
+        protected void btn_registrarCategoria_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarCategoria_18.aspx");
+        }
+
+        protected void btn_registrarCiudad_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarCiudad_101.aspx");
+        }
+
+        protected void btn_registrarFacultad_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarFacultad_65.aspx");
+        }
+
+        protected void btn_registrarMateria_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarMateria_6.aspx");
+        }
+
+       
+
+        protected void btn_registrarProfesor_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarProfesor_14.aspx");
+        }
+
+        protected void btn_registrarProvincia_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarProvincia_105.aspx");
+        }
+
+        protected void btn_registrarUniversidad_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("RegistrarUniversidad_69.aspx");
+        }
+              
+
+        protected void btn_consultarEditorial_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarEditorial_25.aspx");
+        }
     }
 }

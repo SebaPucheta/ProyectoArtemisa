@@ -139,7 +139,7 @@
     <Content Include="RegistrarProvincia_105.aspx" />
     <Content Include="RegistrarUniversidad_69.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
-    <Content Include="RegistrarUsuario_136.aspx" />
+    <Content Include="NOVA - RegistrarUsuario_136.aspx" />
     <Content Include="RegistrarVentaVentanilla_128.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -326,8 +326,8 @@
     <Compile Include="RegistrarUsuario.aspx.designer.cs">
       <DependentUpon>RegistrarUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarUsuario_136.aspx.cs">
-      <DependentUpon>RegistrarUsuario_136.aspx</DependentUpon>
+    <Compile Include="NOVA - RegistrarUsuario_136.aspx.cs">
+      <DependentUpon>NOVA - RegistrarUsuario_136.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RegistrarVentaVentanilla_128.aspx.cs">
