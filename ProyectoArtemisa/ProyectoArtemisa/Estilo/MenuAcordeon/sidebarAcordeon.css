@@ -7,7 +7,7 @@
 }
 
 body{
-  background: rgb(19, 27, 62);
+  background: #a11f2c;
   font-family: 'Roboto', sans-serif;
   line-height: 18px;
 }
@@ -23,7 +23,7 @@ a:link{
 .btn-menu{
   display: none;
   padding:  20px;
-  background: #0d2c44;
+  background: #a11f2c ;#0d2c44;
   color: #fff;
 }
 

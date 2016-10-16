@@ -24,13 +24,12 @@ body {
   padding: 50px; }
   .contenedor-formulario .formulario {
     width: 100%;
-    margin: auto; }  
+    margin: auto; }
     .contenedor-formulario .formulario .input-group {
       position: relative;
       margin-bottom: 32px; }
-      .contenedor-formulario .formulario .input-group input[type="text"],
-      .contenedor-formulario .formulario .input-group input[type="email"],
-      .contenedor-formulario .formulario .input-group input[type="password"] {
+      .contenedor-formulario .formulario .input-group .txt,
+      .contenedor-formulario .formulario .input-group .txt    .contenedor-formulario .formulario .input-group .txt {
         font-family: "Roboto";
         font-size: 16px;
         color: #303F9F;
@@ -40,24 +39,24 @@ body {
         background: none;
         border: none;
         border-bottom: 2px solid #BBDEFB; }
-        .contenedor-formulario .formulario .input-group input[type="text"]:focus, .contenedor-formulario .formulario .input-group input[type="text"]:active,
-        .contenedor-formulario .formulario .input-group input[type="email"]:focus,
-        .contenedor-formulario .formulario .input-group input[type="email"]:active,
-        .contenedor-formulario .formulario .input-group input[type="password"]:focus,
-        .contenedor-formulario .formulario .input-group input[type="password"]:active {
+        .contenedor-formulario .formulario .input-group .txt:focus, .contenedor-formulario .formulario .input-group .txt:active,
+        .contenedor-formulario .formulario .input-group .txt:focus,
+        .contenedor-formulario .formulario .input-group .txt:active,
+        .contenedor-formulario .formulario .input-group .txt:focus,
+        .contenedor-formulario .formulario .input-group .txt:active {
           outline: none;
           border-bottom: 2px solid #303F9F; }
-        .contenedor-formulario .formulario .input-group input[type="text"].error,
-        .contenedor-formulario .formulario .input-group input[type="email"].error,
-        .contenedor-formulario .formulario .input-group input[type="password"].error {
+        .contenedor-formulario .formulario .input-group .txt.error,
+        .contenedor-formulario .formulario .input-group .txt.error,
+        .contenedor-formulario .formulario .input-group .txt.error {
           border-bottom: 2px solid #D32F2F; }
-          .contenedor-formulario .formulario .input-group input[type="text"].error + .label,
-          .contenedor-formulario .formulario .input-group input[type="email"].error + .label,
-          .contenedor-formulario .formulario .input-group input[type="password"].error + .label {
+          .contenedor-formulario .formulario .input-group .txt.error + .lbls,
+          .contenedor-formulario .formulario .input-group .txt.error + .lbls,
+          .contenedor-formulario .formulario .input-group .txt.error + .lbls {
             color: #D32F2F; }
-      .contenedor-formulario .formulario .input-group label.label {
+      .contenedor-formulario .formulario .input-group .lbls {
         color: #303F9F; }
-        .contenedor-formulario .formulario .input-group label.label {
+        .contenedor-formulario .formulario .input-group .lbls {
           -webkit-transition: all 0.3s ease;
           -o-transition: all 0.3s ease;
           transition: all 0.3s ease;
@@ -67,12 +66,17 @@ body {
           position: absolute;
           top: 16px;
           left: 0; }
-          .contenedor-formulario .formulario .input-group label.label.active {
+          .contenedor-formulario .formulario .input-group .lbls:active {
             top: -12px;
             font-size: 12px;
             line-height: 12px;
             color: #B6B6B6; }
-      .contenedor-formulario .formulario .input-group.checkbox label.label, .contenedor-formulario .formulario .input-group.radio label.label {
+            .contenedor-formulario .formulario .input-group .arriba{
+              top: -12px;
+              font-size: 12px;
+              line-height: 12px;
+              color: #B6B6B6; }
+      .contenedor-formulario .formulario .input-group.checkbox .lbl, .contenedor-formulario .formulario .input-group.radio .lbl {
         display: inline-block;
         cursor: pointer;
         color: #303F9F;
@@ -83,9 +87,9 @@ body {
         -webkit-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease; }
-        .contenedor-formulario .formulario .input-group.checkbox label.label:hover, .contenedor-formulario .formulario .input-group.radio label.label:hover {
+        .contenedor-formulario .formulario .input-group.checkbox .lbl:hover, .contenedor-formulario .formulario .input-group.radio .lbl:hover {
           background: #bbdefb; }
-        .contenedor-formulario .formulario .input-group.checkbox label.label:before, .contenedor-formulario .formulario .input-group.radio label.label:before {
+        .contenedor-formulario .formulario .input-group.checkbox .lbl:before, .contenedor-formulario .formulario .input-group.radio .lbl:before {
           content: "";
           display: inline-block;
           width: 17px;
@@ -95,28 +99,29 @@ body {
           border-radius: 50%;
           background: none;
           border: 2px solid #303F9F; }
-      .contenedor-formulario .formulario .input-group.error label.label {
+      .contenedor-formulario .formulario .input-group.error .lbls {
         color: #D32F2F; }
-        .contenedor-formulario .formulario .input-group.error label.label:hover {
+        .contenedor-formulario .formulario .input-group.error .lbls:hover {
           background: rgba(211, 47, 47, 0.2); }
-        .contenedor-formulario .formulario .input-group.error label.label:before {
+        .contenedor-formulario .formulario .input-group.error .lbls:before {
           border: 2px solid #D32F2F; }
-      .contenedor-formulario .formulario .input-group.radio input[type="radio"] {
+      .contenedor-formulario .formulario .input-group.radio .rdb {
         display: none; }
-        .contenedor-formulario .formulario .input-group.radio input[type="radio"]:checked + label.label:before {
+
+        .contenedor-formulario .formulario .input-group.radio input[type="radio"] :checked + .lbl:before {
           display: none; }
-        .contenedor-formulario .formulario .input-group.radio input[type="radio"]:checked + label.label {
+        .contenedor-formulario .formulario .input-group.radio input[type="radio"]:checked + .lbl {
           padding: 5px 15px;
           background: #303F9F;
           border-radius: 2px;
           color: #f2f2f2; }
-      .contenedor-formulario .formulario .input-group.checkbox label.label:before {
+      .contenedor-formulario .formulario .input-group.checkbox .lbls:before {
         border-radius: 3px; }
       .contenedor-formulario .formulario .input-group.checkbox input[type="checkbox"] {
         display: none; }
-        .contenedor-formulario .formulario .input-group.checkbox input[type="checkbox"]:checked + label:before {
+        .contenedor-formulario .formulario .input-group.checkbox input[type="checkbox"]:checked + .lbl:before {
           display: none; }
-        .contenedor-formulario .formulario .input-group.checkbox input[type="checkbox"]:checked + label.label {
+        .contenedor-formulario .formulario .input-group.checkbox input[type="checkbox"]:checked + .lbl {
           background: #303F9F;
           color: #f2f2f2;
           padding: 5px 15px; }
@@ -136,3 +141,5 @@ body {
       transition: all 0.3s ease; }
       .contenedor-formulario .formulario input[type="submit"]:hover {
         background: #1976D2; }
+
+/*# sourceMappingURL=estilos.css.map */

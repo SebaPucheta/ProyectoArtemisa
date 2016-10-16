@@ -16,6 +16,20 @@ body{
 
 
 }
+.txt{
+    position: inherit;;
+    font-family: "Roboto";
+    font-size: 16px;
+    color: #303F9F;
+    width: 100%;
+    outline: none;
+    padding: 15px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #BBDEFB;
+    width:  100%;
+  }
+
 .textboxblanco{
 background-color: rgb(255, 255, 255);
 }
@@ -74,4 +88,18 @@ background-color: rgb(255, 255, 255);
 .btn_verde:hover{
   color: rgb(255, 255, 255);
   background-color: #2ecc71;
+}
+.btn_grande{
+  border: 0px solid #f2f2f2;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto";
+  font-size: 18px;
+  padding: 15px;
+  width: 100%;
+}
+
+.crearCuenta{
+  color: rgb(163, 163, 163);
 }

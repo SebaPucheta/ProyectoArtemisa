@@ -17,9 +17,12 @@ a{
   border: none;
   float: left;
   text-align: left;
-
-
+  font-size: 18px;
+  line-height: 20px;
 }
+
+.
+
 a:link{
   text-decoration: none;
 
@@ -28,7 +31,7 @@ a:link{
 .btn-menu{
   display: block;;
   padding:  20px;
-  background: #0d2c44;
+  background:#cb0014; #0d2c44;
   color: #fff;
 text-decoration: none;
 position: fixed;
@@ -37,7 +40,7 @@ position: fixed;
 .btn-menu:hover{
   display: block;;
   padding:  20px;
-  background: #0d2c44;
+  background:#cb0014;
   color: #fff;
   text-decoration: none;
 }
@@ -45,7 +48,7 @@ position: fixed;
 .btn-menu:active{
   display: block;;
   padding:  20px;
-  background: #0d2c44;
+  background: #cb0014;
   color: #fff;
 }
 
@@ -77,6 +80,11 @@ position: fixed;
 .contenedor-menu .menu {
   width: 100%;
   padding-top: 60px;
+
+}
+
+.contenedor-menu .menu.oculto {
+  display: none;
 
 }
 

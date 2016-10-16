@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="Estilo/NavBar.css" />
     <link rel="stylesheet" href="Estilo/Sidebar.css" />
-    <link rel="stylesheet" href="Estilo/Login.css" />
+    <link rel="stylesheet" href="Estilo/Forms.css" />
     <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css' />
     <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
@@ -27,16 +27,17 @@
         <br />
         <br />
         <div class="row">
-            <div class="container col-lg-offset-3 col-lg-6" id="login">
+            <div class="col-lg-offset-4 col-lg-4" id="div_form">
                 <!-- Titulo -->
                 <div>
                     <h1 class="text-primary text-center"><b>Inicio Sesión</b></h1>
                 </div>
                 <br />
+                <br />
                 <%-- Login --%>
                 
                     <asp:Login ID="log_in" runat="server" OnAuthenticate="Login1_Authenticate" LoginButtonText="Ingresar" PasswordLabelText="Contraseña" TextLayout="TextOnTop" TitleText="" Width="717px" UserNameLabelText="Nombre de usuario">
-                        <TextBoxStyle CssClass="form-control" />
+                        <TextBoxStyle  />
                         <LayoutTemplate>
                             <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
                                 <tr>
@@ -49,9 +50,11 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:TextBox ID="UserName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <div class="col-lg-7">
+                                                    <asp:TextBox ID="UserName" runat="server" CssClass="txt "></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="El nombre de usuario es obligatorio." ToolTip="El nombre de usuario es obligatorio." ValidationGroup="log_in">*</asp:RequiredFieldValidator>
-                                                </td>
+                                                </div>
+                                                        </td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -60,9 +63,11 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:TextBox ID="Password" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                                                    <div class="col-lg-7">
+                                                    <asp:TextBox ID="Password" runat="server" CssClass="txt" TextMode="Password"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="log_in">*</asp:RequiredFieldValidator>
-                                                </td>
+                                                    </div>
+                                               </td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -75,8 +80,16 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td align="right">
-                                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" CssClass="btn btn-lg btn_azul btn_flat" Text="Ingresar" ValidationGroup="log_in" />
+                                                <td align="left">
+                                                    <asp:LinkButton ID="lbt" runat="server" CssClass="crearCuenta" EnableViewState="False" Text="Crear nueva cuenta"></asp:LinkButton>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td align="left">
+                                                     <div class="col-lg-8">
+                                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" CssClass="btn btn-lg btn_azul btn_flat btn_grande" Text="Ingresar" ValidationGroup="log_in" />
+                                                     </div>
                                                 </td>
                                             </tr>
                                         </table>
