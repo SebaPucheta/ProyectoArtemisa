@@ -13,5 +13,6 @@ namespace Entidades
         public string contrasena { get; set; }
         public int idCliente { get; set; }
         public string  email { get; set; }
+        public int idRol { get; set; }
     }
 }

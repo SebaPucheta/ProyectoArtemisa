@@ -81,7 +81,7 @@
                                             </tr>
                                             <tr>
                                                 <td align="left">
-                                                    <asp:LinkButton ID="lbt" runat="server" CssClass="crearCuenta" EnableViewState="False" Text="Crear nueva cuenta"></asp:LinkButton>
+                                                    <asp:LinkButton ID="lbt" runat="server" CssClass="crearCuenta" EnableViewState="False" Text="Crear nueva cuenta" OnClick="lbt_Click"></asp:LinkButton>
                                                 </td>
                                             </tr>
                                             

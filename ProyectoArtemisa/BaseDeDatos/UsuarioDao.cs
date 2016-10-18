@@ -44,6 +44,40 @@ namespace BaseDeDatos
             cn.Close();
         }
 
+        /// <summary>
+        /// Registrar Cliente
+        /// </summary>
+        /// <param name=""></param>
+        public static void RegistrarUsuarioCliente(UsuarioEntidad user, ClienteEntidad cli)
+        {
+            SqlConnection cn = obtenerBD();
+            SqlTransaction trans = cn.BeginTransaction();
+            try
+            {
+                string consulta = @"INSERT INTO Cliente (nombreCliente, apellidoCliente, email) VALUES (@nom, @ape, @email); SELECT SCOPE_IDENTITY();";
+                SqlCommand cmd = new SqlCommand(consulta, cn, trans);
+                cmd.Parameters.AddWithValue(@"nom", cli.nombreCliente);
+                cmd.Parameters.AddWithValue(@"ape", cli.apellidoCliente);
+                cmd.Parameters.AddWithValue(@"email", user.email);
+                cli.idCliente = Convert.ToInt32(cmd.ExecuteScalar());
+
+                consulta = @"INSERT INTO Usuario (nombreUsuario, contrasena, idCliente, idRol) VALUES (@usuario, @pass, @idCli, @idRol)";
+                cmd = new SqlCommand(consulta, cn, trans);
+                cmd.Parameters.AddWithValue("@usuario", user.email);
+                cmd.Parameters.AddWithValue("@pass", user.contrasena);
+                cmd.Parameters.AddWithValue("@idCli", cli.idCliente);
+                cmd.Parameters.AddWithValue("@idRol", user.idRol);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                trans.Rollback();
+                cn.Close();
+            }
+            trans.Commit();
+            cn.Close();
+        }
+
         public static void CambiarContraseña(UsuarioEntidad user, string nuevaPass)
         {
             string query = "UPDATE Usuario SET contrasena = @pass WHERE nombreUsuario = @user";

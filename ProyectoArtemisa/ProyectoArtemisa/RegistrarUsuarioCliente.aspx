@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarUsuarioCliente.aspx.cs" Inherits="ProyectoArtemisa.RegistrarUsuarioCliente" %>
+﻿    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarUsuarioCliente.aspx.cs" Inherits="ProyectoArtemisa.RegistrarUsuarioCliente" %>
 
 <!DOCTYPE html>
 
@@ -42,8 +42,8 @@
 					</div>
 					
 					
-						
-					<asp:Button runat="server" CssClass="btn-enviar" type="submit" Text="Registrar" id="btn_submit" value="Enviar" />
+						<asp:Label ID="lbl_info" runat="server" ForeColor="Red"></asp:Label>
+					<asp:Button runat="server" CssClass="btn-enviar" type="submit" Text="Registrar" id="btn_submit" value="Enviar" OnClick="btn_submit_Click" />
 				</div>
 			</div>
 		</div>

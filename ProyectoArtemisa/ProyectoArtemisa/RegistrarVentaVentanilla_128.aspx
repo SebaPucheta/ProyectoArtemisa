@@ -58,6 +58,7 @@
                  
              </Columns>
           </asp:GridView>
+         <asp:Label runat="server" ID="lbl_info" ForeColor="Red"></asp:Label>
           <br />
 
          <!-- Boton agregar Apunte-->

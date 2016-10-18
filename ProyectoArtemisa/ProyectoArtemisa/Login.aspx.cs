@@ -23,6 +23,11 @@ namespace ProyectoArtemisa
                 FormsAuthentication.RedirectFromLoginPage(log_in.UserName, log_in.RememberMeSet);
         }
 
+        protected void lbt_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RegistrarUsuarioCliente.aspx");
+        }
+
     }
 
 }

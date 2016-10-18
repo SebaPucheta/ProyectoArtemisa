@@ -31,6 +31,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.GridView dgv_nuevoDetalle;
         
         /// <summary>
+        /// Control lbl_info.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_info;
+        
+        /// <summary>
         /// Control btn_agregar.
         /// </summary>
         /// <remarks>

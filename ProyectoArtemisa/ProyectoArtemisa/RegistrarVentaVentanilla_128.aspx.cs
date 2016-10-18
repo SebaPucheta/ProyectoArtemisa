@@ -163,11 +163,41 @@ namespace ProyectoArtemisa
 
         protected void btn_agregarDetalle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarNuevoDetalleGrillaDetalle();
-            dgv_nuevoDetalle.Visible = false;
-            lbl_total.Text = CalcularTotal().ToString();
+            
+                 
+            if(ValidarStock())
+            {
+                CargarNuevoDetalleGrillaDetalle();
+                dgv_nuevoDetalle.Visible = false;
+                lbl_total.Text = CalcularTotal().ToString();
+                lbl_info.Text = "";
+            }
+            else
+            {
+                lbl_info.Text="La cantidad ingresada es mayor a la cantidad de stock. Stock:" + ConsultarStockItem();
+            }
+            
         }
 
+        protected bool ValidarStock()
+        {
+            int cantidad = Convert.ToInt32(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[3].FindControl("txt_cantidad")).Text);
+
+            return ConsultarStockItem() >= cantidad;
+        }
+        protected int ConsultarStockItem()
+        {
+            int stock = 0;
+            if (Page.Server.HtmlDecode(dgv_nuevoDetalle.Rows[0].Cells[1].Text).Equals("Apunte"))
+            {
+                stock = (ApunteDao.ConsultarApunte((int)(dgv_nuevoDetalle.DataKeys[0].Value))).stock;
+            }
+            else
+            {
+                stock = (LibroDao.ConsultarLibro((int)(dgv_nuevoDetalle.DataKeys[0].Value))).stock;
+            }
+            return stock;
+        }
         protected void btn_limpiarGrilla_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
             dgv_nuevoDetalle.Visible = false;
@@ -203,6 +233,7 @@ namespace ProyectoArtemisa
 
         protected void btn_agregar_Click(object sender, EventArgs e)
         {
+            lbl_info.Text = "";
             Session["fecha"] = lbl_fecha.Text;
             Session["agregarDetalle"] = true;
             PilaForms.AgregarForm("RegistrarVentaVentanilla_128.aspx");
