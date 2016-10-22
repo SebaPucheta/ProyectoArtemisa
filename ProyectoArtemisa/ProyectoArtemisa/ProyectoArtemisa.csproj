@@ -44,6 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Spire.License, Version=1.3.5.41, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Spire.PDF.3.7.198\lib\net40-client\Spire.License.dll</HintPath>
@@ -141,6 +142,8 @@
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="NOVA - RegistrarUsuario_136.aspx" />
     <Content Include="RegistrarVentaVentanilla_128.aspx" />
+    <Content Include="Reportes\GenerarCierreVenta_143.aspx" />
+    <Content Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +224,11 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProyectoArtemisaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoArtemisaDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RegistarLibro_2.aspx.cs">
       <DependentUpon>RegistarLibro_2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -337,6 +345,20 @@
     <Compile Include="RegistrarVentaVentanilla_128.aspx.designer.cs">
       <DependentUpon>RegistrarVentaVentanilla_128.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\GenerarCierreVenta_143.aspx.cs">
+      <DependentUpon>GenerarCierreVenta_143.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\GenerarCierreVenta_143.aspx.designer.cs">
+      <DependentUpon>GenerarCierreVenta_143.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx.cs">
+      <DependentUpon>GenerarReporteResmasUtilizadas_146.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx.designer.cs">
+      <DependentUpon>GenerarReporteResmasUtilizadas_146.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Menu.Master" />
@@ -352,6 +374,17 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\ProyectoArtemisa.csprojResolveAssemblyReference.cache" />
     <Content Include="packages.config" />
+    <Content Include="ProyectoArtemisaDataSet.xsc">
+      <DependentUpon>ProyectoArtemisaDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ProyectoArtemisaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProyectoArtemisaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProyectoArtemisaDataSet.xss">
+      <DependentUpon>ProyectoArtemisaDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -375,6 +408,10 @@
       <Project>{1e8a915d-077e-400c-b40c-10a6fa13da5a}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\GenerarCierreVenta_143.rdlc" />
+    <EmbeddedResource Include="Reportes\GenerarReporteResmasUtilizadas_146.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
