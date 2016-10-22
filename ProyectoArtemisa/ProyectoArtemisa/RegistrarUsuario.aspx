@@ -16,7 +16,7 @@
         <!--Ingreso el nombre de usuario-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">Nombre de Usuario</label>
+                <label for="cuil" class="control-label col-md-3">Nombre de usuario:</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_nombreUsuario" ViewStateMode="Enabled" />
                     <br />
@@ -37,7 +37,7 @@
         <!--Ingreso el nombre de cliente-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">Nombre</label>
+                <label for="cuil" class="control-label col-md-3">Nombre:</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_nombre" ViewStateMode="Enabled" />
                     <br />
@@ -58,7 +58,7 @@
         <!--Ingreso el apellido de cliente-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">Apellido</label>
+                <label for="cuil" class="control-label col-md-3">Apellido:</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_apellido" ViewStateMode="Enabled" />
                     <br />
@@ -79,7 +79,7 @@
         <!--Ingreso el número de documento-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">DNI</label>
+                <label for="cuil" class="control-label col-md-3">DNI:</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_dni" ViewStateMode="Enabled" />
                     <br />
@@ -100,7 +100,7 @@
         <!--Ingreso el correo electrónico-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">E-mail</label>
+                <label for="cuil" class="control-label col-md-3">E-mail:</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_email" ViewStateMode="Enabled" TextMode="Email" />
                     <br />
@@ -132,7 +132,7 @@
         <!--Ingreso la contraseña-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">Ingrese la contraseña</label>
+                <label for="cuil" class="control-label col-md-3">Ingrese la contraseña:</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_pass" ViewStateMode="Enabled" TextMode="Password" />
                     <br />
@@ -153,7 +153,7 @@
         <!--Ingreso la contraseña nuevamente-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">Repita la contraseña</label>
+                <label for="cuil" class="control-label col-md-3">Repita la contraseña:</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_pass2" ViewStateMode="Enabled" TextMode="Password" />
                     <br />

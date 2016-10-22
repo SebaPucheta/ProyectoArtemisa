@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
-    <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+    <div class="container col-lg-offset-3 col-lg-8" id="div_form">
 
         <!-- Titulo -->
         <div class="row">
@@ -20,20 +20,20 @@
             <EditRowStyle BackColor="#ffffcc" />
             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
             <Columns>
-                <asp:BoundField DataField="nombreProveedor" HeaderText="Proveedor"  />
-                <asp:BoundField DataField="telefonoProveedor" HeaderText="Teléfono" />
-                <asp:BoundField DataField="emailProveedor" HeaderText="e-mail" />
+                <asp:BoundField DataField="nombreProveedor" HeaderText="Proveedor"  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                <asp:BoundField DataField="telefonoProveedor" HeaderText="Teléfono" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                <asp:BoundField DataField="emailProveedor" HeaderText="e-mail" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
                 <asp:BoundField DataField="direccionProveedor" HeaderText="Dirección"/>
                 <asp:BoundField DataField="nombreContactoProveedor" HeaderText="Nombre" />
-                <asp:BoundField DataField="nombreCiudadEditorial" HeaderText="Ciudad" />
-                <asp:TemplateField>
+                <asp:BoundField DataField="nombreCiudadEditorial" HeaderText="Ciudad" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"/>
+                <asp:TemplateField HeaderText="Modificar">
                     <ItemTemplate>
                         <asp:LinkButton ID="btn_modificarProveedor" CommandName="select" runat="server"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></asp:LinkButton>
                     </ItemTemplate>
                     <ControlStyle Width="10px" />
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 </asp:TemplateField>
-                <asp:TemplateField>
+                <asp:TemplateField HeaderText="Eliminar">
                     <ItemTemplate>
                         <asp:LinkButton ID="btn_eliminarProveedor" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                     </ItemTemplate>

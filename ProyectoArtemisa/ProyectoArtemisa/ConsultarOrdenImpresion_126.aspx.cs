@@ -68,7 +68,7 @@ namespace ProyectoArtemisa
             //Creo las columnas de la tabla
             tabla.Columns.Add("idOrden", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
-            tabla.Columns.Add("cantidad", typeof(int));
+            tabla.Columns.Add("cantidad", typeof(string));
             tabla.Columns.Add("chk_impreso", typeof(bool));
 
             foreach (OrdenImpresionEntidadQuery orden in OrdenImpresionDao.ListarOrdenApuntePendientes())
@@ -77,7 +77,7 @@ namespace ProyectoArtemisa
 
                 fila[0] = orden.idOrdenImpresion;
                 fila[1] = orden.nombreApunte;
-                fila[2] = orden.cantidad;
+                fila[2] = orden.cantidad + " Unidades";
                 
                 //No toma los valores true o false el checkbox
                 if (orden.nombreEstadoOrdenImpresion.Equals("Impreso"))

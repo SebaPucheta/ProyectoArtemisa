@@ -114,10 +114,14 @@
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarProveedor" Text="Registrar Proveedor" OnClick="btn_registrarProveedor_OnClick" /></li>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarUsuario" Text="Registrar Usuario" OnClick="btn_registrarUsuario_OnClick" /></li>
-
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_modificarPrecioHoja" Text="Registrar Precio Hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
+                   
                     </ul>
                 </li>
-                <li><a href="#">Consultar Proveedor<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                <li><a href="#">Consultar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
                     <ul>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarItem" Text="Consultar Item" OnClick="btn_consultarItem_OnClick" /></li>
@@ -133,32 +137,6 @@
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarProveedor" Text="Consultar Proveedor" OnClick="btn_consultarProveedor_OnClick" /></li>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarEditorial" Text="Consultar Editorial" OnClick="btn_consultarEditorial_Click" /></li>
-
-                    </ul>
-                </li>
-                <li><a href="#">Otros <i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
-                    <ul>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_modificarPrecioHoja" Text="Registrar Precio Hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
-                        <%-- Agregados autor: Martin --%>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarProvincia" Text="Registrar Provincia" OnClick="btn_registrarProvincia_Click" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarUniversidad" Text="Registrar Universidad" OnClick="btn_registrarUniversidad_Click" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarFacultad" Text="Registrar Facultad" OnClick="btn_registrarFacultad_Click" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarMateria" Text="Registrar Materia" OnClick="btn_registrarMateria_Click" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarProfesor" Text="Registrar Profesor" OnClick="btn_registrarProfesor_Click" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarCarrera" Text="Registrar Carrera" OnClick="btn_registrarCarrera_Click" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarCategoria" Text="Registrar Categoria" OnClick="btn_registrarCategoria_Click" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarCiudad" Text="Registrar Ciudad" OnClick="btn_registrarCiudad_Click" /></li>
 
                     </ul>
                 </li>

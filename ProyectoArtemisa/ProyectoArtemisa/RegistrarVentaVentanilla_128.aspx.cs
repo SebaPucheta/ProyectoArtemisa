@@ -88,9 +88,9 @@ namespace ProyectoArtemisa
             tabla.Columns.Add("idItem", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
             tabla.Columns.Add("tipoApunte", typeof(string));
-            tabla.Columns.Add("precioUnitario", typeof(float));
-            tabla.Columns.Add("cantidad", typeof(int));
-            tabla.Columns.Add("subtotal", typeof(float));
+            tabla.Columns.Add("precioUnitario", typeof(string));
+            tabla.Columns.Add("cantidad", typeof(string));
+            tabla.Columns.Add("subtotal", typeof(string));
             
             Session["tablaDetalles"] = tabla;
         }
@@ -101,13 +101,15 @@ namespace ProyectoArtemisa
             DataRow fila;
 
             fila = (Session["tablaDetalles"] as DataTable).NewRow();
-
+            int cantidad=int.Parse(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[3].FindControl("txt_cantidad")).Text);
+            float precio = float.Parse(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text);
             fila[0] = dgv_nuevoDetalle.DataKeys[0].Value;
             fila[1] = Page.Server.HtmlDecode(dgv_nuevoDetalle.Rows[0].Cells[0].Text);
             fila[2] = Page.Server.HtmlDecode(dgv_nuevoDetalle.Rows[0].Cells[1].Text);
-            fila[3] = float.Parse(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text);
-            fila[4] = Convert.ToInt32(((TextBox)dgv_nuevoDetalle.Rows[0].Cells[3].FindControl("txt_cantidad")).Text);
-            fila[5] = float.Parse(fila[3].ToString()) * float.Parse(fila[4].ToString());
+            fila[3] = "$" + precio.ToString();
+            fila[4] = cantidad.ToString() + " Unidades";
+            float subtotal = precio * cantidad;
+            fila[5] = "$" + (subtotal).ToString() ;
 
             (Session["tablaDetalles"] as DataTable).Rows.Add(fila);
 
@@ -140,7 +142,7 @@ namespace ProyectoArtemisa
             double total=0;
             foreach(DataRow fila in (Session["tablaDetalles"] as DataTable).Rows )
             {
-                total += Convert.ToDouble(fila[5]);
+                total += Convert.ToDouble(fila[5].ToString().Substring(2));
             }
             return total;
         }
@@ -217,8 +219,9 @@ namespace ProyectoArtemisa
                 { detalleFactura.item = ApunteDao.ConsultarApunte(Convert.ToInt32(fila[0])); }
                 else
                 { detalleFactura.item = LibroDao.ConsultarLibro(Convert.ToInt32(fila[0])); }
-                detalleFactura.cantidad = Convert.ToInt32(fila[4]);
-                detalleFactura.subtotal = float.Parse(fila[5].ToString());
+                string cantidad=fila[4].ToString().Replace('n', ' ').Replace('U', ' ').Replace('i', ' ').Replace('d', ' ').Replace('a', ' ').Replace('e', ' ').Replace('s', ' ');
+                detalleFactura.cantidad = Convert.ToInt32(cantidad.Trim());
+                detalleFactura.subtotal = float.Parse(fila[5].ToString().Substring(2));
                 
                 listaDetalles.Add(detalleFactura);
             }

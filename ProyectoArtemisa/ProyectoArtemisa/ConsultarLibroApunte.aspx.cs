@@ -317,8 +317,8 @@ namespace ProyectoArtemisa
             //Creo las columnas de la tabla
             tabla.Columns.Add("idApunte", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
-            tabla.Columns.Add("precio", typeof(float));
-            tabla.Columns.Add("stock", typeof(int));
+            tabla.Columns.Add("precio", typeof(string));
+            tabla.Columns.Add("stock", typeof(string));
             tabla.Columns.Add("carrera", typeof(string));
             tabla.Columns.Add("materia", typeof(string));
             tabla.Columns.Add("editorial", typeof(string));
@@ -330,8 +330,8 @@ namespace ProyectoArtemisa
 
                 fila[0] = apunte.idApunte;
                 fila[1] = apunte.nombreApunte;
-                fila[2] = apunte.precioApunte;
-                fila[3] = apunte.stock;
+                fila[2] = "$" + apunte.precioApunte;
+                fila[3] = apunte.stock + " Unidades";
 
                 List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
                 string carreras = listaCarrera[0].nombreCarrera;
@@ -367,8 +367,8 @@ namespace ProyectoArtemisa
             //Creo las columnas de la tabla
             tabla.Columns.Add("idApunte", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
-            tabla.Columns.Add("precio", typeof(float));
-            tabla.Columns.Add("stock", typeof(int));
+            tabla.Columns.Add("precio", typeof(string));
+            tabla.Columns.Add("stock", typeof(string));
             tabla.Columns.Add("carrera", typeof(string));
             tabla.Columns.Add("materia", typeof(string));
             tabla.Columns.Add("editorial", typeof(string));
@@ -381,8 +381,8 @@ namespace ProyectoArtemisa
 
                 fila[0] = apunte.idApunte;
                 fila[1] = apunte.nombreApunte;
-                fila[2] = apunte.precioApunte;
-                fila[3] = apunte.stock;
+                fila[2] = "$" + apunte.precioApunte;
+                fila[3] = apunte.stock + " Unidades";
 
                 List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
                 string carreras = listaCarrera[0].nombreCarrera;
@@ -416,8 +416,8 @@ namespace ProyectoArtemisa
             //Creo las columnas de la tabla
             tabla.Columns.Add("idLibro", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
-            tabla.Columns.Add("precio", typeof(float));
-            tabla.Columns.Add("stock", typeof(int));
+            tabla.Columns.Add("precio", typeof(string));
+            tabla.Columns.Add("stock", typeof(string));
             tabla.Columns.Add("carrera", typeof(string));
             tabla.Columns.Add("materia", typeof(string));
             tabla.Columns.Add("editorial", typeof(string));
@@ -429,8 +429,8 @@ namespace ProyectoArtemisa
 
                 fila[0] = libro.idLibro;
                 fila[1] = libro.nombreLibro;
-                fila[2] = libro.precioLibro;
-                fila[3] = libro.stock;
+                fila[2] = "$" + libro.precioLibro;
+                fila[3] = libro.stock + " Unidades";
 
                 List<CarreraEntidad> listaCarrera = libro.listaCarreras;
                 string carreras = listaCarrera[0].nombreCarrera;
@@ -462,8 +462,8 @@ namespace ProyectoArtemisa
             //Creo las columnas de la tabla
             tabla.Columns.Add("idLibro", typeof(int));
             tabla.Columns.Add("nombre", typeof(string));
-            tabla.Columns.Add("precio", typeof(float));
-            tabla.Columns.Add("stock", typeof(int));
+            tabla.Columns.Add("precio", typeof(string));
+            tabla.Columns.Add("stock", typeof(string));
             tabla.Columns.Add("carrera", typeof(string));
             tabla.Columns.Add("materia", typeof(string));
             tabla.Columns.Add("editorial", typeof(string));
@@ -473,8 +473,8 @@ namespace ProyectoArtemisa
 
                 fila[0] = libro.idLibro;
                 fila[1] = libro.nombreLibro;
-                fila[2] = libro.precioLibro;
-                fila[3] = libro.stock;
+                fila[2] = "$" + libro.precioLibro;
+                fila[3] = libro.stock + "Unidades";
 
                 List<CarreraEntidad> listaCarrera = libro.listaCarreras;
                 string carreras = listaCarrera[0].nombreCarrera;
@@ -551,7 +551,7 @@ namespace ProyectoArtemisa
                     ApunteEntidad apunteSeleccionado = new ApunteEntidad();
                     apunteSeleccionado.idApunte = (Int32)dgv_grillaApunte.DataKeys[indice].Value;
                     apunteSeleccionado.nombreApunte = Page.Server.HtmlDecode(dgv_grillaApunte.Rows[indice].Cells[0].Text);
-                    apunteSeleccionado.precioApunte = float.Parse(dgv_grillaApunte.Rows[indice].Cells[1].Text);
+                    apunteSeleccionado.precioApunte = float.Parse(dgv_grillaApunte.Rows[indice].Cells[1].Text.Substring(2));
                     Session["objetoApunteEntidad"] = apunteSeleccionado;
                 }
                     

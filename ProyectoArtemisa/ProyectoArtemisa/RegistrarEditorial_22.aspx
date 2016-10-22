@@ -17,7 +17,7 @@
             <!--Ingreso el nombre de la editorial -->
             <div class="row">
                 <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Nombre de la editorial</label>
+                    <label for="cuil" class="control-label col-md-3">Nombre de la editorial:</label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreEditorial" value="" ViewStateMode="Enabled" />
                         <br />
@@ -38,25 +38,39 @@
         <br />
 
 
-        <asp:GridView ID="dgv_grillaEditorial" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarEditorial_RowDeleting" OnSelectedIndexChanged="btn_modificarEditorial_SelectedIndexChanged">
-            <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+        <asp:GridView ID="dgv_grillaEditorial" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnRowDeleting="btn_eliminarEditorial_RowDeleting" OnSelectedIndexChanged="btn_modificarEditorial_SelectedIndexChanged">
+            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
             <EditRowStyle BackColor="#ffffcc" />
             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
             <Columns>
-                <asp:BoundField DataField="idEditorial" HeaderText="Cod." />
-                <asp:BoundField DataField="nombreEditorial" HeaderText="Nombre" />
-                <asp:TemplateField>
+                <asp:BoundField DataField="idEditorial" HeaderText="Cod." HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" >
+<HeaderStyle HorizontalAlign="Right" VerticalAlign="Top" Font-Bold="True"></HeaderStyle>
+
+<ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="nombreEditorial" HeaderText="Nombre"  HeaderStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" >
+<HeaderStyle VerticalAlign="Middle"></HeaderStyle>
+
+<ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                </asp:BoundField>
+                <asp:TemplateField HeaderText="Editar" HeaderStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                     <ItemTemplate>
                         <asp:LinkButton ID="btn_modificarEditorial" CommandName="select" runat="server"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
                     </ItemTemplate>
                     <ControlStyle Width="10px" />
+
+<HeaderStyle VerticalAlign="Middle"></HeaderStyle>
+
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 </asp:TemplateField>
-                <asp:TemplateField>
+                <asp:TemplateField HeaderText="Eliminar" HeaderStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                     <ItemTemplate>
                         <asp:LinkButton ID="btn_eliminarEditorial" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                     </ItemTemplate>
                     <ControlStyle Width="10px" />
+
+<HeaderStyle VerticalAlign="Middle"></HeaderStyle>
+
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 </asp:TemplateField>
 

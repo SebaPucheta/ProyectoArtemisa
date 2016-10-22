@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
 
-    <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+    <div class="container col-lg-offset-4 col-lg-5" id="div_form">
      <div class="form-group">      
 
          <!-- Titulo -->
@@ -17,8 +17,8 @@
                             <EditRowStyle BackColor="#ffffcc" />
                             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
         <Columns>
-            <asp:BoundField DataField="idEditorial" HeaderText="Número" />
-            <asp:BoundField DataField="nombreEditorial" HeaderText="Nombre" />
+            <asp:BoundField DataField="idEditorial" HeaderText="Número" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  />
+            <asp:BoundField DataField="nombreEditorial" HeaderText="Nombre" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
 
         </Columns>
     </asp:GridView>

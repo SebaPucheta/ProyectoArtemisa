@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Entidades;
 using BaseDeDatos;
 using Negocio;
-
+using System.Data;
 namespace ProyectoArtemisa
 {
     public partial class ConsultarPrecioPorHoja_77 : System.Web.UI.Page
@@ -19,7 +19,25 @@ namespace ProyectoArtemisa
 
         protected void CargarGrilla()
         {
-            dgv_grillaPrecio.DataSource = PrecioXHojaDao.ConsultarPrecioXHoja();
+            DataTable tabla = new DataTable();
+            DataRow fila;
+
+            //Creo las columnas de la tabla
+            tabla.Columns.Add("precioHoja", typeof(string));
+            tabla.Columns.Add("fecha", typeof(string));
+            
+            foreach ( PrecioXHojaEntidad pxh in PrecioXHojaDao.ConsultarPrecioXHoja() )
+            {
+                fila = tabla.NewRow();
+
+                fila[0] =  "$" + pxh.precioHoja ;
+                fila[1] =  pxh.fecha.ToShortDateString() ;
+                tabla.Rows.Add(fila);
+            }
+                
+            DataView dataView = new DataView(tabla);
+
+            dgv_grillaPrecio.DataSource = dataView;
             dgv_grillaPrecio.DataBind();
         }
     }

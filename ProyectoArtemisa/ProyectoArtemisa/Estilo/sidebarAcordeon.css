@@ -9,8 +9,8 @@
 
 a{
   text-decoration: none;
-  color: #fff;
 }
+
 .btn-a{
   color: #fff;
   width: 100%;
@@ -21,10 +21,9 @@ a{
   line-height: 20px;
 }
 
-.
 
 a:link{
-  text-decoration: none;
+
 
 }
 
@@ -135,7 +134,7 @@ position: fixed;
 }
 
 .contenedor-menu .menu .icono.derecho {
-  float: right;;
+  float: right;
   margin-left:  10px;
 }
 

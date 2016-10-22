@@ -19,14 +19,14 @@
              <EditRowStyle BackColor="#ffffcc" />
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
-                 <asp:BoundField DataField="nombreApunte" HeaderText="Nombre" />
-                 <asp:TemplateField HeaderText="Cantidad" HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle" >
+                 <asp:BoundField DataField="nombreApunte" HeaderText="Nombre" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                 <asp:TemplateField HeaderText="Cantidad" HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" >
                      <ItemTemplate>
                         <asp:TextBox ID="txt_cantidadImprimir" runat="server" HeaderText="Cantidad" Width="40px"></asp:TextBox>
                      </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
-                 <asp:TemplateField>
+                 <asp:TemplateField >
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_registrarOrden" CommandName="select" runat="server" Text="Registrar"></asp:LinkButton>
                      </ItemTemplate>
@@ -52,7 +52,7 @@
              <Columns>
                  <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                  <asp:BoundField DataField="cantidad" HeaderText="Cantidad"   />
-                 <asp:TemplateField>
+                 <asp:TemplateField HeaderText="Consular">
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_consultarApunte" CommandName="select" runat="server"  ><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
                      </ItemTemplate>
@@ -62,7 +62,7 @@
                  
                  <asp:CheckBoxField DataField="chk_impreso"  HeaderText="Impreso" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"/>
                  
-                 <asp:TemplateField>
+                 <asp:TemplateField HeaderText="Eliminar">
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_eliminarOrden" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                      </ItemTemplate>
@@ -70,14 +70,14 @@
                      <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
                  
-                 <asp:TemplateField>
+                 <asp:TemplateField HeaderText="Estado" >
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_impreso" CommandName="impreso" runat="server" Text="Impreso"></asp:LinkButton>
                      </ItemTemplate>
                      <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
                  
-                 <asp:TemplateField>
+                 <asp:TemplateField HeaderText="Ubicación">
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_enLocal" CommandName="enLocal" runat="server" Text="En Local"></asp:LinkButton>
                      </ItemTemplate>

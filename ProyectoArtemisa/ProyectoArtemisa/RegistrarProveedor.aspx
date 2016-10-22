@@ -167,8 +167,8 @@
             <EditRowStyle BackColor="#ffffcc" />
             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
             <Columns>
-                <asp:BoundField DataField="nombreEditorial" HeaderText="Nombre" />
-                <asp:TemplateField>
+                <asp:BoundField DataField="nombreEditorial" HeaderText="Nombre" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                <asp:TemplateField HeaderText="Agregar editorial">
                     <ItemTemplate>
                         <asp:LinkButton ID="btn_agregarEditorial" CommandName="select" runat="server"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
                     </ItemTemplate>
@@ -184,7 +184,7 @@
             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
             <Columns>
                 <asp:BoundField DataField="nombreEditorial" HeaderText="Nombre" />
-                <asp:TemplateField>
+                <asp:TemplateField HeaderText="Eliminar">
                     <ItemTemplate>
                         <asp:LinkButton ID="btn_eliminarEditorial" CommandName="delete" runat="server"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></asp:LinkButton>
                     </ItemTemplate>

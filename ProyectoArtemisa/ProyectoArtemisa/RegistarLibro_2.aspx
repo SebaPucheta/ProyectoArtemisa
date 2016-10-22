@@ -243,8 +243,11 @@
             <div class="row">
                 <div class="form-group">
                     <label for="option" id="lbl_stock" class="control-label col-md-3">Stock: </label>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
+                        <div class="input-group">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_stock" value="" ViewStateMode="Enabled" />
+                        <div class="input-group-addon"><asp:Label class="input-group" runat="server" text="x Unidad" ></asp:Label></div>
+                        </div>
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_stock" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
@@ -276,7 +279,7 @@
                 </div>
             </div>
             <br />
-
+                 
             <!--Precio Libro -->
             <div class="row">
                 <div class="form-group">
