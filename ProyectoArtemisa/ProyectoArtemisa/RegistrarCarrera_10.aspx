@@ -67,7 +67,7 @@
                         <!--Valido que se haya insertado una carrera-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreCarrera" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar el nombre de Carrera</strong> 
+                                  <strong>Se debe ingresar el nombre de la Carrera</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>

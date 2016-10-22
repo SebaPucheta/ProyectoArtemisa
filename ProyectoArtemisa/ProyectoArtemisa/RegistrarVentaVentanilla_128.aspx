@@ -16,7 +16,7 @@
          <!-- Fecha -->
          <div class="row">
              <div class="form-group">
-                 <label for="documento" class="control-label col-md-2">Fecha:</label>
+                 <label for="documento" class="control-label col-md-2">Fecha: </label>
                  <div class="col-md-3">
                      <asp:label runat="server" type="text" ID="lbl_fecha" value=""  />
                  </div>
@@ -98,7 +98,7 @@
          <!-- Total -->
          <div class="row">
              <div class="form-group">
-                 <label for="documento" class="control-label col-md-2">Total : </label>
+                 <label for="documento" class="control-label col-md-2">Total: </label>
                  <div class="col-md-2">
                      <div class="input-group">
                       <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>

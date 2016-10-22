@@ -16,7 +16,7 @@
         <!--Ingreso el nombre de usuario-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">Nombre de usuario</label>
+                <label for="cuil" class="control-label col-md-3">Nombre de Usuario</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_nombreUsuario" ViewStateMode="Enabled" />
                     <br />
@@ -79,14 +79,14 @@
         <!--Ingreso el número de documento-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">D.N.I.</label>
+                <label for="cuil" class="control-label col-md-3">DNI</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_dni" ViewStateMode="Enabled" />
                     <br />
                     <!--Valido que se haya insertado un dni-->
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_dni" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un D.N.I.</strong> 
+                                  <strong>Se debe ingresar un DNI</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                   </button>
@@ -100,7 +100,7 @@
         <!--Ingreso el correo electrónico-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">e-mail</label>
+                <label for="cuil" class="control-label col-md-3">E-mail</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_email" ViewStateMode="Enabled" TextMode="Email" />
                     <br />

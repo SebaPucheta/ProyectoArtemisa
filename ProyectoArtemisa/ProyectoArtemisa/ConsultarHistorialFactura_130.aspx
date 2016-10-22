@@ -18,7 +18,7 @@
             <!-- Fecha desde  -->
             <div class="row">
                 <div class="form-group">
-                    <label for="documento" class="control-label col-md-2">Fecha desde :</label>
+                    <label for="documento" class="control-label col-md-2">Fecha desde: </label>
                     <div class="col-md-2">
                         <asp:TextBox runat="server" placeholder="dd/mm/aaaa" class="form-control" type="text" ID="txt_fechaDesde" value="" ViewStateMode="Enabled" />
                     </div>
@@ -29,7 +29,7 @@
             <!-- Fecha hasta  -->
             <div class="row">
                 <div class="form-group">
-                    <label for="documento" class="control-label col-md-2">Fecha hasta :</label>
+                    <label for="documento" class="control-label col-md-2">Fecha hasta: </label>
                     <div class="col-md-2">
                         <asp:TextBox runat="server" placeholder="dd/mm/aaaa" class="form-control" type="text" ID="txt_fechaHasta" value="" ViewStateMode="Enabled" />
                     </div>

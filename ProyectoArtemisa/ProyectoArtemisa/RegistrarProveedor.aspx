@@ -135,14 +135,14 @@
             <!--Ingreso el email-->
             <div class="row">
                 <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Email: </label>
+                    <label for="cuil" class="control-label col-md-3">E-mail: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_email" value="" ViewStateMode="Enabled" />
                         <br />
                         <!--Valido que se haya insertado una categoria-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_email" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar el email de la Editorial</strong> 
+                                  <strong>Se debe ingresar el e-mail de la Editorial</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -150,7 +150,7 @@
                         </asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="reEmail" runat="server" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txt_email" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un email válido</strong> 
+                                  <strong>Se debe ingresar un e-mail válido</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>

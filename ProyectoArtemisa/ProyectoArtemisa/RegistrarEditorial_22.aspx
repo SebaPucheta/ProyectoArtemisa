@@ -22,7 +22,7 @@
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreEditorial" value="" ViewStateMode="Enabled" />
                         <br />
                         <!--Valido que se haya insertado una categoria-->
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreEditorial" Display="Dynamic" ValidationGroup="AllValidator" ForeColor="Red" ErrorMessage="Debe ingresar un nombre">
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreEditorial" Display="Dynamic" ValidationGroup="AllValidator" ForeColor="Red" ErrorMessage="Se debe ingresar un nombre">
                         </asp:RequiredFieldValidator>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
         <!-- Universidad -->
         <div class="row">
             <div class="form-group">
-                <label for="option" class="control-label col-md-3">Universidad:</label>
+                <label for="option" class="control-label col-md-3">Universidad: </label>
                 <div class="col-md-5">
                     <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_universidadMateria" OnSelectedIndexChanged="ddl_universidadMateria_SelectedIndexChanged"  AutoPostBack="true"/>
                 </div>
@@ -25,7 +25,7 @@
         <!-- Facultad -->
         <div class="row">
             <div class="form-group">
-                <label for="option" class="control-label col-md-3">Facultad:</label>
+                <label for="option" class="control-label col-md-3">Facultad: </label>
                 <div class="col-md-5">
                     <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_facultadMateria" OnSelectedIndexChanged="ddl_facultadMateria_SelectedIndexChanged" AutoPostBack="true" />
                 </div>
@@ -38,7 +38,7 @@
 
         <div class="row">
             
-                <label for="option" class="control-label col-md-3">Carrera:</label>
+                <label for="option" class="control-label col-md-3">Carrera: </label>
                 <br />
             <div class="col-lg-6 ">
                 <asp:GridView ID="ggv_grillaCarrerasMateria" runat="server" AutoGenerateColumns="False" CssClass="table">
@@ -68,7 +68,7 @@
                 <!-- Nivel de la materia -->
                 <div class="row">
                     <div class="form-group">
-                        <label for="documento" class="control-label col-md-3">Año de cursado :</label>
+                        <label for="documento" class="control-label col-md-3">Año de cursado: </label>
                         <div class="col-md-7">
                             <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nivelCursadoMateria" value="" ViewStateMode="Enabled" />
                             
@@ -83,7 +83,7 @@
                             </asp:CompareValidator>
                             
                             <!--Verifica que el valor ingresado sea razonablemente valido-->
-                            <asp:RangeValidator ControlToValidate="txt_nivelCursadoMateria" MaximumValue="6" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server"  ValidationGroup="AllValidator" MinimumValue="1" Display="Dynamic">
+                            <asp:RangeValidator ControlToValidate="txt_nivelCursadoMateria" MaximumValue="6" Type="Integer" EnableClientScript="false" Text="Cantidad de dígitos incorrecto" runat="server"  ValidationGroup="AllValidator" MinimumValue="1" Display="Dynamic">
                                 <div class="alert alert-danger">
                                   <strong>El año ingresado no es correcto</strong> 
                                   <button class="close" data-dismiss="alert">
@@ -108,7 +108,7 @@
         <!-- Nombre materia-->
         <div class="row">
             <div class="form-group">
-                <label for="nombre" class="control-label col-md-3">Materia :</label>
+                <label for="nombre" class="control-label col-md-3">Materia: </label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreMateriaLibro" value="" ViewStateMode="Enabled" />
                     <!-- Verifica que se el textBox no este vacio-->
@@ -127,13 +127,13 @@
         <!-- Descripcion materia-->
         <div class="row">
             <div class="form-group">
-                <label for="nombre" class="control-label col-md-3">Descripcion :</label>
+                <label for="nombre" class="control-label col-md-3">Descripción: </label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" class="form-control" type="text" ID="txt_descripcionMateriaLibro" value="" ViewStateMode="Enabled" TextMode="MultiLine"/>
                     <!-- Verifica que se el textBox no este vacio-->
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_descripcionMateriaLibro" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar una descripcion</strong> 
+                                  <strong>Se debe ingresar una descripción</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>

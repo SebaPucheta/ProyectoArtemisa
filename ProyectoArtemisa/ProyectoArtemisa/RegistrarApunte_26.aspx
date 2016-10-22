@@ -107,7 +107,7 @@
                         </asp:CompareValidator>
 
                         <!--Verifica que el valor ingresado sea razonablemente valido-->
-                        <asp:RangeValidator ControlToValidate="txt_ano" MaximumValue="3000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="1990" Display="Dynamic">
+                        <asp:RangeValidator ControlToValidate="txt_ano" MaximumValue="3000" Type="Integer" EnableClientScript="false" Text="Cantidad de dígitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="1990" Display="Dynamic">
                                 <div class="alert alert-danger">
                                   <strong>El año ingresado es incorrecto</strong> 
                                   <button class="close" data-dismiss="alert">
@@ -265,9 +265,9 @@
                               </div>
                         </asp:CompareValidator>
                         <!--Verifica que el valor ingresado sea razonablemente valido-->
-                        <asp:RangeValidator ControlToValidate="txt_cantHojasApunte" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                        <asp:RangeValidator ControlToValidate="txt_cantHojasApunte" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de dígitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">
-                                  <strong>La cantidad de hojas ingresadas es incorrecto</strong> 
+                                  <strong>La cantidad de hojas ingresadas es incorrecta</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -375,7 +375,7 @@
                               </div>
                             </asp:CompareValidator>
                             <!--Verifica que el valor ingresado sea razonablemente valido-->
-                            <asp:RangeValidator ControlToValidate="txt_precioApunteDigital" MaximumValue="1000000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                            <asp:RangeValidator ControlToValidate="txt_precioApunteDigital" MaximumValue="1000000" Type="Integer" EnableClientScript="false" Text="Cantidad de dígitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">
                                   <strong>El precio ingresado es incorrecto</strong> 
                                   <button class="close" data-dismiss="alert">

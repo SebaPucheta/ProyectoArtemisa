@@ -226,7 +226,7 @@
                               </div>
                         </asp:CompareValidator>
                         <!--Verifica que el valor ingresado sea razonablemente valido-->
-                        <asp:RangeValidator ControlToValidate="txt_cantidadHojasLibro" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                        <asp:RangeValidator ControlToValidate="txt_cantidadHojasLibro" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de dígitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">
                                   <strong>La cantidad de hojas ingresada es incorrecto</strong> 
                                   <button class="close" data-dismiss="alert">
@@ -264,7 +264,7 @@
                               </div>
                         </asp:CompareValidator>
                         <!--Verifica que el valor ingresado sea razonablemente valido-->
-                        <asp:RangeValidator ControlToValidate="txt_stock" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de digitos incorrecto" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
+                        <asp:RangeValidator ControlToValidate="txt_stock" MaximumValue="10000" Type="Integer" EnableClientScript="false" Text="Cantidad de dígitos incorrectos" runat="server" ValidationGroup="AllValidator" MinimumValue="0" Display="Dynamic">
                                 <div class="alert alert-danger">
                                   <strong>El stock ingresado es incorrecto</strong> 
                                   <button class="close" data-dismiss="alert">

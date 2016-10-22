@@ -16,7 +16,7 @@
             <!-- Universidad -->
             <div class="row">
                 <div class="form-group">
-                    <label for="option" class="control-label col-md-3">Universidad:</label>
+                    <label for="option" class="control-label col-md-3">Universidad: </label>
                     <div class="col-md-5">
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_universidadFacultad" />
                     </div>
@@ -29,7 +29,7 @@
             <!-- Nombre -->
             <div class="row">
                 <div class="form-group">
-                    <label for="nombre" class="control-label col-md-3">Nombre :</label>
+                    <label for="nombre" class="control-label col-md-3">Nombre: </label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombre" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
@@ -49,7 +49,7 @@
             <!-- Provincia -->
             <div class="row">
                 <div class="form-group">
-                    <label for="option" class="control-label col-md-3">Provincia:</label>
+                    <label for="option" class="control-label col-md-3">Provincia: </label>
                     <div class="col-md-5">
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_provincia" OnSelectedIndexChanged="ddl_provinciaApunte_SelectedIndexChanged"/>
                     </div>
@@ -62,7 +62,7 @@
             <!--Ciudad -->
             <div class="row">
                 <div class="form-group">
-                    <label for="option" class="control-label col-md-3">Ciudad:</label>
+                    <label for="option" class="control-label col-md-3">Ciudad: </label>
                     <div class="col-md-5">
                         <asp:dropdownlist CssClass="form-control" runat="server" AutoPostBack="true" ID="ddl_ciudad" />
                     </div>

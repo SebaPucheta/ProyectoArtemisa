@@ -8,7 +8,7 @@
         <div>
             <!-- Titulo -->
             <div class="row">
-                <h1 class="text-primary text-center"><b>Registrar Categoria</b></h1>
+                <h1 class="text-primary text-center"><b>Registrar Categoría</b></h1>
             </div>
             <br />
            
@@ -18,14 +18,14 @@
             <!--Ingreso el nombre de la Categoria-->
             <div class="row">
                 <div class="form-group">
-                    <label for="cuil" class="control-label col-md-3">Nombre de la Categoria</label>
+                    <label for="cuil" class="control-label col-md-3">Nombre de la Categoría</label>
                     <div class="col-md-7">
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_nombreCategoria" value="" ViewStateMode="Enabled" />
                         <br />
                         <!--Valido que se haya insertado una categoria-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_nombreCategoria" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar el nombre de la Categoria</strong> 
+                                  <strong>Se debe ingresar el nombre de la Categoría</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>

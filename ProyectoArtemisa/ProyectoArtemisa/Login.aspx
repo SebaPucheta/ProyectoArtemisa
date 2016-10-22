@@ -88,7 +88,7 @@
                                             <tr>
                                                 <td align="left">
                                                      <div class="col-lg-8">
-                                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" CssClass="btn btn-lg btn_azul btn_flat btn_grande" Text="Ingresar" ValidationGroup="log_in" />
+                                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" CssClass="btn btn-lg btn_azul btn_flat btn_grande" Text="Ingresar." ValidationGroup="log_in" />
                                                      </div>
                                                 </td>
                                             </tr>

@@ -80,14 +80,14 @@
         <!--Ingreso el número de documento-->
         <div class="row">
             <div class="form-group">
-                <label for="cuil" class="control-label col-md-3">D.N.I.</label>
+                <label for="cuil" class="control-label col-md-3">DNI</label>
                 <div class="col-md-7">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txt_dni" ViewStateMode="Enabled" />
                     <br />
                     <!--Valido que se haya insertado un dni-->
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_dni" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un D.N.I.</strong> 
+                                  <strong>Se debe ingresar un DNI</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                   </button>
@@ -117,7 +117,7 @@
                     <!--Valido que se haya insertado un email con su formato correcto-->
                     <asp:RegularExpressionValidator runat="server" ValidationExpression="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" ControlToValidate="txt_email" Display="Dynamic" ValidationGroup="AllValidator">
                         <div class="alert alert-danger">
-                                  <strong>Se debe ingresar un e-mail correctamente</strong> 
+                                  <strong>El formato de e-mail ingresado no es correcto</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -161,7 +161,7 @@
                     <!--Valido que se haya insertado una contraseña-->
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_pass2" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">
-                                  <strong>Se debe reingresar la contraseña</strong> 
+                                  <strong>Reingrese la contraseña</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
@@ -170,7 +170,7 @@
                     <!--Valido que se haya ingresado la misma contraseña que antes-->
                     <asp:CompareValidator runat="server" ControlToCompare="txt_pass" ControlToValidate="txt_pass2" Display="Dynamic" ValidationGroup="AllValidator">
                         <div class="alert alert-danger">
-                                  <strong>Las contraseñas no son iguales</strong> 
+                                  <strong>Las contraseñas no coinciden</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>

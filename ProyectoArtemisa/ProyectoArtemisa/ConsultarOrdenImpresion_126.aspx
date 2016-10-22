@@ -9,7 +9,7 @@
  
          <!-- Titulo -->
          <div class="row">
-                <h1 class="text-primary text-center"><b>Ordenes de Impresion</b></h1>
+                <h1 class="text-primary text-center"><b>Órdenes de Impresión</b></h1>
             </div>
          <br />
 

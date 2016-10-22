@@ -11,14 +11,14 @@
 
             <!-- Titulo -->
             <div class="row">
-                <h1 class="text-primary text-center"><b>Historial de Ordenes de Impresion</b></h1>
+                <h1 class="text-primary text-center"><b>Historial de Órdenes de Impresión</b></h1>
             </div>
             <br />
 
             <!-- Fecha desde  -->
             <div class="row">
                 <div class="form-group">
-                    <label for="documento" class="control-label col-md-2">Fecha desde :</label>
+                    <label for="documento" class="control-label col-md-2">Fecha desde: </label>
                     <div class="col-md-2">
                         <!--Le quito el TextMode="Date" y le coloco jquery Autor: Martin-->
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_fechaDesde" placeholder="dd/mm/aaaa" value="" ViewStateMode="Enabled" />
@@ -30,7 +30,7 @@
             <!-- Fecha hasta  -->
             <div class="row">
                 <div class="form-group">
-                    <label for="documento" class="control-label col-md-2">Fecha hasta :</label>
+                    <label for="documento" class="control-label col-md-2">Fecha hasta: </label>
                     <div class="col-md-2">
                         <!--Le quito el TextMode="Date" y le coloco jquery Autor: Martin-->
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_fechaHasta" placeholder="dd/mm/aaaa" value="" ViewStateMode="Enabled" />

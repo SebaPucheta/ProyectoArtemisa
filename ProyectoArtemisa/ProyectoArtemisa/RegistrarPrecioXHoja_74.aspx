@@ -23,7 +23,7 @@
             <!-- Precio -->
             <div class="row">
                 <div class="form-group">
-                    <label for="nombre" class="control-label col-md-3">Nuevo precio :</label>
+                    <label for="nombre" class="control-label col-md-3">Nuevo precio: </label>
                     <div class="col-md-3">
 
                         <asp:TextBox runat="server" class="form-control" type="text" ID="txt_precio" value="" ViewStateMode="Enabled" />
@@ -53,13 +53,13 @@
             <!-- Fecha de registro -->
             <div class="row">
                 <div class="form-group">
-                    <label for="nombre" class="control-label col-md-3">Fecha de registro :</label>
+                    <label for="nombre" class="control-label col-md-3">Fecha de registro: </label>
                     <div class="col-md-3">
                         <asp:TextBox runat="server" class="form-control" Enabled ="false" type="text" ID="txt_fecha" value="" ViewStateMode="Enabled" />
                          <!-- Verifica que se ingrese un fecha en el formato correcto-->
                             <asp:CompareValidator ControlToValidate="txt_fecha" cultureinvariantvalues="true" display="Dynamic" ID="cv_fechaNacimiento" runat="server" Operator="DataTypeCheck" Type="Date" setfocusonerror="true" ValidationGroup="AllValidator">
                                 <div class="alert alert-danger">
-                                  <strong>Formato de fecha invalido, el formato correcto es dd/mm/aaaa</strong> 
+                                  <strong>Formato de fecha inválido, el formato correcto es dd/mm/aaaa</strong> 
                                   <button class="close" data-dismiss="alert">
                                       <span>&times;</span>
                                  </button>
