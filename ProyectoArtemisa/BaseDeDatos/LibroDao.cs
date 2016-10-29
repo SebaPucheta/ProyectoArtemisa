@@ -467,7 +467,7 @@ namespace BaseDeDatos
                     cmd2.Parameters.AddWithValue(@"precioUnitario", detalleIngresoLibro.precioUnitario);
 
                     //Update de la cantidad y precio de un libro
-                    string query3 = "UPDATE Libro SET stock = stock - @cantidad, precioLibro = @precioUnitario";
+                    string query3 = "UPDATE Libro SET stock = stock + @cantidad, precioLibro = @precioUnitario";
                     SqlCommand cmd3 = new SqlCommand(query3, cnn, trans);
                     cmd3.Parameters.AddWithValue(@"cantidad", detalleIngresoLibro.cantidad);
                     cmd3.Parameters.AddWithValue(@"precioUnitario", detalleIngresoLibro.precioUnitario);

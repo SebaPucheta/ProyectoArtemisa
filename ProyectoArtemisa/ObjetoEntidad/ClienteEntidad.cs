@@ -13,6 +13,7 @@ namespace Entidades
         public string apellidoCliente { get; set; }
         public int nroDni { get; set; }
         public int idTipoDNI { get; set; }
+        public string email { get; set; }
         public List<CarreraEntidad> ListaCarreras { get; set; }
     }
 }

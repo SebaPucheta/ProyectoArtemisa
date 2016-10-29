@@ -20,12 +20,13 @@ namespace BaseDeDatos
             SqlTransaction trans = cn.BeginTransaction();
             try
             {
-                string consulta = @"INSERT INTO Cliente (nombreCliente, apellidoCliente, nroDni, idTipoDNI) VALUES (@nom, @ape, @dni, @tipoDni); SELECT SCOPE_IDENTITY();";
+                string consulta = @"INSERT INTO Cliente (nombreCliente, apellidoCliente, nroDni, idTipoDNI, email) VALUES (@nom, @ape, @dni, @tipoDni, @email); SELECT SCOPE_IDENTITY();";
                 SqlCommand cmd = new SqlCommand(consulta, cn, trans);
                 cmd.Parameters.AddWithValue(@"nom", cli.nombreCliente);
                 cmd.Parameters.AddWithValue(@"ape", cli.apellidoCliente);
                 cmd.Parameters.AddWithValue(@"dni", cli.nroDni);
                 cmd.Parameters.AddWithValue(@"tipoDni", cli.idTipoDNI);
+                cmd.Parameters.AddWithValue(@"email", cli.email);
                 cli.idCliente = Convert.ToInt32(cmd.ExecuteScalar());
 
                 consulta = @"INSERT INTO Usuario (nombreUsuario, contrasena, idCliente) VALUES (@usuario, @pass, @idCli)";
@@ -58,12 +59,12 @@ namespace BaseDeDatos
                 SqlCommand cmd = new SqlCommand(consulta, cn, trans);
                 cmd.Parameters.AddWithValue(@"nom", cli.nombreCliente);
                 cmd.Parameters.AddWithValue(@"ape", cli.apellidoCliente);
-                cmd.Parameters.AddWithValue(@"email", user.email);
+                cmd.Parameters.AddWithValue(@"email", cli.email);
                 cli.idCliente = Convert.ToInt32(cmd.ExecuteScalar());
 
                 consulta = @"INSERT INTO Usuario (nombreUsuario, contrasena, idCliente, idRol) VALUES (@usuario, @pass, @idCli, @idRol)";
                 cmd = new SqlCommand(consulta, cn, trans);
-                cmd.Parameters.AddWithValue("@usuario", user.email);
+                cmd.Parameters.AddWithValue("@usuario", cli.email);
                 cmd.Parameters.AddWithValue("@pass", user.contrasena);
                 cmd.Parameters.AddWithValue("@idCli", cli.idCliente);
                 cmd.Parameters.AddWithValue("@idRol", user.idRol);
@@ -116,25 +117,31 @@ namespace BaseDeDatos
         /// </summary> By Gumer 
         /// <param name="idCliente"></param>
         /// <returns></returns>
-        public static UsuarioEntidadQuery ConsultarUnUsuario(int idCliente)
+        public static UsuarioEntidadQuery ConsultarUnUsuario(int idUsuario)
         {
             UsuarioEntidadQuery usu = new UsuarioEntidadQuery();
 
-            string query = @"SELECT u.idUsuario, u.nombreUsuario, u.email, c.idCliente, c.nombreCliente, c.apellidoCliente, c.nroDni, t.idTipoDNI
-                             FROM Usuario u INNER JOIN Cliente c ON u.idCliente = c.idCliente
-                                            INNER JOIN TipoDNI t ON t.idTipoDNI = c.idTipoDNI
-                             WHERE c.idCliente = @idCliente";
+            string query = @"SELECT u.idUsuario, u.nombreUsuario, u.contrasena, r.nombreRol, c.nombreCliente, c.apellidoCliente, c.nroDni, t.nombreTipoDNI, c.email
+                             FROM Usuario u INNER JOIN Rol r ON u.idRol = r.idRol
+                                            INNER JOIN Cliente c ON u.idCLiente = c.idCliente
+                                            INNER JOIN TipoDNI t ON c.idTipoDNI = t.idTipoDNI
+                             WHERE u.idusuario = @idUsuario";
 
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
-            cmd.Parameters.AddWithValue(@"idCliente", idCliente);
+            cmd.Parameters.AddWithValue(@"idUsuario", idUsuario);
 
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                usu.clienteQuery = ConsultarUnClienteQuery(idCliente);
                 usu.idUsuario = int.Parse(dr["idUsuario"].ToString());
                 usu.nombreUsuario = dr["nombreUsuario"].ToString();
-                usu.email = dr["email"].ToString();
+                usu.contrasena = dr["contrasena"].ToString();
+                usu.nombreRol = dr["nombreRol"].ToString();
+                usu.clienteQuery.nombreCliente = dr["nombreCliente"].ToString();
+                usu.clienteQuery.apellidoCliente = dr["apellidoCliente"].ToString();
+                usu.clienteQuery.nroDni = int.Parse(dr["nroDni"].ToString());
+                usu.nombreTipoDNI = dr["nombreTipoDNI"].ToString();
+                usu.clienteQuery.email = dr["email"].ToString();
             }
             dr.Close();
             cmd.Connection.Close();

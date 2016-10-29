@@ -8,11 +8,10 @@ namespace Entidades
 {
     public class UsuarioEntidad
     {
-        public string nombreUsuario { get; set; }
         public int idUsuario { get; set; }
+        public string nombreUsuario { get; set; }
         public string contrasena { get; set; }
         public int idCliente { get; set; }
-        public string  email { get; set; }
         public int idRol { get; set; }
     }
 }
