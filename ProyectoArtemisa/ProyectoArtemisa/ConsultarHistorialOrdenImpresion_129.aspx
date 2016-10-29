@@ -41,7 +41,7 @@
 
 
             <div class="col-lg-offset-9">
-                <asp:Button runat="server" ID="btn_confirmar" Text="Buscar" CssClass="btn btn-primary btn_flat" Enabled="true" OnClick="btn_confirmar_Click" />
+                <asp:Button runat="server" ID="btn_confirmar" Text="Buscar" CssClass="btn btn_azul btn_flat" Enabled="true" OnClick="btn_confirmar_Click" />
             </div>
             <br />
             <br />

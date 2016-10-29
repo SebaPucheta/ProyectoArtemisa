@@ -11,6 +11,7 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["nombreUsuario"] = HttpContext.Current.User.Identity.Name.ToString();
             Page.MaintainScrollPositionOnPostBack = true;
 
             if (HttpContext.Current.User.IsInRole("administrador"))

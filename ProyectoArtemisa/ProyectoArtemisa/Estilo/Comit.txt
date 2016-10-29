@@ -1,0 +1,5 @@
+<div class="col-md-3">
+                         <div class="input-group">
+                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_stock" value="" ViewStateMode="Enabled" />
+                        <div class="input-group-addon"><asp:Label class="input-group" runat="server" text="x Unidad" ></asp:Label></div>
+                           </div>

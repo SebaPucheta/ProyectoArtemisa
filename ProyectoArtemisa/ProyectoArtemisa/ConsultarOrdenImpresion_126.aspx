@@ -89,7 +89,7 @@
 
          <!-- Boton agregar Apunte-->
          <div class="row col-lg-offset-9 col-md-offset-9 col-md-offset-9 col-sm-offset-9">
-              <asp:Button Text="Agregar" OnClick="btn_agregar_Click" ID="btn_agregar" CssClass="btn btn-lg btn_verde btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
+              <asp:Button Text="Agregar" OnClick="btn_agregar_Click" ID="btn_agregar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
          </div>
          <br />
 

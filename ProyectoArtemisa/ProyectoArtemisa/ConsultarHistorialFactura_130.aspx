@@ -38,7 +38,7 @@
             <br />
             <%-- Autor: Martin --%>
             <div class="col-lg-offset-9">
-                <asp:Button runat="server" ID="btn_buscar" Text="Buscar" CssClass="btn btn-primary btn_flat" Enabled="true" OnClick="btn_buscar_Click" />
+                <asp:Button runat="server" ID="btn_buscar" Text="Buscar" CssClass="btn btn_azul btn_flat" Enabled="true" OnClick="btn_buscar_Click" />
             </div>
             <br />
             <br />
@@ -53,9 +53,7 @@
                     <asp:BoundField DataField="idFactura" HeaderText="Nº" />
                     <asp:BoundField DataField="fecha" HeaderText="Fecha" />
                     <asp:BoundField DataField="total" HeaderText="Total" ApplyFormatInEditMode="False" />
-                    <asp:BoundField DataField="nombreTipoPago" HeaderText="Tipo de Pago" ApplyFormatInEditMode="False" />
-
-                    <asp:TemplateField>
+                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton ID="btn_consultarFactura" CommandName="select" runat="server"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
                         </ItemTemplate>

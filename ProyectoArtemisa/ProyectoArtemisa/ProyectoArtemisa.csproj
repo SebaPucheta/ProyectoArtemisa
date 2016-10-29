@@ -105,6 +105,7 @@
     <Content Include="Estilo\Sidebar.html" />
     <Content Include="Estilo\Sidebar.js" />
     <Content Include="Global.asax" />
+    <Content Include="IngresoLibro.aspx" />
     <Content Include="jquery-3.0.0.min.js" />
     <Content Include="jquery-ui-1.11.4.custom\external\jquery\jquery.js" />
     <Content Include="jquery-ui-1.11.4.custom\images\ui-icons_444444_256x240.png" />
@@ -212,6 +213,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IngresoLibro.aspx.cs">
+      <DependentUpon>IngresoLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IngresoLibro.aspx.designer.cs">
+      <DependentUpon>IngresoLibro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu.Master.cs">
       <DependentUpon>Menu.Master</DependentUpon>
