@@ -19,8 +19,8 @@ namespace BaseDeDatos
         /// Autor: Modificado por Martin 03-09-16
         public static List<FacturaEntidadQuery> ListarFacturas(string fechaDesde, string fechaHasta)
         {
-            string query = @"SELECT f.idFactura, f.fecha, f.total, tp.descripcion
-                            FROM Factura f INNER JOIN TipoPago tp ON f.idTipoPago = tp.idTipoPago
+            string query = @"SELECT f.idFactura, f.fecha, f.total
+                            FROM Factura f
                             WHERE f.fecha BETWEEN convert(date, @fechaDesde, 103) AND convert(date, @fechaHasta, 103)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
@@ -45,7 +45,7 @@ namespace BaseDeDatos
                 factura.idFactura = int.Parse(dr["idFactura"].ToString());
                 factura.fecha = DateTime.Parse(dr["fecha"].ToString());
                 factura.total = float.Parse(dr["total"].ToString());
-                factura.nombreTipoPago = dr["descripcion"].ToString();
+                //factura.nombreTipoPago = dr["descripcion"].ToString();
                 lista.Add(factura);
             }
             dr.Close();
