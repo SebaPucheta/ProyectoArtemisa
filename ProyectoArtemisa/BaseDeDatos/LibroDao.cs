@@ -447,6 +447,7 @@ namespace BaseDeDatos
 
             try
             {
+                //Insert de la tabla ingresoLibro
                 string query1 = "INSERT INTO IngresoLibro (fecha, idProveedor, total, idUsuario) VALUES (@fecha, @idProveedor, @total, @idUsuario)";
                 SqlCommand cmd1 = new SqlCommand(query1, cnn, trans);
                 cmd1.Parameters.AddWithValue(@"fecha", libro.fecha);
@@ -457,8 +458,25 @@ namespace BaseDeDatos
 
                 foreach(DetalleIngresoLibroEntidad detalleIngresoLibro in libro.listaDetalleIngresoLibro)
                 {
+                    //Insert de la tabla detalleIngresoLibro
                     string query2 = "INSERT INTO DetalleIngresoLibro (idIngresoLibro, idLibro, cantidad, precioUnitario) VALUES (@idIngresoLibro, @idLibro, @cantidad, @precioUnitario)";
+                    SqlCommand cmd2 = new SqlCommand(query2, cnn, trans);
+                    cmd2.Parameters.AddWithValue(@"idIngresoLibro", detalleIngresoLibro.idIngresoLibro);
+                    cmd2.Parameters.AddWithValue(@"idLibro", detalleIngresoLibro.idLibro);
+                    cmd2.Parameters.AddWithValue(@"cantidad", detalleIngresoLibro.cantidad);
+                    cmd2.Parameters.AddWithValue(@"precioUnitario", detalleIngresoLibro.precioUnitario);
+
+                    //Update de la cantidad y precio de un libro
+                    string query3 = "UPDATE Libro SET stock = stock - @cantidad, precioLibro = @precioUnitario";
+                    SqlCommand cmd3 = new SqlCommand(query3, cnn, trans);
+                    cmd3.Parameters.AddWithValue(@"cantidad", detalleIngresoLibro.cantidad);
+                    cmd3.Parameters.AddWithValue(@"precioUnitario", detalleIngresoLibro.precioUnitario);
+                    cmd3.ExecuteNonQuery();
                 }
+
+
+                //--- Commit
+                trans.Commit();
             }
             catch (Exception)
             {

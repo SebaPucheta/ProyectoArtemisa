@@ -12,5 +12,6 @@ namespace Entidades
         public int idIngresoLibro { get; set; }
         public int idLibro { get; set; }
         public int cantidad { get; set; }
+        public float precioUnitario { get; set; }
     }
 }
