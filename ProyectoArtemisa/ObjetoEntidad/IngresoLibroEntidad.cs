@@ -13,5 +13,6 @@ namespace Entidades
         public int idProveedor { get; set; }
         public float total { get; set; }
         public int idUsuario { get; set; }
+        public List<DetalleIngresoLibroEntidad> listaDetalleIngresoLibro { get; set; }
     }
 }

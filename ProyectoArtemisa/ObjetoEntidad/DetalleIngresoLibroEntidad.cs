@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class DetalleIngresoLibroEntidad
+    public class DetalleIngresoLibroEntidad
     {
         public int idDetalleIngresoLibro { get; set; }
         public int idIngresoLibro { get; set; }

@@ -440,5 +440,34 @@ namespace BaseDeDatos
             return lista;
         }
 
+        public static void RegistrarIngresoLibro(IngresoLibroEntidad libro)
+        {
+            SqlConnection cnn = obtenerBD();
+            SqlTransaction trans = cnn.BeginTransaction();
+
+            try
+            {
+                string query1 = "INSERT INTO IngresoLibro (fecha, idProveedor, total, idUsuario) VALUES (@fecha, @idProveedor, @total, @idUsuario)";
+                SqlCommand cmd1 = new SqlCommand(query1, cnn, trans);
+                cmd1.Parameters.AddWithValue(@"fecha", libro.fecha);
+                cmd1.Parameters.AddWithValue(@"idProveedor", libro.idProveedor);
+                cmd1.Parameters.AddWithValue(@"total", libro.total);
+                cmd1.Parameters.AddWithValue(@"idUsuario", libro.idUsuario);
+                int idIngresoLibro = int.Parse(cmd1.ExecuteScalar().ToString());
+
+                foreach(DetalleIngresoLibroEntidad detalleIngresoLibro in libro.listaDetalleIngresoLibro)
+                {
+                    string query2 = "INSERT INTO DetalleIngresoLibro (idIngresoLibro, idLibro, cantidad, precioUnitario) VALUES (@idIngresoLibro, @idLibro, @cantidad, @precioUnitario)";
+                }
+            }
+            catch (Exception)
+            {
+                trans.Rollback();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
     }
 }
