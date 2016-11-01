@@ -17,11 +17,12 @@ namespace ProyectoArtemisa
             if (!IsPostBack)
             {
 
+                CargarComboProveedor();
+                lbl_usuario.Text = Session["nombreApellidoUsuario"].ToString();
                 if (bool.Parse(Session["agregarDetalle"].ToString()))
                 {
                     lbl_fecha.Text = Session["fecha"].ToString();
-                    ddl_proveedores.SelectedValue = Session["proveedor"].ToString();
-                    lbl_usuario.Text = Session["nombreUsuario"].ToString();
+                    ddl_proveedores.SelectedValue= Session["proveedor"].ToString();
                     CargarGrillaDetalles();
                     CargarNuevoDetalle();
                     BorrarVariablesGlobales();
@@ -33,6 +34,14 @@ namespace ProyectoArtemisa
                 }
             }
             lbl_total.Text = CalcularTotal().ToString();
+        }
+
+        protected void CargarComboProveedor()
+        {
+            ddl_proveedores.DataSource = ProveedorDao.ConsultarProveedores();
+            ddl_proveedores.DataTextField = "nombreProveedor";
+            ddl_proveedores.DataValueField = "idProveedor";
+            ddl_proveedores.DataBind();
         }
 
         //Cargar la Grilla que tiene un nuevo detalle
@@ -120,6 +129,8 @@ namespace ProyectoArtemisa
             Session["agregarDetalle"] = false;
             Session["objetoApunteEntidad"] = "";
             Session["objetoLibroEntidad"] = "";
+            Session["objetoLibroEntidad"] = "";
+            Session["proveedor"] = "";
         }
 
         protected double CalcularTotal()
@@ -127,7 +138,7 @@ namespace ProyectoArtemisa
             double total=0;
             foreach(DataRow fila in (Session["tablaDetalles"] as DataTable).Rows )
             {
-                total += Convert.ToDouble(fila[5].ToString().Substring(2));
+                total += Convert.ToDouble(fila[4].ToString().Substring(1));
             }
             return total;
         }
@@ -193,7 +204,7 @@ namespace ProyectoArtemisa
                 detalleIngreso.idLibro = Convert.ToInt32(fila[0]); 
                 string cantidad=fila[3].ToString().Replace('n', ' ').Replace('U', ' ').Replace('i', ' ').Replace('d', ' ').Replace('a', ' ').Replace('e', ' ').Replace('s', ' ');
                 detalleIngreso.cantidad = Convert.ToInt32(cantidad.Trim());
-                detalleIngreso.precioUnitario = float.Parse(fila[2].ToString().Substring(2));
+                detalleIngreso.precioUnitario = float.Parse(fila[2].ToString().Substring(1));
                 
                 listaDetalles.Add(detalleIngreso);
             }
@@ -212,7 +223,7 @@ namespace ProyectoArtemisa
             Session["fecha"] = lbl_fecha.Text;
             Session["proveedor"] = ddl_proveedores.SelectedValue;
             Session["agregarDetalle"] = true;
-            PilaForms.AgregarForm("RegistrarVentaVentanilla_128.aspx");
+            PilaForms.AgregarForm("IngresoLibro.aspx");
             Response.Redirect("ConsultarLibroApunte.aspx");
         }
 

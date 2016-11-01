@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
     <div class="container col-lg-offset-3 col-lg-7" id="div_form">
-     <div class="form-group">
+     
         
          <!-- Titulo -->
             <div class="row">
@@ -27,13 +27,13 @@
              <div class="form-group">
                  <label for="documento" class="control-label col-md-2">Proveedores: </label>
                  <div class="col-md-3">
-                     <asp:DropDownList runat="server" type="text" ID="ddl_proveedores" value=""  />
+                     <asp:DropDownList runat="server" type="text" ID="ddl_proveedores" CssClass="form-control" value=""  />
                  </div>
              </div>
          </div>
          <br />
 
-         <!-- Proveedores -->
+         <!-- Usuario -->
          <div class="row">
              <div class="form-group">
                  <label for="documento" class="control-label col-md-2">Usuario: </label>
@@ -43,17 +43,8 @@
              </div>
          </div>
          <br />
+        <br />
 
-         <!-- Proveedores -->
-         <div class="row">
-             <div class="form-group">
-                 <label for="documento" class="control-label col-md-2">Usuario: </label>
-                 <div class="col-md-3">
-                     <asp:label runat="server" type="text" ID="nombreUsuario" value=""  />
-                 </div>
-             </div>
-         </div>
-         <br />
           <!--Grilla que tiene un nuevo detalle-->
          <asp:GridView ID="dgv_nuevoIngresoStockDetalle" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="false" OnRowDeleting="btn_limpiarGrilla_RowDeleting" OnSelectedIndexChanged="btn_agregarDetalle_SelectedIndexChanged" >
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
@@ -127,7 +118,7 @@
          <!-- Total -->
          <div class="row">
              <div class="form-group">
-                 <label for="documento" class="control-label col-md-2">Total: </label>
+                 <label for="documento"  class="control-label col-md-2">Total: </label>
                  <div class="col-md-2">
                      <div class="input-group">
                       <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
@@ -146,7 +137,7 @@
             <br />
 
                  
-         </div>
+         
         </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">

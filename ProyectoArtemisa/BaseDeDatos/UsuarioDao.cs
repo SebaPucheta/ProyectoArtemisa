@@ -148,6 +148,39 @@ namespace BaseDeDatos
             return usu;
         }
 
+        public static UsuarioEntidadQuery ConsultarUnUsuarioPorNick(string nombreUsuario)
+        {
+            UsuarioEntidadQuery usu = new UsuarioEntidadQuery();
+
+            string query = @"SELECT u.idUsuario, u.nombreUsuario, u.contrasena, r.nombreRol, c.nombreCliente, c.apellidoCliente, c.nroDni, t.nombreTipoDNI, c.email
+                             FROM Usuario u INNER JOIN Rol r ON u.idRol = r.idRol
+                                            INNER JOIN Cliente c ON u.idCLiente = c.idCliente
+                                            INNER JOIN TipoDNI t ON c.idTipoDNI = t.idTipoDNI
+                             WHERE u.nombreUsuario = @nombreUsuario";
+
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"nombreUsuario", nombreUsuario);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                usu.idUsuario = int.Parse(dr["idUsuario"].ToString());
+                usu.nombreUsuario = dr["nombreUsuario"].ToString();
+                usu.contrasena = dr["contrasena"].ToString();
+                usu.nombreRol = dr["nombreRol"].ToString();
+                ClienteEntidadQuery cliente = new ClienteEntidadQuery();
+                cliente.nombreCliente = dr["nombreCliente"].ToString();
+                cliente.apellidoCliente = dr["apellidoCliente"].ToString();
+                cliente.nroDni = int.Parse(dr["nroDni"].ToString());
+                cliente.nombreTipoDNI =  dr["nombreTipoDNI"].ToString();
+                cliente.email = dr["email"].ToString();
+                usu.clienteQuery = cliente;
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return usu;
+        }
+
         public static ClienteEntidadQuery ConsultarUnClienteQuery(int idCliente)
         {
             ClienteEntidadQuery cli = new ClienteEntidadQuery();

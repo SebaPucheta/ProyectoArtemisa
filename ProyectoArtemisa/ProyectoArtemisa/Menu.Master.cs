@@ -5,13 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using Entidades;
+using BaseDeDatos;
 namespace ProyectoArtemisa
 {
     public partial class Menu : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["nombreUsuario"] = HttpContext.Current.User.Identity.Name.ToString();
+            UsuarioEntidadQuery usuario = UsuarioDao.ConsultarUnUsuarioPorNick(HttpContext.Current.User.Identity.Name.ToString());
+            string nombreUsuario= usuario.clienteQuery.nombreCliente; 
+            string apellidoUsuario= usuario.clienteQuery.apellidoCliente;
+            Session["nombreApellidoUsuario"] = nombreUsuario + " " + apellidoUsuario;
             Page.MaintainScrollPositionOnPostBack = true;
 
             if (HttpContext.Current.User.IsInRole("administrador"))
@@ -250,6 +255,20 @@ namespace ProyectoArtemisa
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("ConsultarEditorial_25.aspx");
+        }
+
+        protected void btn_registrarIngrsoLibro_OnClick(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("IngresoLibro.aspx");
+        }
+
+        protected void btn_andromeda_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("http://localhost:8264/Home.aspx");
         }
     }
 }

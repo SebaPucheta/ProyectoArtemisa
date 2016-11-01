@@ -112,6 +112,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_modificarPrecioHoja;
         
         /// <summary>
+        /// Control btn_registrarIngresoLibro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_registrarIngresoLibro;
+        
+        /// <summary>
         /// Control btn_consultarItem.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_consultarEditorial;
+        
+        /// <summary>
+        /// Control btn_andromeda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_andromeda;
         
         /// <summary>
         /// Control ContentPlaceHolder_cuerpo.

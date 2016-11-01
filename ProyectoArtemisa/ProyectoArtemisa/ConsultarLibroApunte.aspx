@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_cuerpo" runat="server">
-   <div class="container col-lg-offset-2 col-lg-9" id="div_form">
-     <div class="form-group">
+   <div class="container col-lg-offset-3 col-lg-7" id="div_form">
+     
         
          <!-- Titulo -->
             <div class="row">
@@ -193,7 +193,7 @@
 
             </div>
         </div>
-     </div>
+     
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">
     

@@ -118,6 +118,8 @@
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_modificarPrecioHoja" Text="Registrar Precio Hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarIngresoLibro" Text="Registrar Ingreso de Libro" OnClick="btn_registrarIngrsoLibro_OnClick" /></li>
                    
                     </ul>
                 </li>
@@ -140,6 +142,8 @@
 
                     </ul>
                 </li>
+                <li>
+                     <asp:Button runat="server" CssClass="btn-a" ID="btn_andromeda" Text="Andromeda" OnClick="btn_andromeda_Click" /></li>
             </ul>
         </div>
 

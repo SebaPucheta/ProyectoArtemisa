@@ -10,96 +10,87 @@
 namespace ProyectoArtemisa {
     
     
-    public partial class IngresoLibro {
+    public partial class ConsultarHistorialIngresoLibro {
         
         /// <summary>
-        /// Control lbl_fecha.
+        /// Control txt_fechaDesde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_fecha;
+        protected global::System.Web.UI.WebControls.TextBox txt_fechaDesde;
         
         /// <summary>
-        /// Control ddl_proveedores.
+        /// Control txt_fechaHasta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_proveedores;
+        protected global::System.Web.UI.WebControls.TextBox txt_fechaHasta;
         
         /// <summary>
-        /// Control lbl_usuario.
+        /// Control btn_buscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_usuario;
+        protected global::System.Web.UI.WebControls.Button btn_buscar;
         
         /// <summary>
-        /// Control dgv_nuevoIngresoStockDetalle.
+        /// Control dgv_grillaIngresoLibros.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgv_nuevoIngresoStockDetalle;
+        protected global::System.Web.UI.WebControls.GridView dgv_grillaIngresoLibros;
         
         /// <summary>
-        /// Control lbl_info.
+        /// Control lbl_titulototal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_info;
+        protected global::System.Web.UI.WebControls.Label lbl_titulototal;
         
         /// <summary>
-        /// Control btn_agregar.
+        /// Control txt_total.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_agregar;
+        protected global::System.Web.UI.WebControls.Label txt_total;
         
         /// <summary>
-        /// Control dgv_grillaIngresoStockDetalle.
+        /// Control GridView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgv_grillaIngresoStockDetalle;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// Control lbl_total.
+        /// Control lbl_titulosubtotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_total;
+        protected global::System.Web.UI.WebControls.Label lbl_titulosubtotal;
         
         /// <summary>
-        /// Control btn_confirmar.
+        /// Control lbl_subtotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_confirmar;
-        
-        /// <summary>
-        /// Control btn_cancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_cancelar;
+        protected global::System.Web.UI.WebControls.Label lbl_subtotal;
     }
 }

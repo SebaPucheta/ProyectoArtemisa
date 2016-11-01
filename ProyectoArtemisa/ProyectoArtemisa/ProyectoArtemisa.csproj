@@ -86,6 +86,7 @@
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="ConsultarEditorial_25.aspx" />
     <Content Include="ConsultarHistorialFactura_130.aspx" />
+    <Content Include="ConsultarHistorialIngresoLibro.aspx" />
     <Content Include="ConsultarHistorialOrdenImpresion_129.aspx" />
     <Content Include="ConsultarLibroApunte.aspx" />
     <Content Include="ConsultarOrdenImpresion_126.aspx" />
@@ -168,6 +169,13 @@
     </Compile>
     <Compile Include="ConsultarHistorialFactura_130.aspx.designer.cs">
       <DependentUpon>ConsultarHistorialFactura_130.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarHistorialIngresoLibro.aspx.cs">
+      <DependentUpon>ConsultarHistorialIngresoLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarHistorialIngresoLibro.aspx.designer.cs">
+      <DependentUpon>ConsultarHistorialIngresoLibro.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarHistorialOrdenImpresion_129.aspx.cs">
       <DependentUpon>ConsultarHistorialOrdenImpresion_129.aspx</DependentUpon>

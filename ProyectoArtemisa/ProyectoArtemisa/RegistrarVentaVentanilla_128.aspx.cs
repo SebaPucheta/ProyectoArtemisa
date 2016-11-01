@@ -142,7 +142,7 @@ namespace ProyectoArtemisa
             double total=0;
             foreach(DataRow fila in (Session["tablaDetalles"] as DataTable).Rows )
             {
-                total += Convert.ToDouble(fila[5].ToString().Substring(2));
+                total += Convert.ToDouble(fila[5].ToString().Substring(1));
             }
             return total;
         }
@@ -221,7 +221,7 @@ namespace ProyectoArtemisa
                 { detalleFactura.item = LibroDao.ConsultarLibro(Convert.ToInt32(fila[0])); }
                 string cantidad=fila[4].ToString().Replace('n', ' ').Replace('U', ' ').Replace('i', ' ').Replace('d', ' ').Replace('a', ' ').Replace('e', ' ').Replace('s', ' ');
                 detalleFactura.cantidad = Convert.ToInt32(cantidad.Trim());
-                detalleFactura.subtotal = float.Parse(fila[5].ToString().Substring(2));
+                detalleFactura.subtotal = float.Parse(fila[5].ToString().Substring(1));
                 
                 listaDetalles.Add(detalleFactura);
             }
