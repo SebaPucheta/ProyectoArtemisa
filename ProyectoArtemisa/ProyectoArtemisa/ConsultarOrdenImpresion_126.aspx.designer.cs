@@ -13,6 +13,15 @@ namespace ProyectoArtemisa {
     public partial class ConsultarOrdenImpresion_126 {
         
         /// <summary>
+        /// Control lbl_fecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_fecha;
+        
+        /// <summary>
         /// Control dgv_ordenNueva.
         /// </summary>
         /// <remarks>

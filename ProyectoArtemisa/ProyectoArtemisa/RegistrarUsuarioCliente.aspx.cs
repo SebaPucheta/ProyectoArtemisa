@@ -18,8 +18,7 @@ namespace ProyectoArtemisa
         {
             UsuarioEntidad usuario = new UsuarioEntidad();
             usuario.contrasena = pass.Text;
-            usuario.email = correo.Text;
-            usuario.idRol = 2;
+           usuario.idRol = 2;
             return usuario;
         }
 
@@ -28,6 +27,7 @@ namespace ProyectoArtemisa
             ClienteEntidad cliente = new ClienteEntidad();
             cliente.apellidoCliente = apellido.Text;
             cliente.nombreCliente = nombre.Text;
+            cliente.email = correo.Text;
             return cliente;
         }
 

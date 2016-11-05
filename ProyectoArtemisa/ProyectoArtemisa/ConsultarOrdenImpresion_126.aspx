@@ -13,6 +13,17 @@
             </div>
          <br />
 
+          <!-- Fecha -->
+         <div class="row">
+             <div class="form-group">
+                 <label for="documento" class="control-label col-md-2">Fecha: </label>
+                 <div class="col-md-3">
+                     <asp:label runat="server" type="text" ID="lbl_fecha" value=""  />
+                 </div>
+             </div>
+         </div>
+         <br />
+
          <!--Grilla Nueva Orden de Impresion-->
          <asp:GridView ID="dgv_ordenNueva" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="false" OnRowDeleting="btn_limpiarGrilla_RowDeleting" OnSelectedIndexChanged="btn_registrarOrden_SelectedIndexChanged" >
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
@@ -50,8 +61,9 @@
              <EditRowStyle BackColor="#ffffcc" />
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
-                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                 <asp:BoundField DataField="cantidad" HeaderText="Cantidad"   />
+                 <asp:BoundField DataField="fecha" HeaderText="Fecha" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                 <asp:BoundField DataField="nombre" HeaderText="Nombre" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"/>
+                 <asp:BoundField DataField="cantidad" HeaderText="Cantidad"   ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"/>
                  <asp:TemplateField HeaderText="Consular">
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_consultarApunte" CommandName="select" runat="server"  ><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>

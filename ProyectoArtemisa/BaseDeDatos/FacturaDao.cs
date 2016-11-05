@@ -24,7 +24,7 @@ namespace BaseDeDatos
 											on u.idUsuario = f.idUsuario
 											LEFT join Cliente C
 											ON C.idCliente = U.idCliente
-							WHERE f.fecha BETWEEN convert(date, @fechaDesde, 103) AND convert(date, @fechaHasta, 103)";
+							WHERE f.fecha >= convert(date, @fechaDesde, 103) AND f.fecha <= convert(date, @fechaHasta, 103)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
             if (fechaDesde == "")
@@ -37,7 +37,6 @@ namespace BaseDeDatos
             {
                 cmd.Parameters.AddWithValue(@"fechaDesde", fechaDesde);
                 cmd.Parameters.AddWithValue(@"fechaHasta", fechaHasta);
-
             }
 
             SqlDataReader dr = cmd.ExecuteReader();
@@ -74,7 +73,7 @@ namespace BaseDeDatos
 
                 string query1 = "INSERT INTO Factura(fecha, total, idUsuario) VALUES (@fecha, @total, @idUsuario); select scope_identity()";
                 SqlCommand cmd1 = new SqlCommand(query1, cnn,trans);
-                cmd1.Parameters.AddWithValue(@"fecha", factura.fecha);
+                cmd1.Parameters.AddWithValue(@"fecha", DateTime.Now);
                 cmd1.Parameters.AddWithValue(@"total", factura.total);
                 cmd1.Parameters.AddWithValue(@"idUsuario", factura.idUsuario);
                 int idFactura = int.Parse(cmd1.ExecuteScalar().ToString());

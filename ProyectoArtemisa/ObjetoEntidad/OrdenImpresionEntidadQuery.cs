@@ -10,5 +10,6 @@ namespace Entidades
     {
         public string nombreApunte { get; set; }
         public string nombreEstadoOrdenImpresion { get; set; }
+        
     }
 }

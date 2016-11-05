@@ -16,6 +16,7 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lbl_fecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             if(!IsPostBack)
             {
                 if(bool.Parse(Session["agregarOrden"].ToString()))
@@ -67,6 +68,7 @@ namespace ProyectoArtemisa
 
             //Creo las columnas de la tabla
             tabla.Columns.Add("idOrden", typeof(int));
+            tabla.Columns.Add("fecha", typeof(DateTime));
             tabla.Columns.Add("nombre", typeof(string));
             tabla.Columns.Add("cantidad", typeof(string));
             tabla.Columns.Add("chk_impreso", typeof(bool));
@@ -76,17 +78,18 @@ namespace ProyectoArtemisa
                 fila = tabla.NewRow();
 
                 fila[0] = orden.idOrdenImpresion;
-                fila[1] = orden.nombreApunte;
-                fila[2] = orden.cantidad + " Unidades";
+                fila[1] = orden.fecha;
+                fila[2] = orden.nombreApunte;
+                fila[3] = orden.cantidad + " Unidades";
                 
                 //No toma los valores true o false el checkbox
                 if (orden.nombreEstadoOrdenImpresion.Equals("Impreso"))
                 {
-                    fila[3] = true;
+                    fila[4] = true;
                 }
                 else
                 {
-                    fila[3] = false;
+                    fila[4] = false;
                 }
                 
                 tabla.Rows.Add(fila);

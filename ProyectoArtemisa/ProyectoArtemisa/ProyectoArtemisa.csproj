@@ -143,6 +143,7 @@
     <Content Include="RegistrarUniversidad_69.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="NOVA - RegistrarUsuario_136.aspx" />
+    <Content Include="RegistrarUsuarioCliente.aspx" />
     <Content Include="RegistrarVentaVentanilla_128.aspx" />
     <Content Include="Reportes\GenerarCierreVenta_143.aspx" />
     <Content Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx" />
@@ -353,6 +354,13 @@
     <Compile Include="NOVA - RegistrarUsuario_136.aspx.cs">
       <DependentUpon>NOVA - RegistrarUsuario_136.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarUsuarioCliente.aspx.cs">
+      <DependentUpon>RegistrarUsuarioCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarUsuarioCliente.aspx.designer.cs">
+      <DependentUpon>RegistrarUsuarioCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarVentaVentanilla_128.aspx.cs">
       <DependentUpon>RegistrarVentaVentanilla_128.aspx</DependentUpon>

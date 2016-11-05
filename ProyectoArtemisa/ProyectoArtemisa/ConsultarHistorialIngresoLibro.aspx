@@ -69,7 +69,7 @@
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                 <Columns>
                     <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="fecha" HeaderText="Fecha" />
-                    <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="proveedor" HeaderText="Nº" />
+                    <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="proveedor" HeaderText="Proveedor" />
                     <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="usuario" HeaderText="Usuario" />
                     <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="total" HeaderText="Total" ApplyFormatInEditMode="False" />
                      <asp:TemplateField HeaderText="Consultar">

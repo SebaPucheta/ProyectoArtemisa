@@ -94,7 +94,7 @@ namespace BaseDeDatos
             cmd.Parameters.AddWithValue("@idApunte", nuevaOrden.idApunte);
             cmd.Parameters.AddWithValue("@cantidad", nuevaOrden.cantidad);
             cmd.Parameters.AddWithValue("@idEstado", nuevaOrden.idEstadoOrden);
-            cmd.Parameters.AddWithValue("@fecha", nuevaOrden.fecha);
+            cmd.Parameters.AddWithValue("@fecha", DateTime.Now );
             int ordenRegistrada = int.Parse(cmd.ExecuteScalar().ToString());
             cmd.Connection.Close();
             return ordenRegistrada;
