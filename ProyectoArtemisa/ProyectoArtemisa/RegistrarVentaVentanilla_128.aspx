@@ -23,6 +23,17 @@
              </div>
          </div>
          <br />
+
+         <!-- Usuario -->
+         <div class="row">
+             <div class="form-group">
+                 <label for="documento" class="control-label col-md-2">Usuario: </label>
+                 <div class="col-md-3">
+                     <asp:Label runat="server" type="text" ID="lbl_usuario" value=""  />
+                 </div>
+             </div>
+         </div>
+         <br />
           <!--Grilla que tiene un nuevo detalle-->
          <asp:GridView ID="dgv_nuevoDetalle" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="false" OnRowDeleting="btn_limpiarGrilla_RowDeleting" OnSelectedIndexChanged="btn_agregarDetalle_SelectedIndexChanged" >
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />

@@ -13,7 +13,9 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["nickUsuario"] = HttpContext.Current.User.Identity.Name.ToString();
             UsuarioEntidadQuery usuario = UsuarioDao.ConsultarUnUsuarioPorNick(HttpContext.Current.User.Identity.Name.ToString());
+            Session["idUsuario"] = usuario.idUsuario;
             string nombreUsuario= usuario.clienteQuery.nombreCliente; 
             string apellidoUsuario= usuario.clienteQuery.apellidoCliente;
             Session["nombreApellidoUsuario"] = nombreUsuario + " " + apellidoUsuario;
@@ -270,5 +272,12 @@ namespace ProyectoArtemisa
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("http://localhost:8264/Home.aspx");
         }
+        protected void btn_consultarIngresoLibro_OnClick(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarHistorialIngresoLibro.aspx");
+        }
+        
     }
 }

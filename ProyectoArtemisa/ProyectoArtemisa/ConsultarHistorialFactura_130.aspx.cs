@@ -28,7 +28,7 @@ namespace ProyectoArtemisa
             double total = 0;
             foreach (GridViewRow fila in dgv_grillaOrdenesImpresion.Rows)
             {
-                total += Convert.ToDouble(fila.Cells[2].Text);
+                total += Convert.ToDouble(fila.Cells[3].Text);
             }
             txt_total.Text = total.ToString();
         }

@@ -53,6 +53,7 @@
     <Compile Include="EstadoOrdenImpresionDao.cs" />
     <Compile Include="FacturaDao.cs" />
     <Compile Include="FacultadDao.cs" />
+    <Compile Include="IngresoLibroDao.cs" />
     <Compile Include="LibroDao.cs" />
     <Compile Include="LoginDao.cs" />
     <Compile Include="MateriaDao.cs" />

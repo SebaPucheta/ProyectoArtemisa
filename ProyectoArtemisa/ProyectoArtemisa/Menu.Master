@@ -134,6 +134,8 @@
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarOrdenImpresion" Text="Consultar Orden Impresión" OnClick="btn_consultarOrdenImpresion_OnClick" /></li>
                         <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarIngresoLibro" Text="Consultar Ingresos de Libros" OnClick="btn_consultarIngresoLibro_OnClick" /></li>
+                        <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarHistorialOrdenImpresion" Text="Historial Ordenes Impresión" OnClick="btn_consultarHistorialOrdenImpresion_OnClick" /></li>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarProveedor" Text="Consultar Proveedor" OnClick="btn_consultarProveedor_OnClick" /></li>
@@ -160,6 +162,8 @@
             <br />
             <br />
         </div>
+        <br />
+            <br />
     </form>
 
 

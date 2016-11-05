@@ -52,6 +52,7 @@
                 <Columns>
                     <asp:BoundField DataField="idFactura" HeaderText="Nº" />
                     <asp:BoundField DataField="fecha" HeaderText="Fecha" />
+                    <asp:BoundField DataField="nombreCompletoEmpleado" HeaderText="Nombre Empleado" />
                     <asp:BoundField DataField="total" HeaderText="Total" ApplyFormatInEditMode="False" />
                      <asp:TemplateField>
                         <ItemTemplate>

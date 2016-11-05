@@ -30,6 +30,7 @@ namespace ProyectoArtemisa
                     InicializarVariableSessionTabla();
                 }
             }
+            lbl_usuario.Text = Session["nombreApellidoUsuario"].ToString();
             lbl_total.Text = CalcularTotal().ToString();
         }
 
@@ -211,6 +212,7 @@ namespace ProyectoArtemisa
             List<DetalleFacturaEntidad> listaDetalles = new List<DetalleFacturaEntidad>(); 
             factura.fecha = Convert.ToDateTime(lbl_fecha.Text);
             factura.total = float.Parse(lbl_total.Text);
+            factura.idUsuario = int.Parse(Session["idUsuario"].ToString());
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)
             {
                 DetalleFacturaEntidad detalleFactura = new DetalleFacturaEntidad();

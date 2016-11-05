@@ -55,6 +55,7 @@
     <Compile Include="DetalleFacturaEntidad.cs" />
     <Compile Include="DetalleFacturaEntidadQuery.cs" />
     <Compile Include="DetalleIngresoLibroEntidad.cs" />
+    <Compile Include="DetalleIngresoLibroEntidadQuery.cs" />
     <Compile Include="EditorialEntidad.cs" />
     <Compile Include="EstadoEntidad.cs" />
     <Compile Include="EstadoOrdenImpresionEntidad.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="FacturaEntidadQuery.cs" />
     <Compile Include="FacultadEntidad.cs" />
     <Compile Include="IngresoLibroEntidad.cs" />
+    <Compile Include="IngresoLibroEntidadQuery.cs" />
     <Compile Include="ItemEntidad.cs" />
     <Compile Include="LibroEntidad.cs" />
     <Compile Include="LibroEntidadQuery.cs" />

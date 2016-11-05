@@ -42,7 +42,7 @@ namespace ProyectoArtemisa
             ddl_proveedores.DataTextField = "nombreProveedor";
             ddl_proveedores.DataValueField = "idProveedor";
             ddl_proveedores.DataBind();
-        }
+       }
 
         //Cargar la Grilla que tiene un nuevo detalle
         protected void CargarNuevoDetalle()
@@ -159,18 +159,10 @@ namespace ProyectoArtemisa
 
         protected void btn_agregarDetalle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ValidarStock())
-            {
-                CargarNuevoDetalleGrillaDetalle();
-                dgv_nuevoIngresoStockDetalle.Visible = false;
-                lbl_total.Text = CalcularTotal().ToString();
-                lbl_info.Text = "";
-            }
-            else
-            {
-                lbl_info.Text="La cantidad ingresada es mayor a la cantidad de stock. Stock:" + ConsultarStockItem();
-            }
-            
+            CargarNuevoDetalleGrillaDetalle();
+            dgv_nuevoIngresoStockDetalle.Visible = false;
+            lbl_total.Text = CalcularTotal().ToString();
+            lbl_info.Text = "";
         }
 
         protected bool ValidarStock()
@@ -196,6 +188,7 @@ namespace ProyectoArtemisa
             List<DetalleIngresoLibroEntidad> listaDetalles = new List<DetalleIngresoLibroEntidad>(); 
             ingresoLibro.fecha = Convert.ToDateTime(lbl_fecha.Text);
             ingresoLibro.total = float.Parse(lbl_total.Text);
+            ingresoLibro.idUsuario = int.Parse(Session["idUsuario"].ToString());
             ingresoLibro.idProveedor = Convert.ToInt32( ddl_proveedores.SelectedValue);
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)
             {

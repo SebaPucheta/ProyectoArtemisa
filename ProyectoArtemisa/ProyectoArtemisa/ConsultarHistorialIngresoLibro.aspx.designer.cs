@@ -31,6 +31,24 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.TextBox txt_fechaHasta;
         
         /// <summary>
+        /// Control ddl_proveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_proveedores;
+        
+        /// <summary>
+        /// Control txt_usuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_usuario;
+        
+        /// <summary>
         /// Control btn_buscar.
         /// </summary>
         /// <remarks>
@@ -49,48 +67,21 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.GridView dgv_grillaIngresoLibros;
         
         /// <summary>
-        /// Control lbl_titulototal.
+        /// Control lbl_total.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_titulototal;
+        protected global::System.Web.UI.WebControls.Label lbl_total;
         
         /// <summary>
-        /// Control txt_total.
+        /// Control dgv_grillaDetalleIngresoLibro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_total;
-        
-        /// <summary>
-        /// Control GridView1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// Control lbl_titulosubtotal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_titulosubtotal;
-        
-        /// <summary>
-        /// Control lbl_subtotal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_subtotal;
+        protected global::System.Web.UI.WebControls.GridView dgv_grillaDetalleIngresoLibro;
     }
 }
