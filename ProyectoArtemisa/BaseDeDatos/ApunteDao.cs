@@ -513,7 +513,51 @@ namespace BaseDeDatos
 
 
         //para buscar
-
+        public static List<ApunteEntidadQuery> ConsultarApunteXCodigoBarra(string codigoBarra)
+        {
+            List<ApunteEntidadQuery> lista = new List<ApunteEntidadQuery>();
+            string consulta = @"SELECT DISTINCT a.idApunte, a.nombreApunte, a.precioApunte, m.nombreMateria, a.stock as 'stockApunte', e.nombreEditorial, p.nombreProfesor,
+                                       p.apellidoProfesor, ta.nombreTipoApunte, a.codigoBarraApunte,
+									   a.anoApunte, a.cantHoja, u.nombreUniversidad, f.nombreFacultad, a.descripcionApunte
+                                FROM Apunte a JOIN Editorial e ON a.idEditorial = e.idEditorial
+                                			  JOIN Profesor p ON p.idProfesor = a.idProfesor
+                                			  JOIN TipoApunte ta ON ta.idTipoApunte = a.idTipoApunte
+                                			  JOIN Materia m ON a.idMateria = m.idMateria
+                                			  JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                   JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                   JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+                                WHERE a.codigoBarraApunte LIKE @codigoBarraApunte AND a.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"codigoBarraApunte", codigoBarra + '%');
+            
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ApunteEntidadQuery apu = new ApunteEntidadQuery();
+                apu.idApunte = int.Parse(dr["idApunte"].ToString());
+                apu.nombreApunte = dr["nombreApunte"].ToString();
+                apu.precioApunte = float.Parse(dr["precioApunte"].ToString());
+                if (dr["stockApunte"] != DBNull.Value)
+                    apu.stock = int.Parse(dr["stockApunte"].ToString());
+                apu.nombreEditorial = dr["nombreEditorial"].ToString();
+                apu.nombreProfesor = dr["nombreProfesor"].ToString();
+                apu.apellidoProfesor = dr["apellidoProfesor"].ToString();
+                apu.nombreTipoApunte = dr["nombreTipoApunte"].ToString();
+                apu.anoApunte = int.Parse(dr["anoApunte"].ToString());
+                apu.cantHoja = int.Parse(dr["cantHoja"].ToString());
+                apu.codigoBarraApunte = dr["codigoBarraApunte"].ToString();
+                apu.descripcionApunte = dr["descripcionApunte"].ToString();
+                apu.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                apu.nombreFacultad = dr["nombreFacultad"].ToString();
+                apu.listaCarreras = ConsultarCarrerasXApunte(apu.idApunte);
+                apu.nombreMateria = (string)dr["nombreMateria"];
+                lista.Add(apu);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
 
     }
 }

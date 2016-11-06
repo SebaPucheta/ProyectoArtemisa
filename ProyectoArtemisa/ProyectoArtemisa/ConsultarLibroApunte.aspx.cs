@@ -19,12 +19,12 @@ namespace ProyectoArtemisa
             if (!IsPostBack)
             {
                 CargarComboTipoItem();
-                if((PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx")||PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))&&((Session["idItem"]!=null)))
+                if ((PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx") || PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx")) && ((Session["idItem"] != null)))
                 {
-                    if (Session["idTipo"].ToString() == "Apunte" )
-                    { 
+                    if (Session["idTipo"].ToString() == "Apunte")
+                    {
                         int idApunte = int.Parse(Session["idItem"].ToString());
-                        CargarUnApunteEnGrilla(ApunteDao.ConsultarApunteQuery(idApunte)); 
+                        CargarUnApunteEnGrilla(ApunteDao.ConsultarApunteQuery(idApunte));
 
                     }
                     else
@@ -38,7 +38,7 @@ namespace ProyectoArtemisa
             //{
             //    string eventTarget;
             //    string eventArgument;
-                    
+
             //    if (Request["__EVENTARGUMENT"] == null) 
             //    {eventTarget = string.Empty;}
             //    else
@@ -58,7 +58,7 @@ namespace ProyectoArtemisa
             //}
         }
 
-       
+
         protected void ddl_universidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarComboFacultad(Convert.ToInt32(ddl_universidad.SelectedValue));
@@ -70,7 +70,7 @@ namespace ProyectoArtemisa
         }
         protected void ddl_carrera_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddl_carrera.SelectedIndex==0)
+            if (ddl_carrera.SelectedIndex == 0)
             {
                 ddl_materia.Enabled = true;
             }
@@ -81,7 +81,7 @@ namespace ProyectoArtemisa
         }
         protected void ddl_materia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddl_materia.SelectedIndex==0)
+            if (ddl_materia.SelectedIndex == 0)
             {
                 ddl_carrera.Enabled = true;
             }
@@ -93,13 +93,13 @@ namespace ProyectoArtemisa
         protected void ddl_tipoItem_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarComboUniversidad();
-            
+
             if (ddl_tipoItem.SelectedIndex == 1)
             {
                 lbl_tipoApunte.Visible = true;
                 lbl_apunteDigital.Visible = true;
                 lbl_apunteImpreso.Visible = true;
-                
+
             }
             else
             {
@@ -210,17 +210,17 @@ namespace ProyectoArtemisa
                     dgv_grillaLibro.Visible = true;
                 }
             }
-             
+
         }
         protected void btn_salir_Click(object sender, EventArgs e)
         {
             Response.Redirect(PilaForms.pila.Pop());
         }
-        
+
 
         protected List<ApunteEntidadQuery> BuscarListaApunteXfiltro()
         {
-            List<ApunteEntidadQuery> listaApunte ;
+            List<ApunteEntidadQuery> listaApunte;
             string tipoApunte = "";
             string universidad = "";
             string facultad = "";
@@ -252,7 +252,7 @@ namespace ProyectoArtemisa
             if (Convert.ToInt32(ddl_materia.SelectedIndex) != 0)
             {
                 materia = ddl_materia.SelectedValue;
-                 listaApunte = ApunteDao.ConsultarApunteXFiltroMateria(tipoApunte, nombreApunte, universidad, facultad, materia);
+                listaApunte = ApunteDao.ConsultarApunteXFiltroMateria(tipoApunte, nombreApunte, universidad, facultad, materia);
             }
             else
             {
@@ -265,8 +265,8 @@ namespace ProyectoArtemisa
             }
 
 
-           
-            
+
+
             return listaApunte;
         }
 
@@ -325,29 +325,29 @@ namespace ProyectoArtemisa
             tabla.Columns.Add("profesor", typeof(string));
             tabla.Columns.Add("tipoApunte", typeof(string));
 
-            
-                fila = tabla.NewRow();
 
-                fila[0] = apunte.idApunte;
-                fila[1] = apunte.nombreApunte;
-                fila[2] = "$" + apunte.precioApunte;
-                fila[3] = apunte.stock + " Unidades";
+            fila = tabla.NewRow();
 
-                List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
-                string carreras = listaCarrera[0].nombreCarrera;
-                for (int i = 1; i < listaCarrera.Count; i++)
-                {
-                    carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
-                }
+            fila[0] = apunte.idApunte;
+            fila[1] = apunte.nombreApunte;
+            fila[2] = "$" + apunte.precioApunte;
+            fila[3] = apunte.stock + " Unidades";
 
-                fila[4] = carreras;
-                fila[5] = apunte.nombreMateria;
-                fila[6] = apunte.nombreEditorial;
-                fila[7] = apunte.apellidoProfesor + ", " + apunte.nombreProfesor;
-                fila[8] = apunte.nombreTipoApunte;
+            List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
+            string carreras = listaCarrera[0].nombreCarrera;
+            for (int i = 1; i < listaCarrera.Count; i++)
+            {
+                carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
+            }
 
-                tabla.Rows.Add(fila);
-            
+            fila[4] = carreras;
+            fila[5] = apunte.nombreMateria;
+            fila[6] = apunte.nombreEditorial;
+            fila[7] = apunte.apellidoProfesor + ", " + apunte.nombreProfesor;
+            fila[8] = apunte.nombreTipoApunte;
+
+            tabla.Rows.Add(fila);
+
 
             DataView dataView = new DataView(tabla);
 
@@ -402,7 +402,7 @@ namespace ProyectoArtemisa
 
             DataView dataView = new DataView(tabla);
 
-            
+
             dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };
             dgv_grillaApunte.DataSource = dataView;
             dgv_grillaApunte.DataBind();
@@ -422,7 +422,7 @@ namespace ProyectoArtemisa
             tabla.Columns.Add("materia", typeof(string));
             tabla.Columns.Add("editorial", typeof(string));
             tabla.Columns.Add("autor", typeof(string));
-            
+
             foreach (LibroEntidadQuery libro in listalibroFiltrados)
             {
                 fila = tabla.NewRow();
@@ -443,7 +443,7 @@ namespace ProyectoArtemisa
                 fila[5] = libro.nombreMateria;
                 fila[6] = libro.nombreEditorial;
                 fila[7] = libro.autorLibro;
-                
+
                 tabla.Rows.Add(fila);
             }
 
@@ -469,27 +469,27 @@ namespace ProyectoArtemisa
             tabla.Columns.Add("editorial", typeof(string));
             tabla.Columns.Add("autor", typeof(string));
 
-                fila = tabla.NewRow();
+            fila = tabla.NewRow();
 
-                fila[0] = libro.idLibro;
-                fila[1] = libro.nombreLibro;
-                fila[2] = "$" + libro.precioLibro;
-                fila[3] = libro.stock + "Unidades";
+            fila[0] = libro.idLibro;
+            fila[1] = libro.nombreLibro;
+            fila[2] = "$" + libro.precioLibro;
+            fila[3] = libro.stock + "Unidades";
 
-                List<CarreraEntidad> listaCarrera = libro.listaCarreras;
-                string carreras = listaCarrera[0].nombreCarrera;
-                for (int i = 1; i < listaCarrera.Count; i++)
-                {
-                    carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
-                }
+            List<CarreraEntidad> listaCarrera = libro.listaCarreras;
+            string carreras = listaCarrera[0].nombreCarrera;
+            for (int i = 1; i < listaCarrera.Count; i++)
+            {
+                carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
+            }
 
-                fila[4] = carreras;
-                fila[5] = libro.nombreMateria;
-                fila[6] = libro.nombreEditorial;
-                fila[7] = libro.autorLibro;
+            fila[4] = carreras;
+            fila[5] = libro.nombreMateria;
+            fila[6] = libro.nombreEditorial;
+            fila[7] = libro.autorLibro;
 
-                tabla.Rows.Add(fila);
-         
+            tabla.Rows.Add(fila);
+
 
             DataView dataView = new DataView(tabla);
 
@@ -501,12 +501,12 @@ namespace ProyectoArtemisa
         protected void RedirigirForm()
         {
             if (PilaForms.pila.Peek().Equals("RegistrarVentaVentanilla_128.aspx"))
-            { 
-                Response.Redirect(PilaForms.DevolverForm()); 
+            {
+                Response.Redirect(PilaForms.DevolverForm());
             }
             if (PilaForms.pila.Peek().Equals("ConsultarOrdenImpresion_126.aspx"))
             {
-                Response.Redirect(PilaForms.DevolverForm()); 
+                Response.Redirect(PilaForms.DevolverForm());
             }
             if (PilaForms.pila.Peek().Equals("IngresoLibro.aspx"))
             {
@@ -517,13 +517,13 @@ namespace ProyectoArtemisa
                 PilaForms.AgregarForm("ConsultarLibroApunte.aspx");
                 Response.Redirect("ConsultarOrdenImpresion_126.aspx");
             }
-            
+
         }
         protected void dgv_grillaApunte_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
-           int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
-                
-            if(e.CommandName == "imprimir")
+            int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
+
+            if (e.CommandName == "imprimir")
             {
                 CargarVariablesSesion(indice);
                 RedirigirForm();
@@ -533,14 +533,14 @@ namespace ProyectoArtemisa
         protected void dgv_grillaLibro_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
             int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
-            
+
             if (e.CommandName == "imprimir")
             {
                 CargarVariablesSesion(indice);
                 RedirigirForm();
             }
         }
-        
+
         protected void CargarVariablesSesion(int indice)
         {
             if (Convert.ToInt32(ddl_tipoItem.SelectedValue) == 1)
@@ -558,9 +558,9 @@ namespace ProyectoArtemisa
                     apunteSeleccionado.precioApunte = float.Parse(dgv_grillaApunte.Rows[indice].Cells[1].Text.Substring(1));
                     Session["objetoApunteEntidad"] = apunteSeleccionado;
                 }
-                    
-                
-                
+
+
+
             }
             else
             {
@@ -574,7 +574,124 @@ namespace ProyectoArtemisa
 
         protected void btn_codigoBarra_TextChanged(object sender, EventArgs e)
         {
-            
+            dgv_grillaApunte.DataSource = null;
+            dgv_grillaApunte.DataBind();
+            dgv_grillaLibro.DataSource = null;
+            dgv_grillaLibro.DataBind();
+
+            dgv_grillaApunte.Visible = false;
+            dgv_grillaLibro.Visible = false;
+
+
+            List<ApunteEntidadQuery> ap = new List<ApunteEntidadQuery>();
+            ap = ApunteDao.ConsultarApunteXCodigoBarra(btn_codigoBarra.Text);
+
+            if (ap.Count != 0)
+            {
+                dgv_grillaApunte.Visible = true;
+                DataTable tabla = new DataTable();
+                DataRow fila;
+
+                //Creo las columnas de la tabla
+                tabla.Columns.Add("idApunte", typeof(int));
+                tabla.Columns.Add("nombre", typeof(string));
+                tabla.Columns.Add("precio", typeof(string));
+                tabla.Columns.Add("stock", typeof(string));
+                tabla.Columns.Add("carrera", typeof(string));
+                tabla.Columns.Add("materia", typeof(string));
+                tabla.Columns.Add("editorial", typeof(string));
+                tabla.Columns.Add("profesor", typeof(string));
+                tabla.Columns.Add("tipoApunte", typeof(string));
+
+                foreach (ApunteEntidadQuery apunte in ap)
+                {
+                    fila = tabla.NewRow();
+
+                    fila[0] = apunte.idApunte;
+                    fila[1] = apunte.nombreApunte;
+                    fila[2] = "$" + apunte.precioApunte;
+                    fila[3] = apunte.stock + " Unidades";
+
+                    List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
+                    string carreras = listaCarrera[0].nombreCarrera;
+                    for (int i = 1; i < listaCarrera.Count; i++)
+                    {
+                        carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
+                    }
+
+                    fila[4] = carreras;
+                    fila[5] = apunte.nombreMateria;
+                    fila[6] = apunte.nombreEditorial;
+                    fila[7] = apunte.apellidoProfesor + ", " + apunte.nombreProfesor;
+                    fila[8] = apunte.nombreTipoApunte;
+
+                    tabla.Rows.Add(fila);
+                }
+
+                DataView dataView = new DataView(tabla);
+
+
+                dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };
+                dgv_grillaApunte.DataSource = dataView;
+                dgv_grillaApunte.DataBind();
+            }
+            else
+            {
+                List<LibroEntidadQuery> lp = new List<LibroEntidadQuery>();
+                lp = LibroDao.ConsultarLibroXCodigoBarra(btn_codigoBarra.Text);
+                //si hay algo en la lista me carga la grilla
+                if (lp.Count != 0)
+                {
+                    dgv_grillaLibro.Visible = true;
+                    DataTable tabla = new DataTable();
+                    DataRow fila;
+
+                    //Creo las columnas de la tabla
+                    tabla.Columns.Add("idLibro", typeof(int));
+                    tabla.Columns.Add("nombre", typeof(string));
+                    tabla.Columns.Add("precio", typeof(string));
+                    tabla.Columns.Add("stock", typeof(string));
+                    tabla.Columns.Add("carrera", typeof(string));
+                    tabla.Columns.Add("materia", typeof(string));
+                    tabla.Columns.Add("editorial", typeof(string));
+                    tabla.Columns.Add("autor", typeof(string));
+
+                    foreach (LibroEntidadQuery libro in lp)
+                    {
+                        fila = tabla.NewRow();
+
+                        fila[0] = libro.idLibro;
+                        fila[1] = libro.nombreLibro;
+                        fila[2] = "$" + libro.precioLibro;
+                        fila[3] = libro.stock + " Unidades";
+
+                        List<CarreraEntidad> listaCarrera = libro.listaCarreras;
+                        string carreras = listaCarrera[0].nombreCarrera;
+                        for (int i = 1; i < listaCarrera.Count; i++)
+                        {
+                            carreras = carreras + ", " + listaCarrera[i].nombreCarrera;
+                        }
+
+                        fila[4] = carreras;
+                        fila[5] = libro.nombreMateria;
+                        fila[6] = libro.nombreEditorial;
+                        fila[7] = libro.autorLibro;
+
+                        tabla.Rows.Add(fila);
+                    }
+
+                    DataView dataView = new DataView(tabla);
+
+                    dgv_grillaLibro.DataSource = dataView;
+                    dgv_grillaLibro.DataKeyNames = new string[] { "idLibro" };
+                    dgv_grillaLibro.DataBind();
+                }
+                else
+                {
+                    Response.Write("<script>window.alert('Código de barra inexistente');</script>");
+                }
+            }
+            btn_codigoBarra.Text = "";
         }
 
     }

@@ -488,5 +488,45 @@ namespace BaseDeDatos
                 cnn.Close();
             }
         }
+
+        public static List<LibroEntidadQuery> ConsultarLibroXCodigoBarra(string codigoBarra)
+        {
+            List<LibroEntidadQuery> lista = new List<LibroEntidadQuery>();
+            string consulta = @"SELECT DISTINCT l.idLibro, l.codigoBarraLibro, l.nombreLibro, l.autorLibro, l.descripcionLibro, l.stock,
+                                       l.cantidadHojasLibro, l.precioLibro, e.nombreEditorial,  
+                                       u.nombreUniversidad, f.nombreFacultad, m.nombreMateria
+                                FROM Libro l INNER JOIN Materia m ON m.idMateria = l.idMateria
+			                                  INNER JOIN CarreraXMateria cxr ON cxr.idMateria = m.idMateria
+			                                  INNER JOIN Carrera c ON cxr.idCarrera = c.idCarrera
+			                                  INNER JOIN Facultad f ON c.idFacultad = f.idFacultad
+			                                  INNER JOIN Universidad u ON f.idUniversidad = u.idUniversidad
+											  INNER JOIN Editorial e ON e.idEditorial = l.idEditorial
+								WHERE l.codigoBarraLibro LIKE @codigoBarra  AND l.baja = 0";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"codigoBarra", codigoBarra + '%');
+            
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                LibroEntidadQuery libro = new LibroEntidadQuery();
+                libro.idLibro = int.Parse(dr["idLibro"].ToString());
+                libro.codigoBarraLibro = dr["codigoBarraLibro"].ToString();
+                libro.nombreLibro = dr["nombreLibro"].ToString();
+                libro.autorLibro = dr["autorLibro"].ToString();
+                libro.descripcionLibro = dr["descripcionLibro"].ToString();
+                libro.stock = int.Parse(dr["stock"].ToString());
+                libro.cantidadHojasLibro = int.Parse(dr["cantidadHojasLibro"].ToString());
+                libro.precioLibro = float.Parse(dr["precioLibro"].ToString());
+                libro.nombreEditorial = dr["nombreEditorial"].ToString();
+                libro.nombreFacultad = dr["nombreFacultad"].ToString();
+                libro.nombreUniversidad = dr["nombreUniversidad"].ToString();
+                libro.listaCarreras = ConsultarCarrerasXLibro(libro.idLibro);
+                libro.nombreMateria = (string)dr["nombreMateria"];
+                lista.Add(libro);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
     }
 }
