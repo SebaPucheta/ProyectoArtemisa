@@ -22,6 +22,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Label lbl_fecha;
         
         /// <summary>
+        /// Control lbl_usuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_usuario;
+        
+        /// <summary>
         /// Control ddl_proveedores.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.DropDownList ddl_proveedores;
         
         /// <summary>
-        /// Control lbl_usuario.
+        /// Control btn_codigoBarra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_usuario;
+        protected global::System.Web.UI.WebControls.TextBox btn_codigoBarra;
         
         /// <summary>
         /// Control dgv_nuevoIngresoStockDetalle.

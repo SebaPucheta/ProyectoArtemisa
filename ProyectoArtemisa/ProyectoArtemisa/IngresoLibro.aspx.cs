@@ -23,8 +23,12 @@ namespace ProyectoArtemisa
                 {
                     lbl_fecha.Text = Session["fecha"].ToString();
                     ddl_proveedores.SelectedValue= Session["proveedor"].ToString();
+                    
                     CargarGrillaDetalles();
-                    CargarNuevoDetalle();
+                    if (Session["objetoLibroEntidad"].ToString() != "")
+                    {
+                        CargarNuevoDetalle(Session["objetoLibroEntidad"] as LibroEntidad);
+                    }
                     BorrarVariablesGlobales();
                 }
                 else
@@ -45,10 +49,9 @@ namespace ProyectoArtemisa
        }
 
         //Cargar la Grilla que tiene un nuevo detalle
-        protected void CargarNuevoDetalle()
+        protected void CargarNuevoDetalle(LibroEntidad libro)
         {
-            if (Session["objetoLibroEntidad"].ToString() != "")
-            {
+            
                 dgv_nuevoIngresoStockDetalle.Visible = true;
                 DataTable tabla = new DataTable();
                 DataRow fila;
@@ -61,8 +64,8 @@ namespace ProyectoArtemisa
 
                 fila = tabla.NewRow();
                 
-                fila[0] = (Session["objetoLibroEntidad"] as LibroEntidad).idLibro;
-                fila[1] = (Session["objetoLibroEntidad"] as LibroEntidad).nombreLibro;
+                fila[0] = libro.idLibro;
+                fila[1] = libro.nombreLibro;
                 
                 tabla.Rows.Add(fila);
                 DataView dataView = new DataView(tabla);
@@ -71,9 +74,9 @@ namespace ProyectoArtemisa
                 dgv_nuevoIngresoStockDetalle.DataSource = dataView;
                 dgv_nuevoIngresoStockDetalle.DataBind();
 
-                ((TextBox)dgv_nuevoIngresoStockDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = (Session["objetoLibroEntidad"] as LibroEntidad).precioLibro.ToString();
+                ((TextBox)dgv_nuevoIngresoStockDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = libro.precioLibro.ToString();
             }
-        }
+        
 
         //Inicializa la variable de session que contiene la tabla con los detalles de factura
         protected void InicializarVariableSessionTabla()
@@ -237,6 +240,20 @@ namespace ProyectoArtemisa
         {
             (Session["tablaDetalles"] as DataTable).Rows[e.RowIndex].Delete();
             CargarGrillaDetalles();
+        }
+
+         protected void btn_codigoBarra_TextChanged(object sender, EventArgs e)
+        {
+            List<LibroEntidadQuery> libro = LibroDao.ConsultarLibroXCodigoBarra(btn_codigoBarra.Text);
+             if(libro.Count > 0)
+             {
+                CargarNuevoDetalle(libro[0]);
+             }
+             else
+             {
+                 Response.Write("<script>window.alert('Código de barra inexistente o no pertenece a un libro');</script>");
+             }
+             btn_codigoBarra.Text = "";
         }
     }
     

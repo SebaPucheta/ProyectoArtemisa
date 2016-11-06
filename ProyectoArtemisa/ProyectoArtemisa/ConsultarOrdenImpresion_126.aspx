@@ -24,6 +24,17 @@
          </div>
          <br />
 
+         <!-- Codigo de barra del Item -->
+        <div class="row">
+            <div class="form-group">
+                <label for="nombre" class="control-label col-md-3">Código de barra: </label>
+                <div class="col-md-4">
+                    <asp:TextBox runat="server" class="form-control" type="text" ID="btn_codigoBarra" value="" ViewStateMode="Enabled" OnTextChanged="btn_codigoBarra_TextChanged" AutoPostBack="true" />
+                </div>
+            </div>
+        </div>
+        <br />
+
          <!--Grilla Nueva Orden de Impresion-->
          <asp:GridView ID="dgv_ordenNueva" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="false" OnRowDeleting="btn_limpiarGrilla_RowDeleting" OnSelectedIndexChanged="btn_registrarOrden_SelectedIndexChanged" >
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />

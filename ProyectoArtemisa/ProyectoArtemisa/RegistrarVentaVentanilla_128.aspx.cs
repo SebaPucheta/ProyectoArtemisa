@@ -263,5 +263,48 @@ namespace ProyectoArtemisa
             (Session["tablaDetalles"] as DataTable).Rows[e.RowIndex].Delete();
             CargarGrillaDetalles();
         }
+         protected void btn_codigoBarra_TextChanged(object sender, EventArgs e)
+        {
+            DataTable tabla = FacturaDao.DevolverItemPorCodigoBarra(btn_codigoBarra.Text);
+             if(tabla.Rows.Count > 0)
+             {
+                 CargarNuevoDetalleDesdeDataTable(tabla);
+             }
+             else
+             {
+                 Response.Write("<script>window.alert('Código de barra inexistente');</script>");
+             }
+             btn_codigoBarra.Text = "";
+        }
+
+         protected void CargarNuevoDetalleDesdeDataTable(DataTable tablaItem)
+         {
+             dgv_nuevoDetalle.Visible = true;
+             DataTable tabla = new DataTable();
+             DataRow fila;
+
+
+             //Creo las columnas de la tabla
+             tabla.Columns.Add("idItem", typeof(int));
+             tabla.Columns.Add("nombreApunte", typeof(string));
+             tabla.Columns.Add("tipoApunte", typeof(string));
+
+             fila = tabla.NewRow();
+             DataRow filaItem = tablaItem.Rows[0];
+             fila[0] = int.Parse( filaItem["idItem"].ToString() );
+             fila[1] = filaItem["nombre"].ToString();
+             fila[2] = filaItem["tipoItem"].ToString();
+
+             tabla.Rows.Add(fila);
+             DataView dataView = new DataView(tabla);
+
+             dgv_nuevoDetalle.DataKeyNames = new string[] { "idItem" };
+             dgv_nuevoDetalle.DataSource = dataView;
+             dgv_nuevoDetalle.DataBind();
+
+             ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = filaItem["precio"].ToString();
+           
+         }
+
     }
 }

@@ -12,7 +12,7 @@
     </title>
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="Estilo/NavBar.css" />
+    <%--<link rel="stylesheet" href="Estilo/NavBar.css" />--%>
     <%--<link rel="stylesheet" href="Estilo/Sidebar.css" />--%>
     <link rel="stylesheet" href="Estilo/Forms.css" />
     <link rel="stylesheet" href="Estilo/sidebarAcordeon.css" />
@@ -26,6 +26,7 @@
 
 </head>
 <body>
+    
     <form id="form1" runat="server">
 
 
@@ -89,11 +90,11 @@
             </ul>
         </nav>--%>
 
-
+        
         <div class="contenedor-menu">
             <a class="btn-menu btn-a"><i class="icono  glyphicon glyphicon-align-justify"></i>EDUCOM</a>
             <ul class="menu">
-                <li><a href="#" class="usuario">Usuario<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#" class="usuario">Usuario<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
                     <ul>
                         <li>
                             <asp:Button runat="server" ID="btn_usuario" CssClass="btn-a" Text="nombre" OnClick="btn_usuario_OnClick" /></li>
@@ -102,7 +103,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#">Registrar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#">Registrar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
                     <ul>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarApunte" Text="Registrar Apunte" OnClick="btn_registrarApunte_OnClick" /></li>
@@ -123,7 +124,7 @@
                    
                     </ul>
                 </li>
-                <li><a href="#">Consultar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#">Consultar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
                     <ul>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarItem" Text="Consultar Item" OnClick="btn_consultarItem_OnClick" /></li>
@@ -148,7 +149,7 @@
                      <asp:Button runat="server" CssClass="btn-a" ID="btn_andromeda" Text="Andromeda" OnClick="btn_andromeda_Click" /></li>
             </ul>
         </div>
-
+        
 
         <!-- Paginas hijas -->
         <div>
@@ -187,8 +188,17 @@
                 }
             });
             $('.btn-menu').click(function () {
-
                 $('.contenedor-menu .menu').slideToggle();
+                if ($('.contenedor-menu .menu').hasClass('panel')) {
+                    $('#PanelState').attr('value', 'true');
+                } else {
+                    $('#PanelState').attr('value', 'false');
+                }
+            });
+            $(document).ready(function () {
+                if ($('#PanelState').attr('value') == 'false') {
+                    $('#panelText').addClass('panel');
+                }
             });
             $(window).resize(function () {
                 if ($(document).width() < 700) {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using Entidades;
+using System.Data;
 
 namespace BaseDeDatos
 {
@@ -119,5 +120,19 @@ namespace BaseDeDatos
             }
             finally { cnn.Close(); }
         }
+
+        public static DataTable DevolverItemPorCodigoBarra(string codigo)
+        {
+            string query = @"(SELECT A.idApunte AS idItem, A.nombreApunte as nombre, 'Apunte' as tipoItem, A.precioApunte as precio FROM Apunte A WHERE A.codigoBarraApunte like @codigo AND baja = 0 )
+                                union all
+                             (SELECT l.idLibro AS idItem, l.nombreLibro as nombre, 'Libro' as tipoItem, l.precioLibro as precio FROM Libro L WHERE L.codigoBarraLibro like @codigo AND Baja = 0 )";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"codigo", codigo);
+            SqlDataReader reader = cmd.ExecuteReader();
+            DataTable tabla = new DataTable();
+            tabla.Load(reader);
+            return tabla;
+        }
+        
     }
 }

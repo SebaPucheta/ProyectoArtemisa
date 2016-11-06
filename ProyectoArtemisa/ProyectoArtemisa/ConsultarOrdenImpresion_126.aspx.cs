@@ -21,7 +21,7 @@ namespace ProyectoArtemisa
             {
                 if(bool.Parse(Session["agregarOrden"].ToString()))
                 {
-                    CargarApunteGrillaOrdenNueva();
+                    CargarApunteGrillaOrdenNueva((Session["objetoApunteEntidad"] as ApunteEntidad));
                     CargarOrdenesEnGrilla();
                     BorrarVariablesGlobales();
                 }
@@ -105,7 +105,7 @@ namespace ProyectoArtemisa
         //Carga el apunte que trajo del otro form en la grilla dgv_ordenNueva, en donde se setea la cantidad y luego se al acer click en registrar se crea
         //la una nueva orden de impresion y pasa a la otra grilla
        
-        protected void CargarApunteGrillaOrdenNueva()
+        protected void CargarApunteGrillaOrdenNueva(ApunteEntidad apunte)
         {
             dgv_ordenNueva.Visible = true;
             DataTable tabla = new DataTable();
@@ -117,8 +117,8 @@ namespace ProyectoArtemisa
 
             fila = tabla.NewRow();
             
-            fila[0] = (Session["objetoApunteEntidad"] as ApunteEntidad).idApunte;
-            fila[1] = (Session["objetoApunteEntidad"] as ApunteEntidad).nombreApunte;
+            fila[0] = apunte.idApunte;
+            fila[1] = apunte.nombreApunte;
             tabla.Rows.Add(fila);
             DataView dataView = new DataView(tabla);
 
@@ -189,7 +189,20 @@ namespace ProyectoArtemisa
              CargarOrdenesEnGrilla();
        }
 
-        
+        protected void btn_codigoBarra_TextChanged(object sender, EventArgs e)
+        {
+            List<ApunteEntidadQuery> apunte = ApunteDao.ConsultarApunteXCodigoBarra(btn_codigoBarra.Text);
+            if (apunte.Count > 0)
+            {
+                CargarApunteGrillaOrdenNueva(apunte[0]);
+            }
+            else
+            {
+                Response.Write("<script>window.alert('Código de barra inexistente o no pertenece a un apunte');</script>");
+            }
+            btn_codigoBarra.Text = "";
 
-    }
+
+        }
+     }
 }

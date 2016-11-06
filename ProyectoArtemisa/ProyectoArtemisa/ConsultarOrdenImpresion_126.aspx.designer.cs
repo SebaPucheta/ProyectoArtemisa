@@ -22,6 +22,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Label lbl_fecha;
         
         /// <summary>
+        /// Control btn_codigoBarra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox btn_codigoBarra;
+        
+        /// <summary>
         /// Control dgv_ordenNueva.
         /// </summary>
         /// <remarks>

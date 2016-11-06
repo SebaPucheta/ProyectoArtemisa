@@ -450,7 +450,7 @@ namespace BaseDeDatos
                 //Insert de la tabla ingresoLibro
                 string query1 = "INSERT INTO IngresoLibro (fecha, idProveedor, total, idUsuario) VALUES (@fecha, @idProveedor, @total, @idUsuario); select scope_identity()";
                 SqlCommand cmd1 = new SqlCommand(query1, cnn, trans);
-                cmd1.Parameters.AddWithValue(@"fecha", libro.fecha);
+                cmd1.Parameters.AddWithValue(@"fecha", DateTime.Now);
                 cmd1.Parameters.AddWithValue(@"idProveedor", libro.idProveedor);
                 cmd1.Parameters.AddWithValue(@"total", libro.total);
                 cmd1.Parameters.AddWithValue(@"idUsuario", libro.idUsuario);
