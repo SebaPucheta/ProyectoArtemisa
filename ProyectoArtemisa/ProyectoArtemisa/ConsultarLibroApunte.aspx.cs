@@ -572,5 +572,10 @@ namespace ProyectoArtemisa
             }
         }
 
+        protected void btn_codigoBarra_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }

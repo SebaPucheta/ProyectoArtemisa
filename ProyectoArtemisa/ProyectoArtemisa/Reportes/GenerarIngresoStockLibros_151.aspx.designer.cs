@@ -7,99 +7,81 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ProyectoArtemisa {
+namespace ProyectoArtemisa.Reportes {
     
     
-    public partial class RegistrarVentaVentanilla_128 {
+    public partial class GenerarIngresoStockLibros_151 {
         
         /// <summary>
-        /// Control lbl_fecha.
+        /// Control txt_fechaDesde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_fecha;
+        protected global::System.Web.UI.WebControls.TextBox txt_fechaDesde;
         
         /// <summary>
-        /// Control lbl_usuario.
+        /// Control txt_fechaHasta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_usuario;
+        protected global::System.Web.UI.WebControls.TextBox txt_fechaHasta;
         
         /// <summary>
-        /// Control txt_codBarra.
+        /// Control txt_nomProveedor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_codBarra;
+        protected global::System.Web.UI.WebControls.TextBox txt_nomProveedor;
         
         /// <summary>
-        /// Control dgv_nuevoDetalle.
+        /// Control txt_apellidoCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgv_nuevoDetalle;
+        protected global::System.Web.UI.WebControls.TextBox txt_apellidoCliente;
         
         /// <summary>
-        /// Control lbl_info.
+        /// Control txt_nombreCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_info;
+        protected global::System.Web.UI.WebControls.TextBox txt_nombreCliente;
         
         /// <summary>
-        /// Control btn_agregar.
+        /// Control btn_generar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_agregar;
+        protected global::System.Web.UI.WebControls.Button btn_generar;
         
         /// <summary>
-        /// Control dgv_grillaDetalleFactura.
+        /// Control ScriptManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgv_grillaDetalleFactura;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Control lbl_total.
+        /// Control ReportViewer1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_total;
-        
-        /// <summary>
-        /// Control btn_confirmar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_confirmar;
-        
-        /// <summary>
-        /// Control btn_cancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_cancelar;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
     }
 }

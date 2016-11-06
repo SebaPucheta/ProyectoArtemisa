@@ -10,7 +10,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace ProyectoArtemisa.Reportes
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class GenerarComprobanteDeVenta_149 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,6 +19,7 @@ namespace ProyectoArtemisa.Reportes
 
         protected void btn_generar_Click(object sender, EventArgs e)
         {
+
             showReport();
         }
 
@@ -28,37 +29,36 @@ namespace ProyectoArtemisa.Reportes
             {
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
                 ReportViewer1.Reset();
-                DataTable dt = getData(DateTime.Parse(txt_fechaDesde.Text), DateTime.Parse(txt_fechaHasta.Text));
+                DataTable dt = getData(int.Parse(txt_idFactura.Text));
                 ReportDataSource rds = new ReportDataSource("DataSet1", dt);
 
                 ReportViewer1.LocalReport.DataSources.Add(rds);
-                ReportViewer1.LocalReport.ReportPath = "Reportes/GenerarCierreVenta_143.rdlc";
+                ReportViewer1.LocalReport.ReportPath = "Reportes/GenerarComprobanteDeVenta_149.rdlc";
 
                 ReportParameter[] param = new ReportParameter[]{ 
-            new ReportParameter("fechaDesde", txt_fechaDesde.Text),
-            new ReportParameter("fechaHasta", txt_fechaHasta.Text)
+            new ReportParameter("idFactura", txt_idFactura.Text),
+            
             };
 
                 ReportViewer1.LocalReport.SetParameters(param);
                 ReportViewer1.LocalReport.Refresh();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                Response.Write("ERROR " + e.ToString());
+                Response.Write("ERROR" + e.ToString());
             }
-                        }
+        }
 
-        private DataTable getData(DateTime fechaDesde, DateTime fechaHasta)
+        private DataTable getData(int idFactura)
         {
             DataTable dt = new DataTable();
             string con = System.Configuration.ConfigurationManager.ConnectionStrings["ProyectoArtemisaConnectionString"].ConnectionString;
             using (SqlConnection cnn = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("sp_ventaXdia", cnn);
+                SqlCommand cmd = new SqlCommand("sp_facturaXIdFactura", cnn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 // tener cuidado cual es el parametro, es el de la bd
-                cmd.Parameters.Add("@fechaDesde", SqlDbType.DateTime).Value = fechaDesde;
-                cmd.Parameters.Add("@fechaHasta", SqlDbType.DateTime).Value = fechaHasta;
+                cmd.Parameters.Add("@idFactura", SqlDbType.Int).Value = idFactura;              
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(dt);

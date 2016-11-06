@@ -512,5 +512,8 @@ namespace BaseDeDatos
         }
 
 
+        //para buscar
+
+
     }
 }
