@@ -30,6 +30,18 @@
             </div>
             <br />
 
+
+             <%-- Apunte --%>
+            <div class="row">
+                <div class="form-group">
+                    <label for="documento" class="control-label col-md-2">Nombre Libro: </label>
+                    <div class="col-md-4">                        
+                        <asp:DropDownList runat="server"  CssClass="form-control" ID="ddl_libro" />   
+                    </div>
+                </div>
+            </div>
+            <br />
+
             <%-- Nombre de proveedor --%>
             <div class="row">
                 <div class="form-group">

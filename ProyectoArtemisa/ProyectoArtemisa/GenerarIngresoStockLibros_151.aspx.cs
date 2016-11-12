@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using Microsoft.Reporting.WebForms;
+using BaseDeDatos;
 
 namespace ProyectoArtemisa.Reportes
 {
@@ -107,6 +108,15 @@ namespace ProyectoArtemisa.Reportes
             }
             return dt;
         }
-        
+       
+        protected void cargarLibros()
+        {
+            ddl_libro.DataSource = LibroDao.consultarLibrosCombo();
+            ddl_libro.DataTextField = "nombreLibro";
+            ddl_libro.DataValueField = "idLibro";
+            ddl_libro.DataBind();
+            ddl_libro.Items.Insert(0, new ListItem("(Libro)", "0"));
+            ddl_libro.SelectedIndex = 0;
+        }
     }
 }

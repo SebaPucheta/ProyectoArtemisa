@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>4.08771cm</Width>
+              <Width>4.855cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.08771cm</Width>
+              <Width>4.855cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.08771cm</Width>
+              <Width>4.855cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -104,7 +104,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total</Value>
+                              <Value>Subtotal</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -209,7 +209,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>="$ " &amp; Fields!total.Value</Value>
+                              <Value>="$ " &amp; FormatNumber((Fields!total.Value),2)</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                               </Style>
@@ -284,14 +284,14 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>="$" &amp; Sum(Fields!total.Value)</Value>
+                              <Value>="$" &amp; FormatNumber((Sum(Fields!total.Value)),2)</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Right</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -334,10 +334,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>2.03412cm</Top>
-        <Left>2.16641cm</Left>
+        <Top>2.35162cm</Top>
+        <Left>0.92288cm</Left>
         <Height>2.17042cm</Height>
-        <Width>12.26313cm</Width>
+        <Width>14.565cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -377,11 +377,43 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>0.79057cm</Top>
-        <Left>2.16641cm</Left>
+        <Top>1.10807cm</Top>
+        <Left>0.92288cm</Left>
         <Height>0.75875cm</Height>
-        <Width>12.26312cm</Width>
+        <Width>14.565cm</Width>
         <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Generado: " &amp; Today() &amp;" "&amp; TimeOfDay()</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox8</rd:DefaultName>
+        <Top>0.19057cm</Top>
+        <Left>0.92287cm</Left>
+        <Height>0.6cm</Height>
+        <Width>5.11938cm</Width>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -399,7 +431,7 @@
   <Width>6.5in</Width>
   <Page>
     <PageHeader>
-      <Height>2.97808cm</Height>
+      <Height>2.0785cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -414,7 +446,7 @@
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>Calibri</FontFamily>
-                    <FontSize>24pt</FontSize>
+                    <FontSize>20pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                     <TextDecoration>None</TextDecoration>
                     <Color>White</Color>
@@ -427,9 +459,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.31432cm</Top>
-          <Left>2.66912cm</Left>
-          <Height>1.68479cm</Height>
+          <Top>0.34961cm</Top>
+          <Left>3.25121cm</Left>
+          <Height>1.06902cm</Height>
           <Width>12.23667cm</Width>
           <Style>
             <Border>
@@ -441,16 +473,16 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox8">
+        <Textbox Name="Textbox6">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>="Generado: " &amp; Today()</Value>
+                  <Value>EDUCOM</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>16pt</FontSize>
                     <Color>White</Color>
                   </Style>
                 </TextRun>
@@ -458,11 +490,11 @@
               <Style />
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>2.17551cm</Top>
-          <Left>11.00349cm</Left>
-          <Height>0.6cm</Height>
-          <Width>5.11938cm</Width>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.65988cm</Top>
+          <Left>0.31104cm</Left>
+          <Height>0.75875cm</Height>
+          <Width>3.135cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -482,16 +514,6 @@
         <BackgroundColor>#cb0014</BackgroundColor>
       </Style>
     </PageHeader>
-    <PageFooter>
-      <Height>2.54cm</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-      </Style>
-    </PageFooter>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>

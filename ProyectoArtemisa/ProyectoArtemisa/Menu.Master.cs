@@ -13,13 +13,20 @@ namespace ProyectoArtemisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["nickUsuario"] = HttpContext.Current.User.Identity.Name.ToString();
-            UsuarioEntidadQuery usuario = UsuarioDao.ConsultarUnUsuarioPorNick(HttpContext.Current.User.Identity.Name.ToString());
-            Session["idUsuario"] = usuario.idUsuario;
-            string nombreUsuario= usuario.clienteQuery.nombreCliente; 
-            string apellidoUsuario= usuario.clienteQuery.apellidoCliente;
-            Session["nombreApellidoUsuario"] = nombreUsuario + " " + apellidoUsuario;
-            Page.MaintainScrollPositionOnPostBack = true;
+            try
+            {
+                Session["nickUsuario"] = HttpContext.Current.User.Identity.Name.ToString();
+                UsuarioEntidadQuery usuario = UsuarioDao.ConsultarUnUsuarioPorNick(HttpContext.Current.User.Identity.Name.ToString());
+                Session["idUsuario"] = usuario.idUsuario;
+                string nombreUsuario = usuario.clienteQuery.nombreCliente;
+                string apellidoUsuario = usuario.clienteQuery.apellidoCliente;
+                Session["nombreApellidoUsuario"] = nombreUsuario + " " + apellidoUsuario;
+                Page.MaintainScrollPositionOnPostBack = true;
+            }
+            catch(Exception)
+            {
+                Response.Redirect("Login.aspx");
+            }
 
             if (HttpContext.Current.User.IsInRole("administrador"))
             {
@@ -285,28 +292,28 @@ namespace ProyectoArtemisa
         {
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
-            Response.Redirect("Reportes/GenerarCierreVenta_143.aspx");
+            Response.Redirect("GenerarCierreVenta_143.aspx");
         }
 
         protected void btn_GenerarComprobanteDeVenta_149_OnClick(object sender, EventArgs e)
         {
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
-            Response.Redirect("Reportes/btn_GenerarComprobanteDeVenta_149.aspx");
+            Response.Redirect("GenerarComprobanteDeVenta_149.aspx");
         }
 
         protected void btn_GenerarIngresoStockLibros_151_OnClick(object sender, EventArgs e)
         {
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
-            Response.Redirect("Reportes/GenerarCierreVenta_143.aspx");
+            Response.Redirect("GenerarIngresoStockLibros_151.aspx");
         }
 
         protected void btn_GenerarReporteResmasUtilizadas_146_OnClick(object sender, EventArgs e)
         {
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
-            Response.Redirect("Reportes/GenerarCierreVenta_143.aspx");
+            Response.Redirect("GenerarReporteResmasUtilizadas_146.aspx");
         }
 
         

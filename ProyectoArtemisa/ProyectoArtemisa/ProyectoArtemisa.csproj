@@ -145,10 +145,10 @@
     <Content Include="NOVA - RegistrarUsuario_136.aspx" />
     <Content Include="RegistrarUsuarioCliente.aspx" />
     <Content Include="RegistrarVentaVentanilla_128.aspx" />
-    <Content Include="Reportes\GenerarCierreVenta_143.aspx" />
-    <Content Include="Reportes\GenerarComprobanteDeVenta_149.aspx" />
-    <Content Include="Reportes\GenerarIngresoStockLibros_151.aspx" />
-    <Content Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx" />
+    <Content Include="GenerarCierreVenta_143.aspx" />
+    <Content Include="GenerarComprobanteDeVenta_149.aspx" />
+    <Content Include="GenerarIngresoStockLibros_151.aspx" />
+    <Content Include="GenerarReporteResmasUtilizadas_146.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -381,32 +381,32 @@
     <Compile Include="RegistrarVentaVentanilla_128.aspx.designer.cs">
       <DependentUpon>RegistrarVentaVentanilla_128.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\GenerarCierreVenta_143.aspx.cs">
+    <Compile Include="GenerarCierreVenta_143.aspx.cs">
       <DependentUpon>GenerarCierreVenta_143.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reportes\GenerarCierreVenta_143.aspx.designer.cs">
+    <Compile Include="GenerarCierreVenta_143.aspx.designer.cs">
       <DependentUpon>GenerarCierreVenta_143.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\GenerarComprobanteDeVenta_149.aspx.cs">
+    <Compile Include="GenerarComprobanteDeVenta_149.aspx.cs">
       <DependentUpon>GenerarComprobanteDeVenta_149.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reportes\GenerarComprobanteDeVenta_149.aspx.designer.cs">
+    <Compile Include="GenerarComprobanteDeVenta_149.aspx.designer.cs">
       <DependentUpon>GenerarComprobanteDeVenta_149.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\GenerarIngresoStockLibros_151.aspx.cs">
+    <Compile Include="GenerarIngresoStockLibros_151.aspx.cs">
       <DependentUpon>GenerarIngresoStockLibros_151.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reportes\GenerarIngresoStockLibros_151.aspx.designer.cs">
+    <Compile Include="GenerarIngresoStockLibros_151.aspx.designer.cs">
       <DependentUpon>GenerarIngresoStockLibros_151.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx.cs">
+    <Compile Include="GenerarReporteResmasUtilizadas_146.aspx.cs">
       <DependentUpon>GenerarReporteResmasUtilizadas_146.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx.designer.cs">
+    <Compile Include="GenerarReporteResmasUtilizadas_146.aspx.designer.cs">
       <DependentUpon>GenerarReporteResmasUtilizadas_146.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

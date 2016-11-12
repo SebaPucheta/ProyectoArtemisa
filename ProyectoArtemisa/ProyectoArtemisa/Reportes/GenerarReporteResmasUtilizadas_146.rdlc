@@ -6,19 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.74896cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.74896cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.74896cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.94979cm</Width>
+              <Width>3.19875cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.16146cm</Width>
+              <Width>3.41042cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -299,7 +299,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>cantidad</rd:DefaultName>
@@ -331,7 +333,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>cantHoja</rd:DefaultName>
@@ -363,7 +367,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>hojasTotales</rd:DefaultName>
@@ -441,7 +447,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox28</rd:DefaultName>
@@ -512,14 +520,16 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Sum(Fields!hojasTotales.Value)/500)</Value>
+                              <Value>=Round((Sum(Fields!hojasTotales.Value)/500), System.MidpointRounding.AwayFromZero)</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox34</rd:DefaultName>
@@ -566,10 +576,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.84349cm</Top>
-        <Left>1.84891cm</Left>
+        <Top>1.24036cm</Top>
+        <Left>0.60411cm</Left>
         <Height>2.4cm</Height>
-        <Width>13.61125cm</Width>
+        <Width>14.85605cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -588,6 +598,38 @@
           </RightBorder>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Generado: " &amp; Today()</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox8</rd:DefaultName>
+        <Top>0.17639cm</Top>
+        <Left>0.60411cm</Left>
+        <Height>0.6cm</Height>
+        <Width>5.11938cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>2in</Height>
     <Style />
@@ -610,7 +652,7 @@
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>Calibri</FontFamily>
-                    <FontSize>24pt</FontSize>
+                    <FontSize>20pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                     <TextDecoration>None</TextDecoration>
                     <Color>White</Color>
@@ -624,8 +666,8 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>0.42761cm</Top>
-          <Left>2.13666cm</Left>
-          <Height>1.68479cm</Height>
+          <Left>2.71874cm</Left>
+          <Height>1.22177cm</Height>
           <Width>12.23667cm</Width>
           <Style>
             <Border>
@@ -637,16 +679,16 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox8">
+        <Textbox Name="Textbox6">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>="Generado: " &amp; Today()</Value>
+                  <Value>EDUCOM</Value>
                   <Style>
-                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>16pt</FontSize>
                     <Color>White</Color>
                   </Style>
                 </TextRun>
@@ -654,11 +696,10 @@
               <Style />
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.86944cm</Top>
-          <Left>10.34078cm</Left>
-          <Height>0.6cm</Height>
-          <Width>5.11938cm</Width>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.89062cm</Top>
+          <Height>0.75875cm</Height>
+          <Width>3.135cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -678,16 +719,6 @@
         <BackgroundColor>#cb0014</BackgroundColor>
       </Style>
     </PageHeader>
-    <PageFooter>
-      <Height>2.54cm</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-      </Style>
-    </PageFooter>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>

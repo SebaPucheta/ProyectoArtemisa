@@ -44,4 +44,16 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_pie" runat="server">
+
+     <%-- Son los JQUERY para los datapicker Autor: Martin--%>
+    <script>
+        $(function () {
+            $("#<%= txt_fechaDesde.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' }).val();
+        });
+    </script>
+    <script>
+        $(function () {
+            $("#<%= txt_fechaHasta.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' }).val();
+        });
+    </script>
 </asp:Content>

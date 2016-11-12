@@ -9,7 +9,7 @@
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.11938cm</Width>
+              <Width>7.58cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -272,7 +272,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>="$" &amp; Fields!subtotal.Value</Value>
+                              <Value>="$" &amp; FormatNumber(Fields!subtotal.Value,2)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -348,7 +348,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>="$" &amp; Sum(Fields!subtotal.Value, "DataSet1")</Value>
+                              <Value>="$" &amp; FormatNumber((Sum(Fields!subtotal.Value, "DataSet1")),2)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -397,24 +397,152 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.97579cm</Top>
-        <Left>2.6562cm</Left>
+        <Top>2.72204cm</Top>
+        <Left>0.94932cm</Left>
         <Height>1.8cm</Height>
-        <Width>12.61938cm</Width>
+        <Width>15.08001cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Generado: " &amp; Today() &amp; " " &amp; TimeOfDay()</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox8</rd:DefaultName>
+        <Top>0.17639cm</Top>
+        <Left>6.34682cm</Left>
+        <Height>0.6cm</Height>
+        <Width>5.11938cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Número de comprobante: " &amp; fields!idFactura.Value</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox8</rd:DefaultName>
+        <Top>0.17639cm</Top>
+        <Left>0.94932cm</Left>
+        <Height>0.6cm</Height>
+        <Width>5.11938cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Usuario: " &amp; Fields!nombreEmpleado.Value</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox8</rd:DefaultName>
+        <Top>0.99604cm</Top>
+        <Left>0.94932cm</Left>
+        <Height>0.6cm</Height>
+        <Width>5.11938cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Forma de Pago: EFECTIVO"</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>1.77243cm</Top>
+        <Left>0.94932cm</Left>
+        <Height>0.6cm</Height>
+        <Width>10.51688cm</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>2.04167in</Height>
     <Style />
   </Body>
   <Width>6.55798in</Width>
   <Page>
     <PageHeader>
-      <Height>2.54cm</Height>
+      <Height>1.69333cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -468,109 +596,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.49953cm</Top>
           <Left>5.1562cm</Left>
           <Height>0.94396cm</Height>
           <Width>7.23604cm</Width>
           <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox8">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>="Generado: " &amp; Today()</Value>
-                  <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <Color>White</Color>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.76361cm</Top>
-          <Left>5.69531cm</Left>
-          <Height>0.6cm</Height>
-          <Width>5.11938cm</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox9">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>="Número de comprobante: " &amp; fields!idFactura.Value</Value>
-                  <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <Color>White</Color>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>0.94396cm</Top>
-          <Left>11.14101cm</Left>
-          <Height>0.6cm</Height>
-          <Width>5.11938cm</Width>
-          <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox10">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>="Usuario: " &amp; Fields!nombreEmpleado.Value</Value>
-                  <Style>
-                    <FontFamily>Calibri</FontFamily>
-                    <Color>White</Color>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.76361cm</Top>
-          <Left>11.14101cm</Left>
-          <Height>0.6cm</Height>
-          <Width>5.11938cm</Width>
-          <ZIndex>4</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
