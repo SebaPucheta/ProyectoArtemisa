@@ -80,7 +80,11 @@ namespace ProyectoArtemisa
             proveedor.idCiudadEditorial = Convert.ToInt32(ddl_ciudad.SelectedValue);
             return proveedor;
         }
-
+        protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaEditoriales.PageIndex = e.NewPageIndex;
+            CargarGrillaEditoriales();
+        }
         protected void LimpiarForm()
         {
             txt_nombreProveedor.Text = "";

@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label for="nombre" class="control-label col-md-3">Código de Barra: </label>
                     <div class="col-md-7">
-                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_codigoBarra" value="" ViewStateMode="Enabled" Enabled="false" />
+                        <asp:TextBox runat="server" class="form-control" OnTextChanged="txt_codigoBarra_TextChanged" AutoPostBack="true" type="text" ID="txt_codigoBarra" value="" ViewStateMode="Enabled" Enabled="false" />
                     </div>
                 </div>
             </div>

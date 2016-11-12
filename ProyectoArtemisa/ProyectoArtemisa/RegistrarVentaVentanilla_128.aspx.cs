@@ -31,7 +31,7 @@ namespace ProyectoArtemisa
                 }
             }
             lbl_usuario.Text = Session["nombreApellidoUsuario"].ToString();
-            lbl_total.Text = CalcularTotal().ToString();
+            btn_codigoBarra.Focus();
         }
 
         //Cargar la Grilla que tiene un nuevo detalle
@@ -125,6 +125,8 @@ namespace ProyectoArtemisa
             dgv_grillaDetalleFactura.DataKeyNames = new string[] { "idItem" };
             dgv_grillaDetalleFactura.DataSource = dataView;
             dgv_grillaDetalleFactura.DataBind();
+            lbl_total.Text = CalcularTotal().ToString();
+            
         }
 
         //Inicializa las variable globales
@@ -149,16 +151,21 @@ namespace ProyectoArtemisa
         }
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
-            if(int.Parse(lbl_total.Text) == 0)
+            if(float.Parse(lbl_total.Text) <=0)
             {
                 Response.Write("<script>window.alert('No a ingresado ningun articulo');</script>");
             }
             else
             {
-                FacturaDao.RegistrarFactura(CrearFactura());
+                int idFactura = FacturaDao.RegistrarFactura(CrearFactura());
                 InicializarVariableSessionTabla();
-                dgv_grillaDetalleFactura.Visible = false;
+                CargarGrillaDetalles();
+                dgv_grillaDetalleFactura.Visible = true;
                 lbl_total.Text = "";
+
+                string url = "Reportes/GenerarComprobanteDeVenta_149.aspx?id=" + idFactura;
+                Response.Redirect(url);
+                //Response.Write("<script>window.open('" + url +"','Popup','width=1000,height=700')</script>");
             }
             
             
@@ -268,7 +275,7 @@ namespace ProyectoArtemisa
             DataTable tabla = FacturaDao.DevolverItemPorCodigoBarra(btn_codigoBarra.Text);
              if(tabla.Rows.Count > 0)
              {
-                 CargarNuevoDetalleDesdeDataTable(tabla);
+                 CargarNuevoDetalleGrillaDetalleDesdeDataTable(tabla);
              }
              else
              {
@@ -306,5 +313,66 @@ namespace ProyectoArtemisa
            
          }
 
+         protected void CargarNuevoDetalleGrillaDetalleDesdeDataTable(DataTable tablaItem)
+         {
+             DataRow fila;
+             DataRow filaItem = tablaItem.Rows[0];
+
+             fila = (Session["tablaDetalles"] as DataTable).NewRow();
+             int cantidad = 1;
+             float precio = float.Parse(filaItem["precio"].ToString());
+             fila[0] = int.Parse(filaItem["idItem"].ToString());
+             fila[1] = filaItem["nombre"].ToString();
+             fila[2] = filaItem["tipoItem"].ToString();
+             fila[3] = "$" + precio.ToString();
+             fila[4] = cantidad.ToString() + " Unidades";
+             float subtotal = precio * cantidad;
+             fila[5] = "$" + (subtotal).ToString();
+
+             (Session["tablaDetalles"] as DataTable).Rows.Add(fila);
+
+             CargarGrillaDetalles();
+         }
+
+         protected void dgv_grillaDetalleFactura_RowCommand(Object sender, GridViewCommandEventArgs e)
+         {
+             int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
+
+             if (e.CommandName == "modificar")
+             {
+                 ModificarDetalle(indice);
+                 (Session["tablaDetalles"] as DataTable).Rows[indice].Delete();
+                 CargarGrillaDetalles();
+             }
+         }
+
+         protected void ModificarDetalle(int Indice)
+         {
+             dgv_nuevoDetalle.Visible = true;
+             DataTable tabla = new DataTable();
+             DataRow fila;
+
+
+             //Creo las columnas de la tabla
+             tabla.Columns.Add("idItem", typeof(int));
+             tabla.Columns.Add("nombreApunte", typeof(string));
+             tabla.Columns.Add("tipoApunte", typeof(string));
+
+             fila = tabla.NewRow();
+             
+             fila[0] = int.Parse(dgv_grillaDetalleFactura.DataKeys[Indice].Value.ToString());
+             fila[1] = Page.Server.HtmlDecode(dgv_grillaDetalleFactura.Rows[Indice].Cells[0].Text);
+             fila[2] = Page.Server.HtmlDecode(dgv_grillaDetalleFactura.Rows[Indice].Cells[1].Text);
+
+             tabla.Rows.Add(fila);
+             DataView dataView = new DataView(tabla);
+
+             dgv_nuevoDetalle.DataKeyNames = new string[] { "idItem" };
+             dgv_nuevoDetalle.DataSource = dataView;
+             dgv_nuevoDetalle.DataBind();
+
+             ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = (dgv_grillaDetalleFactura.Rows[Indice].Cells[2].Text.Substring(1));
+             ((TextBox)dgv_nuevoDetalle.Rows[0].Cells[3].FindControl("txt_cantidad")).Text = (dgv_grillaDetalleFactura.Rows[Indice].Cells[3].Text.Replace('n', ' ').Replace('U', ' ').Replace('i', ' ').Replace('d', ' ').Replace('a', ' ').Replace('e', ' ').Replace('s', ' '));
+         }
     }
 }

@@ -193,6 +193,42 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultarEditorial;
         
         /// <summary>
+        /// Control btn_GenerarCierreVenta_143.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_GenerarCierreVenta_143;
+        
+        /// <summary>
+        /// Control btn_GenerarComprobanteDeVenta_149.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_GenerarComprobanteDeVenta_149;
+        
+        /// <summary>
+        /// Control btn_GenerarIngresoStockLibros_151.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_GenerarIngresoStockLibros_151;
+        
+        /// <summary>
+        /// Control btn_GenerarReporteResmasUtilizadas_146.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_GenerarReporteResmasUtilizadas_146;
+        
+        /// <summary>
         /// Control btn_andromeda.
         /// </summary>
         /// <remarks>

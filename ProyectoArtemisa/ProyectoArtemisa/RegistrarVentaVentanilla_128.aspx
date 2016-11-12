@@ -92,7 +92,7 @@
          <br />
 
          <!-- Grilla Detalle de factura-->
-         <asp:GridView ID="dgv_grillaDetalleFactura" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarDetalle_RowDeleting" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged">
+         <asp:GridView ID="dgv_grillaDetalleFactura" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarDetalle_RowDeleting" OnRowCommand="dgv_grillaDetalleFactura_RowCommand" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged">
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
              <EditRowStyle BackColor="#ffffcc" />
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -109,6 +109,14 @@
                      <ControlStyle Width="10px" />
                      <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                  </asp:TemplateField>
+                 <asp:TemplateField>
+                     <ItemTemplate>
+                         <asp:LinkButton ID="btn_modificarItem" CommandName="modificar" runat="server"  ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></asp:LinkButton>
+                     </ItemTemplate>
+                     <ControlStyle Width="10px" />
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                 </asp:TemplateField>
+
                  <asp:TemplateField>
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_eliminarDetalle" CommandName="delete" runat="server"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>

@@ -38,7 +38,8 @@
         <br />
 
 
-        <asp:GridView ID="dgv_grillaEditorial" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnRowDeleting="btn_eliminarEditorial_RowDeleting" OnSelectedIndexChanged="btn_modificarEditorial_SelectedIndexChanged">
+        <asp:GridView ID="dgv_grillaEditorial" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" AllowPaging="True" PageSize="10"
+            OnPageIndexChanging="dgv_grilla_OnPageIndexChanging" OnRowDeleting="btn_eliminarEditorial_RowDeleting" OnSelectedIndexChanged="btn_modificarEditorial_SelectedIndexChanged">
             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
             <EditRowStyle BackColor="#ffffcc" />
             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />

@@ -8,7 +8,7 @@ using BaseDeDatos;
 using Entidades;
 using Negocio;
 using System.Data;
-using BaseDeDatos;
+
 
 namespace ProyectoArtemisa
 {
@@ -22,6 +22,11 @@ namespace ProyectoArtemisa
             }
         }
 
+        protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaEditorial.PageIndex = e.NewPageIndex;
+            CargarEditorialEnGrilla();
+        }
 
         protected void CargarEditorialEnGrilla()
         {

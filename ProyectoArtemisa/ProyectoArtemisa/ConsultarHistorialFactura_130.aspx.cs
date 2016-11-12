@@ -36,6 +36,12 @@ namespace ProyectoArtemisa
         {
 
         }
+
+        protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaOrdenesImpresion.PageIndex = e.NewPageIndex;
+            cargarGrillaHistorialFactura();
+        }
         ///Comentado por Martin, es un metodo de Puchi
 
         //protected void cargarGrillaFactura(List<FacturaEntidadQuery> listaFacturas)

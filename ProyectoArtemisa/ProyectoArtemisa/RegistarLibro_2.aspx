@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <label for="option" id="lbl_codigoBarra" class="control-label col-md-3">Código de barra: </label>
                     <div class="col-md-7">
-                        <asp:TextBox runat="server" MaxLength="50" class="form-control" type="text" ID="txt_codgoBarra" value="" ViewStateMode="Enabled" />
+                        <asp:TextBox runat="server" AutoPostBack="true" OnTextChanged="txt_codigoBarra_TextChanged" MaxLength="50" class="form-control" type="text" ID="txt_codgoBarra" value="" ViewStateMode="Enabled" />
                         <!-- Verifica que se el textBox no este vacio-->
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_codgoBarra" Display="Dynamic" ValidationGroup="AllValidator">
                             <div class="alert alert-danger">

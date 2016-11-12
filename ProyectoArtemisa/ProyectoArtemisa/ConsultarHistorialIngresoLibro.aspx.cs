@@ -15,7 +15,8 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                txt_fechaHasta.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                DateTime hoy = DateTime.Now;
+                txt_fechaHasta.Text = hoy.AddDays(1).ToString("dd/MM/yyyy");
                 txt_fechaDesde.Text = "01/01/1900";
                 CargarComboProveedor();
             }
@@ -46,7 +47,20 @@ namespace ProyectoArtemisa
             ddl_proveedores.Items.Insert(0, new ListItem("Todos", "0"));
             ddl_proveedores.SelectedIndex = 0;
         }
-
+        protected void btn_reporte_Click(object sender, EventArgs e)
+        {
+            string url = "";
+            if(!ddl_proveedores.SelectedItem.Text.Equals("Todos"))
+            {
+                url = "Reportes/GenerarIngresoStockLibros_151.aspx?desde=" + txt_fechaDesde.Text + "&hasta=" + txt_fechaHasta.Text + "&proveedor=" + ddl_proveedores.SelectedItem.Text + "&apellido=" + txt_usuario.Text + "&nombre=" + txt_usuario.Text;
+            }
+            else
+            {
+                url = "Reportes/GenerarIngresoStockLibros_151.aspx?desde=" + txt_fechaDesde.Text + "&hasta=" + txt_fechaHasta.Text + "&proveedor=&apellido=" + txt_usuario.Text + "&nombre=" + txt_usuario.Text;
+            }
+            Response.Redirect(url);
+        }
+        
         protected void CargarGrillaIngresoLibro(List<IngresoLibroEntidadQuery> listaIngresoLibro)
         {
             DataTable tabla = new DataTable();
@@ -76,6 +90,11 @@ namespace ProyectoArtemisa
             dgv_grillaIngresoLibros.DataSource = dataView;
             dgv_grillaIngresoLibros.DataKeyNames = new string[] { "idIngresoLibro" };
             dgv_grillaIngresoLibros.DataBind();
+        }
+        protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaIngresoLibros.PageIndex = e.NewPageIndex;
+            CargarGrillaIngresoLibro(IngresoLibroDao.DevolverIngresoLibroPorFiltro(txt_fechaDesde.Text, txt_fechaHasta.Text, txt_usuario.Text, ddl_proveedores.SelectedValue));
         }
 
         protected void CargarGrillaDetalleIngresoLibro(List<DetalleIngresoLibroEntidadQuery> listaIngresoLibro)

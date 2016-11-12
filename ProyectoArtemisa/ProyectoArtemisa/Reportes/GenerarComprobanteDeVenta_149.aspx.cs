@@ -14,7 +14,11 @@ namespace ProyectoArtemisa.Reportes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                txt_idFactura.Text = Request.QueryString["id"];
+                showReport();
+            }
         }
 
         protected void btn_generar_Click(object sender, EventArgs e)
@@ -45,7 +49,7 @@ namespace ProyectoArtemisa.Reportes
             }
             catch (Exception e)
             {
-                Response.Write("ERROR" + e.ToString());
+                //Response.Write("ERROR" + e.ToString());
             }
         }
 

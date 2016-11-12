@@ -37,7 +37,7 @@ namespace ProyectoArtemisa
                     InicializarVariableSessionTabla();
                 }
             }
-            lbl_total.Text = CalcularTotal().ToString();
+            btn_codigoBarra.Focus();
         }
 
         protected void CargarComboProveedor()
@@ -76,8 +76,12 @@ namespace ProyectoArtemisa
 
                 ((TextBox)dgv_nuevoIngresoStockDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text = libro.precioLibro.ToString();
             }
-        
 
+        protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaIngresoStockDetalle.PageIndex = e.NewPageIndex;
+            CargarGrillaDetalles();
+        }
         //Inicializa la variable de session que contiene la tabla con los detalles de factura
         protected void InicializarVariableSessionTabla()
         {
@@ -121,6 +125,7 @@ namespace ProyectoArtemisa
             dgv_grillaIngresoStockDetalle.DataKeyNames = new string[] { "idLibro" };
             dgv_grillaIngresoStockDetalle.DataSource = dataView;
             dgv_grillaIngresoStockDetalle.DataBind();
+            lbl_total.Text = CalcularTotal().ToString();
         }
 
         //Inicializa las variable globales

@@ -52,7 +52,13 @@ namespace ProyectoArtemisa
             }
             Session["idEditorial"] = null;
             LimpiarForm();
+            Response.Redirect(PilaForms.DevolverForm());
 
+        }
+        protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaEditorial.PageIndex = e.NewPageIndex;
+            CargarEditorialEnGrilla();
         }
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {

@@ -14,7 +14,15 @@ namespace ProyectoArtemisa.Reportes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                txt_fechaDesde.Text = Request.QueryString["desde"];
+                txt_fechaHasta.Text = Request.QueryString["hasta"];
+                txt_nomProveedor.Text = Request.QueryString["proveedor"];
+                txt_apellidoCliente.Text = Request.QueryString["nombre"];
+                txt_nombreCliente.Text = Request.QueryString["apellido"];
+                showReport();
+            }
         }
 
         protected void btn_generar_Click(object sender, EventArgs e)

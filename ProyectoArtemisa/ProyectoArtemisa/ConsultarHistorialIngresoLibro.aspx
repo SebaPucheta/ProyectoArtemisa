@@ -57,13 +57,15 @@
             <%-- Autor: Martin --%>
             <div class="col-lg-offset-9">
                 <asp:Button runat="server" ID="btn_buscar" Text="Buscar" CssClass="btn btn_azul btn_flat" Enabled="true" OnClick="btn_buscar_Click" />
+                <asp:Button runat="server" ID="btn_reporte" Text="Reporte" CssClass="btn btn_azul btn_flat" Enabled="true" OnClick="btn_reporte_Click" />
             </div>
             <br />
             <br />
 
 
             <!-- Grilla Ingreso Libros-->
-            <asp:GridView ID="dgv_grillaIngresoLibros" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnSelectedIndexChanged="btn_consultarFactura_SelectedIndexChanged">
+            <asp:GridView ID="dgv_grillaIngresoLibros" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False"  AllowPaging="True" PageSize="20"
+            OnPageIndexChanging="dgv_grilla_OnPageIndexChanging" OnSelectedIndexChanged="btn_consultarFactura_SelectedIndexChanged">
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                 <EditRowStyle BackColor="#ffffcc" />
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />

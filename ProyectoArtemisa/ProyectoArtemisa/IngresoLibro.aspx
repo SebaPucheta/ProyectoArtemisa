@@ -101,7 +101,8 @@
          <br />
 
          <!-- Grilla Detalle de factura-->
-         <asp:GridView ID="dgv_grillaIngresoStockDetalle" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarDetalle_RowDeleting" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged">
+         <asp:GridView ID="dgv_grillaIngresoStockDetalle" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true"  AllowPaging="True" PageSize="20"
+            OnPageIndexChanging="dgv_grilla_OnPageIndexChanging" OnRowDeleting="btn_eliminarDetalle_RowDeleting" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged">
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
              <EditRowStyle BackColor="#ffffcc" />
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />

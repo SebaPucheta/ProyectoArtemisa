@@ -239,7 +239,8 @@ namespace ProyectoArtemisa
             PilaForms.AgregarForm("RegistarLibro_2.aspx");
             Response.Redirect("RegistrarEditorial_22.aspx");
         }
-
+        protected void txt_codigoBarra_TextChanged(object sender, EventArgs e)
+        { }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Metodos de eventos
         //Eventos de la grilla

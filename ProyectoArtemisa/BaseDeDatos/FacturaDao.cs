@@ -64,11 +64,11 @@ namespace BaseDeDatos
         /// Tipo 2-Apunte
         /// </summary> Gumer
         /// <param name="factura"></param>
-        public static void RegistrarFactura(FacturaEntidad factura)
+        public static int RegistrarFactura(FacturaEntidad factura)
         {
             SqlConnection cnn= obtenerBD();
             SqlTransaction trans = cnn.BeginTransaction();
-            
+            int idFactura=0;
             try
             {
 
@@ -77,7 +77,7 @@ namespace BaseDeDatos
                 cmd1.Parameters.AddWithValue(@"fecha", DateTime.Now);
                 cmd1.Parameters.AddWithValue(@"total", factura.total);
                 cmd1.Parameters.AddWithValue(@"idUsuario", factura.idUsuario);
-                int idFactura = int.Parse(cmd1.ExecuteScalar().ToString());
+                idFactura = int.Parse(cmd1.ExecuteScalar().ToString());
 
                 foreach (DetalleFacturaEntidad detalleFactura in factura.listaDetalleFactura)
                 {
@@ -119,6 +119,7 @@ namespace BaseDeDatos
                 trans.Rollback();
             }
             finally { cnn.Close(); }
+            return idFactura;
         }
 
         public static DataTable DevolverItemPorCodigoBarra(string codigo)

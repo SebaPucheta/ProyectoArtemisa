@@ -97,7 +97,7 @@
                 <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#" class="usuario">Usuario<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
                     <ul>
                         <li>
-                            <asp:Button runat="server" ID="btn_usuario" CssClass="btn-a" Text="nombre" OnClick="btn_usuario_OnClick" /></li>
+                            <asp:Button runat="server" ID="btn_usuario" CssClass="btn-a" Text="nombre" OnClick="btn_usuario_OnClick" TabIndex="60" /></li>
                         <li>
                             <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Desloguearse" LoginText="Loguearse" LogoutPageUrl="Login.aspx" />
                         </li>
@@ -143,6 +143,18 @@
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarEditorial" Text="Consultar Editorial" OnClick="btn_consultarEditorial_Click" /></li>
 
+                    </ul>
+                </li>
+                <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#">Reportes<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                    <ul>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_GenerarCierreVenta_143" Text="Generar cierre de venta" OnClick="btn_GenerarCierreVenta_143_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_GenerarComprobanteDeVenta_149" Text="Generar comprobante de venta" OnClick="btn_GenerarComprobanteDeVenta_149_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_GenerarIngresoStockLibros_151" Text="Generar ingreso de stock libros" OnClick="btn_GenerarIngresoStockLibros_151_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_GenerarReporteResmasUtilizadas_146" Text="Generar reportes de resmas utilizadas" OnClick="btn_GenerarReporteResmasUtilizadas_146_OnClick" /></li>
                     </ul>
                 </li>
                 <li>

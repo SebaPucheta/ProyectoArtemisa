@@ -372,7 +372,9 @@ namespace ProyectoArtemisa
                 txt_precioXHoja.Text = Convert.ToString(Convert.ToInt32(txt_cantHojasApunte.Text) * precioXHoja);
             }
         }
-
+        protected void txt_codigoBarra_TextChanged(object sender, EventArgs e)
+        {}
+        
         //Metodos de eventos valida que se halla seleccionado de los combos un valor
         protected void ddl_customValidator(object sender, ServerValidateEventArgs e)
         {

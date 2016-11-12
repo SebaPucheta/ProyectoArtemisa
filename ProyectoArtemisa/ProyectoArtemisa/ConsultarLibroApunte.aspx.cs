@@ -32,6 +32,7 @@ namespace ProyectoArtemisa
                         CargarUnLibroEnGrilla(LibroDao.ConsultarLibroQuery(int.Parse(Session["idItem"].ToString())));
                     }
                 }
+                btn_codigoBarra.Focus();
             }
             //Toma los metodos ejecutados en JavaScript en el HTML
             //if(IsPostBack)
@@ -67,6 +68,16 @@ namespace ProyectoArtemisa
         {
             CargarComboMateria(Convert.ToInt32(ddl_facultad.SelectedValue));
             CargarComboCarrera(Convert.ToInt32(ddl_facultad.SelectedValue));
+        }
+        protected void dgv_grillaApunte_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaApunte.PageIndex = e.NewPageIndex;
+            RecargarGrillaApunte();
+        }
+        protected void dgv_grillaLibro_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
+        {
+            dgv_grillaLibro.PageIndex = e.NewPageIndex;
+            RecargarGrillaLibro();
         }
         protected void ddl_carrera_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -351,7 +362,7 @@ namespace ProyectoArtemisa
 
             DataView dataView = new DataView(tabla);
 
-
+            
             dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };
             dgv_grillaApunte.DataSource = dataView;
             dgv_grillaApunte.DataBind();
@@ -402,7 +413,7 @@ namespace ProyectoArtemisa
 
             DataView dataView = new DataView(tabla);
 
-
+            Session["dataViewApunte"] = dataView;
             dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };
             dgv_grillaApunte.DataSource = dataView;
             dgv_grillaApunte.DataBind();
@@ -448,12 +459,26 @@ namespace ProyectoArtemisa
             }
 
             DataView dataView = new DataView(tabla);
-
+            Session["dataViewLibro"] = dataView;
             dgv_grillaLibro.DataSource = dataView;
             dgv_grillaLibro.DataKeyNames = new string[] { "idLibro" };
             dgv_grillaLibro.DataBind();
         }
+        private void RecargarGrillaLibro()
+        {
+             
+            dgv_grillaLibro.DataSource = (Session["dataViewLibro"] as DataView);
+            dgv_grillaLibro.DataKeyNames = new string[] { "idLibro" };
+            dgv_grillaLibro.DataBind();
+        }
 
+        private void RecargarGrillaApunte()
+        {
+
+            dgv_grillaApunte.DataSource = (Session["dataViewApunte"] as DataView);
+            dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };
+            dgv_grillaApunte.DataBind();
+        }
         protected void CargarUnLibroEnGrilla(LibroEntidadQuery libro)
         {
             DataTable tabla = new DataTable();
@@ -521,23 +546,30 @@ namespace ProyectoArtemisa
         }
         protected void dgv_grillaApunte_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
-            int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
-
-            if (e.CommandName == "imprimir")
+            if(e.CommandName != "Sort" && e.CommandName!="Page")
             {
-                CargarVariablesSesion(indice);
-                RedirigirForm();
+                int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
+
+                if (e.CommandName == "imprimir")
+                {
+                    CargarVariablesSesion(indice);
+                    RedirigirForm();
+                }
             }
+            
         }
 
         protected void dgv_grillaLibro_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
-            int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
-
-            if (e.CommandName == "imprimir")
+            if(e.CommandName != "Sort" && e.CommandName!="Page")
             {
-                CargarVariablesSesion(indice);
-                RedirigirForm();
+                int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
+
+                if (e.CommandName == "imprimir")
+                {
+                    CargarVariablesSesion(indice);
+                    RedirigirForm();
+                }
             }
         }
 
@@ -629,6 +661,7 @@ namespace ProyectoArtemisa
                 }
 
                 DataView dataView = new DataView(tabla);
+
 
 
                 dgv_grillaApunte.DataKeyNames = new string[] { "idApunte" };

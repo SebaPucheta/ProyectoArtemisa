@@ -118,7 +118,8 @@
             <br />
 
             <!-- Grilla Apunte-->
-            <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged" OnRowCommand="dgv_grillaApunte_RowCommand">
+            <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False"  AllowPaging="True" PageSize="20"
+            OnPageIndexChanging="dgv_grillaApunte_OnPageIndexChanging" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged" OnRowCommand="dgv_grillaApunte_RowCommand">
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                 <EditRowStyle BackColor="#ffffcc" />
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -161,7 +162,8 @@
                 </Columns>
             </asp:GridView>
             <!-- Grilla Libro-->
-            <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true"
+            <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true"  AllowPaging="True" PageSize="20"
+                OnPageIndexChanging="dgv_grillaLibro_OnPageIndexChanging"
                 OnRowDeleting="btn_eliminarLibro_RowDeleting"
                 OnSelectedIndexChanged="btn_modificarLibro_SelectedIndexChanged"
                 OnRowCommand="dgv_grillaLibro_RowCommand">

@@ -12,7 +12,8 @@
             </div>
             <br />
                     
-    <asp:GridView ID="dgv_grillaEditorial" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" >
+    <asp:GridView ID="dgv_grillaEditorial" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False"  AllowPaging="True" PageSize="10"
+            OnPageIndexChanging="dgv_grilla_OnPageIndexChanging"  >
                             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                             <EditRowStyle BackColor="#ffffcc" />
                             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />

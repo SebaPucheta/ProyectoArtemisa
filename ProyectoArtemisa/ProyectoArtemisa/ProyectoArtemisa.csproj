@@ -146,6 +146,8 @@
     <Content Include="RegistrarUsuarioCliente.aspx" />
     <Content Include="RegistrarVentaVentanilla_128.aspx" />
     <Content Include="Reportes\GenerarCierreVenta_143.aspx" />
+    <Content Include="Reportes\GenerarComprobanteDeVenta_149.aspx" />
+    <Content Include="Reportes\GenerarIngresoStockLibros_151.aspx" />
     <Content Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -230,6 +232,11 @@
     <Compile Include="IngresoLibro.aspx.designer.cs">
       <DependentUpon>IngresoLibro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IngresoStockLibros.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IngresoStockLibros.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Menu.Master.cs">
       <DependentUpon>Menu.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -241,6 +248,11 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProyectoArtemisa3DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoArtemisa3DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ProyectoArtemisaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -376,6 +388,20 @@
     <Compile Include="Reportes\GenerarCierreVenta_143.aspx.designer.cs">
       <DependentUpon>GenerarCierreVenta_143.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\GenerarComprobanteDeVenta_149.aspx.cs">
+      <DependentUpon>GenerarComprobanteDeVenta_149.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\GenerarComprobanteDeVenta_149.aspx.designer.cs">
+      <DependentUpon>GenerarComprobanteDeVenta_149.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\GenerarIngresoStockLibros_151.aspx.cs">
+      <DependentUpon>GenerarIngresoStockLibros_151.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\GenerarIngresoStockLibros_151.aspx.designer.cs">
+      <DependentUpon>GenerarIngresoStockLibros_151.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\GenerarReporteResmasUtilizadas_146.aspx.cs">
       <DependentUpon>GenerarReporteResmasUtilizadas_146.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -400,6 +426,28 @@
     <Content Include="packages.config" />
     <Content Include="ProyectoArtemisaDataSet.xsc">
       <DependentUpon>ProyectoArtemisaDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="ProyectoArtemisa3DataSet.xsc">
+      <DependentUpon>ProyectoArtemisa3DataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="IngresoStockLibros.xsc">
+      <DependentUpon>IngresoStockLibros.xsd</DependentUpon>
+    </Content>
+    <None Include="IngresoStockLibros.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IngresoStockLibros.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="IngresoStockLibros.xss">
+      <DependentUpon>IngresoStockLibros.xsd</DependentUpon>
+    </Content>
+    <None Include="ProyectoArtemisa3DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProyectoArtemisa3DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProyectoArtemisa3DataSet.xss">
+      <DependentUpon>ProyectoArtemisa3DataSet.xsd</DependentUpon>
     </Content>
     <None Include="ProyectoArtemisaDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -435,6 +483,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reportes\GenerarCierreVenta_143.rdlc" />
+    <EmbeddedResource Include="Reportes\GenerarComprobanteDeVenta_149.rdlc" />
+    <EmbeddedResource Include="Reportes\GenerarIngresoStockLibros_151.rdlc" />
     <EmbeddedResource Include="Reportes\GenerarReporteResmasUtilizadas_146.rdlc" />
   </ItemGroup>
   <PropertyGroup>

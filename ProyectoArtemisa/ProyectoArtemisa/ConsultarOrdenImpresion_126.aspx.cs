@@ -30,6 +30,7 @@ namespace ProyectoArtemisa
                     CargarOrdenesEnGrilla();
                 }
             }
+            btn_codigoBarra.Focus();
         }
 
         protected void btn_agregar_Click(object sender, EventArgs e)

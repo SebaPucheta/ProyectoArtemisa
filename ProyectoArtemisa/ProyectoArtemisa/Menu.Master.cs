@@ -263,7 +263,7 @@ namespace ProyectoArtemisa
         {
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
-            Response.Redirect("IngresoLibro.aspx");
+            Response.Redirect("~/IngresoLibro.aspx");
         }
 
         protected void btn_andromeda_Click(object sender, EventArgs e)
@@ -278,6 +278,41 @@ namespace ProyectoArtemisa
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("ConsultarHistorialIngresoLibro.aspx");
         }
+
+
+        //Reportes
+        protected void btn_GenerarCierreVenta_143_OnClick(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("Reportes/GenerarCierreVenta_143.aspx");
+        }
+
+        protected void btn_GenerarComprobanteDeVenta_149_OnClick(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("Reportes/btn_GenerarComprobanteDeVenta_149.aspx");
+        }
+
+        protected void btn_GenerarIngresoStockLibros_151_OnClick(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("Reportes/GenerarCierreVenta_143.aspx");
+        }
+
+        protected void btn_GenerarReporteResmasUtilizadas_146_OnClick(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("Reportes/GenerarCierreVenta_143.aspx");
+        }
+
         
+
+            
+
+            
     }
 }
