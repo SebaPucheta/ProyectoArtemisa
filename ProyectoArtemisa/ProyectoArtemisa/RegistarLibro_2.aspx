@@ -335,7 +335,17 @@
                 </div>
             </div>
             <br />
-
+            <%-- File upload se utila para seleccionar el archivo que nosotros vamos a guardar en la BD Autor: Martin --%>
+            <div class="row">
+                <div class="form-group">
+                    <asp:Label Text="Seleccionar imagen: " Font-Bold="true" runat="server" CssClass="control-label col-md-3" Enabled="false" />
+                    <div class="col-md-7">
+                        <asp:FileUpload ID="fu_subirImagen" Enabled="false" CssClass="form-control" runat="server" />
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <br />
             <!--Boton confirmar -->
             <div class="row col-lg-offset-8">
                 <asp:Button runat="server" ID="btn_confirmar" Text="Confirmar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" OnClick="btn_confirmar_Click" />

@@ -24,6 +24,7 @@ namespace Entidades
         public int? idEstado { get; set; }
         public int? idProfesor { get; set; }
         public int idMateria { get; set; }
-        
+        public string urlImagen { get; set; }
+        public string urlArchivo { get; set; }
     }
 }

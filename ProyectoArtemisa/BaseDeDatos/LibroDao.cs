@@ -17,12 +17,12 @@ namespace BaseDeDatos
         /// Registrar: un libro
         /// </summary>
         /// <param name="libro"></param>
-        public static void RegistrarLibro(LibroEntidad libro)
+        public static int RegistrarLibro(LibroEntidad libro)
         {
             string query = @"INSERT INTO Libro (nombreLibro, autorLibro, descripcionLibro, stock, cantidadHojasLibro,
                                                 precioLibro, idEditorial, codigoBarraLibro, idMateria, baja) VALUES
                                                 (@nombre, @autor, @descripcion, @stock, @cantidadHojas,
-                                                 @precioLibro, @idEditorial, @codigoBarra, @idMateria, 0)";
+                                                 @precioLibro, @idEditorial, @codigoBarra, @idMateria, 0);select scope_identity()";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"nombre", libro.nombreLibro);
             cmd.Parameters.AddWithValue(@"autor", libro.autorLibro);
@@ -36,8 +36,9 @@ namespace BaseDeDatos
             cmd.Parameters.AddWithValue(@"idEditorial", libro.idEditorial);
             cmd.Parameters.AddWithValue(@"idMateria", libro.idMateria);
             cmd.Parameters.AddWithValue(@"codigobarra", libro.codigoBarraLibro);
-            cmd.ExecuteNonQuery();
+            int idLibro = int.Parse(cmd.ExecuteScalar().ToString());
             cmd.Connection.Close();
+            return idLibro;
         }
 
 

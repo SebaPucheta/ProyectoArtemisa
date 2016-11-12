@@ -449,13 +449,23 @@
             <%-- File upload se utila para seleccionar el archivo que nosotros vamos a guardar en la BD Autor: Martin --%>
             <div class="row">
                 <div class="form-group">
+                    <asp:Label Text="Seleccionar imagen: " Font-Bold="true" runat="server" CssClass="control-label col-md-3" Enabled="false" />
+                    <div class="col-md-7">
+                        <asp:FileUpload ID="fu_subirImagen" Enabled="false" CssClass="form-control" runat="server" />
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <%-- File upload se utila para seleccionar el archivo que nosotros vamos a guardar en la BD Autor: Martin --%>
+            <div class="row">
+                <div class="form-group">
                     <asp:Label Text="Seleccione un archivo: " Font-Bold="true" runat="server" CssClass="control-label col-md-3" Enabled="false" />
                     <div class="col-md-7">
                         <asp:FileUpload ID="fu_subirArchivo" Enabled="false" CssClass="form-control" runat="server" />
                         <br />
-                        <asp:Label runat="server" TextMode="MultiLine" ID="StatusLabel" CssClass="form-control" Text="Estado de carga: " />
                     </div>
-
                 </div>
             </div>
             <br />

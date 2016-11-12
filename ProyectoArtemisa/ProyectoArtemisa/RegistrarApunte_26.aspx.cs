@@ -312,6 +312,8 @@ namespace ProyectoArtemisa
         //Boton confirmar
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
+            bool bandera = true;
+            int idApunte = 0;
             if (Page.IsValid)
             {
                 if ((chk_digital.Checked) || (chk_impreso.Checked))
@@ -319,14 +321,20 @@ namespace ProyectoArtemisa
                     if (PilaForms.pila.Peek().Equals("Default.aspx"))
                     {
                         if (chk_digital.Checked)
-                        { RegistrarApunteDigital();
-                        procesarPDF();
+                        { 
+                            idApunte = RegistrarApunteDigital();
+                            procesarPDF(idApunte.ToString());
+                            procesarImagen(idApunte.ToString());
+                            bandera = false;
                         }
 
                         if (chk_impreso.Checked)
                         {
                             RegistrarApunteImpreso();
-                            
+                            if(bandera)
+                            {
+                                procesarImagen(idApunte.ToString());
+                            }
                         }
                         LimpiarVariablesForm();
                         LimpiarForm();
@@ -428,8 +436,9 @@ namespace ProyectoArtemisa
         /// Registrar un apunte en la base de datos, como un TipoApunte "Digital", setea el precio de hoja
         /// desde el txt_precioApunteDigital y setea el código de barra como null
         /// </summary>
-        protected void RegistrarApunteDigital()
+        protected int RegistrarApunteDigital()
         {
+            int idApunte = 0;
             if (txt_precioApunteDigital.Text != "")
             {
                 ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
@@ -437,12 +446,13 @@ namespace ProyectoArtemisa
                 nuevoApunte.precioApunte = float.Parse(txt_precioApunteDigital.Text);
                 nuevoApunte.idTipoApunte = 2; //Hace referencia a un apunte de tipo Digital
                 nuevoApunte.idPrecioHoja = null;
-                ApunteDao.RegistrarApunte(nuevoApunte);
+                idApunte=ApunteDao.RegistrarApunte(nuevoApunte);
             }
             else
             {
                 Response.Write("<script>window.alert('No se ha ingresado ningun precio para apuntes digitales');</script>");
             }
+            return idApunte;
         }
 
         /// <summary>
@@ -451,6 +461,7 @@ namespace ProyectoArtemisa
         /// </summary>
         protected void RegistrarApunteImpreso()
         {
+            int idApunte = 0;
             if (txt_codigoBarra.Text != "")
             {
                 if (ApunteDao.VerificarCodigoBarra(txt_codigoBarra.Text))
@@ -472,6 +483,7 @@ namespace ProyectoArtemisa
             {
                 Response.Write("<script>window.alert('No se ingreso ningun código de barra');</script>");
             }
+
         }
 
         /// <summary>
@@ -708,17 +720,16 @@ namespace ProyectoArtemisa
         {
 
         }
-
-        protected void procesarPDF()
+        protected void procesarImagen(string nombreImagen)
         {
-            if (fu_subirArchivo.HasFile)
+            if (fu_subirImagen.HasFile)
             {
                 try
                 {
                     //creo un nuevo pdf
                     PdfDocument pdf = new PdfDocument();
                     // Indico la ruta deseada donde quiero gurdar el archivo.
-                    string rutaPDF = "C:/" + fu_subirArchivo.FileName + " - " + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf";
+                    string rutaPDF = "C:\\Users\\Sebastián\\Documents\\GitHub\\ProyectoAndromeda\\ProyectoAndrómeda\\imagenes\\apunte\\" + nombreImagen + ".jpg";
                     //Guardo el archivo
                     fu_subirArchivo.SaveAs(rutaPDF);
                     //Selecciono donde guarde el archivo
@@ -735,11 +746,45 @@ namespace ProyectoArtemisa
                     //lo guardo en donde quiero, en este caso del string rutaPDF
                     pdf.SaveToFile(rutaPDF);
                     //indico que el archivo se cargo exitosamente.
-                    StatusLabel.Text = "Estado de carga: Archivo cargado exitosamente!";
                 }
                 catch (Exception ex)
                 {
-                    StatusLabel.Text = "Estado de carga: El archivo no se pudo cargar. El error que ocurrio fue: " + ex.Message;
+                    Response.Write("<script>window.alert('La imagen no se pudo cargar.');</script>");
+                }
+
+            }
+        }
+        protected void procesarPDF(string nombreArchivo)
+        {
+            if (fu_subirArchivo.HasFile)
+            {
+                try
+                {
+                    //creo un nuevo pdf
+                    PdfDocument pdf = new PdfDocument();
+                    // Indico la ruta deseada donde quiero gurdar el archivo.
+                    string rutaPDF = "C:\\Users\\Sebastián\\Documents\\GitHub\\ProyectoAndromeda\\ProyectoAndrómeda\\Archivos\\Apunte\\" + nombreArchivo + ".pdf";
+                    //Guardo el archivo
+                    fu_subirArchivo.SaveAs(rutaPDF);
+                    //Selecciono donde guarde el archivo
+                    pdf.LoadFromFile(rutaPDF);
+                    //Aplico seguridad
+                    pdf.Security.KeySize = PdfEncryptionKeySize.Key256Bit;
+                    pdf.Security.OwnerPassword = "test";
+                    //Por defecto se le quitan todos los permisos al PDF
+                    //si quiero agregarle algun permiso tengo que descomentar las siguiente linea
+                    pdf.Security.Permissions = PdfPermissionsFlags.None;
+                    //en la pagina http://www.e-iceblue.com/Tutorials/Spire.PDF/Spire.PDF-Program-Guide/Security/How-to-Change-Security-Permission-of-PDF-Document-in-C-VB.NET.html
+                    //nos muestran los tipos de seguridad que se le pueden colocar
+
+                    //lo guardo en donde quiero, en este caso del string rutaPDF
+                    pdf.SaveToFile(rutaPDF);
+                    //indico que el archivo se cargo exitosamente.
+                    
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>window.alert('El archivo no se pudo cargar.');</script>");
                 }
 
             }

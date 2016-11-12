@@ -16,10 +16,10 @@ namespace BaseDeDatos
         /// Registrar: un nuevo apunte en la base de datos
         /// </summary>
         /// <param name="nuevoApunte"></param>
-        public static void RegistrarApunte(ApunteEntidad nuevoApunte)
+        public static int RegistrarApunte(ApunteEntidad nuevoApunte)
         {
             string query = @"INSERT INTO Apunte (precioApunte, cantHoja, nombreApunte, stock, descripcionApunte, anoApunte, codigoBarraApunte, idPrecioHoja, idCategoria, idTipoApunte, idEditorial, idProfesor, idMateria, baja) 
-                            VALUES (@precioApunte, @cantHoja, @nombreApunte, @stock, @descripcionApunte, @anoApunte, @codigoBarraApunte, @idPrecioHoja, @idCategoria, @idTipoApunte, @idEditorial, @idProfesor, @idMateria, 0)";
+                            VALUES (@precioApunte, @cantHoja, @nombreApunte, @stock, @descripcionApunte, @anoApunte, @codigoBarraApunte, @idPrecioHoja, @idCategoria, @idTipoApunte, @idEditorial, @idProfesor, @idMateria, 0);select scope_identity()";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
             cmd.Parameters.AddWithValue(@"precioApunte", nuevoApunte.precioApunte);
@@ -53,8 +53,10 @@ namespace BaseDeDatos
                 cmd.Parameters.AddWithValue(@"idProfesor", DBNull.Value);
             }
 
-            cmd.ExecuteNonQuery();
+            int idApunte = int.Parse(cmd.ExecuteScalar().ToString());
             cmd.Connection.Close();
+
+            return  idApunte;
         }
 
 

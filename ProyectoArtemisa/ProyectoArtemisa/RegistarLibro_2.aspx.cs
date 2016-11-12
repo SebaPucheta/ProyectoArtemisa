@@ -130,7 +130,9 @@ namespace ProyectoArtemisa
                     {
                         if (LibroDao.VerificarCodigoBarra(txt_codgoBarra.Text))
                         {
-                            LibroDao.RegistrarLibro(CrearObjetoLibro());
+                            int idLibro = LibroDao.RegistrarLibro(CrearObjetoLibro());
+                            if(idLibro!=0)
+                            { procesarImagen(idLibro.ToString()); }
                             LimpiarForm();
                         }
                         else
@@ -401,6 +403,41 @@ namespace ProyectoArtemisa
             ddl_materiasLibro.SelectedValue= libro.idMateria.ToString();
             cargarComboEditorial();
             ddl_editorialLibro.SelectedValue = libro.idEditorial.ToString();
+        }
+
+        protected void procesarImagen(string nombreImagen)
+        {
+            if (fu_subirImagen.HasFile)
+            {
+                try
+                {
+                    //creo un nuevo pdf
+                    PdfDocument pdf = new PdfDocument();
+                    // Indico la ruta deseada donde quiero gurdar el archivo.
+                    string rutaPDF = "C:\\Users\\Sebastián\\Documents\\GitHub\\ProyectoAndromeda\\ProyectoAndrómeda\\imagenes\\libro\\" + nombreImagen + ".jpg";
+                    //Guardo el archivo
+                    fu_subirArchivo.SaveAs(rutaPDF);
+                    //Selecciono donde guarde el archivo
+                    pdf.LoadFromFile(rutaPDF);
+                    //Aplico seguridad
+                    pdf.Security.KeySize = PdfEncryptionKeySize.Key256Bit;
+                    pdf.Security.OwnerPassword = "test";
+                    //Por defecto se le quitan todos los permisos al PDF
+                    //si quiero agregarle algun permiso tengo que descomentar las siguiente linea
+                    pdf.Security.Permissions = PdfPermissionsFlags.None;
+                    //en la pagina http://www.e-iceblue.com/Tutorials/Spire.PDF/Spire.PDF-Program-Guide/Security/How-to-Change-Security-Permission-of-PDF-Document-in-C-VB.NET.html
+                    //nos muestran los tipos de seguridad que se le pueden colocar
+
+                    //lo guardo en donde quiero, en este caso del string rutaPDF
+                    pdf.SaveToFile(rutaPDF);
+                    //indico que el archivo se cargo exitosamente.
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>window.alert('La imagen no se pudo cargar.');</script>");
+                }
+
+            }
         }
     }
 }
