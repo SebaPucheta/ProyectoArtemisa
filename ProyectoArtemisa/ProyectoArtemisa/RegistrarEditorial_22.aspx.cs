@@ -36,9 +36,8 @@ namespace ProyectoArtemisa
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-
-            //No existe el nombre
-            if (Session["idEditorial"] != null)
+           //No existe el nombre
+            if (Session["idEditorial"].ToString().Equals("NULL"))
             {
                 //Modificacion
                 EditorialEntidad editorial = CrearUnObjetoDesdeElForm();

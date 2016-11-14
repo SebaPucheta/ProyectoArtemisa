@@ -451,7 +451,7 @@
                 <div class="form-group">
                     <asp:Label Text="Seleccionar imagen: " Font-Bold="true" runat="server" CssClass="control-label col-md-3" Enabled="false" />
                     <div class="col-md-7">
-                        <asp:FileUpload ID="fu_subirImagen" Enabled="false" CssClass="form-control" runat="server" />
+                        <asp:FileUpload ID="fu_subirImagen" Enabled="true" CssClass="form-control" runat="server" />
                         <br />
                     </div>
                 </div>
