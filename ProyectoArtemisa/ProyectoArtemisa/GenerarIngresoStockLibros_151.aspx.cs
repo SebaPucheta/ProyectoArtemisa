@@ -111,7 +111,7 @@ namespace ProyectoArtemisa.Reportes
        
         protected void cargarLibros()
         {
-            ddl_libro.DataSource = LibroDao.consultarLibrosCombo();
+            ddl_libro.DataSource = LibroDao.ConsultarLibros();
             ddl_libro.DataTextField = "nombreLibro";
             ddl_libro.DataValueField = "idLibro";
             ddl_libro.DataBind();
