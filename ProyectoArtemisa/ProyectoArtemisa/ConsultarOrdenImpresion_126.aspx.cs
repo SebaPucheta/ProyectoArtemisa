@@ -164,7 +164,7 @@ namespace ProyectoArtemisa
         {
             int indice = ((GridViewRow)(e.CommandSource as LinkButton).Parent.Parent).RowIndex;
             int idOrdenImpresion = (int)dgv_grillaOrdenesImpresion.DataKeys[indice].Value;
-            int cantidadImpresa = Convert.ToInt32(dgv_grillaOrdenesImpresion.Rows[indice].Cells[1].Text);
+            int cantidadImpresa = Convert.ToInt32(dgv_grillaOrdenesImpresion.Rows[indice].Cells[2].Text.ToString().Replace('n', ' ').Replace('U', ' ').Replace('i', ' ').Replace('d', ' ').Replace('a', ' ').Replace('e', ' ').Replace('s', ' '));
             if (e.CommandName == "impreso")
             { ApunteImpreso(idOrdenImpresion); }
             if(e.CommandName == "enLocal")

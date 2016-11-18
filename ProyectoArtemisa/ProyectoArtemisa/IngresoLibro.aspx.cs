@@ -107,10 +107,10 @@ namespace ProyectoArtemisa
             float precio = float.Parse(((TextBox)dgv_nuevoIngresoStockDetalle.Rows[0].Cells[2].FindControl("txt_precioUnitario")).Text);
             fila[0] = dgv_nuevoIngresoStockDetalle.DataKeys[0].Value;
             fila[1] = Page.Server.HtmlDecode(dgv_nuevoIngresoStockDetalle.Rows[0].Cells[0].Text);
-            fila[2] = "$" + precio.ToString();
+            fila[2] = "$" + precio.ToString("N2");
             fila[3] = cantidad.ToString() + " Unidades";
             float subtotal = precio * cantidad;
-            fila[4] = "$" + (subtotal).ToString() ;
+            fila[4] = "$" + (subtotal).ToString("N2") ;
 
             (Session["tablaDetalles"] as DataTable).Rows.Add(fila);
 
@@ -125,7 +125,7 @@ namespace ProyectoArtemisa
             dgv_grillaIngresoStockDetalle.DataKeyNames = new string[] { "idLibro" };
             dgv_grillaIngresoStockDetalle.DataSource = dataView;
             dgv_grillaIngresoStockDetalle.DataBind();
-            lbl_total.Text = CalcularTotal().ToString();
+            txt_total.Text = CalcularTotal().ToString("N2");
         }
 
         //Inicializa las variable globales
@@ -152,7 +152,7 @@ namespace ProyectoArtemisa
         }
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
-            if(int.Parse(lbl_total.Text) == 0)
+            if(int.Parse(txt_total.Text) == 0)
             {
                 Response.Write("<script>window.alert('No a ingresado ningun articulo');</script>");
             }
@@ -161,7 +161,7 @@ namespace ProyectoArtemisa
                 LibroDao.RegistrarIngresoLibro(CrearIngresoStock());
                 InicializarVariableSessionTabla();
                 dgv_grillaIngresoStockDetalle.Visible = false;
-                lbl_total.Text = "";
+                txt_total.Text = "";
             }
         }
 
@@ -169,7 +169,7 @@ namespace ProyectoArtemisa
         {
             CargarNuevoDetalleGrillaDetalle();
             dgv_nuevoIngresoStockDetalle.Visible = false;
-            lbl_total.Text = CalcularTotal().ToString();
+            txt_total.Text = CalcularTotal().ToString("N2");
             lbl_info.Text = "";
         }
 
@@ -195,7 +195,7 @@ namespace ProyectoArtemisa
             IngresoLibroEntidad ingresoLibro = new IngresoLibroEntidad();
             List<DetalleIngresoLibroEntidad> listaDetalles = new List<DetalleIngresoLibroEntidad>(); 
             ingresoLibro.fecha = Convert.ToDateTime(lbl_fecha.Text);
-            ingresoLibro.total = float.Parse(lbl_total.Text);
+            ingresoLibro.total = float.Parse(txt_total.Text);
             ingresoLibro.idUsuario = int.Parse(Session["idUsuario"].ToString());
             ingresoLibro.idProveedor = Convert.ToInt32( ddl_proveedores.SelectedValue);
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)

@@ -27,8 +27,8 @@ namespace ProyectoArtemisa
 
             //Creo las columnas de la tabla
             tabla.Columns.Add("idOrdenImpresion", typeof(int));//key name
-            tabla.Columns.Add("cantidad", typeof(int));
-            tabla.Columns.Add("fecha", typeof(DateTime));
+            tabla.Columns.Add("cantidad", typeof(string));
+            tabla.Columns.Add("fecha", typeof(string));
             tabla.Columns.Add("nombre", typeof(string));
             tabla.Columns.Add("estado", typeof(string));           
 
@@ -38,8 +38,8 @@ namespace ProyectoArtemisa
                 fila = tabla.NewRow();
 
                 fila[0] = ordenImpresion.idOrdenImpresion;
-                fila[1] = ordenImpresion.cantidad;
-                fila[2] = ordenImpresion.fecha;
+                fila[1] = ordenImpresion.cantidad +" Unidades";
+                fila[2] = ordenImpresion.fecha.ToString();
                 fila[3] = ordenImpresion.nombreApunte;
                 fila[4] = ordenImpresion.nombreEstadoOrdenImpresion;
             

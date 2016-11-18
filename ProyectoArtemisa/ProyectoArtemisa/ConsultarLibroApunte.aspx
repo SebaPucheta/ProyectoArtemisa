@@ -118,24 +118,25 @@
             <br />
 
             <!-- Grilla Apunte-->
+            <div class="col-lg-12">
             <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False"  AllowPaging="True" PageSize="20"
             OnPageIndexChanging="dgv_grillaApunte_OnPageIndexChanging" OnRowDeleting="btn_eliminarApunte_RowDeleting" OnSelectedIndexChanged="btn_modificarApunte_SelectedIndexChanged" OnRowCommand="dgv_grillaApunte_RowCommand">
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                 <EditRowStyle BackColor="#ffffcc" />
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                 <Columns>
-                    <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                    <asp:BoundField DataField="precio" HeaderText="Precio" />
-                    <asp:BoundField DataField="stock" HeaderText="Stock" />
-                    <asp:BoundField DataField="carrera" HeaderText="Carrera">
+                    <asp:BoundField DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre"  />
+                    <asp:BoundField DataField="precio" ItemStyle-HorizontalAlign="Right" HeaderText="Precio" />
+                    <asp:BoundField DataField="stock" ItemStyle-HorizontalAlign="Center" HeaderText="Stock" />
+                    <asp:BoundField DataField="carrera" ItemStyle-HorizontalAlign="Center" HeaderText="Carrera">
                         <ItemStyle HorizontalAlign="Justify" VerticalAlign="Middle" />
                     </asp:BoundField>
                     <asp:BoundField DataField="materia" HeaderText="Materia">
-                        <ItemStyle HorizontalAlign="Justify" VerticalAlign="Middle" />
+                        <ItemStyle  VerticalAlign="Middle" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="editorial" HeaderText="Editorial" />
-                    <asp:BoundField DataField="profesor" HeaderText="Profesor" />
-                    <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Apunte" />
+                    <asp:BoundField DataField="editorial" ItemStyle-HorizontalAlign="Center" HeaderText="Editorial" />
+                    <asp:BoundField DataField="profesor" ItemStyle-HorizontalAlign="Center" HeaderText="Profesor" />
+                    <asp:BoundField DataField="tipoApunte" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo Apunte" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton ID="btn_imprimirApunte" CommandName="imprimir" runat="server"><span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span></asp:LinkButton>
@@ -161,7 +162,10 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            </div>
+
             <!-- Grilla Libro-->
+            <div class="col-lg-12">
             <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true"  AllowPaging="True" PageSize="20"
                 OnPageIndexChanging="dgv_grillaLibro_OnPageIndexChanging"
                 OnRowDeleting="btn_eliminarLibro_RowDeleting"
@@ -171,13 +175,13 @@
                 <EditRowStyle BackColor="#ffffcc" />
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                 <Columns>
-                    <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                    <asp:BoundField DataField="precio" HeaderText="Precio" />
-                    <asp:BoundField DataField="stock" HeaderText="Stock" />
-                    <asp:BoundField DataField="carrera" HeaderText="Carrera" />
-                    <asp:BoundField DataField="materia" HeaderText="Materia" />
-                    <asp:BoundField DataField="editorial" HeaderText="Editorial" />
-                    <asp:BoundField DataField="autor" HeaderText="Autor" />
+                    <asp:BoundField DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre" />
+                    <asp:BoundField DataField="precio" ItemStyle-HorizontalAlign="Right" HeaderText="Precio" />
+                    <asp:BoundField DataField="stock" ItemStyle-HorizontalAlign="Center" HeaderText="Stock" />
+                    <asp:BoundField DataField="carrera" ItemStyle-HorizontalAlign="Center" HeaderText="Carrera" />
+                    <asp:BoundField DataField="materia" ItemStyle-HorizontalAlign="Center" HeaderText="Materia" />
+                    <asp:BoundField DataField="editorial" ItemStyle-HorizontalAlign="Center" HeaderText="Editorial" />
+                    <asp:BoundField DataField="autor" ItemStyle-HorizontalAlign="Center" HeaderText="Autor" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton ID="btn_imprimirApunte" CommandName="imprimir" runat="server"><span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span></asp:LinkButton>
@@ -203,7 +207,7 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-
+            </div>
         </div>
     </div>
 

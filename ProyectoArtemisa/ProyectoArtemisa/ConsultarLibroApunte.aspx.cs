@@ -341,7 +341,7 @@ namespace ProyectoArtemisa
 
             fila[0] = apunte.idApunte;
             fila[1] = apunte.nombreApunte;
-            fila[2] = "$" + apunte.precioApunte;
+            fila[2] = "$" + apunte.precioApunte.ToString("N2");
             fila[3] = apunte.stock + " Unidades";
 
             List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
@@ -392,7 +392,7 @@ namespace ProyectoArtemisa
 
                 fila[0] = apunte.idApunte;
                 fila[1] = apunte.nombreApunte;
-                fila[2] = "$" + apunte.precioApunte;
+                fila[2] = "$" + apunte.precioApunte.ToString("N2");
                 fila[3] = apunte.stock + " Unidades";
 
                 List<CarreraEntidad> listaCarrera = apunte.listaCarreras;
@@ -440,7 +440,7 @@ namespace ProyectoArtemisa
 
                 fila[0] = libro.idLibro;
                 fila[1] = libro.nombreLibro;
-                fila[2] = "$" + libro.precioLibro;
+                fila[2] = "$" + libro.precioLibro.ToString("N2");
                 fila[3] = libro.stock + " Unidades";
 
                 List<CarreraEntidad> listaCarrera = libro.listaCarreras;
@@ -498,7 +498,7 @@ namespace ProyectoArtemisa
 
             fila[0] = libro.idLibro;
             fila[1] = libro.nombreLibro;
-            fila[2] = "$" + libro.precioLibro;
+            fila[2] = "$" + libro.precioLibro.ToString("N2");
             fila[3] = libro.stock + "Unidades";
 
             List<CarreraEntidad> listaCarrera = libro.listaCarreras;

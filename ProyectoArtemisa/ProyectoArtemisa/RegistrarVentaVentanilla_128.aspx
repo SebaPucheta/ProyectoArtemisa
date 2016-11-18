@@ -59,7 +59,7 @@
                      <ItemTemplate>
                         <asp:TextBox ID="txt_precioUnitario" runat="server"  Width="60px"></asp:TextBox>
                      </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Right" VerticalAlign="Middle" />
                  </asp:TemplateField>
                  <asp:TemplateField HeaderText="Cantidad" HeaderStyle-HorizontalAlign="Center" HeaderStyle-VerticalAlign="Middle">
                      <ItemTemplate>
@@ -87,7 +87,9 @@
 
          <!-- Boton agregar Apunte-->
          <div class="row">
+             <div class="container form-group">
               <asp:Button Text="Agregar" OnClick="btn_agregar_Click" ID="btn_agregar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
+         </div>
          </div>
          <br />
 
@@ -97,11 +99,11 @@
              <EditRowStyle BackColor="#ffffcc" />
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
-                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                 <asp:BoundField DataField="tipoApunte" HeaderText="Tipo Item" />
-                 <asp:BoundField DataField="precioUnitario" HeaderText="Precio U."  ApplyFormatInEditMode="False" />
-                 <asp:BoundField DataField="cantidad" HeaderText="Cantidad"  ApplyFormatInEditMode="False" />
-                 <asp:BoundField DataField="subtotal" HeaderText="Subtotal"  ApplyFormatInEditMode="False" />
+                 <asp:BoundField DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre" />
+                 <asp:BoundField DataField="tipoApunte" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo Item" />
+                 <asp:BoundField DataField="precioUnitario" HeaderText="Precio U."  ItemStyle-HorizontalAlign="Right" ApplyFormatInEditMode="False" />
+                 <asp:BoundField DataField="cantidad" HeaderText="Cantidad" ItemStyle-HorizontalAlign="Center" ApplyFormatInEditMode="False" />
+                 <asp:BoundField DataField="subtotal" HeaderText="Subtotal" ItemStyle-HorizontalAlign="Right"  ApplyFormatInEditMode="False" />
                  <asp:TemplateField>
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_consultarApunte" CommandName="select" runat="server"  ><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
@@ -128,9 +130,10 @@
          </asp:GridView>
 
          <!-- Total -->
-         <div class="row">
+        <div class="row">
+           <div class="container col-lg-offset-6">
              <div class="form-group">
-                 <label for="documento" class="control-label col-md-2">Total: </label>
+                 <label for="documento" class="control-label col-md-1">Total: </label>
                  <div class="col-md-2">
                      <div class="input-group">
                       <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
@@ -138,6 +141,7 @@
                  </div>
                </div>
              </div>
+            </div>
          </div>
          <br />
 

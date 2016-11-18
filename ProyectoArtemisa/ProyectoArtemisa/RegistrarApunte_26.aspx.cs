@@ -14,7 +14,6 @@ using Spire.Pdf;
 using Spire.Pdf.Security;
 
 
-
 namespace ProyectoArtemisa
 {
     public partial class RegistrarApunte_26 : System.Web.UI.Page
@@ -443,7 +442,7 @@ namespace ProyectoArtemisa
             {
                 ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
                 nuevoApunte.codigoBarraApunte = "";
-                nuevoApunte.precioApunte = float.Parse(txt_precioApunteDigital.Text);
+                nuevoApunte.precioApunte = float.Parse((Math.Round(float.Parse(txt_precioApunteDigital.Text), 2)).ToString());
                 nuevoApunte.idTipoApunte = 2; //Hace referencia a un apunte de tipo Digital
                 nuevoApunte.idPrecioHoja = null;
                 idApunte=ApunteDao.RegistrarApunte(nuevoApunte);
@@ -468,7 +467,7 @@ namespace ProyectoArtemisa
                 {
                     ApunteEntidad nuevoApunte = CargarApunteDesdeForm();
                     nuevoApunte.codigoBarraApunte = txt_codigoBarra.Text;
-                    nuevoApunte.precioApunte = float.Parse(txt_precioXHoja.Text);
+                    nuevoApunte.precioApunte =float.Parse((Math.Round(float.Parse(txt_precioXHoja.Text), 2)).ToString());
                     nuevoApunte.idTipoApunte = 1;
                     nuevoApunte.stock = int.Parse(txt_stock.Text);
                     nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja;

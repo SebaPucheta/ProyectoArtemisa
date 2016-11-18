@@ -47,7 +47,7 @@
         <!-- Codigo de barra del Item -->
         <div class="row">
             <div class="form-group">
-                <label for="nombre" class="control-label col-md-3">Código de barra: </label>
+                <label for="nombre" class="control-label col-md-2">Código de barra: </label>
                 <div class="col-md-4">
                     <asp:TextBox runat="server" class="form-control" type="text" ID="btn_codigoBarra" value="" ViewStateMode="Enabled" OnTextChanged="btn_codigoBarra_TextChanged" AutoPostBack="true" />
                 </div>
@@ -95,7 +95,7 @@
           <br />
 
          <!-- Boton agregar Apunte-->
-         <div class="row">
+         <div class="container row">
               <asp:Button Text="Agregar" OnClick="btn_agregar_Click" ID="btn_agregar" CssClass="btn btn-lg btn_azul btn_flat" ValidationGroup="AllValidator" Enabled="true" runat="server" />
          </div>
          <br />
@@ -107,10 +107,10 @@
              <EditRowStyle BackColor="#ffffcc" />
              <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
              <Columns>
-                 <asp:BoundField DataField="nombreLibro" HeaderText="Nombre" />
-                 <asp:BoundField DataField="precioUnitario" HeaderText="Precio U."  ApplyFormatInEditMode="False" />
-                 <asp:BoundField DataField="cantidad" HeaderText="Cantidad"  ApplyFormatInEditMode="False" />
-                 <asp:BoundField DataField="subtotal" HeaderText="Subtotal"  ApplyFormatInEditMode="False" />
+                 <asp:BoundField DataField="nombreLibro" HeaderText="Nombre" ItemStyle-HorizontalAlign="Center" />
+                 <asp:BoundField DataField="precioUnitario" HeaderText="Precio U." ItemStyle-HorizontalAlign="Right"  ApplyFormatInEditMode="False" />
+                 <asp:BoundField DataField="cantidad" HeaderText="Cantidad"  ItemStyle-HorizontalAlign="Center" ApplyFormatInEditMode="False" />
+                 <asp:BoundField DataField="subtotal" HeaderText="Subtotal"  ItemStyle-HorizontalAlign="Right" ApplyFormatInEditMode="False" />
                  <asp:TemplateField>
                      <ItemTemplate>
                          <asp:LinkButton ID="btn_consultarApunte" CommandName="select" runat="server"  ><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
@@ -130,12 +130,12 @@
 
          <!-- Total -->
          <div class="row">
-             <div class="form-group">
-                 <label for="documento"  class="control-label col-md-2">Total: </label>
-                 <div class="col-md-2">
+             <div class="container form-group col-lg-offset-7">
+                 <label for="documento"  class="control-label col-md-1">Total: </label>
+                 <div class="col-md-1">
                      <div class="input-group">
                       <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
-                     <asp:Label   runat="server" CssClass="form-control"  type="text" ID="lbl_total"  />
+                     <asp:Label   runat="server" CssClass="form-control"  type="text" ID="txt_total"  />
                  </div>
                </div>
              </div>

@@ -35,7 +35,7 @@ namespace ProyectoArtemisa
             {
                 total = total + double.Parse( fila.Cells[3].Text.Substring(1));
             }
-            lbl_total.Text = total.ToString();
+            lbl_total.Text = total.ToString("N2");
         }
 
         protected void CargarComboProveedor()
@@ -81,7 +81,7 @@ namespace ProyectoArtemisa
                 fila[1] = ingresoLibro.fecha;
                 fila[2] = ingresoLibro.nombreProveedor;
                 fila[3] = ingresoLibro.nombreCliente + " " + ingresoLibro.apellidoCliente ;
-                fila[4] = "$" + ingresoLibro.total;
+                fila[4] = "$" + ingresoLibro.total.ToString("N2");
                 tabla.Rows.Add(fila);
             }
 

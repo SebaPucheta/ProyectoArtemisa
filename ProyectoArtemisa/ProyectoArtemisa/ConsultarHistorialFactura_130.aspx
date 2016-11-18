@@ -37,8 +37,8 @@
             </div>
             <br />
             <%-- Autor: Martin --%>
-            <div class="col-lg-offset-9">
-                <asp:Button runat="server" ID="btn_buscar" Text="Buscar" CssClass="btn btn_azul btn_flat" Enabled="true" OnClick="btn_buscar_Click" />
+            <div class="container col-lg-offset-10">
+                <asp:Button runat="server" ID="btn_buscar" Text="Buscar" CssClass="btn btn-lg btn_azul btn_flat" Enabled="true" OnClick="btn_buscar_Click" />
             </div>
             <br />
             <br />
@@ -51,10 +51,10 @@
                 <EditRowStyle BackColor="#ffffcc" />
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                 <Columns>
-                    <asp:BoundField DataField="idFactura" HeaderText="Nº" />
-                    <asp:BoundField DataField="fecha" HeaderText="Fecha" />
-                    <asp:BoundField DataField="nombreCompletoEmpleado" HeaderText="Nombre Empleado" />
-                    <asp:BoundField DataField="total" HeaderText="Total" ApplyFormatInEditMode="False" />
+                    <asp:BoundField DataField="idFactura" ItemStyle-HorizontalAlign="Center" HeaderText="Nº" />
+                    <asp:BoundField DataField="fecha" ItemStyle-HorizontalAlign="Center" HeaderText="Fecha" />
+                    <asp:BoundField DataField="nombreCompletoEmpleado" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre Empleado" />
+                    <asp:BoundField DataField="total" HeaderText="Total" ItemStyle-HorizontalAlign="Right" ApplyFormatInEditMode="False" />
                      <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton ID="btn_consultarFactura" CommandName="select" runat="server"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
@@ -66,17 +66,18 @@
             </asp:GridView>
 
             <!-- Total -->
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-lg-10">
-                        <b>
-                            <asp:Label for="documento" runat="server" ID="lbl_total" class="control-label col-md-1" Text="Total: "></asp:Label></b>
-                        <div class="col-md-2">
-                            <asp:Label runat="server" class="form-control" type="text" ID="txt_total" value="" ViewStateMode="Enabled" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+         <div class="row">
+             <div class="container form-group col-lg-offset-7">
+                 <label for="documento" ID="lbl_total"  class="control-label col-md-1">Total: </label>
+                 <div class="col-md-1">
+                     <div class="input-group">
+                      <div class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></div>
+                     <asp:Label   runat="server" CssClass="form-control"  type="text" ID="txt_total"  />
+                 </div>
+               </div>
+             </div>
+         </div>
+         <br />
             <br />
 
             <br />

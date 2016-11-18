@@ -85,13 +85,13 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.GridView dgv_grillaIngresoStockDetalle;
         
         /// <summary>
-        /// Control lbl_total.
+        /// Control txt_total.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_total;
+        protected global::System.Web.UI.WebControls.Label txt_total;
         
         /// <summary>
         /// Control btn_confirmar.

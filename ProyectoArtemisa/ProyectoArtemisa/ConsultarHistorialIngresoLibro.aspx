@@ -56,8 +56,8 @@
          <br />
             <%-- Autor: Martin --%>
             <div class="col-lg-offset-9">
-                <asp:Button runat="server" ID="btn_buscar" Text="Buscar" CssClass="btn btn_azul btn_flat" Enabled="true" OnClick="btn_buscar_Click" />
-                <asp:Button runat="server" ID="btn_reporte" Text="Reporte" CssClass="btn btn_azul btn_flat" Enabled="true" OnClick="btn_reporte_Click" />
+                <asp:Button runat="server" ID="btn_buscar" Text="Buscar" CssClass="btn btn-lg btn_azul btn_flat" Enabled="true" OnClick="btn_buscar_Click" />
+                <asp:Button runat="server" ID="btn_reporte" Text="Reporte" CssClass="btn btn-lg btn_azul btn_flat" Enabled="true" OnClick="btn_reporte_Click" />
             </div>
             <br />
             <br />
@@ -73,7 +73,7 @@
                     <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="fecha" HeaderText="Fecha" />
                     <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="proveedor" HeaderText="Proveedor" />
                     <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="usuario" HeaderText="Usuario" />
-                    <asp:BoundField  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"  DataField="total" HeaderText="Total" ApplyFormatInEditMode="False" />
+                    <asp:BoundField  ItemStyle-HorizontalAlign="Right" ItemStyle-VerticalAlign="Middle"  DataField="total" HeaderText="Total" ApplyFormatInEditMode="False" />
                      <asp:TemplateField HeaderText="Consultar">
                         <ItemTemplate >
                             <asp:LinkButton ID="btn_consultarIngresoLibro" CommandName="select" runat="server"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></asp:LinkButton>
@@ -86,7 +86,7 @@
         <br />
             <!-- Total -->
          <div class="row">
-             <div class="form-group">
+             <div class="form-group col-lg-offset-7" >
                  <label for="documento"  class="control-label col-md-2">Total: </label>
                  <div class="col-md-2">
                      <div class="input-group">

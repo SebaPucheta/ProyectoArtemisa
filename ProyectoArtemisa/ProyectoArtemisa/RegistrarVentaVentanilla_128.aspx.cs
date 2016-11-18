@@ -107,10 +107,10 @@ namespace ProyectoArtemisa
             fila[0] = dgv_nuevoDetalle.DataKeys[0].Value;
             fila[1] = Page.Server.HtmlDecode(dgv_nuevoDetalle.Rows[0].Cells[0].Text);
             fila[2] = Page.Server.HtmlDecode(dgv_nuevoDetalle.Rows[0].Cells[1].Text);
-            fila[3] = "$" + precio.ToString();
+            fila[3] = "$" + precio.ToString("N2");
             fila[4] = cantidad.ToString() + " Unidades";
             float subtotal = precio * cantidad;
-            fila[5] = "$" + (subtotal).ToString() ;
+            fila[5] = "$" + (subtotal).ToString("N2") ;
 
             (Session["tablaDetalles"] as DataTable).Rows.Add(fila);
 
@@ -125,7 +125,7 @@ namespace ProyectoArtemisa
             dgv_grillaDetalleFactura.DataKeyNames = new string[] { "idItem" };
             dgv_grillaDetalleFactura.DataSource = dataView;
             dgv_grillaDetalleFactura.DataBind();
-            lbl_total.Text = CalcularTotal().ToString();
+            lbl_total.Text = CalcularTotal().ToString("N2");
             
         }
 
@@ -147,6 +147,7 @@ namespace ProyectoArtemisa
             {
                 total += Convert.ToDouble(fila[5].ToString().Substring(1));
             }
+            
             return total;
         }
         protected void btn_confirmar_Click(object sender, EventArgs e)

@@ -30,7 +30,7 @@ namespace ProyectoArtemisa
             {
                 fila = tabla.NewRow();
 
-                fila[0] =  "$" + pxh.precioHoja ;
+                fila[0] =  "$" + pxh.precioHoja.ToString("N2") ;
                 fila[1] =  pxh.fecha.ToShortDateString() ;
                 tabla.Rows.Add(fila);
             }

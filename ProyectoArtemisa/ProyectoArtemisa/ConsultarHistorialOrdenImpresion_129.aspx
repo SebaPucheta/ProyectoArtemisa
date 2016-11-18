@@ -41,7 +41,7 @@
 
 
             <div class="col-lg-offset-9">
-                <asp:Button runat="server" ID="btn_confirmar" Text="Buscar" CssClass="btn btn_azul btn_flat" Enabled="true" OnClick="btn_confirmar_Click" />
+                <asp:Button runat="server" ID="btn_confirmar" Text="Buscar" CssClass="btn btn-lg btn_azul btn_flat" Enabled="true" OnClick="btn_confirmar_Click" />
             </div>
             <br />
             <br />
@@ -52,10 +52,10 @@
                 <EditRowStyle BackColor="#ffffcc" />
                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                 <Columns>
-                    <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                    <asp:BoundField DataField="cantidad" HeaderText="Cantidad" ApplyFormatInEditMode="False" />
-                    <asp:BoundField DataField="fecha" HeaderText="Fecha" DataFormatString="{0:d}" />
-                    <asp:BoundField DataField="estado" HeaderText="Estado" />
+                    <asp:BoundField DataField="nombre"  ItemStyle-HorizontalAlign="Center" HeaderText="Nombre" />
+                    <asp:BoundField DataField="cantidad"  ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" ApplyFormatInEditMode="False" />
+                    <asp:BoundField DataField="fecha"  ItemStyle-HorizontalAlign="Center" HeaderText="Fecha" DataFormatString="{0:d}" />
+                    <asp:BoundField DataField="estado"  ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
 
                 </Columns>
             </asp:GridView>

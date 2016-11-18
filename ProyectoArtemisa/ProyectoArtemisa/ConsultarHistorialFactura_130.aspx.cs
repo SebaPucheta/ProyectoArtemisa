@@ -17,8 +17,6 @@ namespace ProyectoArtemisa
         {
             if (!IsPostBack)
             {
-                lbl_total.Visible = false;
-                txt_total.Visible = false;
                 
             }
 
@@ -28,9 +26,9 @@ namespace ProyectoArtemisa
             double total = 0;
             foreach (GridViewRow fila in dgv_grillaOrdenesImpresion.Rows)
             {
-                total += Convert.ToDouble(fila.Cells[3].Text);
+                total += Convert.ToDouble(fila.Cells[3].Text.Substring(1));
             }
-            txt_total.Text = total.ToString();
+            txt_total.Text = total.ToString("N2");
         }
         protected void btn_consultarFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -40,45 +38,46 @@ namespace ProyectoArtemisa
         protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
         {
             dgv_grillaOrdenesImpresion.PageIndex = e.NewPageIndex;
-            cargarGrillaHistorialFactura();
+            cargarGrillaFactura(FacturaDao.ListarFacturas(txt_fechaDesde.Text, txt_fechaHasta.Text));
         }
-        ///Comentado por Martin, es un metodo de Puchi
+        
 
-        //protected void cargarGrillaFactura(List<FacturaEntidadQuery> listaFacturas)
-        //{
-        //    DataTable tabla = new DataTable();
-        //    DataRow fila;
-
-        //    //Creo las columnas de la tabla
-        //    tabla.Columns.Add("idFactura", typeof(int));//key name
-        //    tabla.Columns.Add("fecha", typeof(DateTime));
-        //    tabla.Columns.Add("total", typeof(float));
-        //    tabla.Columns.Add("tipoPago", typeof(string));
-
-        //    foreach (FacturaEntidadQuery factura in listaFacturas)
-        //    {
-        //        fila = tabla.NewRow();
-
-        //        fila[0] = factura.idFactura;
-        //        fila[1] = factura.fecha;
-        //        fila[2] = factura.total;
-        //        fila[3] = factura.nombreTipoPago;
-        //        tabla.Rows.Add(fila);
-        //    }
-
-        //    DataView dataView = new DataView(tabla);
-
-        //    dgv_grillaOrdenesImpresion.DataSource = dataView;
-        //    dgv_grillaOrdenesImpresion.DataKeyNames = new string[] { "idFactura" };
-        //    dgv_grillaOrdenesImpresion.DataBind();
-        //}
-
-        protected void cargarGrillaHistorialFactura()
+        protected void cargarGrillaFactura(List<FacturaEntidadQuery> listaFacturas)
         {
-            dgv_grillaOrdenesImpresion.DataSource = FacturaDao.ListarFacturas(txt_fechaDesde.Text, txt_fechaHasta.Text);
+            DataTable tabla = new DataTable();
+            DataRow fila;
+
+            //Creo las columnas de la tabla
+            tabla.Columns.Add("idFactura", typeof(int));//key name
+            tabla.Columns.Add("fecha", typeof(DateTime));
+            tabla.Columns.Add("total", typeof(string));
+            tabla.Columns.Add("nombreCompletoEmpleado", typeof(string));
+
+            foreach (FacturaEntidadQuery factura in listaFacturas)
+            {
+                fila = tabla.NewRow();
+
+                fila[0] = factura.idFactura;
+                fila[1] = factura.fecha;
+                fila[2] = "$" + factura.total.ToString("N2");
+                fila[3] = factura.nombreCompletoEmpleado;
+                tabla.Rows.Add(fila);
+            }
+
+            DataView dataView = new DataView(tabla);
+
+            dgv_grillaOrdenesImpresion.DataSource = dataView;
             dgv_grillaOrdenesImpresion.DataKeyNames = new string[] { "idFactura" };
             dgv_grillaOrdenesImpresion.DataBind();
         }
+
+        ///Comentado por Pucho, es un metodo de Martin
+        //protected void cargarGrillaHistorialFactura()
+        //{
+        //    dgv_grillaOrdenesImpresion.DataSource = FacturaDao.ListarFacturas(txt_fechaDesde.Text, txt_fechaHasta.Text);
+        //    dgv_grillaOrdenesImpresion.DataKeyNames = new string[] { "idFactura" };
+        //    dgv_grillaOrdenesImpresion.DataBind();
+        //}
 
 
         /// <summary>
@@ -88,9 +87,7 @@ namespace ProyectoArtemisa
         /// <param name="e"></param>
         protected void btn_buscar_Click(object sender, EventArgs e)
         {
-            lbl_total.Visible = true;
-            txt_total.Visible = true;
-            cargarGrillaHistorialFactura();
+            cargarGrillaFactura(FacturaDao.ListarFacturas(txt_fechaDesde.Text, txt_fechaHasta.Text));
             SumarTotal();
              
         }

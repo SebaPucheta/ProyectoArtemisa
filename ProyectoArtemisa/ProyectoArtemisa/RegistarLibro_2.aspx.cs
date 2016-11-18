@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Entidades;
 using BaseDeDatos;
 using Negocio;
+using System.Data;
 namespace ProyectoArtemisa
 {
     public partial class RegistarLibro_2 : System.Web.UI.Page
@@ -279,7 +280,7 @@ namespace ProyectoArtemisa
             libro.idEditorial = int.Parse(ddl_editorialLibro.SelectedValue.ToString());
             libro.idMateria = Convert.ToInt32(ddl_materiasLibro.SelectedValue);
             //Estado no esta, se inicializa en null por defecto
-            libro.precioLibro = float.Parse(txt_precioLibro.Text);
+            libro.precioLibro = float.Parse((Math.Round(float.Parse(txt_precioLibro.Text), 2)).ToString());
             libro.stock = int.Parse(txt_stock.Text);
 
             return libro;

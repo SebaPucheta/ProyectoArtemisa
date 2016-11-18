@@ -19,7 +19,7 @@
                             <EditRowStyle BackColor="#ffffcc" />
                             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
         <Columns>
-            <asp:BoundField ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" DataField="precioHoja" HeaderText="Precio" />
+            <asp:BoundField ItemStyle-HorizontalAlign="Right" ItemStyle-VerticalAlign="Middle" DataField="precioHoja" HeaderText="Precio" />
             <asp:BoundField ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" DataField="fecha" HeaderText="Fecha" />
         </Columns>
     </asp:GridView>
