@@ -32,6 +32,14 @@ namespace ProyectoArtemisa
             }
             lbl_usuario.Text = Session["nombreApellidoUsuario"].ToString();
             btn_codigoBarra.Focus();
+            if(dgv_grillaDetalleFactura.Rows.Count > 0)
+            {
+                lbl_nombreGrilla.Visible = true;
+            }
+            else
+            {
+                lbl_nombreGrilla.Visible = false;
+            }
         }
 
         //Cargar la Grilla que tiene un nuevo detalle
@@ -126,6 +134,7 @@ namespace ProyectoArtemisa
             dgv_grillaDetalleFactura.DataSource = dataView;
             dgv_grillaDetalleFactura.DataBind();
             lbl_total.Text = CalcularTotal().ToString("N2");
+            lbl_nombreGrilla.Visible = true;
             
         }
 

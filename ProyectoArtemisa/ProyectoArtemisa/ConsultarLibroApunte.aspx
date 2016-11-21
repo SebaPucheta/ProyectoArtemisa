@@ -117,6 +117,12 @@
             <br />
             <br />
 
+             <!-- Subtitulo de grilla -->
+            <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrillaApunte" Visible="false" for="cuil" class="control-label col-md-5"><b>Lista de apuntes</b></asp:label>
+                </div>
+            </div>
             <!-- Grilla Apunte-->
             <div class="col-lg-12">
             <asp:GridView ID="dgv_grillaApunte" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False"  AllowPaging="True" PageSize="20"
@@ -164,6 +170,12 @@
             </asp:GridView>
             </div>
 
+            <!-- Subtitulo de grilla -->
+            <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrillaLibro" Visible="false" for="cuil" class="control-label col-md-5"><b>Lista de libro</b></asp:label>
+                </div>
+            </div>
             <!-- Grilla Libro-->
             <div class="col-lg-12">
             <asp:GridView ID="dgv_grillaLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true"  AllowPaging="True" PageSize="20"

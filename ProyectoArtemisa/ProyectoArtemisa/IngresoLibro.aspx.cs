@@ -38,6 +38,14 @@ namespace ProyectoArtemisa
                 }
             }
             btn_codigoBarra.Focus();
+            if (dgv_grillaIngresoStockDetalle.Rows.Count > 0)
+            {
+                lbl_nombreGrilla.Visible = true;
+            }
+            else
+            {
+                lbl_nombreGrilla.Visible = false;
+            }
         }
 
         protected void CargarComboProveedor()
@@ -126,6 +134,7 @@ namespace ProyectoArtemisa
             dgv_grillaIngresoStockDetalle.DataSource = dataView;
             dgv_grillaIngresoStockDetalle.DataBind();
             txt_total.Text = CalcularTotal().ToString("N2");
+            lbl_nombreGrilla.Visible = true;
         }
 
         //Inicializa las variable globales

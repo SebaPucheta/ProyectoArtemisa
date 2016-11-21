@@ -9,110 +9,67 @@
     <title></title>
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="Estilo/NavBar.css" />
-    <link rel="stylesheet" href="Estilo/Sidebar.css" />
-    <link rel="stylesheet" href="Estilo/Forms.css" />
-    <link rel="stylesheet" href="Estilo/estilos.css" />
-    <!-- Una fuente sacada de google que obviamente solo anda con internet, futuro problemaa solucionar-->
-    <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css' />
-    <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" />
-    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <link rel="stylesheet" href="Estilo/Login.css" />
+    
 </head>
 <body>
     <form id="form1" runat="server">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="row">
-            <div class="col-lg-offset-4 col-lg-4" id="div_form">
+       
+        
+        
+        <div class="contenedor-formulario">
+            <div class="wrap" >
+                <div  class="formulario" name="formulario_registro" method="get">
                 <!-- Titulo -->
-                <div>
-                    <h1 class="text-primary text-center"><b>Inicio Sesión</b></h1>
-                </div>
-                <br />
-                <br />
-                <%-- Login --%>
                 
-                    <asp:Login ID="log_in" runat="server" OnAuthenticate="Login1_Authenticate" LoginButtonText="Ingresar" PasswordLabelText="Contraseña" TextLayout="TextOnTop" TitleText="" Width="717px" UserNameLabelText="Nombre de usuario">
+                    <h1 class="text-primary text-center"><b>Inicio Sesión</b></h1>
+                
+                <br />
+                
+                <%-- Login --%>
+                <div class="container">
+                    <asp:Login ID="log_in" runat="server" CssClass="login" OnAuthenticate="Login1_Authenticate" LoginButtonText="Ingresar" PasswordLabelText="Contraseña" TextLayout="TextOnTop" TitleText="" Width="717px" UserNameLabelText="Nombre de usuario">
                         <TextBoxStyle  />
                         <LayoutTemplate>
-                            <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
-                                <tr>
-                                    <td>
-                                        <table cellpadding="0" style="width:717px;">
-                                            <tr>
-                                                <td>
-                                                    <asp:Label ID="UserNameLabel"  runat="server" AssociatedControlID="UserName">Nombre de usuario</asp:Label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="col-lg-7">
-                                                    <asp:TextBox ID="UserName" runat="server" CssClass="txt "></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="El nombre de usuario es obligatorio." ToolTip="El nombre de usuario es obligatorio." ValidationGroup="log_in">*</asp:RequiredFieldValidator>
-                                                </div>
-                                                        </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Contraseña</asp:Label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="col-lg-7">
-                                                    <asp:TextBox ID="Password" runat="server" CssClass="txt" TextMode="Password"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="log_in">*</asp:RequiredFieldValidator>
-                                                    </div>
-                                               </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <asp:CheckBox ID="RememberMe" runat="server" Text="Recordármelo la próxima vez." />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center" style="color:Red;">
-                                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left">
-                                                    <asp:LinkButton ID="lbt" runat="server" CssClass="crearCuenta" EnableViewState="False" Text="Crear nueva cuenta" OnClick="lbt_Click"></asp:LinkButton>
-                                                </td>
-                                            </tr>
-                                            
-                                            <tr>
-                                                <td align="left">
-                                                     <div class="col-lg-8">
-                                                        <asp:Button ID="LoginButton"  runat="server" CommandName="Login"  CssClass="btn-lg btn_azul btn_flat btn_grande" Text="Ingresar." ValidationGroup="log_in" />
-                                                     </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
+                           <div>
+					            <div class="input-group">
+                                    <asp:label Id="Label1" class="label-login" runat="server" CssClass="txt" VISIBLE="false" AssociatedControlID="UserName"  ></asp:label>
+                                     <label id="UserNameLabel" class="label-login" runat="server"   >Nombre de usuario</label>
+                                    <asp:TextBox ID="UserName" type="text"   runat="server" ></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="El nombre de usuario es obligatorio." ToolTip="El nombre de usuario es obligatorio." ValidationGroup="log_in">*</asp:RequiredFieldValidator>
+                                </div>
+                           </div>
+                            
+                           <div>
+					            <div class="input-group">
+                                    <ASP:label id="Label2" class="label-login" CssClass="txt" runat="server" VISIBLE="false"  AssociatedControlID="Password">Contraseña</ASP:label>
+                                    <label id="PasswordLabel" class="label-login" runat="server" >Contraseña</label>
+                                    <asp:TextBox ID="Password" type="password"  runat="server"  TextMode="Password"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="log_in">*</asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            
+                            <asp:CheckBox ID="RememberMe" runat="server" ForeColor="Black" Text="Recordármelo la próxima vez." />
+                            
+                            <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                            <div class="row">
+                            <asp:Button ID="LoginButton" CssClass="submit" type="submit" runat="server" CommandName="Login"   Text="Ingresar" ValidationGroup="log_in" />
+                            </div>
                         </LayoutTemplate>
-                        <LoginButtonStyle CssClass="btn btn-lg btn_azul btn_flat" />
+                        
                     </asp:Login>
-                    <br />
-                    
+                   
+                    </div>
+               </div>     
             </div>
         </div>
     </form>
 
 
-    <script src="Bootstrap/js/bootstrap.min.js"></script>
+    
     <script src="Bootstrap/js/jquery.js"></script>
-    <%-- Aca vamos a poner lo necesario para que funcione JQUERY Autor: Martin --%>
-    <script src="jquery-ui-1.11.4.custom\external\jquery\jquery.js"></script>
-    <script src="jquery-ui-1.11.4.custom\jquery-ui.js"></script>
-      <script type="text/javascript">
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+      <%--<script type="text/javascript">
           // Recorrer los elementos y hacer que onchange ejecute una funcion para comprobar el valor de ese input
           (function () {
 
@@ -219,34 +176,30 @@
                   }
               };
 
-              var focusInput = function () {
-                  this.parentElement.children[1].className = "label active";
-                  this.parentElement.children[0].className = this.parentElement.children[0].className.replace("error", "");
+              var focusInput = function (IdLabel, IdText) {
+                  document.getElementById(IdLabel).className = "label-login active";
+                  document.getElementById(IdText).className = document.getElementById(IdText).className.replace("error", "");
               };
 
-              var blurInput = function () {
-                  if (this.value <= 0) {
-                      this.parentElement.children[1].className = "label";
-                      this.parentElement.children[0].className = this.parentElement.children[0].className + " error";
+              var blurInput = function (IdLabel,IdText) {
+                  if (true) {
+                      document.getElementById(IdLabel).className = "label-login";
+                      document.getElementById(IdText).className = document.getElementById(IdText).className + " error";
                   }
               };
 
               // --- Eventos ---
               document.addEventListener("submit", enviar);
-
-
-              document.getElementById("log_in_UserNameLabel").addEventListener("focus", focusInput);
-              document.getElementById("log_in_UserName").addEventListener("blur", blurInput);
-              document.getElementById("log_in_Password").addEventListener("focus", focusInput);
-              document.getElementById("log_in_Password").addEventListener("blur", blurInput);
+              document.getElementById("log_in_UserName").addEventListener("focus", focusInput("log_in_UserNameLabel", "log_in_UserName"));
+              document.getElementById("log_in_UserName").addEventListener("blur", blurInput("log_in_UserNameLabel", "log_in_UserName"));
+              document.getElementById("log_in_Password").addEventListener("focus", focusInput("log_in_PasswordLabel", "log_in_Password"));
+              document.getElementById("log_in_Password").addEventListener("blur", blurInput("log_in_PasswordLabel", "log_in_Password"));
               
           }());
 
-        </script>
+        </script>--%>
     <!-- Codigo js para que ande el boton btn-mostrarNav -->
-    <script type="text/javascript">$('#btn_mostrarNav').on('click', function () {
-    $('#sidenav').toggleClass('mostrar');
-})</script>
+    
 
 </body>
 </html>

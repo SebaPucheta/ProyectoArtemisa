@@ -57,6 +57,7 @@
     <Compile Include="DetalleIngresoLibroEntidad.cs" />
     <Compile Include="DetalleIngresoLibroEntidadQuery.cs" />
     <Compile Include="EditorialEntidad.cs" />
+    <Compile Include="EmpleadoEntidad.cs" />
     <Compile Include="EstadoEntidad.cs" />
     <Compile Include="EstadoOrdenImpresionEntidad.cs" />
     <Compile Include="FacturaEntidad.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="ProveedorEntidad.cs" />
     <Compile Include="ProveedorQuery.cs" />
     <Compile Include="ProvinciaEntidad.cs" />
+    <Compile Include="RolEntidad.cs" />
     <Compile Include="TipoApunteEntidad.cs" />
     <Compile Include="TipoDNIEntidad.cs" />
     <Compile Include="UniversidadEntidad.cs" />

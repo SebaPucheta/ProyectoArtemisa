@@ -51,6 +51,7 @@ namespace ProyectoArtemisa
             dgv_grillaOrdenesImpresion.DataSource = dataView;
             dgv_grillaOrdenesImpresion.DataKeyNames = new string[] { "idOrdenImpresion" };
             dgv_grillaOrdenesImpresion.DataBind();
+            lbl_nombreGrilla.Visible = true;
         }
         protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
         {

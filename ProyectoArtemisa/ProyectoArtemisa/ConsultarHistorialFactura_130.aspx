@@ -43,7 +43,11 @@
             <br />
             <br />
 
-
+            <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrilla" Visible="false" for="cuil" class="control-label col-md-4"><b>Encabezados de comprobante</b></asp:label>
+                </div>
+            </div>
             <!-- Grilla Facturas-->
             <asp:GridView ID="dgv_grillaOrdenesImpresion" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" AllowPaging="True" PageSize="20"
             OnPageIndexChanging="dgv_grilla_OnPageIndexChanging" OnSelectedIndexChanged="btn_consultarFactura_SelectedIndexChanged">

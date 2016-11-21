@@ -40,6 +40,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_confirmar;
         
         /// <summary>
+        /// Control lbl_nombreGrilla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_nombreGrilla;
+        
+        /// <summary>
         /// Control dgv_grillaOrdenesImpresion.
         /// </summary>
         /// <remarks>

@@ -67,6 +67,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_reporte;
         
         /// <summary>
+        /// Control lbl_nombreGrillaEncabezado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_nombreGrillaEncabezado;
+        
+        /// <summary>
         /// Control dgv_grillaIngresoLibros.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_total;
+        
+        /// <summary>
+        /// Control lbl_nombreGrillaDetalles.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_nombreGrillaDetalles;
         
         /// <summary>
         /// Control dgv_grillaDetalleIngresoLibro.

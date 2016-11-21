@@ -8,7 +8,7 @@
         <div>
             <!-- Titulo -->
             <div class="row">
-                <h1 class="text-primary text-center"><b>Registrar Usuario</b></h1>
+                <h1 class="text-primary text-center"><b>Registrar Empleado</b></h1>
             </div>
             <br />
         </div>
@@ -75,6 +75,29 @@
             </div>
         </div>
         <br />
+
+        <!-- ROL -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="option" class="control-label col-md-3">Rol: </label>
+                    <div class="col-md-5">
+                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_rol" />
+                    </div>
+                </div>
+            </div>
+            <br />
+
+
+        <!-- Tipo de DNI -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="option" class="control-label col-md-3">Tipo DNI: </label>
+                    <div class="col-md-5">
+                        <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_tipoDNI" />
+                    </div>
+                </div>
+            </div>
+            <br />
 
         <!--Ingreso el número de documento-->
         <div class="row">

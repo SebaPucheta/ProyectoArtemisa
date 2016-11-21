@@ -14,26 +14,27 @@ namespace BaseDeDatos
         /// Registrar Usuario y Cliente
         /// </summary>
         /// <param name=""></param>
-        public static void RegistrarUsuario(UsuarioEntidad user, ClienteEntidad cli)
+        public static void RegistrarUsuarioEmpleado(UsuarioEntidad user, EmpleadoEntidad empleado)
         {
             SqlConnection cn = obtenerBD();
             SqlTransaction trans = cn.BeginTransaction();
             try
             {
-                string consulta = @"INSERT INTO Cliente (nombreCliente, apellidoCliente, nroDni, idTipoDNI, email) VALUES (@nom, @ape, @dni, @tipoDni, @email); SELECT SCOPE_IDENTITY();";
+                string consulta = @"INSERT INTO Empleado (nombreEmpleado, apellidoEmpleado, dni, idTipoDNI, email) VALUES (@nom, @ape, @dni, @tipoDni, @email); SELECT SCOPE_IDENTITY();";
                 SqlCommand cmd = new SqlCommand(consulta, cn, trans);
-                cmd.Parameters.AddWithValue(@"nom", cli.nombreCliente);
-                cmd.Parameters.AddWithValue(@"ape", cli.apellidoCliente);
-                cmd.Parameters.AddWithValue(@"dni", cli.nroDni);
-                cmd.Parameters.AddWithValue(@"tipoDni", cli.idTipoDNI);
-                cmd.Parameters.AddWithValue(@"email", cli.email);
-                cli.idCliente = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.Parameters.AddWithValue(@"nom", empleado.nombreEmpleado);
+                cmd.Parameters.AddWithValue(@"ape", empleado.apellidoNombre);
+                cmd.Parameters.AddWithValue(@"dni", empleado.dni);
+                cmd.Parameters.AddWithValue(@"tipoDni", empleado.tipoDNI);
+                cmd.Parameters.AddWithValue(@"email", empleado.email);
+                empleado.idEmpleado = Convert.ToInt32(cmd.ExecuteScalar());
 
-                consulta = @"INSERT INTO Usuario (nombreUsuario, contrasena, idCliente) VALUES (@usuario, @pass, @idCli)";
+                consulta = @"INSERT INTO Usuario (nombreUsuario, contrasena, idCliente, idRol) VALUES (@usuario, @pass, @idCli, @idRol)";
                 cmd = new SqlCommand(consulta, cn, trans);
                 cmd.Parameters.AddWithValue("@usuario", user.nombreUsuario);
                 cmd.Parameters.AddWithValue("@pass", user.contrasena);
-                cmd.Parameters.AddWithValue("@idCli", cli.idCliente);
+                cmd.Parameters.AddWithValue("@idCli", empleado.idEmpleado);
+                cmd.Parameters.AddWithValue("@idRol", user.idRol);
                 cmd.ExecuteNonQuery();
             }
             catch
@@ -206,9 +207,45 @@ namespace BaseDeDatos
             return cli;
         }
 
+        public static List<RolEntidad> ConsultarRoles()
+        {
+            List<RolEntidad> listaRol = new List<RolEntidad>();
+            string query = @"Select r.idRol, r.nombreRol From Rol r";
 
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                RolEntidad rol = new RolEntidad();
+                rol.idRol = int.Parse(dr["idRol"].ToString());
+                rol.nombreRol = dr["nombreRol"].ToString();
+                listaRol.Add(rol);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return listaRol;
+        }
      
+        public static List<TipoDNIEntidad> DevolverTipDNI()
+        {
+            List<TipoDNIEntidad> listaTipoDNI = new List<TipoDNIEntidad>();
+            string query = @"Select TD.idTipoDNI, TD.nombreTipoDNI from TipoDNI TD";
 
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                TipoDNIEntidad tipoDNI = new TipoDNIEntidad();
+                tipoDNI.idTipoDNI = int.Parse(dr["idTipoDNI"].ToString());
+                tipoDNI.nombreTipoDNI = dr["nombreTipoDNI"].ToString();
+                listaTipoDNI.Add(tipoDNI);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return listaTipoDNI;
+        }
 
     }
 }

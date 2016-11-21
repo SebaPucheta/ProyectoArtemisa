@@ -20,6 +20,15 @@ namespace ProyectoArtemisa
                 
             }
 
+            if(dgv_grillaOrdenesImpresion.Rows.Count>0)
+            {
+                lbl_nombreGrilla.Visible = true;
+            }
+            else
+            {
+                lbl_nombreGrilla.Visible = false;
+            }
+
         }
         protected void SumarTotal()
         {
@@ -89,7 +98,7 @@ namespace ProyectoArtemisa
         {
             cargarGrillaFactura(FacturaDao.ListarFacturas(txt_fechaDesde.Text, txt_fechaHasta.Text));
             SumarTotal();
-             
+            lbl_nombreGrilla.Visible = true;
         }
     }
 }

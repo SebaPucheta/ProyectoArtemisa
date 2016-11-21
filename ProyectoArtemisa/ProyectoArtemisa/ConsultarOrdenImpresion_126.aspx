@@ -35,6 +35,7 @@
         </div>
         <br />
 
+        
          <!--Grilla Nueva Orden de Impresion-->
          <asp:GridView ID="dgv_ordenNueva" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="false" OnRowDeleting="btn_limpiarGrilla_RowDeleting" OnSelectedIndexChanged="btn_registrarOrden_SelectedIndexChanged" >
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
@@ -65,7 +66,12 @@
           </asp:GridView>
           <br />
 
-
+          <!-- Subtitulo de grilla -->
+            <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrilla" Visible="false" for="cuil" class="control-label col-md-5"><b>Lista de órdenes de impresión</b></asp:label>
+                </div>
+            </div>
          <!-- Grilla Ordenes de Impresion-->
          <asp:GridView ID="dgv_grillaOrdenesImpresion" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarOrden_RowDeleting" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged" OnRowCommand="dgv_grillaApunte_RowCommand">
              <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />

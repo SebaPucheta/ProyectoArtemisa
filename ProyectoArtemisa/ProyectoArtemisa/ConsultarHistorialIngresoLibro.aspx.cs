@@ -90,6 +90,11 @@ namespace ProyectoArtemisa
             dgv_grillaIngresoLibros.DataSource = dataView;
             dgv_grillaIngresoLibros.DataKeyNames = new string[] { "idIngresoLibro" };
             dgv_grillaIngresoLibros.DataBind();
+            if(dgv_grillaIngresoLibros.Rows.Count > 0)
+            {
+                lbl_nombreGrillaEncabezado.Visible = true;
+                lbl_nombreGrillaDetalles.Visible = false;
+            }
         }
         protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
         {
@@ -126,12 +131,16 @@ namespace ProyectoArtemisa
             dgv_grillaDetalleIngresoLibro.DataSource = dataView;
             dgv_grillaDetalleIngresoLibro.DataKeyNames = new string[] { "idDetalleIngresoLibro" };
             dgv_grillaDetalleIngresoLibro.DataBind();
+            if (dgv_grillaDetalleIngresoLibro.Rows.Count > 0)
+            {
+                lbl_nombreGrillaDetalles.Visible = true;
+            }
         }
 
         protected void btn_consultarFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
             string key = dgv_grillaIngresoLibros.SelectedDataKey.Value.ToString();
-                CargarGrillaDetalleIngresoLibro(IngresoLibroDao.DevolverDetalleIngresoLibroPorId(int.Parse(key)));
+            CargarGrillaDetalleIngresoLibro(IngresoLibroDao.DevolverDetalleIngresoLibroPorId(int.Parse(key)));
         }
     }
 }

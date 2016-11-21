@@ -45,6 +45,12 @@
             </div>
             <br />
             <br />
+             <!-- Subtitulo de grilla -->
+            <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrilla" Visible="false" for="cuil" class="control-label col-md-5"><b>Lista de órdenes de impresión</b></asp:label>
+                </div>
+            </div>
             <!-- Grilla Ordenes de Impresion-->
             <asp:GridView ID="dgv_grillaOrdenesImpresion" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False"  AllowPaging="True" PageSize="20"
             OnPageIndexChanging="dgv_grilla_OnPageIndexChanging">

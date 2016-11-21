@@ -100,6 +100,13 @@
          </div>
          <br />
 
+        <!-- Subtitulo de grilla -->
+         <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrilla" Visible="false" for="cuil" class="control-label col-md-5"><b>Detalle de ingreso de libro</b></asp:label>
+                </div>
+            </div>
+
          <!-- Grilla Detalle de factura-->
          <asp:GridView ID="dgv_grillaIngresoStockDetalle" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true"  AllowPaging="True" PageSize="20"
             OnPageIndexChanging="dgv_grilla_OnPageIndexChanging" OnRowDeleting="btn_eliminarDetalle_RowDeleting" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged">

@@ -161,6 +161,15 @@
             </div>
         </div>
 
+        <div class="row">
+                <div class="form-group">
+                    <label for="cuil" class="control-label col-md-3">Editoriales </label>
+                </div>
+        </div>
+
+
+
+
         <!-- Grilla Editoriales-->
         <asp:GridView ID="dgv_grillaEditoriales" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" AllowPaging="True" PageSize="10"
             OnPageIndexChanging="dgv_grilla_OnPageIndexChanging" OnSelectedIndexChanged="btn_modificarEditorial_SelectedIndexChanged">

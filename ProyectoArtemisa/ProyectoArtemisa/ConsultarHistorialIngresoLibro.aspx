@@ -62,7 +62,12 @@
             <br />
             <br />
 
-
+             <!-- Subtitulo de grilla -->
+            <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrillaEncabezado" Visible="false" for="cuil" class="control-label col-md-5"><b>Lista de ingresos de libros</b></asp:label>
+                </div>
+            </div>
             <!-- Grilla Ingreso Libros-->
             <asp:GridView ID="dgv_grillaIngresoLibros" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False"  AllowPaging="True" PageSize="20"
             OnPageIndexChanging="dgv_grilla_OnPageIndexChanging" OnSelectedIndexChanged="btn_consultarFactura_SelectedIndexChanged">
@@ -97,6 +102,12 @@
              </div>
          </div>
          <br />
+         <!-- Subtitulo de grilla -->
+            <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrillaDetalles" Visible="false" for="cuil" class="control-label col-md-5"><b>Detalle de ingreso de libros</b></asp:label>
+                </div>
+            </div>
            <!-- Grilla Detalles Ingreso Libros-->
             <asp:GridView ID="dgv_grillaDetalleIngresoLibro" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnSelectedIndexChanged="btn_consultarFactura_SelectedIndexChanged">
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />

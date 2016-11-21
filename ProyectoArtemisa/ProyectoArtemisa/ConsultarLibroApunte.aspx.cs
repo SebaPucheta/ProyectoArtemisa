@@ -32,8 +32,12 @@ namespace ProyectoArtemisa
                         CargarUnLibroEnGrilla(LibroDao.ConsultarLibroQuery(int.Parse(Session["idItem"].ToString())));
                     }
                 }
-                btn_codigoBarra.Focus();
             }
+                btn_codigoBarra.Focus();
+            
+        }
+
+            
             //Toma los metodos ejecutados en JavaScript en el HTML
             //if(IsPostBack)
             //{
@@ -57,7 +61,7 @@ namespace ProyectoArtemisa
 
             //    string parameter = Request["__EVENTARGUMENT"];
             //}
-        }
+       
 
 
         protected void ddl_universidad_SelectedIndexChanged(object sender, EventArgs e)
@@ -212,13 +216,18 @@ namespace ProyectoArtemisa
                 {
                     CargarApunteEnGrilla(BuscarListaApunteXfiltro());
                     dgv_grillaLibro.Visible = false;
+                    lbl_nombreGrillaLibro.Visible = false;
                     dgv_grillaApunte.Visible = true;
+                    lbl_nombreGrillaApunte.Visible = true;
+                    
                 }
                 else
                 {
                     CargarLibroEnGrilla(BuscarListaLibroXfiltro());
                     dgv_grillaApunte.Visible = false;
+                    lbl_nombreGrillaApunte.Visible = false;
                     dgv_grillaLibro.Visible = true;
+                    lbl_nombreGrillaLibro.Visible = true;
                 }
             }
 

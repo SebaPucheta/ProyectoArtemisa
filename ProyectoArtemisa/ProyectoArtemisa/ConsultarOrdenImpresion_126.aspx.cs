@@ -101,6 +101,11 @@ namespace ProyectoArtemisa
             dgv_grillaOrdenesImpresion.DataKeyNames = new string[] { "idOrden" };
             dgv_grillaOrdenesImpresion.DataSource = dataView;
             dgv_grillaOrdenesImpresion.DataBind();
+            if(dgv_grillaOrdenesImpresion.Rows.Count > 0)
+            {
+                lbl_nombreGrilla.Visible = true;
+            }
+            
         }
        
         //Carga el apunte que trajo del otro form en la grilla dgv_ordenNueva, en donde se setea la cantidad y luego se al acer click en registrar se crea

@@ -1,23 +1,17 @@
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+
 
 body {
   background: #f2f2f2;
   font-family: "Roboto";
   position:relative;
-  border-top: 50px solid #a11f2c;
-
   background-image: url(Background/Tablet1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   overflow-x: hidden;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+}
 
 .titulo{
   color: rgb(52, 39, 204);

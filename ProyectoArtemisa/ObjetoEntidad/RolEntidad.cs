@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public  class TipoDNIEntidad
+    public class RolEntidad
     {
-        public int idTipoDNI { get; set; }
-        public string nombreTipoDNI { get; set; }
+        public int idRol { get; set; }
+        public string nombreRol { get; set; }
     }
 }

@@ -92,6 +92,13 @@
          </div>
          </div>
          <br />
+         
+         <!-- Subtitulo de grilla -->
+         <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_nombreGrilla" Visible="false" for="cuil" class="control-label col-md-4"><b>Detalle de comprobante</b></asp:label>
+                </div>
+            </div>
 
          <!-- Grilla Detalle de factura-->
          <asp:GridView ID="dgv_grillaDetalleFactura" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" OnRowDeleting="btn_eliminarDetalle_RowDeleting" OnRowCommand="dgv_grillaDetalleFactura_RowCommand" OnSelectedIndexChanged="btn_consultarApunte_SelectedIndexChanged">

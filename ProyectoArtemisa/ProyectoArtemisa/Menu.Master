@@ -114,7 +114,7 @@
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarProveedor" Text="Registrar Proveedor" OnClick="btn_registrarProveedor_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarUsuario" Text="Registrar Usuario" OnClick="btn_registrarUsuario_OnClick" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarUsuario" Text="Registrar Empleado" OnClick="btn_registrarUsuario_OnClick" /></li>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
                         <li>
