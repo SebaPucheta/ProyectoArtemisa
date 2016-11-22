@@ -124,6 +124,7 @@
     <Content Include="jquery-ui-1.11.4.custom\jquery-ui.structure.min.css" />
     <Content Include="jquery-ui-1.11.4.custom\jquery-ui.theme.css" />
     <Content Include="jquery-ui-1.11.4.custom\jquery-ui.theme.min.css" />
+    <Content Include="ModificarUsuario.aspx" />
     <Content Include="obj\Debug\ProyectoArtemisa.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\ProyectoArtemisa.dll" />
     <Content Include="obj\Debug\ProyectoArtemisa.pdb" />
@@ -243,6 +244,13 @@
     </Compile>
     <Compile Include="Menu.Master.designer.cs">
       <DependentUpon>Menu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarUsuario.aspx.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarUsuario.aspx.designer.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />

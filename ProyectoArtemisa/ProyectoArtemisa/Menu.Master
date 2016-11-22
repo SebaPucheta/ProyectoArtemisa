@@ -101,6 +101,8 @@
                         <li>
                             <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Desloguearse" LoginText="Loguearse" LogoutPageUrl="Login.aspx" />
                         </li>
+                        <li>
+                            <asp:Button runat="server" ID="btn_cambiarPass" CssClass="btn-a" Text="Cambiar Constraseña" OnClick="btn_cambiarPass_OnClick" TabIndex="60" /></li>
                     </ul>
                 </li>
                 <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#">Registrar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>

@@ -247,5 +247,41 @@ namespace BaseDeDatos
             return listaTipoDNI;
         }
 
+        public static bool ExisteUsuario( int idUsuario, string pass)
+        {
+            UsuarioEntidadQuery usu = new UsuarioEntidadQuery();
+
+            string query = @"SELECT u.idUsuario, u.nombreUsuario, u.contrasena
+                             FROM Usuario u 
+                             WHERE u.idUsuario = @idUsuario and u.contrasena = @pass";
+
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idUsuario", idUsuario);
+            cmd.Parameters.AddWithValue(@"pass", pass);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                dr.Close();
+                cmd.Connection.Close();
+                return true;
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return false;
+        }
+
+        public static void ModificarContrasena(int idUsuario, string pass)
+        {
+            UsuarioEntidadQuery usu = new UsuarioEntidadQuery();
+
+            string query = @"UPDATE Usuario Set   u.contrasena = @pass
+                             WHERE u.idUsuario = @idUsuario";
+
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idUsuario", idUsuario);
+            cmd.Parameters.AddWithValue(@"pass", pass);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
     }
 }

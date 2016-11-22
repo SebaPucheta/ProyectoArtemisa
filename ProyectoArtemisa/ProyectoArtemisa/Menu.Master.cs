@@ -316,6 +316,12 @@ namespace ProyectoArtemisa
             Response.Redirect("GenerarReporteResmasUtilizadas_146.aspx");
         }
 
+        protected void btn_cambiarPass_OnClick(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ModificarUsuario.aspx");
+        }
         
 
             

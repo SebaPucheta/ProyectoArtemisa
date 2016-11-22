@@ -49,6 +49,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.LoginStatus LoginStatus1;
         
         /// <summary>
+        /// Control btn_cambiarPass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_cambiarPass;
+        
+        /// <summary>
         /// Control btn_registrarApunte.
         /// </summary>
         /// <remarks>
