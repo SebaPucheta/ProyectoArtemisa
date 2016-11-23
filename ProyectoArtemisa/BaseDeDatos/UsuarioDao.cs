@@ -30,12 +30,12 @@ namespace BaseDeDatos
                 empleado.idEmpleado = Convert.ToInt32(cmd.ExecuteScalar());
 
                 consulta = @"INSERT INTO Usuario (nombreUsuario, contrasena, idCliente, idRol) VALUES (@usuario, @pass, @idCli, @idRol)";
-                cmd = new SqlCommand(consulta, cn, trans);
-                cmd.Parameters.AddWithValue("@usuario", user.nombreUsuario);
-                cmd.Parameters.AddWithValue("@pass", user.contrasena);
-                cmd.Parameters.AddWithValue("@idCli", empleado.idEmpleado);
-                cmd.Parameters.AddWithValue("@idRol", user.idRol);
-                cmd.ExecuteNonQuery();
+                SqlCommand cmd2 = new SqlCommand(consulta, cn, trans);
+                cmd2.Parameters.AddWithValue("@usuario", user.nombreUsuario);
+                cmd2.Parameters.AddWithValue("@pass", user.contrasena);
+                cmd2.Parameters.AddWithValue("@idCli", empleado.idEmpleado);
+                cmd2.Parameters.AddWithValue("@idRol", user.idRol);
+                cmd2.ExecuteNonQuery();
             }
             catch
             {
@@ -64,12 +64,12 @@ namespace BaseDeDatos
                 cli.idCliente = Convert.ToInt32(cmd.ExecuteScalar());
 
                 consulta = @"INSERT INTO Usuario (nombreUsuario, contrasena, idCliente, idRol) VALUES (@usuario, @pass, @idCli, @idRol)";
-                cmd = new SqlCommand(consulta, cn, trans);
-                cmd.Parameters.AddWithValue("@usuario", cli.email);
-                cmd.Parameters.AddWithValue("@pass", user.contrasena);
-                cmd.Parameters.AddWithValue("@idCli", cli.idCliente);
-                cmd.Parameters.AddWithValue("@idRol", user.idRol);
-                cmd.ExecuteNonQuery();
+                SqlCommand cmd2 = new SqlCommand(consulta, cn, trans);
+                cmd2.Parameters.AddWithValue("@usuario", cli.email);
+                cmd2.Parameters.AddWithValue("@pass", user.contrasena);
+                cmd2.Parameters.AddWithValue("@idCli", cli.idCliente);
+                cmd2.Parameters.AddWithValue("@idRol", user.idRol);
+                cmd2.ExecuteNonQuery();
             }
             catch
             {
