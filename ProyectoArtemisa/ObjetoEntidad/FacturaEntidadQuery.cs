@@ -12,5 +12,8 @@ namespace Entidades
         public string nombreEmpleado { get; set; }
         public string apellidoEmpleado { get; set; }
         public string nombreCompletoEmpleado  { get; set; }
+        public string nombreCompletoCliente { get; set; }
+        public string descripcionTipoPago { get; set; }
+        public string descripcionEstadoPago { get; set; }
     }
 }

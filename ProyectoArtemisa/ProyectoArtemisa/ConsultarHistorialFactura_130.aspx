@@ -58,6 +58,9 @@
                     <asp:BoundField DataField="idFactura" ItemStyle-HorizontalAlign="Center" HeaderText="Nº" />
                     <asp:BoundField DataField="fecha" ItemStyle-HorizontalAlign="Center" HeaderText="Fecha" />
                     <asp:BoundField DataField="nombreCompletoEmpleado" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre Empleado" />
+                    <asp:BoundField DataField="nombreCompletoCliente" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre Cliente" />
+                    <asp:BoundField DataField="tipoPago" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo Venta" />
+                    <asp:BoundField DataField="estadoPago" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
                     <asp:BoundField DataField="total" HeaderText="Total" ItemStyle-HorizontalAlign="Right" ApplyFormatInEditMode="False" />
                      <asp:TemplateField>
                         <ItemTemplate>

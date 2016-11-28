@@ -161,7 +161,7 @@ namespace ProyectoArtemisa
         }
         protected void btn_confirmar_Click(object sender, EventArgs e)
         {
-            if(int.Parse(txt_total.Text) == 0)
+            if(Double.Parse(txt_total.Text) == 0)
             {
                 Response.Write("<script>window.alert('No a ingresado ningun articulo');</script>");
             }
@@ -171,6 +171,7 @@ namespace ProyectoArtemisa
                 InicializarVariableSessionTabla();
                 dgv_grillaIngresoStockDetalle.Visible = false;
                 txt_total.Text = "";
+                lbl_nombreGrilla.Visible = false;
             }
         }
 

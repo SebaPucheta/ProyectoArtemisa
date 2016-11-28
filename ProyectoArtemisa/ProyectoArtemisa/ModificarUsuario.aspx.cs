@@ -26,7 +26,7 @@ namespace ProyectoArtemisa
         {
             if(VerificarValidezContrasenaActual())
             {
-                UsuarioDao.ModificarContrasena(int.Parse(Session["idUsuario"].ToString()), txt_pass.Text);
+                UsuarioDao.ModificarContrasena(int.Parse(Session["idUsuario"].ToString()), txt_passnueva.Text);
             }
             else
             {

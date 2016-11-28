@@ -35,7 +35,7 @@ namespace ProyectoArtemisa
             double total = 0;
             foreach (GridViewRow fila in dgv_grillaOrdenesImpresion.Rows)
             {
-                total += Convert.ToDouble(fila.Cells[3].Text.Substring(1));
+                total += Convert.ToDouble(fila.Cells[6].Text.Substring(1));
             }
             txt_total.Text = total.ToString("N2");
         }
@@ -61,7 +61,9 @@ namespace ProyectoArtemisa
             tabla.Columns.Add("fecha", typeof(DateTime));
             tabla.Columns.Add("total", typeof(string));
             tabla.Columns.Add("nombreCompletoEmpleado", typeof(string));
-
+            tabla.Columns.Add("nombreCompletoCliente", typeof(string));
+            tabla.Columns.Add("tipoPago", typeof(string));
+            tabla.Columns.Add("estadoPago", typeof(string));
             foreach (FacturaEntidadQuery factura in listaFacturas)
             {
                 fila = tabla.NewRow();
@@ -70,6 +72,9 @@ namespace ProyectoArtemisa
                 fila[1] = factura.fecha;
                 fila[2] = "$" + factura.total.ToString("N2");
                 fila[3] = factura.nombreCompletoEmpleado;
+                fila[4] = factura.nombreCompletoCliente;
+                fila[5] = factura.descripcionTipoPago;
+                fila[6] = factura.descripcionEstadoPago;
                 tabla.Rows.Add(fila);
             }
 

@@ -23,7 +23,7 @@ namespace BaseDeDatos
                 string consulta = @"INSERT INTO Empleado (nombreEmpleado, apellidoEmpleado, dni, idTipoDNI, email) VALUES (@nom, @ape, @dni, @tipoDni, @email); SELECT SCOPE_IDENTITY();";
                 SqlCommand cmd = new SqlCommand(consulta, cn, trans);
                 cmd.Parameters.AddWithValue(@"nom", empleado.nombreEmpleado);
-                cmd.Parameters.AddWithValue(@"ape", empleado.apellidoNombre);
+                cmd.Parameters.AddWithValue(@"ape", empleado.apellidoEmpleado);
                 cmd.Parameters.AddWithValue(@"dni", empleado.dni);
                 cmd.Parameters.AddWithValue(@"tipoDni", empleado.tipoDNI);
                 cmd.Parameters.AddWithValue(@"email", empleado.email);
@@ -153,10 +153,17 @@ namespace BaseDeDatos
         {
             UsuarioEntidadQuery usu = new UsuarioEntidadQuery();
 
-            string query = @"SELECT u.idUsuario, u.nombreUsuario, u.contrasena, r.nombreRol, c.nombreCliente, c.apellidoCliente, c.nroDni, t.nombreTipoDNI, c.email
-                             FROM Usuario u INNER JOIN Rol r ON u.idRol = r.idRol
-                                            INNER JOIN Cliente c ON u.idCLiente = c.idCliente
-                                            INNER JOIN TipoDNI t ON c.idTipoDNI = t.idTipoDNI
+            string query = @"SELECT u.idUsuario, 
+	                                u.nombreUsuario, 
+	                                u.contrasena, 
+	                                r.nombreRol, 
+	                                e.nombreEmpleado, 
+	                                e.apellidoEmpleado, 
+	                                e.dni, 
+	                                ISNULL(e.email,'') AS email
+                            FROM Usuario u INNER JOIN Rol r ON u.idRol = r.idRol
+			                               INNER JOIN Empleado e ON u.idCLiente = e.idEmpleados
+                                           INNER JOIN TipoDNI t ON e.idTipoDNI = t.idTipoDNI	
                              WHERE u.nombreUsuario = @nombreUsuario";
 
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
@@ -169,13 +176,12 @@ namespace BaseDeDatos
                 usu.nombreUsuario = dr["nombreUsuario"].ToString();
                 usu.contrasena = dr["contrasena"].ToString();
                 usu.nombreRol = dr["nombreRol"].ToString();
-                ClienteEntidadQuery cliente = new ClienteEntidadQuery();
-                cliente.nombreCliente = dr["nombreCliente"].ToString();
-                cliente.apellidoCliente = dr["apellidoCliente"].ToString();
-                cliente.nroDni = int.Parse(dr["nroDni"].ToString());
-                cliente.nombreTipoDNI =  dr["nombreTipoDNI"].ToString();
-                cliente.email = dr["email"].ToString();
-                usu.clienteQuery = cliente;
+                EmpleadoEntidad empleado = new EmpleadoEntidad();
+                empleado.nombreEmpleado = dr["nombreEmpleado"].ToString();
+                empleado.apellidoEmpleado = dr["apellidoEmpleado"].ToString();
+                empleado.dni = int.Parse(dr["dni"].ToString());
+                empleado.email = dr["email"].ToString();
+                usu.empleadoQuery = empleado;
             }
             dr.Close();
             cmd.Connection.Close();
@@ -274,8 +280,8 @@ namespace BaseDeDatos
         {
             UsuarioEntidadQuery usu = new UsuarioEntidadQuery();
 
-            string query = @"UPDATE Usuario Set   u.contrasena = @pass
-                             WHERE u.idUsuario = @idUsuario";
+            string query = @"UPDATE Usuario Set   contrasena = @pass
+                             WHERE idUsuario = @idUsuario";
 
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"idUsuario", idUsuario);

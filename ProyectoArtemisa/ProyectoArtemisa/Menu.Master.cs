@@ -18,8 +18,8 @@ namespace ProyectoArtemisa
                 Session["nickUsuario"] = HttpContext.Current.User.Identity.Name.ToString();
                 UsuarioEntidadQuery usuario = UsuarioDao.ConsultarUnUsuarioPorNick(HttpContext.Current.User.Identity.Name.ToString());
                 Session["idUsuario"] = usuario.idUsuario;
-                string nombreUsuario = usuario.clienteQuery.nombreCliente;
-                string apellidoUsuario = usuario.clienteQuery.apellidoCliente;
+                string nombreUsuario = usuario.empleadoQuery.nombreEmpleado;
+                string apellidoUsuario = usuario.empleadoQuery.apellidoEmpleado;
                 Session["nombreApellidoUsuario"] = nombreUsuario + " " + apellidoUsuario;
                 Page.MaintainScrollPositionOnPostBack = true;
             }

@@ -20,11 +20,26 @@ namespace BaseDeDatos
         /// Autor: Modificado por Martin 03-09-16
         public static List<FacturaEntidadQuery> ListarFacturas(string fechaDesde, string fechaHasta)
         {
-            string query = @"SELECT f.idFactura, f.fecha, f.total, ISNULL(f.idUsuario,0) AS idUsuario ,  ISNULL(C.nombreCliente,'') + ' ' +  ISNULL(C.apellidoCliente,'') AS nombreCompleto
-                            FROM Factura f LEFT join Usuario u
-											on u.idUsuario = f.idUsuario
-											LEFT join Cliente C
-											ON C.idCliente = U.idCliente
+            string query = @"SELECT f.idFactura, f.fecha, f.total,f.idTipoPago,f.idEstadoPago, ep.descripcion as estadoPago, tp.descripcion as tipoPago, 
+                                    ISNULL(f.idUsuarioEmpleado,0) AS idUsuarioEmpleado,
+                                    ISNULL(f.idUsuarioCliente,0) AS idUsuarioCliente,  
+                                    ISNULL(C.nombreCliente,'') + ' ' +  ISNULL(C.apellidoCliente,'') AS nombreCompletoCliente,
+									ISNULL(
+											(	
+												SELECT	ISNULL(ISNULL(e.nombreEmpleado,'') + ' ' + ISNULL(e.apellidoEmpleado,''),'')
+												FROM Usuario u inner join Empleado e on e.idEmpleados = u.idCliente 
+												WHERE U.idUsuario = f.idUsuarioEmpleado
+											),'') AS nombreCompletoEmpleado
+                                    
+
+                                FROM Factura f LEFT join Usuario u
+	                                 on u.idUsuario = f.idUsuarioCliente
+	                                 LEFT join Cliente C
+	                                 ON C.idCliente = U.idCliente
+                                     INNER JOIN TipoPago tp
+                                     ON TP.idTipoPago=f.idTipoPago
+                                     INNER JOIN EstadoPago ep
+                                     ON EP.idEstadoPago = f.idEstadoPago
 							WHERE f.fecha >= convert(date, @fechaDesde, 103) AND f.fecha <= convert(date, @fechaHasta, 103)";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
 
@@ -48,9 +63,14 @@ namespace BaseDeDatos
                 factura.idFactura = int.Parse(dr["idFactura"].ToString());
                 factura.fecha = DateTime.Parse(dr["fecha"].ToString());
                 factura.total = float.Parse(dr["total"].ToString());
-                factura.idUsuario = int.Parse(dr["idUsuario"].ToString());
-                factura.nombreCompletoEmpleado = dr["nombreCompleto"].ToString();
-                //factura.nombreTipoPago = dr["descripcion"].ToString();
+                factura.idUsuarioCliente = int.Parse(dr["idUsuarioCliente"].ToString());
+                factura.idUsuarioEmpleado = int.Parse(dr["idUsuarioEmpleado"].ToString());
+                factura.nombreCompletoEmpleado = dr["nombreCompletoEmpleado"].ToString();
+                factura.nombreCompletoCliente = dr["nombreCompletoCliente"].ToString();
+                factura.idTipoPago = int.Parse(dr["idTipoPago"].ToString());
+                factura.idEstadoPago = int.Parse(dr["idEstadoPago"].ToString());
+                factura.descripcionEstadoPago = dr["estadoPago"].ToString();
+                factura.descripcionTipoPago = dr["tipoPago"].ToString();
                 lista.Add(factura);
             }
             dr.Close();
@@ -72,11 +92,13 @@ namespace BaseDeDatos
             try
             {
 
-                string query1 = "INSERT INTO Factura(fecha, total, idUsuario) VALUES (@fecha, @total, @idUsuario); select scope_identity()";
+                string query1 = "INSERT INTO Factura(fecha, total, idUsuarioEmpleado, idTipoPago,idEstadoPago ) VALUES (@fecha, @total, @idUsuarioEmpleado, @idTipoPago, @idEstadoPago); select scope_identity()";
                 SqlCommand cmd1 = new SqlCommand(query1, cnn,trans);
                 cmd1.Parameters.AddWithValue(@"fecha", DateTime.Now);
                 cmd1.Parameters.AddWithValue(@"total", factura.total);
-                cmd1.Parameters.AddWithValue(@"idUsuario", factura.idUsuario);
+                cmd1.Parameters.AddWithValue(@"idUsuarioEmpleado", factura.idUsuarioEmpleado);
+                cmd1.Parameters.AddWithValue(@"idTipoPago", factura.idTipoPago);
+                cmd1.Parameters.AddWithValue(@"idEstadoPago", factura.idEstadoPago);
                 idFactura = int.Parse(cmd1.ExecuteScalar().ToString());
 
                 foreach (DetalleFacturaEntidad detalleFactura in factura.listaDetalleFactura)
@@ -87,7 +109,7 @@ namespace BaseDeDatos
                     cmd2.Parameters.AddWithValue(@"subtotal", detalleFactura.subtotal);
                     cmd2.Parameters.AddWithValue(@"idFactura", idFactura);
                     
-                    if (detalleFactura.item is ApunteEntidad )//Apunte
+                    if (detalleFactura.item is ApunteEntidad)//Apunte
                     {
                         cmd2.Parameters.AddWithValue(@"idTipoItem", 2);
                         cmd2.Parameters.AddWithValue(@"idItem", ((ApunteEntidad)(detalleFactura.item)).idApunte);

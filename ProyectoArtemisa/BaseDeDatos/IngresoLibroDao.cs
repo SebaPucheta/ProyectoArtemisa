@@ -14,21 +14,21 @@ namespace BaseDeDatos
         {
             if (idProveedor.Equals("0")) 
             { idProveedor = ""; }
-            string query = @"select il.fecha, il.idIngresoLibro, p.nombreProveedor, il.total,  c.nombreCliente, c.apellidoCliente
+            string query = @"select il.fecha, il.idIngresoLibro, p.nombreProveedor, il.total,  e.nombreEmpleado, e.apellidoEmpleado
                                         from IngresoLibro il inner join Proveedor p 
 					                                        on p.idProveedor = il.idProveedor
 					                                        inner join Usuario u
 					                                        on u.idUsuario = il.idUsuario
-					                                        inner join Cliente c
-					                                        on c.idCliente = u.idCliente
+					                                        inner join Empleado e
+					                                        on e.idEmpleados = u.idCliente
 					                                        inner join Rol r
 					                                        on u.idRol = r.idRol
 					
                                         WHERE il.fecha BETWEEN @desde
 		                                        and   @hasta
 		                                        and p.idProveedor like  @idProveedor
-		                                        and c.nombreCliente like @nombre
-		                                        and c.apellidoCliente like @apellido";
+		                                        and e.nombreEmpleado like @nombre
+		                                        and e.apellidoEmpleado like @apellido";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             cmd.Parameters.AddWithValue(@"desde", fechaDesde );
             cmd.Parameters.AddWithValue(@"hasta", fechaHasta );
@@ -41,8 +41,8 @@ namespace BaseDeDatos
             {
                 IngresoLibroEntidadQuery ingreso = new IngresoLibroEntidadQuery();
                 ingreso.nombreProveedor = dr["nombreProveedor"].ToString();
-                ingreso.apellidoCliente = dr["apellidoCliente"].ToString();
-                ingreso.nombreCliente = dr["nombreCliente"].ToString();
+                ingreso.apellidoCliente = dr["apellidoEmpleado"].ToString();
+                ingreso.nombreCliente = dr["nombreEmpleado"].ToString();
                 ingreso.total = float.Parse(dr["total"].ToString());
                 ingreso.idIngresoLibro = int.Parse(dr["idIngresoLibro"].ToString());
                 ingreso.fecha = DateTime.Parse(dr["fecha"].ToString());

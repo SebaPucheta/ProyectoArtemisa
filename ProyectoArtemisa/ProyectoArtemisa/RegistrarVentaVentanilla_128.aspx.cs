@@ -173,7 +173,7 @@ namespace ProyectoArtemisa
                 dgv_grillaDetalleFactura.Visible = true;
                 lbl_total.Text = "";
 
-                string url = "Reportes/GenerarComprobanteDeVenta_149.aspx?id=" + idFactura;
+                string url = "GenerarComprobanteDeVenta_149.aspx?id=" + idFactura;
                 Response.Redirect(url);
                 //Response.Write("<script>window.open('" + url +"','Popup','width=1000,height=700')</script>");
             }
@@ -229,7 +229,9 @@ namespace ProyectoArtemisa
             List<DetalleFacturaEntidad> listaDetalles = new List<DetalleFacturaEntidad>(); 
             factura.fecha = Convert.ToDateTime(lbl_fecha.Text);
             factura.total = float.Parse(lbl_total.Text);
-            factura.idUsuario = int.Parse(Session["idUsuario"].ToString());
+            factura.idUsuarioEmpleado = int.Parse(Session["idUsuario"].ToString());
+            factura.idTipoPago = 1;
+            factura.idEstadoPago = 1;
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)
             {
                 DetalleFacturaEntidad detalleFactura = new DetalleFacturaEntidad();

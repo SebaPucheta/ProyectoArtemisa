@@ -9,8 +9,8 @@ namespace Entidades
     public class UsuarioEntidadQuery : UsuarioEntidad
     {
         public ClienteEntidadQuery clienteQuery { get; set; }
+        public EmpleadoEntidad empleadoQuery { get; set; }
         public string nombreRol { get; set; }
         public string nombreTipoDNI { get; set; }
-
     }
 }

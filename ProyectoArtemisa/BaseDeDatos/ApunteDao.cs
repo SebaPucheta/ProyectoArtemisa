@@ -561,5 +561,17 @@ namespace BaseDeDatos
             return lista;
         }
 
+        public static void GuardarURLApunte(string urlImagen, string urlArchivo, int idApunte)
+        {
+            string consulta = @"UPDATE Apunte SET  urlImagenApunte=@urlImagen, urlArchivoApunte=@urlArchivo  WHERE idApunte = @idApunte";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"urlImagen", urlImagen);
+            cmd.Parameters.AddWithValue(@"urlArchivo", urlArchivo);
+            cmd.Parameters.AddWithValue(@"idApunte", idApunte);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
+
     }
 }

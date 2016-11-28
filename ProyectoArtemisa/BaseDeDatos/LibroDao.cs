@@ -529,5 +529,15 @@ namespace BaseDeDatos
             cmd.Connection.Close();
             return lista;
         }
+
+        public static void GuardarURLLibro(string urlImagen, int idLibro)
+        {
+            string consulta = @"UPDATE Libro SET  urlImagenLibro=@urlImagen  WHERE idLibro = @idLibro";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"urlImagen", urlImagen);
+           cmd.Parameters.AddWithValue(@"idLibro", idLibro);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
     }
 }

@@ -322,8 +322,9 @@ namespace ProyectoArtemisa
                         if (chk_digital.Checked)
                         { 
                             idApunte = RegistrarApunteDigital();
-                            procesarPDF(idApunte.ToString());
-                            procesarImagen(idApunte.ToString());
+                            string urlImagen = procesarPDF(idApunte.ToString());
+                            string urlArchivo = procesarImagen(idApunte.ToString());
+                            ApunteDao.GuardarURLApunte(urlImagen,urlArchivo, idApunte);
                             bandera = false;
                         }
 
@@ -719,14 +720,16 @@ namespace ProyectoArtemisa
         {
 
         }
-        protected void procesarImagen(string nombreImagen)
+        protected string procesarImagen(string nombreImagen)
         {
+            string rutaRelativaImagen = "";
             if (fu_subirImagen.HasFile)
             {
                 try
                 {
-                    string rutaImagen = "C:\\Users\\Sebastián\\Documents\\GitHub\\ProyectoAndromeda\\ProyectoAndrómeda\\ProyectoAndrómeda\\imagenes\\apunte\\" + nombreImagen + ".jpg";
-                    fu_subirImagen.PostedFile.SaveAs(rutaImagen);
+                    rutaRelativaImagen = @"~\imagenes\apunte\" + nombreImagen + ".jpg";
+                    string rutaCompleta = @"C:\Users\Sebastián\Documents\GitHub\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\imagenes\apunte\" + nombreImagen + ".jpg";
+                    fu_subirImagen.PostedFile.SaveAs(rutaCompleta);
                     
                 }
                 catch (Exception ex)
@@ -735,9 +738,11 @@ namespace ProyectoArtemisa
                 }
 
             }
+            return rutaRelativaImagen;
         }
-        protected void procesarPDF(string nombreArchivo)
+        protected string procesarPDF(string nombreArchivo)
         {
+            string rutaRelativaPDF="";
             if (fu_subirArchivo.HasFile)
             {
                 try
@@ -745,11 +750,12 @@ namespace ProyectoArtemisa
                     //creo un nuevo pdf
                     PdfDocument pdf = new PdfDocument();
                     // Indico la ruta deseada donde quiero gurdar el archivo.
-                    string rutaPDF = "C:\\Users\\Sebastián\\Documents\\GitHub\\ProyectoAndromeda\\ProyectoAndrómeda\\ProyectoAndrómeda\\Archivos\\Apuntes\\" + nombreArchivo + ".pdf";
+                    rutaRelativaPDF = "~\\Archivos\\Apuntes\\" + nombreArchivo + ".pdf";
+                    string rutaAbsolutaPDF = @"C:\Users\Sebastián\Documents\GitHub\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\Archivos\Apuntes\" + nombreArchivo + ".pdf";
                     //Guardo el archivo
-                    fu_subirArchivo.SaveAs(rutaPDF);
+                    fu_subirArchivo.SaveAs(rutaAbsolutaPDF);
                     //Selecciono donde guarde el archivo
-                    pdf.LoadFromFile(rutaPDF);
+                    pdf.LoadFromFile(rutaAbsolutaPDF);
                     //Aplico seguridad
                     pdf.Security.KeySize = PdfEncryptionKeySize.Key256Bit;
                     pdf.Security.OwnerPassword = "test";
@@ -760,7 +766,7 @@ namespace ProyectoArtemisa
                     //nos muestran los tipos de seguridad que se le pueden colocar
 
                     //lo guardo en donde quiero, en este caso del string rutaPDF
-                    pdf.SaveToFile(rutaPDF);
+                    pdf.SaveToFile(rutaAbsolutaPDF);
                     //indico que el archivo se cargo exitosamente.
                     
                 }
@@ -770,7 +776,7 @@ namespace ProyectoArtemisa
                 }
 
             }
-
+            return rutaRelativaPDF;
         }
 
         protected void CustomValidator7_ServerValidate(object source, ServerValidateEventArgs e)

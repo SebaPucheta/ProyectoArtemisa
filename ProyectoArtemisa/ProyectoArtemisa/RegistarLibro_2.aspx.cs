@@ -132,8 +132,10 @@ namespace ProyectoArtemisa
                         if (LibroDao.VerificarCodigoBarra(txt_codgoBarra.Text))
                         {
                             int idLibro = LibroDao.RegistrarLibro(CrearObjetoLibro());
+                             string urlImagen="";
                             if(idLibro!=0)
-                            { procesarImagen(idLibro.ToString()); }
+                            { urlImagen= procesarImagen(idLibro.ToString()); }
+                            LibroDao.GuardarURLLibro(urlImagen, idLibro);
                             LimpiarForm();
                         }
                         else
@@ -406,14 +408,16 @@ namespace ProyectoArtemisa
             ddl_editorialLibro.SelectedValue = libro.idEditorial.ToString();
         }
 
-        protected void procesarImagen(string nombreImagen)
+        protected string procesarImagen(string nombreImagen)
         {
+            string rutaRelativa = "";
             if (fu_subirImagen.HasFile)
             {
                 try
                 {
-                    string rutaImagen = "C:\\Users\\Sebastián\\Documents\\GitHub\\ProyectoAndromeda\\ProyectoAndrómeda\\ProyectoAndrómeda\\imagenes\\libro\\" + nombreImagen + ".jpg";
-                    fu_subirImagen.PostedFile.SaveAs(rutaImagen);
+                    rutaRelativa = "~\\imagenes\\libro\\" + nombreImagen + ".jpg";
+                    string rutaAbsoluta = @"C:\Users\Sebastián\Documents\GitHub\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\imagenes\libro\" + nombreImagen + ".jpg";
+                    fu_subirImagen.PostedFile.SaveAs(rutaAbsoluta);
                     
                 }
                 catch (Exception ex)
@@ -422,6 +426,7 @@ namespace ProyectoArtemisa
                 }
 
             }
+            return rutaRelativa;
         }
     }
 }

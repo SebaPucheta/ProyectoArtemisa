@@ -10,7 +10,7 @@ namespace Entidades
     {
         public int idEmpleado { get; set; }
         public string nombreEmpleado { get; set; }
-        public string  apellidoNombre { get; set; }
+        public string  apellidoEmpleado { get; set; }
         public int dni { get; set; }
         public int tipoDNI { get; set; }
         public string email { get; set; }

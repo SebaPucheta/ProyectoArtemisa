@@ -82,7 +82,7 @@ namespace ProyectoArtemisa
         {
             EmpleadoEntidad empleado = new EmpleadoEntidad();
             empleado.nombreEmpleado = txt_nombre.Text;
-            empleado.apellidoNombre = txt_apellido.Text;
+            empleado.apellidoEmpleado = txt_apellido.Text;
             empleado.dni = int.Parse(txt_dni.Text);
             empleado.tipoDNI = int.Parse(ddl_tipoDNI.SelectedValue.ToString());
             empleado.email = txt_email.ToString();
