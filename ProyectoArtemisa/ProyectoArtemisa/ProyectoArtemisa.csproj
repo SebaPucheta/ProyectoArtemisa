@@ -105,6 +105,7 @@
     <Content Include="Estilo\Sidebar.css" />
     <Content Include="Estilo\Sidebar.html" />
     <Content Include="Estilo\Sidebar.js" />
+    <Content Include="GenerarEstadisticaDeVenta.aspx" />
     <Content Include="Global.asax" />
     <Content Include="IngresoLibro.aspx" />
     <Content Include="jquery-3.0.0.min.js" />
@@ -223,8 +224,20 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GenerarEstadisticaDeVenta.aspx.cs">
+      <DependentUpon>GenerarEstadisticaDeVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerarEstadisticaDeVenta.aspx.designer.cs">
+      <DependentUpon>GenerarEstadisticaDeVenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="hp11DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hp11DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="IngresoLibro.aspx.cs">
       <DependentUpon>IngresoLibro.aspx</DependentUpon>
@@ -441,6 +454,17 @@
     <Content Include="IngresoStockLibros.xsc">
       <DependentUpon>IngresoStockLibros.xsd</DependentUpon>
     </Content>
+    <Content Include="hp11DataSet.xsc">
+      <DependentUpon>hp11DataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="hp11DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hp11DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="hp11DataSet.xss">
+      <DependentUpon>hp11DataSet.xsd</DependentUpon>
+    </Content>
     <None Include="IngresoStockLibros.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>IngresoStockLibros.Designer.cs</LastGenOutput>
@@ -492,6 +516,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Reportes\GenerarCierreVenta_143.rdlc" />
     <EmbeddedResource Include="Reportes\GenerarComprobanteDeVenta_149.rdlc" />
+    <EmbeddedResource Include="Reportes\GenerarEstadisticaDeVenta.rdlc" />
     <EmbeddedResource Include="Reportes\GenerarIngresoStockLibros_151.rdlc" />
     <EmbeddedResource Include="Reportes\GenerarReporteResmasUtilizadas_146.rdlc" />
   </ItemGroup>

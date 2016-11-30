@@ -157,6 +157,8 @@
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_GenerarIngresoStockLibros_151" Text="Ingreso de stock libros" OnClick="btn_GenerarIngresoStockLibros_151_OnClick" /></li>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_GenerarReporteResmasUtilizadas_146" Text="Resmas utilizadas" OnClick="btn_GenerarReporteResmasUtilizadas_146_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_GenerarEstadisticaDeVentas" Text="Estadística de ventas" OnClick="btn_GenerarEstadisticaDeVentas_Click" /></li>
                     </ul>
                 </li>
                 <li>

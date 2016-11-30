@@ -238,6 +238,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_GenerarReporteResmasUtilizadas_146;
         
         /// <summary>
+        /// Control btn_GenerarEstadisticaDeVentas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_GenerarEstadisticaDeVentas;
+        
+        /// <summary>
         /// Control btn_andromeda.
         /// </summary>
         /// <remarks>

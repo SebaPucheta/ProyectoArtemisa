@@ -322,6 +322,13 @@ namespace ProyectoArtemisa
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("ModificarUsuario.aspx");
         }
+
+        protected void btn_GenerarEstadisticaDeVentas_Click(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("GenerarEstadisticaDeVenta.aspx");
+        }
         
 
             
