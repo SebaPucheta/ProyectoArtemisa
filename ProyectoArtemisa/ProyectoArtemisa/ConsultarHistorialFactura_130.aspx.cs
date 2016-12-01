@@ -19,7 +19,7 @@ namespace ProyectoArtemisa
             {
                 
             }
-
+            txt_codigoBarra.Focus();
             if(dgv_grillaOrdenesImpresion.Rows.Count>0)
             {
                 lbl_nombreGrilla.Visible = true;
@@ -41,7 +41,12 @@ namespace ProyectoArtemisa
         }
         protected void btn_consultarFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            int idFactura = int.Parse(dgv_grillaOrdenesImpresion.SelectedDataKey.Value.ToString());
+            Session["idFactura"]= idFactura;
+            cargarGrillaDetalleFactura(FacturaDao.DevolverDetalleFactura(idFactura));
+            lbl_grillaDetalleFactura.Visible = true;
+            if(dgv_grillaOrdenesImpresion.SelectedRow.Cells[5].Text.Equals("Aprobado"))
+            { btn_entrega.Visible = true; }
         }
 
         protected void dgv_grilla_OnPageIndexChanging(Object sender, GridViewPageEventArgs e)
@@ -84,6 +89,47 @@ namespace ProyectoArtemisa
             dgv_grillaOrdenesImpresion.DataKeyNames = new string[] { "idFactura" };
             dgv_grillaOrdenesImpresion.DataBind();
         }
+        protected void cargarGrillaDetalleFactura(List<DetalleFacturaEntidadQuery> listaDetalleFacturas)
+        {
+            DataTable tabla = new DataTable();
+            DataRow fila;
+
+            //Creo las columnas de la tabla
+            tabla.Columns.Add("idDetalleFactura", typeof(int));//key name
+            tabla.Columns.Add("nombreItem", typeof(string));
+            tabla.Columns.Add("nombreTipoItem", typeof(string));
+            tabla.Columns.Add("tipoApunte", typeof(string));
+            tabla.Columns.Add("cantidad", typeof(string));
+            tabla.Columns.Add("subtotal", typeof(string));
+            foreach (DetalleFacturaEntidadQuery detalleFactura in listaDetalleFacturas)
+            {
+                fila = tabla.NewRow();
+
+                fila[0] = detalleFactura.idDetalleFactura;
+                fila[2] = detalleFactura.nombreItem;
+                if (detalleFactura.item.GetType().ToString().Equals("ApunteEntidad"))
+                {
+                    ApunteEntidadQuery apunte = (ApunteEntidadQuery)detalleFactura.item;
+                    fila[1] = apunte.nombreApunte;
+                    fila[3] = apunte.nombreTipoApunte;
+                }
+                else
+                {
+                    LibroEntidadQuery libro = (LibroEntidadQuery)detalleFactura.item;
+                    fila[1] = libro.nombreLibro;
+                    fila[3] = "Impreso";
+                }
+                fila[4] = detalleFactura.cantidad;
+                fila[5] = "$" + detalleFactura.subtotal.ToString("N2");
+                tabla.Rows.Add(fila);
+            }
+
+            DataView dataView = new DataView(tabla);
+
+            dgv_detalleFactura.DataSource = dataView;
+            dgv_detalleFactura.DataKeyNames = new string[] { "idDetalleFactura" };
+            dgv_detalleFactura.DataBind();
+        }
 
         ///Comentado por Pucho, es un metodo de Martin
         //protected void cargarGrillaHistorialFactura()
@@ -104,6 +150,25 @@ namespace ProyectoArtemisa
             cargarGrillaFactura(FacturaDao.ListarFacturas(txt_fechaDesde.Text, txt_fechaHasta.Text));
             SumarTotal();
             lbl_nombreGrilla.Visible = true;
+            lbl_grillaDetalleFactura.Visible = false;
+            btn_entrega.Visible = false;
+        }
+        protected void btn_entregado_Click(object sender, EventArgs e)
+        {
+            FacturaDao.ActualizarEstado(int.Parse(Session["idFactura"].ToString()), 4);
+            Response.Redirect("ConsultarHistorialFactura_130.aspx");
+        }
+
+        protected void txt_codiboBarra_OnTextChanged(object sender, EventArgs e)
+        {
+            if(!txt_codigoBarra.Text.Equals(""))
+            {
+                cargarGrillaFactura(FacturaDao.ListarFacturasPorCodigoBarra(double.Parse(txt_codigoBarra.Text)));
+                SumarTotal();
+                lbl_nombreGrilla.Visible = true;
+                Session["frenarEnter"] = true;
+            }
+            
         }
     }
 }

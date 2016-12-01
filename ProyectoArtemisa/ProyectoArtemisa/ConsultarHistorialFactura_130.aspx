@@ -36,6 +36,16 @@
                 </div>
             </div>
             <br />
+            <!-- Código de barra  -->
+            <div class="row">
+                <div class="form-group">
+                    <label for="documento" class="control-label col-md-2">Código de barra: </label>
+                    <div class="col-md-2">
+                        <asp:TextBox runat="server" class="form-control" type="text" ID="txt_codigoBarra" value="" OnTextChanged="txt_codiboBarra_OnTextChanged" ViewStateMode="Enabled" />
+                    </div>
+                </div>
+            </div>
+            <br />
             <%-- Autor: Martin --%>
             <div class="container col-lg-offset-10">
                 <asp:Button runat="server" ID="btn_buscar" Text="Buscar" CssClass="btn btn-lg btn_azul btn_flat" Enabled="true" OnClick="btn_buscar_Click" />
@@ -85,6 +95,29 @@
              </div>
          </div>
          <br />
+        <div class="row">
+                <div class="form-group">
+                    <asp:label runat="server" ID="lbl_grillaDetalleFactura" Visible="false" for="cuil" class="control-label col-md-4"><b>Detalle venta</b></asp:label>
+                </div>
+            </div>
+            <!-- Grilla Facturas-->
+            <asp:GridView ID="dgv_detalleFactura" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" AllowPaging="True" PageSize="20"
+            OnPageIndexChanging="dgv_grilla_OnPageIndexChanging" OnSelectedIndexChanged="btn_consultarFactura_SelectedIndexChanged">
+                <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                <EditRowStyle BackColor="#ffffcc" />
+                <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                <Columns>
+                    <asp:BoundField DataField="nombreItem" ItemStyle-HorizontalAlign="Center" HeaderText="Nombre Item" />
+                    <asp:BoundField DataField="nombreTipoItem" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo Item" />
+                    <asp:BoundField DataField="tipoApunte" ItemStyle-HorizontalAlign="Center" HeaderText="Formato" />
+                    <asp:BoundField DataField="cantidad" ItemStyle-HorizontalAlign="Right" HeaderText="Cantidad" />
+                    <asp:BoundField DataField="subtotal" ItemStyle-HorizontalAlign="Right" HeaderText="Subtotales" />
+                </Columns>
+            </asp:GridView>
+
+        <div class="container col-lg-offset-10">
+             <asp:Button runat="server" ID="btn_entrega" Text="Entregar" CssClass="btn btn-lg btn_azul btn_flat" Visible="false" OnClick="btn_entregado_Click" />
+        </div>
             <br />
 
             <br />

@@ -77,7 +77,57 @@ namespace BaseDeDatos
             cmd.Connection.Close();
             return lista;
         }
+        public static List<FacturaEntidadQuery> ListarFacturasPorCodigoBarra(double idFactura)
+        {
+            string query = @"SELECT f.idFactura, f.fecha, f.total,f.idTipoPago,f.idEstadoPago, ep.descripcion as estadoPago, tp.descripcion as tipoPago, 
+                                    ISNULL(f.idUsuarioEmpleado,0) AS idUsuarioEmpleado,
+                                    ISNULL(f.idUsuarioCliente,0) AS idUsuarioCliente,  
+                                    ISNULL(C.nombreCliente,'') + ' ' +  ISNULL(C.apellidoCliente,'') AS nombreCompletoCliente,
+									ISNULL(
+											(	
+												SELECT	ISNULL(ISNULL(e.nombreEmpleado,'') + ' ' + ISNULL(e.apellidoEmpleado,''),'')
+												FROM Usuario u inner join Empleado e on e.idEmpleados = u.idCliente 
+												WHERE U.idUsuario = f.idUsuarioEmpleado
+											),'') AS nombreCompletoEmpleado
+                                    
 
+                                FROM Factura f LEFT join Usuario u
+	                                 on u.idUsuario = f.idUsuarioCliente
+	                                 LEFT join Cliente C
+	                                 ON C.idCliente = U.idCliente
+                                     INNER JOIN TipoPago tp
+                                     ON TP.idTipoPago=f.idTipoPago
+                                     INNER JOIN EstadoPago ep
+                                     ON EP.idEstadoPago = f.idEstadoPago
+							WHERE f.idFactura = @idFactura";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+
+            cmd.Parameters.AddWithValue(@"idFactura", idFactura);
+
+
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<FacturaEntidadQuery> lista = new List<FacturaEntidadQuery>();
+            while (dr.Read())
+            {
+                FacturaEntidadQuery factura = new FacturaEntidadQuery();
+                factura.idFactura = int.Parse(dr["idFactura"].ToString());
+                factura.fecha = DateTime.Parse(dr["fecha"].ToString());
+                factura.total = float.Parse(dr["total"].ToString());
+                factura.idUsuarioCliente = int.Parse(dr["idUsuarioCliente"].ToString());
+                factura.idUsuarioEmpleado = int.Parse(dr["idUsuarioEmpleado"].ToString());
+                factura.nombreCompletoEmpleado = dr["nombreCompletoEmpleado"].ToString();
+                factura.nombreCompletoCliente = dr["nombreCompletoCliente"].ToString();
+                factura.idTipoPago = int.Parse(dr["idTipoPago"].ToString());
+                factura.idEstadoPago = int.Parse(dr["idEstadoPago"].ToString());
+                factura.descripcionEstadoPago = dr["estadoPago"].ToString();
+                factura.descripcionTipoPago = dr["tipoPago"].ToString();
+                lista.Add(factura);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+        }
         /// <summary>
         ///
         /// Tipo 1-Libro
@@ -86,14 +136,14 @@ namespace BaseDeDatos
         /// <param name="factura"></param>
         public static int RegistrarFactura(FacturaEntidad factura)
         {
-            SqlConnection cnn= obtenerBD();
+            SqlConnection cnn = obtenerBD();
             SqlTransaction trans = cnn.BeginTransaction();
-            int idFactura=0;
+            int idFactura = 0;
             try
             {
 
                 string query1 = "INSERT INTO Factura(fecha, total, idUsuarioEmpleado, idTipoPago,idEstadoPago ) VALUES (@fecha, @total, @idUsuarioEmpleado, @idTipoPago, @idEstadoPago); select scope_identity()";
-                SqlCommand cmd1 = new SqlCommand(query1, cnn,trans);
+                SqlCommand cmd1 = new SqlCommand(query1, cnn, trans);
                 cmd1.Parameters.AddWithValue(@"fecha", DateTime.Now);
                 cmd1.Parameters.AddWithValue(@"total", factura.total);
                 cmd1.Parameters.AddWithValue(@"idUsuarioEmpleado", factura.idUsuarioEmpleado);
@@ -108,7 +158,7 @@ namespace BaseDeDatos
                     cmd2.Parameters.AddWithValue(@"cantidad", detalleFactura.cantidad);
                     cmd2.Parameters.AddWithValue(@"subtotal", detalleFactura.subtotal);
                     cmd2.Parameters.AddWithValue(@"idFactura", idFactura);
-                    
+
                     if (detalleFactura.item is ApunteEntidad)//Apunte
                     {
                         cmd2.Parameters.AddWithValue(@"idTipoItem", 2);
@@ -131,7 +181,7 @@ namespace BaseDeDatos
                         cmd3.Parameters.AddWithValue(@"cantidad", detalleFactura.cantidad);
                         cmd3.ExecuteNonQuery();
                     }
-                    
+
                 }
                 //--- Commit
                 trans.Commit();
@@ -154,8 +204,57 @@ namespace BaseDeDatos
             SqlDataReader reader = cmd.ExecuteReader();
             DataTable tabla = new DataTable();
             tabla.Load(reader);
+            cmd.Connection.Close();
             return tabla;
         }
-        
+        public static List<DetalleFacturaEntidadQuery> DevolverDetalleFactura(int idFactura)
+        {
+
+            string query = @"select df.idDetalleFactura, df.idFactura, df.idItem, df.idTipoItem, df.cantidad, df.subtotal, i.descripcion
+                             from DetalleFactura df inner join Item i
+							      on i.idItem  = df.idTipoItem
+                             where df.idFactura = @idFactura";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+
+            cmd.Parameters.AddWithValue(@"idFactura", idFactura);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<DetalleFacturaEntidadQuery> lista = new List<DetalleFacturaEntidadQuery>();
+            while (dr.Read())
+            {
+                DetalleFacturaEntidadQuery detalleFactura = new DetalleFacturaEntidadQuery();
+                detalleFactura.idDetalleFactura = int.Parse(dr["idDetalleFactura"].ToString());
+                detalleFactura.idTipoItem = int.Parse(dr["idTipoItem"].ToString());
+                detalleFactura.nombreItem = dr["descripcion"].ToString();
+                detalleFactura.cantidad = int.Parse(dr["cantidad"].ToString());
+                detalleFactura.subtotal = float.Parse(dr["subtotal"].ToString());
+                if (detalleFactura.nombreItem.Equals("Apunte"))
+                {
+                    ApunteEntidadQuery apunte = ApunteDao.ConsultarApunteQuery(int.Parse(dr["idItem"].ToString()));
+                    detalleFactura.item = apunte;
+                }
+                else
+                {
+                    LibroEntidadQuery libro = LibroDao.ConsultarLibroQuery(int.Parse(dr["idItem"].ToString()));
+                    detalleFactura.item = libro;
+                }
+                lista.Add(detalleFactura);
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return lista;
+
+        }
+
+        public static void ActualizarEstado(int idFactura, int estado)
+        {
+            string query = @"Update Factura set idEstadoPago = @idEstadoPago where idFactura = @idFactura";
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idEstadoPago", estado);
+            cmd.Parameters.AddWithValue(@"idFactura", idFactura);
+            cmd.ExecuteNonQuery();
+        }
+
+
     }
 }

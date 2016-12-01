@@ -86,13 +86,27 @@ namespace ProyectoArtemisa
 
         protected void btn_usuario_OnClick(Object sender, EventArgs e)
         {
-            LimpiarVariablesGlobales();
-            PilaForms.AgregarForm("Default.aspx");
-            Response.Redirect("Login.aspx");
+            if (Session["frenarEnter"] == null)
+            {
+                LimpiarVariablesGlobales();
+                PilaForms.AgregarForm("Default.aspx");
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                if (!bool.Parse(Session["frenarEnter"].ToString()))
+                {
+                    LimpiarVariablesGlobales();
+                    PilaForms.AgregarForm("Default.aspx");
+                    Response.Redirect("Login.aspx");
+                }
+            }
+            Session["frenarEnter"] = false;
         }
 
         protected void btn_registrarApunte_OnClick(Object sender, EventArgs e)
         {
+            
             LimpiarVariablesGlobales();
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("RegistrarApunte_26.aspx");

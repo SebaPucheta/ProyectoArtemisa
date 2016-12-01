@@ -231,7 +231,7 @@ namespace ProyectoArtemisa
             factura.total = float.Parse(lbl_total.Text);
             factura.idUsuarioEmpleado = int.Parse(Session["idUsuario"].ToString());
             factura.idTipoPago = 1;
-            factura.idEstadoPago = 1;
+            factura.idEstadoPago = 4;
             foreach (DataRow fila in (Session["tablaDetalles"] as DataTable).Rows)
             {
                 DetalleFacturaEntidad detalleFactura = new DetalleFacturaEntidad();
