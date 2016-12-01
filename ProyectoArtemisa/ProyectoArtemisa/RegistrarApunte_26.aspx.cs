@@ -322,19 +322,23 @@ namespace ProyectoArtemisa
                         if (chk_digital.Checked)
                         { 
                             idApunte = RegistrarApunteDigital();
-                            string urlImagen = procesarPDF(idApunte.ToString());
-                            string urlArchivo = procesarImagen(idApunte.ToString());
-                            ApunteDao.GuardarURLApunte(urlImagen,urlArchivo, idApunte);
+                            //CAMBIE EL NOMBRE DE LAS VARIABLES, ESTABAN AL REVES
+                            string urlArchivo = procesarPDF(idApunte.ToString());
+                            string urlImagen = procesarImagen(idApunte.ToString());
+                            ApunteDao.GuardarURLApunte(urlImagen, urlArchivo, idApunte);
                             bandera = false;
                         }
 
                         if (chk_impreso.Checked)
                         {
-                            RegistrarApunteImpreso();
-                            if(bandera)
-                            {
-                                procesarImagen(idApunte.ToString());
-                            }
+                            //ERROR ENCONTRADO ERA QUE EL METODO NO GUARDABA EL ID COMO EL DEL DIGITAL
+                            idApunte = RegistrarApunteImpreso();
+                            //if(bandera)
+                            //{
+                                //AGREGUE ESTO
+                                string urlImagen = procesarImagen(idApunte.ToString());
+                                ApunteDao.GuardarIMGApunteImpreso(urlImagen, idApunte);
+                            //}
                         }
                         LimpiarVariablesForm();
                         LimpiarForm();
@@ -459,7 +463,7 @@ namespace ProyectoArtemisa
         /// Registrar un apunte en la base de datos, como un TipoApunte "Impreso", setea el precio de hoja
         /// desde el txt_precioApunteImpreso y setea el código de barra desde el txt_codigoBarra
         /// </summary>
-        protected void RegistrarApunteImpreso()
+        protected int RegistrarApunteImpreso()
         {
             int idApunte = 0;
             if (txt_codigoBarra.Text != "")
@@ -472,7 +476,7 @@ namespace ProyectoArtemisa
                     nuevoApunte.idTipoApunte = 1;
                     nuevoApunte.stock = int.Parse(txt_stock.Text);
                     nuevoApunte.idPrecioHoja = PrecioXHojaDao.ConsultarUltimoPrecioXHoja().idPrecioHoja;
-                    ApunteDao.RegistrarApunte(nuevoApunte);
+                    idApunte=ApunteDao.RegistrarApunte(nuevoApunte);
                 }
                 else
                 {
@@ -483,6 +487,7 @@ namespace ProyectoArtemisa
             {
                 Response.Write("<script>window.alert('No se ingreso ningun código de barra');</script>");
             }
+            return idApunte;
 
         }
 
@@ -728,7 +733,7 @@ namespace ProyectoArtemisa
                 try
                 {
                     rutaRelativaImagen = @"~\imagenes\apunte\" + nombreImagen + ".jpg";
-                    string rutaCompleta = @"C:\Users\Sebastián\Documents\GitHub\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\imagenes\apunte\" + nombreImagen + ".jpg";
+                    string rutaCompleta = @"C:\Juan\Facultad\Habilitacion Profesional\GitHub - Andromeda\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\imagenes\apunte\" + nombreImagen + ".jpg";
                     fu_subirImagen.PostedFile.SaveAs(rutaCompleta);
                     
                 }
@@ -740,6 +745,7 @@ namespace ProyectoArtemisa
             }
             return rutaRelativaImagen;
         }
+
         protected string procesarPDF(string nombreArchivo)
         {
             string rutaRelativaPDF="";
@@ -750,12 +756,12 @@ namespace ProyectoArtemisa
                     //creo un nuevo pdf
                     PdfDocument pdf = new PdfDocument();
                     // Indico la ruta deseada donde quiero gurdar el archivo.
-                    rutaRelativaPDF = "~\\Archivos\\Apuntes\\" + nombreArchivo + ".pdf";
-                    string rutaAbsolutaPDF = @"C:\Users\Sebastián\Documents\GitHub\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\Archivos\Apuntes\" + nombreArchivo + ".pdf";
+                    rutaRelativaPDF = "~\\archivos\\" + nombreArchivo + ".pdf";
+                    string rutaAbsolutaPDF = @"C:\Juan\Facultad\Habilitacion Profesional\GitHub - Andromeda\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\archivos\" + nombreArchivo + ".pdf";
                     //Guardo el archivo
                     fu_subirArchivo.SaveAs(rutaAbsolutaPDF);
                     //Selecciono donde guarde el archivo
-                    pdf.LoadFromFile(rutaAbsolutaPDF);
+                    pdf.LoadFromFile(rutaAbsolutaPDF);//////////////////////////////////////////ERROR/////////////////////////////////////////
                     //Aplico seguridad
                     pdf.Security.KeySize = PdfEncryptionKeySize.Key256Bit;
                     pdf.Security.OwnerPassword = "test";

@@ -572,6 +572,16 @@ namespace BaseDeDatos
             cmd.Connection.Close();
         }
 
+        public static void GuardarIMGApunteImpreso(string urlImagen, int idApunte)
+        {
+            string consulta = @"UPDATE Apunte SET  urlImagenApunte=@urlImagen WHERE idApunte = @idApunte";
+            SqlCommand cmd = new SqlCommand(consulta, obtenerBD());
+            cmd.Parameters.AddWithValue(@"urlImagen", urlImagen);
+            cmd.Parameters.AddWithValue(@"idApunte", idApunte);
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
 
     }
 }
