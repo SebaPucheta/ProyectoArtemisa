@@ -9,13 +9,29 @@ using BaseDeDatos;
 using System.Data;
 using Entidades;
 using Negocio;
-
+using System.Media;
 namespace ProyectoArtemisa
 {
     public partial class ConsultarOrdenImpresion_126 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (UsuarioDao.ConsultarUnUsuarioPorId(int.Parse(Session["idUsuario"].ToString())).idRol == 5)
+            {
+                btn_agregar.Visible = false;
+                Response.AppendHeader("Refresh", "10; URL=ConsultarOrdenImpresion_126.aspx");
+                CargarOrdenesEnGrilla();
+                if(Session["CantidadFilas"]==null)
+                { Session["CantidadFilas"] = dgv_grillaOrdenesImpresion.Rows.Count; }
+                else if(int.Parse(Session["CantidadFilas"].ToString())<dgv_grillaOrdenesImpresion.Rows.Count)
+                {
+                    SoundPlayer sp = new SoundPlayer();
+                    sp.SoundLocation = @"C:\Users\Sebastián\Documents\GitHub\ProyectoArtemisa\ProyectoArtemisa\ProyectoArtemisa\Sonidos\sms-alert-3-daniel_simon.wav";
+                    sp.Play();
+                    Session["CantidadFilas"] = dgv_grillaOrdenesImpresion.Rows.Count;
+                }
+            }
+            
             lbl_fecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             if(!IsPostBack)
             {
@@ -29,10 +45,13 @@ namespace ProyectoArtemisa
                 {
                     CargarOrdenesEnGrilla();
                 }
+                
             }
+            
             btn_codigoBarra.Focus();
         }
 
+        
         protected void btn_agregar_Click(object sender, EventArgs e)
         {
             Session["agregarOrden"] = true;

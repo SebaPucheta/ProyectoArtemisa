@@ -188,6 +188,47 @@ namespace BaseDeDatos
             return usu;
         }
 
+        public static UsuarioEntidadQuery ConsultarUnUsuarioPorId(int idUsuario)
+        {
+            UsuarioEntidadQuery usu = new UsuarioEntidadQuery();
+
+            string query = @"SELECT u.idUsuario, 
+	                                u.nombreUsuario, 
+	                                u.contrasena, 
+                                    u.idRol,
+	                                r.nombreRol, 
+	                                e.nombreEmpleado, 
+	                                e.apellidoEmpleado, 
+	                                e.dni, 
+	                                ISNULL(e.email,'') AS email
+                            FROM Usuario u INNER JOIN Rol r ON u.idRol = r.idRol
+			                               INNER JOIN Empleado e ON u.idCLiente = e.idEmpleados
+                                           INNER JOIN TipoDNI t ON e.idTipoDNI = t.idTipoDNI	
+                             WHERE u.idUsuario = @idUsuario";
+
+            SqlCommand cmd = new SqlCommand(query, obtenerBD());
+            cmd.Parameters.AddWithValue(@"idUsuario", idUsuario);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                usu.idUsuario = int.Parse(dr["idUsuario"].ToString());
+                usu.nombreUsuario = dr["nombreUsuario"].ToString();
+                usu.contrasena = dr["contrasena"].ToString();
+                usu.nombreRol = dr["nombreRol"].ToString();
+                usu.idRol = int.Parse(dr["idRol"].ToString());
+                EmpleadoEntidad empleado = new EmpleadoEntidad();
+                empleado.nombreEmpleado = dr["nombreEmpleado"].ToString();
+                empleado.apellidoEmpleado = dr["apellidoEmpleado"].ToString();
+                empleado.dni = int.Parse(dr["dni"].ToString());
+                empleado.email = dr["email"].ToString();
+                usu.empleadoQuery = empleado;
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return usu;
+        }
+
         public static ClienteEntidadQuery ConsultarUnClienteQuery(int idCliente)
         {
             ClienteEntidadQuery cli = new ClienteEntidadQuery();

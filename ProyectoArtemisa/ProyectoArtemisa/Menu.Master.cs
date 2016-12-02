@@ -64,6 +64,24 @@ namespace ProyectoArtemisa
                 btn_registrarUsuario.Visible = true;
                 btn_registrarProveedor.Visible = false;
             }
+            else if (HttpContext.Current.User.IsInRole("encargado de imprenta"))
+            {
+                btn_usuario.Text = "[" + HttpContext.Current.User.Identity.Name.ToString() + "]";
+
+                btn_registrarApunte.Visible = false;
+                btn_registrarLibro.Visible = false;
+                btn_modificarPrecioHoja.Visible = false;
+                btn_consultarItem.Visible = true;
+                btn_registrarEditorial.Visible = true;
+                btn_consultarPrecioXHoja.Visible = false;
+                btn_ventaXVentanilla.Visible = false;
+                btn_consultarHistorialFactura.Visible = false;
+                btn_consultarOrdenImpresion.Visible = true;
+                btn_consultarHistorialOrdenImpresion.Visible = false;
+                btn_registrarProveedor.Visible = false;
+                btn_registrarUsuario.Visible = true;
+                btn_registrarProveedor.Visible = false;
+            }
             else
             {
                 btn_usuario.Text = "[" + "]";

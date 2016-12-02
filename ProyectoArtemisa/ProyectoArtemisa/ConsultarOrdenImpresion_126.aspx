@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="ConsultarOrdenImpresion_126.aspx.cs" Inherits="ProyectoArtemisa.ConsultarOrdenImpresion_126" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_encabezado" runat="server">
+    
 </asp:Content>
 
 
