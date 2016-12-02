@@ -733,7 +733,7 @@ namespace ProyectoArtemisa
                 try
                 {
                     rutaRelativaImagen = @"~\imagenes\apunte\" + nombreImagen + ".jpg";
-                    string rutaCompleta = @"C:\Juan\Facultad\Habilitacion Profesional\GitHub - Andromeda\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\imagenes\apunte\" + nombreImagen + ".jpg";
+                    string rutaCompleta = @"C:\Users\Sebastián\Documents\GitHub\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\imagenes\apunte\" + nombreImagen + ".jpg";
                     fu_subirImagen.PostedFile.SaveAs(rutaCompleta);
                     
                 }
@@ -756,8 +756,8 @@ namespace ProyectoArtemisa
                     //creo un nuevo pdf
                     PdfDocument pdf = new PdfDocument();
                     // Indico la ruta deseada donde quiero gurdar el archivo.
-                    rutaRelativaPDF = "~\\archivos\\" + nombreArchivo + ".pdf";
-                    string rutaAbsolutaPDF = @"C:\Juan\Facultad\Habilitacion Profesional\GitHub - Andromeda\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\archivos\" + nombreArchivo + ".pdf";
+                    rutaRelativaPDF = "~\\Archivos\\" + nombreArchivo + ".pdf";
+                    string rutaAbsolutaPDF = @"C:\Users\Sebastián\Documents\GitHub\ProyectoAndromeda\ProyectoAndrómeda\ProyectoAndrómeda\Archivos\" + nombreArchivo + ".pdf";
                     //Guardo el archivo
                     fu_subirArchivo.SaveAs(rutaAbsolutaPDF);
                     //Selecciono donde guarde el archivo

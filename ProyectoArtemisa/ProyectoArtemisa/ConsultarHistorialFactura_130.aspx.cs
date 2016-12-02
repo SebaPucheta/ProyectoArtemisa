@@ -107,7 +107,7 @@ namespace ProyectoArtemisa
 
                 fila[0] = detalleFactura.idDetalleFactura;
                 fila[2] = detalleFactura.nombreItem;
-                if (detalleFactura.item.GetType().ToString().Equals("ApunteEntidad"))
+                if (detalleFactura.item is ApunteEntidad)
                 {
                     ApunteEntidadQuery apunte = (ApunteEntidadQuery)detalleFactura.item;
                     fila[1] = apunte.nombreApunte;
