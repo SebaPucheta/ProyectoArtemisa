@@ -21,12 +21,13 @@ namespace ProyectoArtemisa
                 btn_agregar.Visible = false;
                 Response.AppendHeader("Refresh", "10; URL=ConsultarOrdenImpresion_126.aspx");
                 CargarOrdenesEnGrilla();
+                lbl_tituloCabecera.Text = "Consultar órdenes de impresión";
                 if(Session["CantidadFilas"]==null)
                 { Session["CantidadFilas"] = dgv_grillaOrdenesImpresion.Rows.Count; }
                 else if(int.Parse(Session["CantidadFilas"].ToString())<dgv_grillaOrdenesImpresion.Rows.Count)
                 {
                     SoundPlayer sp = new SoundPlayer();
-                    sp.SoundLocation = @"C:\Users\Sebastián\Documents\GitHub\ProyectoArtemisa\ProyectoArtemisa\ProyectoArtemisa\Sonidos\sms-alert-3-daniel_simon.wav";
+                    sp.SoundLocation = @"C:\Juan\Facultad\Habilitacion Profesional\GitHub - Artemisa\ProyectoArtemisa\ProyectoArtemisa\ProyectoArtemisa\Sonidos\sms-alert-3-daniel_simon.wav";
                     sp.Play();
                     Session["CantidadFilas"] = dgv_grillaOrdenesImpresion.Rows.Count;
                 }

@@ -10,7 +10,8 @@
  
          <!-- Titulo -->
          <div class="row">
-                <h1 class="text-primary text-center"><b>Órdenes de Impresión</b></h1>
+                <h1 class="text-primary text-center"><b>
+                    <asp:Label ID="lbl_tituloCabecera" runat="server" Text="Registrar orden de impresión"></asp:Label></b></h1>
             </div>
          <br />
 

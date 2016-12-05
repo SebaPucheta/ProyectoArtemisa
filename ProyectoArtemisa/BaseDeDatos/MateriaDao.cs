@@ -139,7 +139,7 @@ namespace BaseDeDatos
         /// <returns></returns>
         public static List<MateriaEntidad> ConsultarMateria()
         {
-            string query = @"SELECT idMateria, nombreMateria, nivelCursado, descripcionMateria FROM Materia WHERE baja = 0";
+            string query = @"SELECT idMateria, nombreMateria, nivelCursado, descripcionMateria FROM Materia WHERE baja = 0 ORDER BY nombreMateria";
             SqlCommand cmd = new SqlCommand(query, obtenerBD());
             SqlDataReader dr = cmd.ExecuteReader();
             List<MateriaEntidad> lista = new List<MateriaEntidad>();

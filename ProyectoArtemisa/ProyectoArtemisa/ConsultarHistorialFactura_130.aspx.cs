@@ -150,8 +150,11 @@ namespace ProyectoArtemisa
             cargarGrillaFactura(FacturaDao.ListarFacturas(txt_fechaDesde.Text, txt_fechaHasta.Text));
             SumarTotal();
             lbl_nombreGrilla.Visible = true;
-            lbl_grillaDetalleFactura.Visible = false;
             btn_entrega.Visible = false;
+            //Saco la grilla de abajo
+            lbl_grillaDetalleFactura.Visible = false;
+            dgv_detalleFactura.DataSource = null;
+            dgv_detalleFactura.DataBind();
         }
         protected void btn_entregado_Click(object sender, EventArgs e)
         {
@@ -167,6 +170,12 @@ namespace ProyectoArtemisa
                 SumarTotal();
                 lbl_nombreGrilla.Visible = true;
                 Session["frenarEnter"] = true;
+                //Limpio el texto
+                txt_codigoBarra.Text = "";
+                //Saco la grilla de abajo
+                lbl_grillaDetalleFactura.Visible = false;
+                dgv_detalleFactura.DataSource = null;
+                dgv_detalleFactura.DataBind();
             }
             
         }

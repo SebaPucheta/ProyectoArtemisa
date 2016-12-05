@@ -24,8 +24,8 @@ namespace BaseDeDatos
 					                                        inner join Rol r
 					                                        on u.idRol = r.idRol
 					
-                                        WHERE il.fecha BETWEEN @desde
-		                                        and   @hasta
+                                        WHERE il.fecha BETWEEN convert(datetime, '@desde', 103)
+		                                        and   convert(datetime, '@hasta', 103)
 		                                        and p.idProveedor like  @idProveedor
 		                                        and e.nombreEmpleado like @nombre
 		                                        and e.apellidoEmpleado like @apellido";

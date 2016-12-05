@@ -40,7 +40,8 @@ namespace ProyectoArtemisa
                 btn_consultarPrecioXHoja.Visible = true;
                 btn_ventaXVentanilla.Visible = true;
                 btn_consultarHistorialFactura.Visible = true;
-                btn_consultarOrdenImpresion.Visible = true;
+                btn_consultarOrdenImpresion.Visible = false;
+                btn_registrarOrdenImpresion.Visible = true;
                 btn_consultarHistorialOrdenImpresion.Visible = true;
                 btn_registrarProveedor.Visible = true;
                 btn_registrarUsuario.Visible = true;
@@ -81,6 +82,7 @@ namespace ProyectoArtemisa
                 btn_registrarProveedor.Visible = false;
                 btn_registrarUsuario.Visible = true;
                 btn_registrarProveedor.Visible = false;
+                btn_registrarOrdenImpresion.Visible = false;
             }
             else
             {
@@ -361,10 +363,16 @@ namespace ProyectoArtemisa
             PilaForms.AgregarForm("Default.aspx");
             Response.Redirect("GenerarEstadisticaDeVenta.aspx");
         }
-        
+        protected void btn_registrarOrdenImpresion_OnClick(object sender, EventArgs e)
+        {
+            LimpiarVariablesGlobales();
+            PilaForms.AgregarForm("Default.aspx");
+            Response.Redirect("ConsultarOrdenImpresion_126.aspx");
+        }
 
-            
 
-            
+
+
+
     }
 }

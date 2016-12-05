@@ -7,9 +7,9 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Aca va el titulo-->
-    <title>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder_encabezado" runat="server"></asp:ContentPlaceHolder>
-    </title>
+    <title>EDUCOM</title>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_encabezado" runat="server">
+    </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-theme.min.css" />
     <%--<link rel="stylesheet" href="Estilo/NavBar.css" />--%>
@@ -26,7 +26,7 @@
 
 </head>
 <body>
-    
+
     <form id="form1" runat="server">
 
 
@@ -90,11 +90,11 @@
             </ul>
         </nav>--%>
 
-        
+
         <div class="contenedor-menu">
             <a class="btn-menu btn-a"><i class="icono  glyphicon glyphicon-align-justify"></i>EDUCOM</a>
             <ul class="menu">
-                <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#" class="usuario">Usuario<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                <li><a style="text-decoration: none; font-size: 18px; line-height: 20px;" href="#" class="usuario">Usuario<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
                     <ul>
                         <li>
                             <asp:Button runat="server" ID="btn_usuario" CssClass="btn-a" Text="nombre" OnClick="btn_usuario_OnClick" TabIndex="60" /></li>
@@ -105,49 +105,51 @@
                             <asp:Button runat="server" ID="btn_cambiarPass" CssClass="btn-a" Text="Cambiar Constraseña" OnClick="btn_cambiarPass_OnClick" TabIndex="60" /></li>
                     </ul>
                 </li>
-                <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#">Registrar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                <li><a style="text-decoration: none; font-size: 18px; line-height: 20px;" href="#">Registrar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
                     <ul>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarApunte" Text="Registrar Apunte" OnClick="btn_registrarApunte_OnClick" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarApunte" Text="Registrar apunte" OnClick="btn_registrarApunte_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarLibro" Text="Registrar Libro" OnClick="btn_registrarLibro_OnClick" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarLibro" Text="Registrar libro" OnClick="btn_registrarLibro_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarEditorial" Text="Registrar Editorial" OnClick="btn_consultarEditorial_OnClick" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarEditorial" Text="Registrar editorial" OnClick="btn_consultarEditorial_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarProveedor" Text="Registrar Proveedor" OnClick="btn_registrarProveedor_OnClick" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarProveedor" Text="Registrar proveedor" OnClick="btn_registrarProveedor_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarUsuario" Text="Registrar Empleado" OnClick="btn_registrarUsuario_OnClick" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarUsuario" Text="Registrar empleado" OnClick="btn_registrarUsuario_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_ventaXVentanilla" Text="Registrar Venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_ventaXVentanilla" Text="Registrar venta" OnClick="btn_ventaXVentanilla_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_modificarPrecioHoja" Text="Registrar Precio Hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_modificarPrecioHoja" Text="Registrar precio por hoja" OnClick="btn_modificarPrecioHoja_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarIngresoLibro" Text="Registrar Ingreso de Libro" OnClick="btn_registrarIngrsoLibro_OnClick" /></li>
-                   
-                    </ul>
-                </li>
-                <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#">Consultar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
-                    <ul>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarIngresoLibro" Text="Registrar ingreso de libro" OnClick="btn_registrarIngrsoLibro_OnClick" /></li>
                         <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarItem" Text="Consultar Item" OnClick="btn_consultarItem_OnClick" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarPrecioXHoja" Text="Consultar Precio Por Hoja" OnClick="btn_consultarPrecioXHoja_OnClick" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarHistorialFactura" Text="Historial de Ventas" OnClick="btn_consultarHistorialFactura_OnClick" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarOrdenImpresion" Text="Consultar Orden Impresión" OnClick="btn_consultarOrdenImpresion_OnClick" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarIngresoLibro" Text="Consultar Ingresos de Libros" OnClick="btn_consultarIngresoLibro_OnClick" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarHistorialOrdenImpresion" Text="Historial Ordenes Impresión" OnClick="btn_consultarHistorialOrdenImpresion_OnClick" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarProveedor" Text="Consultar Proveedor" OnClick="btn_consultarProveedor_OnClick" /></li>
-                        <li>
-                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarEditorial" Text="Consultar Editorial" OnClick="btn_consultarEditorial_Click" /></li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_registrarOrdenImpresion" Text="Registrar orden de impresión" OnClick="btn_registrarOrdenImpresion_OnClick" /></li>
 
                     </ul>
                 </li>
-                <li><a style="text-decoration:none; font-size: 18px; line-height: 20px;" href="#">Reportes<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                <li><a style="text-decoration: none; font-size: 18px; line-height: 20px;" href="#">Consultar<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
+                    <ul>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarItem" Text="Consultar item" OnClick="btn_consultarItem_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarOrdenImpresion" Text="Consultar órdenes impresión" OnClick="btn_consultarOrdenImpresion_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarIngresoLibro" Text="Consultar ingresos de libros" OnClick="btn_consultarIngresoLibro_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarProveedor" Text="Consultar proveedor" OnClick="btn_consultarProveedor_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarEditorial" Text="Consultar editorial" OnClick="btn_consultarEditorial_Click" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarPrecioXHoja" Text="Consultar precio por hoja" OnClick="btn_consultarPrecioXHoja_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarHistorialOrdenImpresion" Text="Historial órdenes impresión" OnClick="btn_consultarHistorialOrdenImpresion_OnClick" /></li>
+                        <li>
+                            <asp:Button runat="server" CssClass="btn-a" ID="btn_consultarHistorialFactura" Text="Historial de ventas" OnClick="btn_consultarHistorialFactura_OnClick" /></li>
+
+                    </ul>
+                </li>
+                <li><a style="text-decoration: none; font-size: 18px; line-height: 20px;" href="#">Reportes<i class="icono derecho glyphicon glyphicon-chevron-down"></i></a>
                     <ul>
                         <li>
                             <asp:Button runat="server" CssClass="btn-a" ID="btn_GenerarCierreVenta_143" Text="Cierre de venta" OnClick="btn_GenerarCierreVenta_143_OnClick" /></li>
@@ -162,10 +164,10 @@
                     </ul>
                 </li>
                 <li>
-                     <asp:Button runat="server" CssClass="btn-a" ID="btn_andromeda" Text="Andromeda" OnClick="btn_andromeda_Click" /></li>
+                    <asp:Button runat="server" CssClass="btn-a" ID="btn_andromeda" Text="Andromeda" OnClick="btn_andromeda_Click" /></li>
             </ul>
         </div>
-        
+
 
         <!-- Paginas hijas -->
         <div>
@@ -180,7 +182,7 @@
             <br />
         </div>
         <br />
-            <br />
+        <br />
     </form>
 
 

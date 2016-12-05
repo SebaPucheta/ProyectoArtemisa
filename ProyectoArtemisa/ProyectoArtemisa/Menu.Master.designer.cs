@@ -130,6 +130,15 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_registrarIngresoLibro;
         
         /// <summary>
+        /// Control btn_registrarOrdenImpresion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_registrarOrdenImpresion;
+        
+        /// <summary>
         /// Control btn_consultarItem.
         /// </summary>
         /// <remarks>
@@ -137,24 +146,6 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_consultarItem;
-        
-        /// <summary>
-        /// Control btn_consultarPrecioXHoja.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_consultarPrecioXHoja;
-        
-        /// <summary>
-        /// Control btn_consultarHistorialFactura.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_consultarHistorialFactura;
         
         /// <summary>
         /// Control btn_consultarOrdenImpresion.
@@ -175,15 +166,6 @@ namespace ProyectoArtemisa {
         protected global::System.Web.UI.WebControls.Button btn_consultarIngresoLibro;
         
         /// <summary>
-        /// Control btn_consultarHistorialOrdenImpresion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_consultarHistorialOrdenImpresion;
-        
-        /// <summary>
         /// Control btn_consultarProveedor.
         /// </summary>
         /// <remarks>
@@ -200,6 +182,33 @@ namespace ProyectoArtemisa {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_consultarEditorial;
+        
+        /// <summary>
+        /// Control btn_consultarPrecioXHoja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_consultarPrecioXHoja;
+        
+        /// <summary>
+        /// Control btn_consultarHistorialOrdenImpresion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_consultarHistorialOrdenImpresion;
+        
+        /// <summary>
+        /// Control btn_consultarHistorialFactura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_consultarHistorialFactura;
         
         /// <summary>
         /// Control btn_GenerarCierreVenta_143.
